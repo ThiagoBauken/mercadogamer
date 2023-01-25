@@ -1,0 +1,168 @@
+.invite-modal {
+  padding: 0 20px;
+
+  .image {
+    display        : flex;
+    justify-content: center;
+    margin-bottom  : 15px;
+  }
+
+  .title {
+    font-style   : normal;
+    font-weight  : 500;
+    font-size    : 20px;
+    line-height  : 24px;
+    text-align   : center;
+    color        : white;
+    margin-bottom: 10px;
+  }
+
+  .content {
+    font-style   : normal;
+    font-weight  : 400;
+    font-size    : 14px;
+    line-height  : 17px;
+    text-align   : center;
+    color        : #73778A;
+    margin-bottom: 15px;
+  }
+
+
+  .communication {
+    display        : grid;
+    gap            : 15px;
+    height         : fit-content;
+    justify-content: center;
+    margin-bottom  : 25px;
+
+    &>ul {
+      display       : grid;
+      gap           : 10px;
+      grid-auto-flow: column;
+      width         : fit-content;
+
+      &>li {
+        display        : flex;
+        justify-content: center;
+        align-items    : center;
+        width          : 35px;
+        height         : 35px;
+        border-radius  : 50%;
+        cursor         : pointer;
+
+        &>.icon {
+          display  : flex;
+          font-size: 35px;
+          color    : var(--color-gray-80);
+        }
+      }
+    }
+  }
+
+  .sm-title {
+    color        : white;
+    font-style   : normal;
+    font-weight  : 500;
+    font-size    : 14px;
+    line-height  : 17px;
+    text-align   : center;
+    margin-bottom: 20px;
+    cursor       : pointer;
+    color        : var(--color-primary);
+  }
+
+  .sm-title:hover {
+    text-decoration-line: underline;
+  }
+
+
+  .invite-link {
+    display              : grid;
+    grid-template-columns: 1fr max-content;
+    gap                  : 10px;
+    margin-bottom        : 20px;
+
+    &>.clipboard {
+      font-size       : 24px;
+      display         : flex;
+      justify-content : center;
+      align-items     : center;
+      width           : 45px;
+      height          : 45px;
+      background-color: var(--color-primary);
+      border-radius   : 50%;
+      color           : var(--color-gray-130);
+      cursor          : pointer;
+    }
+  }
+
+  &>.users {
+    border       : 1px solid var(--color-gray-100);
+    border-radius: 8px;
+    padding      : 10px 20px;
+
+
+
+    &>.title {
+      font-style   : normal;
+      font-weight  : 400;
+      font-size    : 16px;
+      line-height  : 20px;
+      color        : white;
+      margin-bottom: 32px;
+      text-align   : start;
+    }
+
+    &>.content {
+      height  : 185px;
+      overflow: auto;
+
+      .user {
+        align-items    : center;
+        gap            : 14px;
+        padding        : 14px;
+        border-bottom  : solid 1px var(--color-gray-100);
+        display        : flex;
+        justify-content: space-between;
+
+        &>.name {
+          font-style : normal;
+          font-weight: 400;
+          font-size  : 14px;
+          line-height: 17px;
+        }
+
+        &>.status {
+          &>.mercado-tooltip-container {
+            &>.content {
+              margin-bottom: 0px !important;
+            }
+          }
+        }
+      }
+    }
+
+
+  }
+
+  @include sm {
+    padding: 0 0px;
+
+    &>.image {
+      &>span {
+        width : 100px !important;
+        height: 100px !important;
+      }
+    }
+
+    &>.users {
+      padding: 10px 10px;
+    }
+  }
+
+
+}
+
+::-webkit-scrollbar {
+  display: none;
+}

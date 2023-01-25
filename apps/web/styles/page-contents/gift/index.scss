@@ -1,0 +1,283 @@
+.gift-page {
+  display       : grid;
+  padding-bottom: 140px;
+
+  &>.gift-page-header {
+    // background     : no-repeat center/cover url('/assets/imgs/christmas-services/new-gift-header.webp');
+    background     : no-repeat center/cover url('/assets/imgs/christmas-services/christmas_regalos_header.webp'); // Christmas Background
+    overflow       : visible;
+    width          : 100vw;
+    min-height     : 16.73vw;
+    margin-left    : calc(50% - 50vw);
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+
+    &>.gift-page-title {
+
+      &>.title {
+        font-style : normal;
+        font-weight: 500;
+        font-size  : 36px;
+        line-height: 44px;
+        text-align : center;
+        color      : white;
+      }
+
+      &>.sm-title {
+        font-style : normal;
+        font-weight: 500;
+        font-size  : 16px;
+        line-height: 20px;
+        text-align : center;
+        color      : var(--color-gray-50);
+        margin-top : 10px;
+      }
+    }
+  }
+
+  &>.content {
+    display: grid;
+    gap    : 60px;
+
+
+    @import './widgets/roulette/index.scss';
+
+    @import './widgets/roulette-requirements/index.scss';
+
+    @import './widgets/roulette-history/index.scss';
+  }
+
+  &>.shortcut-action {
+    z-index: 999;
+
+    &>button {
+      position: fixed;
+      bottom  : 30px;
+      right   : 30px;
+
+      &>.content {
+        padding: 17.5px 17.5px !important;
+
+        &>.mercado-icon {
+          font-size: 25px;
+          color    : var(--color-gray-130)
+        }
+      }
+    }
+
+    &>.stortcut-content {
+      position        : fixed;
+      bottom          : 115px;
+      right           : 50px;
+      background-color: var(--color-gray-110);
+      padding         : 11.5px 23px;
+      box-shadow      : 0px 7px 25px rgba(0, 0, 0, 0.1);
+      border-radius   : 5px;
+
+      &>.menu-container {
+        &>.content {
+          &>ul {
+            display: grid;
+            gap    : 25px;
+
+            &>li {
+              display    : flex;
+              align-items: center;
+              color      : var(--color-gray-60);
+              font-style : normal;
+              font-weight: 400;
+              font-size  : 14px;
+              line-height: 17px;
+              cursor     : pointer;
+
+              &>.mercado-icon {
+                margin-right: 9.5px;
+              }
+
+              &:hover {
+                color: white;
+              }
+            }
+          }
+        }
+
+        &>.mercado-modal {
+          &>.modal-content {
+            width: 450px;
+
+            &>.content {
+              width: initial;
+
+              &>form {
+                display: grid;
+                gap    : 25px
+              }
+            }
+          }
+        }
+      }
+    }
+
+    @include md {
+      display: none;
+    }
+  }
+
+  @include lg {
+    &>.content {
+      padding: 0 16px;
+
+      &>.roulette-requirements {
+        &>.mercado-modal {
+          top    : 0%;
+          left   : 0%;
+          width  : 100vw;
+          padding: 0 10px
+        }
+      }
+    }
+  }
+
+  @include md {
+    &>.gift-page-header {
+      width: unset;
+
+      &>.gift-page-title {
+        min-height: 160px;
+
+        &>.title {
+          font-weight: 500;
+          font-size  : 24px;
+          margin-top : 40px;
+        }
+
+        &>.sm-title {
+          font-weight: 500;
+          font-size  : 16px;
+          padding    : 0px 42px;
+          margin-top : 0px;
+        }
+
+      }
+    }
+
+    &>.content {
+      padding: 0px;
+      gap    : 70px;
+    }
+  }
+
+  @include xxs {
+    padding-bottom: 50px;
+
+    &>.gift-page-header {
+      &>.gift-page-title {
+        &>.title {
+          margin-top: 25px;
+          font-size : 22px;
+        }
+
+        &>.sm-title {
+          font-size: 14px;
+        }
+      }
+    }
+
+    &>.content {
+      gap: 40px;
+
+      &>.roulette-container {
+        gap: 30px;
+
+        &>.action {
+          &>button {
+            &>.content {
+              padding: 10px 30px;
+            }
+          }
+        }
+      }
+
+      &>.roulette-requirements {
+        padding-left : 12px;
+        padding-right: 12px;
+
+        &>.description {
+          font-size: 14px;
+        }
+
+        &>.content {
+          &>.roulette-requirement-card {
+            padding: 20px;
+
+            &>.card {
+              &>.content {
+                &>.title {
+                  font-size: 16px;
+                }
+              }
+
+              &>.mobile-action {
+                margin-top: 18px
+              }
+            }
+          }
+        }
+      }
+
+      &>.roulette-history {
+        &>.my-history {
+          gap: 20px;
+
+          &>.content {
+            &>table {
+              &>thead {
+                &>tr {
+                  &>th {
+                    font-size: 14px;
+                    padding  : 10px 12px;
+                  }
+                }
+              }
+
+              &>tbody {
+                &>tr {
+                  &>td {
+                    font-size: 12px;
+                    padding  : 10px 12px;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        &>.user-history {
+          gap: 20px;
+
+          &>table {
+            &>thead {
+              &>tr {
+                &>th {
+                  font-size: 14px;
+                  padding  : 10px 12px;
+                }
+              }
+            }
+
+            &>tbody {
+              &>tr {
+                &>td {
+                  font-size: 12px;
+                  padding  : 10px 12px;
+                }
+              }
+            }
+          }
+
+        }
+      }
+    }
+  }
+}

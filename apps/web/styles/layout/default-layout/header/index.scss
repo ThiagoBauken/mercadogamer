@@ -1,0 +1,429 @@
+%default-layout-header {
+  display              : grid;
+  align-items          : center;
+  grid-template-columns: min-content min-content min-content min-content;
+  height               : 110px;
+  position             : sticky;
+  top                  : 0;
+  background-color     : var(--color-gray-130);
+  z-index              : 1000;
+  padding              : 0 10px;
+  width                : calc(100% - 20px);
+
+  &>* {
+    position: relative;
+  }
+
+  &>.mercado-modal {
+    z-index : 1000;
+    position: fixed;
+
+    &>.modal-content {
+      &>.content {
+        &>form {
+          display: grid;
+          gap    : 25px
+        }
+      }
+    }
+  }
+
+  &>.menu-action {
+    display: none;
+
+    &>.avatar {
+      background   : no-repeat center/contain;
+      width        : 30px;
+      height       : 30px;
+      border-radius: 50%;
+    }
+  }
+
+  &>.logo {
+    font-size: 60px;
+    display  : flex;
+    cursor   : pointer;
+    position : relative;
+
+    &>span {
+      position: absolute !important;
+      top     : 0px;
+      left    : -10px
+    }
+  }
+
+  &>.search-container {
+    display    : grid;
+    margin-left: 61.15px;
+
+    &>.mercado-wrap-label {
+      width: 320px;
+
+      &>.wrap-label-content {
+        width: 320px;
+
+        &>.mercado-input {
+          min-width : 320px;
+          min-height: 39px;
+
+          @supports(-webkit-touch-callout: none) {
+            input {
+              font-size: 16px !important;
+            }
+          }
+        }
+      }
+    }
+
+    &>.action {
+      display: none;
+    }
+  }
+
+  &>.menu-container {
+    display       : grid;
+    grid-auto-flow: column;
+    gap           : 24px;
+    font-size     : 14px;
+    font-weight   : 500;
+    margin-left   : 34.5px;
+    z-index       : 1000;
+
+    &>li.menu-item {
+      cursor               : pointer;
+      color                : var(--color-gray-40);
+      display              : grid;
+      grid-template-columns: max-content 1fr;
+      align-items          : center;
+      gap                  : 5px;
+
+      &>.mercado-icon {
+        color: var(--color-gray-50);
+
+        &.hover {
+          color: white !important
+        }
+      }
+
+      &.active {
+        color: white;
+
+        &>svg {
+          color: white;
+        }
+      }
+    }
+
+    &>li.menu-item:hover {
+      color: white;
+
+      &>svg {
+        color: white;
+      }
+    }
+  }
+
+  &>.user-actions {
+    @import '../notification-container/index.scss';
+    @import '../carts-menu-container/index.scss';
+
+    display       : grid;
+    grid-auto-flow: column;
+    gap           : 23.5px;
+    margin-left   : 160.28px;
+    align-items   : center;
+    z-index       : 980;
+
+    &>.search {
+      display: none;
+    }
+
+    &>div {
+
+      display  : flex;
+      font-size: 24px;
+
+    }
+
+    &>.favorite {
+      cursor  : pointer;
+      position: relative;
+      color   : var(--color-gray-40);
+
+      &:hover {
+        color: white
+      }
+    }
+
+    .badge-container {
+      cursor  : pointer;
+      position: relative;
+      color   : var(--color-gray-40);
+
+      &:hover {
+        color: white;
+      }
+
+      &>.badge {
+        position        : absolute;
+        width           : 12.5px;
+        height          : 12.5px;
+        border-radius   : 50%;
+        background-color: var(--color-primary);
+        top             : -3px;
+        right           : -3px;
+      }
+    }
+
+    &>.login-user-menu {
+      font-size  : 14px;
+      font-weight: 500;
+      margin-left: 20px;
+
+      &>.content {
+        display       : grid;
+        gap           : 10px;
+        grid-auto-flow: column;
+        align-items   : center;
+
+        &>.avatar {
+          background   : no-repeat center/contain;
+          width        : 35px;
+          height       : 35px;
+          border-radius: 50%;
+          cursor       : pointer;
+        }
+
+        &>.name {
+          width         : 75px;
+          overflow      : hidden;
+          text-overflow : ellipsis;
+          white-space   : nowrap;
+          text-transform: capitalize;
+        }
+
+        &>.icon {
+          display: flex;
+        }
+
+      }
+
+      &>.menu-container {
+        width: 200px;
+
+        ul {
+          li {
+            &>.content {
+              padding: 12.5px 15px;
+              color  : var(--color-gray-60);
+
+              &>.content {
+                &>.user_info {
+                  display              : grid;
+                  grid-template-columns: min-content 1fr;
+                  gap                  : 9.5px;
+                  align-items          : center;
+
+                  &>.avatar {
+                    background   : no-repeat center/contain;
+                    width        : 35px;
+                    height       : 35px;
+                    border-radius: 50%;
+                  }
+
+                  &>.username {
+                    &>.name {
+                      font-style : normal;
+                      font-weight: 500;
+                      font-size  : 16px;
+                      line-height: 16px;
+                      color      : white;
+                    }
+
+                    &>.balance {
+                      font-style : normal;
+                      font-weight: 500;
+                      font-size  : 14px;
+                      line-height: 13px;
+                      color      : var(--color-primary)
+                    }
+                  }
+                }
+
+                &>.icon {
+                  display    : flex;
+                  align-items: center;
+                  gap        : 9.11px;
+                  font-style : normal;
+                  font-weight: 400;
+                  font-size  : 14px;
+                  line-height: 17px;
+                }
+              }
+            }
+
+            &:hover {
+              &>.content {
+                color: white;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &::before {
+    content         : '';
+    position        : fixed;
+    inset           : 0;
+    height          : 110px;
+    top             : 0;
+    background-color: var(--color-gray-130);
+    z-index         : 0;
+  }
+
+
+  @include xl {
+    grid-template-columns: min-content min-content min-content 1fr;
+
+    &>.search-container {
+      margin-left: 30px;
+    }
+
+    &>.menu-container {
+      margin-left: 20px;
+      gap        : 15px
+    }
+
+    &>.user-actions {
+      margin-left    : 10px;
+      justify-content: flex-end;
+
+      gap: 15.5px;
+
+      &>.login-user-menu {
+        margin-left: 0px;
+      }
+    }
+  }
+
+  @include md {
+    grid-template-columns: min-content min-content 1fr;
+    gap                  : 16px;
+    height               : 55px;
+
+    &::before {
+      height: 55px;
+    }
+
+    &>.menu-action {
+      display  : flex;
+      font-size: 20px;
+      cursor   : pointer;
+    }
+
+    &>.logo {
+      font-size: 35px;
+
+      &>span {
+        position: absolute !important;
+        top     : -4px;
+        left    : -10px;
+        width   : 33.42px !important;
+        height  : 22.27px !important;
+      }
+    }
+
+    &>.menu-container,
+    &>.search-container {
+      display: none;
+    }
+
+    &>.search-container.active {
+      display              : grid;
+      grid-template-columns: 1fr min-content;
+      position             : absolute;
+      inset                : 0;
+      background-color     : var(--color-gray-130);
+      align-items          : center;
+      z-index              : 995;
+      padding              : 0 1px;
+      gap                  : 20px;
+      border-bottom        : 1px solid var(--color-gray-120);
+      margin-left          : 0px;
+      width                : 100%;
+      z-index              : 1002;
+
+      &>.mercado-wrap-label {
+        width: 100%;
+
+        &>.wrap-label-content {
+          width: fit-content;
+        }
+
+
+        .mercado-input {
+          background-color: transparent;
+          border-color    : transparent;
+          min-width       : fit-content !important;
+        }
+      }
+
+      &>.action {
+        display      : flex;
+        font-size    : 24px;
+        cursor       : pointer;
+        padding-right: 15px;
+      }
+    }
+
+    &>.user-actions {
+      justify-content: flex-end;
+      margin-left    : 0;
+
+      &>.search {
+        color: var(--color-gray-40);
+      }
+
+      &>.mercado-menu {
+        color: var(--color-gray-40);
+
+        &>.open {
+          position        : fixed;
+          top             : 0 !important;
+          left            : 0 !important;
+          right           : 0 !important;
+          height          : 100vh;
+          background-color: var(--color-gray-130);
+          display         : inline
+        }
+      }
+
+      &>.search {
+        display: flex;
+      }
+
+      &>.notification {
+        display: none;
+      }
+
+      button {
+        display: none;
+
+        &>.content {
+          font-weight: 600;
+
+        }
+      }
+
+      &>.login-user-menu {
+        display: none;
+      }
+    }
+  }
+
+  @include m-xxs {
+    gap: 5px
+  }
+}

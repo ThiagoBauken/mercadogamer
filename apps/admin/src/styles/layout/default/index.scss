@@ -1,0 +1,88 @@
+@import '@ui-shared/styles/components/footer/index.scss';
+
+.mercado-admin-layout {
+  display           : grid;
+  grid-template-rows: min-content 1fr min-content;
+  min-height        : 100vh;
+  position          : relative;
+
+  &>header {
+    @import '../admin-header/index.scss';
+  }
+
+  &>.main-content {
+    display              : grid;
+    grid-template-columns: 250px 1fr;
+
+    &>nav {
+      background-color: var(--color-gray-120);
+      width: 250px;
+    }
+
+    &>.page-container {
+      padding: 50px;
+
+      &>section {
+        display: grid;
+        gap    : 63px;
+
+        &>.header {
+          display        : grid;
+          grid-auto-flow : column;
+          justify-content: space-between;
+          align-items    : baseline;
+
+          &>.title {
+            font-weight: 500;
+            font-size  : 36px;
+          }
+        }
+      }
+    }
+  }
+
+  &>footer.mercado-default-layout-footer {
+    @extend %default-layout-footer;
+    max-width   : 1220px;
+    justify-self: center;
+
+    @include xs {
+      margin-top: 0px;
+    }
+
+  }
+
+  nav {
+    .nav-container {
+      display: flex;
+      flex-direction: column;
+      width: 250px;
+
+      // Subtract the height of the header
+      height: calc(100vh - 110px);
+      justify-content: space-between;
+
+      div {
+        display: flex;
+        flex-direction: column;
+      }
+  
+      button {
+        cursor: pointer;
+        text-decoration: none;
+        color: var(--color-gray-40);
+        width: calc(100%);
+        padding: 15px 0px;
+        padding-left: 60px;
+        font-weight: 500;
+        transition: all 0.1s ease-in-out;
+        text-align: left;
+      }
+      
+      button:hover {
+        color: var(--color-primary);
+        background: var(--color-gray-110);
+      }
+    }
+  }
+}

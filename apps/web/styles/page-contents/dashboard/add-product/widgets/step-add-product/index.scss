@@ -1,0 +1,91 @@
+.step-add-product {
+  display       : grid;
+  grid-auto-flow: column;
+  border        : 1px solid var(--color-gray-100);
+  border-radius : 5px;
+  margin-top    : 30px;
+
+  &>li {
+    display              : grid;
+    grid-template-columns: min-content 1fr;
+    align-items          : center;
+    padding              : 18px 20px;
+    font-weight          : 500;
+    gap                  : 14px;
+    cursor               : pointer;
+
+    &>.step {
+      width          : 26px;
+      height         : 26px;
+      border-radius  : 50%;
+      border         : 1px solid var(--color-gray-100);
+      display        : flex;
+      justify-content: center;
+      align-items    : center;
+    }
+
+    &.active {
+      background-color: var(--color-gray-120);
+
+      &>.step {
+        border-color: var(--color-primary);
+      }
+
+      &>.label {
+        color: var(--color-primary);
+      }
+    }
+
+    &.disabled {
+
+      &>.label {
+        color: var(--color-gray-80);
+      }
+    }
+
+    &:not(:first-of-type) {
+      border-left: 1px solid var(--color-gray-100);
+    }
+  }
+
+  @include xl {
+    &>li {
+      padding    : 10px 12px;
+      font-weight: 400;
+      grid-gap   : 7px;
+      font-size  : 12px;
+    }
+
+    &>.step {
+      width : 21px;
+      height: 21px;
+    }
+  }
+
+  @include md {
+    grid-template-columns: min-content 1fr min-content;
+    font-size            : 14px;
+
+    &.first {
+      grid-template-columns: 1fr min-content;
+    }
+
+    &.last {
+      grid-template-columns: min-content 1fr;
+    }
+
+    &>li {
+      &:not(.active):not(.before):not(.after) {
+        display: none;
+      }
+
+      &:not(.active) {
+        grid-template-columns: min-content;
+
+        &>.label {
+          display: none;
+        }
+      }
+    }
+  }
+}

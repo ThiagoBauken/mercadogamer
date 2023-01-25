@@ -1,0 +1,86 @@
+.mercado-radiobox {
+  display    : flex;
+  align-items: center;
+  cursor     : pointer;
+  position   : relative;
+
+  &>input {
+    position: absolute;
+    opacity : 0;
+    top     : 0;
+    left    : 0;
+    bottom  : 0;
+    width   : 14px;
+    cursor  : pointer;
+  }
+
+  &>.icon {
+    display : flex;
+    color   : var(--mercado-checkbox-color);
+    position: relative;
+    width   : auto;
+    height  : auto;
+    border  : 1px solid transparent;
+    padding : 1px;
+
+    &.loading {
+      width : 20px;
+      height: 20px;
+    }
+  }
+
+  &>.label {
+    margin-left: 5px;
+    flex       : 1;
+    color      : var(--mercado-checkbox-text-color);
+    white-space: nowrap;
+  }
+
+  &:hover {
+    &>.icon {
+      color: var(--color-black)
+    }
+  }
+
+  // &:focus-within {
+  //   &>.icon {
+  //     border-color: var(--mercado-checkbox-color);
+  //   }
+  // }
+
+  &.checked {
+    &>.icon {
+      color: var(--mercado-checkbox-color)
+    }
+  }
+
+  &.disabled {
+    pointer-events: none;
+
+    &>.icon {
+      color: #ACACAC;
+    }
+
+    &>.label {
+      opacity: 0.5;
+    }
+  }
+
+  &.large {
+    &>.icon {
+      font-size: 20px;
+    }
+  }
+
+  &.default {
+    &>.icon {
+      font-size: 18px;
+    }
+  }
+
+  &.small {
+    &>.icon {
+      font-size: 14px;
+    }
+  }
+}

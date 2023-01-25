@@ -1,0 +1,124 @@
+.ventas-page {
+  .ventas-content {
+    .table-container {
+      margin-top: 32px;
+    }
+
+    .product-column {
+      display: inline;
+
+      span {
+        margin-left: 6px;
+      }
+    }
+  }
+
+  .ventas-title {
+    display        : flex;
+    margin         : 42px 0;
+    justify-content: space-between;
+    align-items    : center;
+  }
+
+  .ventas-header {
+    display        : flex;
+    margin         : 42px 0;
+    justify-content: space-between;
+
+    .ventas-action-menu-container {
+      .action-menu-item {
+        .mercado-wrap-label {
+          .wrap-label-content {
+            .mercado-menu {
+              .menu-container {
+                z-index: 1000;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .ventas-switcher-container {
+    display: flex;
+  }
+
+  .ventas-search-container {
+    display: flex;
+    width  : 45%;
+  }
+
+  .reimbursement-icon-container {
+    display        : flex;
+    justify-content: center;
+  }
+
+  .mercado-modal {
+    .modal-content {
+      width: 450px;
+
+      .withdrawls-approve-modal {
+        padding-top: 48px !important;
+
+        .total-balance {
+          font-style : normal;
+          font-weight: 400;
+          font-size  : 14px;
+          line-height: 17px;
+
+          span {
+            font-weight: 600;
+          }
+        }
+
+        &>.edit-price-input {
+          display              : grid;
+          grid-template-columns: min-content 1fr;
+          gap                  : 10px;
+          align-items          : center;
+          margin-top           : 30px;
+
+          .mercado-input {
+            border: unset;
+
+            &>.spin {
+              display: none;
+            }
+
+            &>input {
+              font-size  : 50px;
+              font-weight: 400;
+              color      : white;
+              text-align : center;
+            }
+          }
+        }
+
+        .fee {
+          text-align : center;
+          font-style : normal;
+          font-weight: 400;
+          font-size  : 16px;
+          line-height: 20px;
+          color      : var(--color-negative);
+          margin-top : 20px;
+        }
+
+        form {
+          button {
+            margin-top: 30px;
+          }
+        }
+      }
+
+      .withdrawls-reject-modal {
+        form {
+          button {
+            margin-top: 30px;
+          }
+        }
+      }
+    }
+  }
+}

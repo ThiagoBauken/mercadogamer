@@ -1,0 +1,22 @@
+.mercado-two-factor {
+  display       : grid;
+  gap           : 15px;
+  grid-auto-flow: column;
+
+  input {
+    width           : 35px;
+    height          : 55px;
+    background-color: transparent;
+    border          : 1px solid var(--color-gray-100);
+    font-size       : 30px;
+    color           : white;
+    border-radius   : 5px;
+    text-align      : center;
+
+    &:focus {
+      outline     : none;
+      border-color: var(--color-primary);
+    }
+
+  }
+}

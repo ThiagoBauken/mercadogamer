@@ -1,0 +1,96 @@
+.mercado-textarea {
+  border-radius   : 5px;
+  border          : 1px solid var(--color-gray-100);
+  padding         : 10px 20px;
+  transition      : all 0.3s;
+  display         : grid;
+  gap             : 10px;
+  align-items     : center;
+  background-color: var(--mercado-input-bg-color);
+  min-height      : 50px;
+
+  textarea {
+    background-color: transparent;
+    border          : none;
+    font-size       : 14px;
+    appearance      : none;
+    width           : 100%;
+    color           : white;
+    padding         : 0;
+    resize          : none;
+
+    &[type=number]::-webkit-outer-spin-button,
+    &[type=number]::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin            : 0;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &::placeholder {
+      color: var(--color-gray-80);
+    }
+  }
+
+  @supports(-webkit-touch-callout: none) {
+    textarea {
+      font-size: 16px !important;
+    }
+  }
+
+  &:hover {
+    border-color: var(--color-gray-90);
+  }
+
+  &.focus {
+    border-color: var(--color-primary);
+  }
+
+  &.error {
+    border-color: var(--color-negative);
+  }
+
+  .pointer {
+    cursor: pointer;
+  }
+
+  &>.prefix {
+    display  : flex;
+    font-size: 24px;
+    color    : var(--color-gray-80);
+  }
+
+  &>.endfix {
+    display  : flex;
+    font-size: 24px;
+    color    : var(--color-gray-60);
+  }
+
+  &>.spin {
+    display           : grid;
+    grid-template-rows: repeat(2, 1fr);
+    gap               : 7px;
+
+    &>div {
+      cursor   : pointer;
+      display  : flex;
+      font-size: 6px;
+      color    : var(--color-gray-60);
+
+      &:hover {
+        color: white;
+      }
+    }
+  }
+
+  &.disabled {
+    background-color: var(--color-gray-100);
+    border-color    : var(--color-gray-90);
+
+    input {
+      color: var(--color-gray-70);
+    }
+  }
+}

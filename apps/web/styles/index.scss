@@ -1,0 +1,14 @@
+@supports(-webkit-touch-callout: none) {
+  input {
+    font-size: 16px;
+  }
+
+  textarea {
+    font-size: 16px;
+  }
+}
+
+@import '@ui-shared/styles/index.scss';
+@import './components/index.scss';
+@import './layout/index.scss';
+@import './page-contents/index.scss';

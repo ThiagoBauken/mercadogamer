@@ -1,0 +1,8 @@
+%purchase-condition {
+  display: grid;
+  gap    : 12px;
+
+  &>.title {
+    @extend %label;
+  }
+}

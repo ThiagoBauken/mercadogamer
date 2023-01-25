@@ -1,0 +1,177 @@
+.carts-menu-container {
+  display           : grid;
+  width             : 90vw;
+  max-width         : 370px;
+  gap               : 10px;
+  overflow          : hidden;
+  grid-template-rows: min-content 1fr;
+  max-height        : calc(100vh - 200px);
+  padding           : 20px 0px;
+
+
+  &>.header {
+    font-size: 16px;
+    padding  : 0 15px;
+
+    &>div {
+      &>.mercado-icon {
+        display: none;
+      }
+    }
+
+  }
+
+  &>.content {
+    display : grid;
+    overflow: overlay;
+
+    @include md {
+      gap: 16px;
+    }
+
+    &>li {
+      display              : grid;
+      grid-template-columns: min-content 1fr;
+      gap                  : 15px;
+      align-items          : center;
+      padding              : 5px 15px;
+      cursor               : pointer;
+
+      &>.image-container {
+        height    : 80px;
+        width     : 62.60869598388672px;
+        background: no-repeat center/cover;
+      }
+
+      &>.content {
+        display           : grid;
+        grid-template-rows: min-content 1fr;
+        gap               : 3.5px;
+        font-size         : 14px;
+
+        &>.label {
+          display           : -webkit-box;
+          white-space       : normal;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow          : hidden;
+          color             : var(--color-gray-30);
+          font-weight       : 500;
+        }
+
+        &>.value {
+          color: var(--color-gray-60);
+        }
+      }
+
+      &>.status {
+        margin-right : 26.5px;
+        width        : 7px;
+        height       : 7px;
+        border-radius: 50%;
+
+        &.active {
+          background-color: var(--color-primary);
+        }
+      }
+
+      &:hover:not(.no-cart) {
+        background-color: var(--color-gray-100);
+      }
+    }
+
+    &>.no-cart {
+      display              : grid;
+      justify-content      : center;
+      align-items          : center;
+      grid-template-columns: unset;
+      padding              : 8.5px 15px;
+      padding-bottom       : 31px;
+      margin-top           : 20px;
+      margin-bottom        : 22.5px;
+
+      &>.image-container {
+        width       : 143.03px;
+        height      : 143.03px;
+        background  : no-repeat center/contain url('/assets/imgs/empty-box.webp');
+        justify-self: center;
+      }
+
+      &>.message {
+        width       : 166px;
+        font-size   : 14px;
+        font-weight : 500;
+        color       : var(--color-gray-40);
+        text-align  : center;
+        justify-self: center;
+      }
+    }
+  }
+
+  &>.total-action {
+    display   : grid;
+    padding   : 15px;
+    gap       : 10px;
+    border-top: 1px solid var(--color-gray-100);
+    font-size : 16px;
+
+    &>.total {
+      display        : grid;
+      align-items    : center;
+      justify-content: space-between;
+      grid-auto-flow : column;
+      font-style     : normal;
+      font-weight    : 500;
+      font-size      : 16px;
+      line-height    : 20px;
+      text-align     : right;
+    }
+  }
+
+  @include md {
+    max-width: 100vw;
+    width    : 100vw;
+    gap      : 0px;
+
+    &>.header {
+      background   : #111217;
+      border-bottom: 1px solid #16171D;
+      font-style   : normal;
+      font-weight  : 500;
+      font-size    : 16px;
+      line-height  : 20px;
+
+      &>div {
+        display       : flex;
+        align-items   : center;
+        gap           : 16px;
+        padding-bottom: 15px;
+
+        &>.mercado-icon {
+          display    : flex;
+          align-items: center;
+          color      : var(--color-gray-60);
+        }
+      }
+
+    }
+
+    &>.content {
+      background-color: var(--color-gray-110);
+      padding-top     : 16px;
+      padding-bottom  : 16px;
+
+      &>li {
+        padding: 0px 16px
+      }
+    }
+
+    &>.total-action {
+      background-color: var(--color-gray-110);
+
+      &>button {
+        display: block;
+      }
+    }
+  }
+}

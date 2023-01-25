@@ -1,0 +1,74 @@
+.verification-phone {
+  display: grid;
+  gap    : 30px;
+
+  &>.resend-code {
+    margin: 0 auto;
+    cursor: pointer;
+  }
+
+  &>button {
+    z-index: 1;
+  }
+
+  @include lg {
+    &>.mercado-wrap-label {
+      &>.wrap-label-content {
+        &>.mercado-menu {
+          &>.menu-container {
+            right: unset !important;
+            left : 40px !important
+          }
+        }
+      }
+    }
+  }
+
+  @include xxs {
+    gap        : 15px;
+    padding-top: 25.5px !important;
+
+    &>.mercado-two-factor {
+      gap: 8px;
+
+      &>input {
+        font-size: 18px !important;
+        height   : 30px !important;
+        width    : 18px !important;
+      }
+    }
+
+    &>button {
+      margin-top: 15px;
+
+      &>.content {
+        font-size: 12px;
+        padding  : 10px 0px !important;
+
+      }
+    }
+  }
+
+  @include xs {
+    gap        : 25px;
+    padding-top: 35.5px !important;
+
+    &>.mercado-two-factor {
+      gap: 8px;
+
+      &>input {
+        font-size: 22px;
+        height   : 44px;
+        width    : 32px;
+      }
+    }
+
+    &>button {
+      &>.content {
+        font-size: 14px;
+        padding  : 10px 0px !important;
+
+      }
+    }
+  }
+}

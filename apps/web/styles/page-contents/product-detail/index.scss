@@ -1,0 +1,569 @@
+@import './widgets/product-detail/index.scss';
+@import './widgets/product-questions/index.scss';
+@import './widgets/purchase-condition/index.scss';
+
+.product-detail-content {
+  display              : grid;
+  grid-template-columns: 3fr 2fr;
+  gap                  : 40px;
+  padding-top          : 60px;
+  padding-bottom       : 85px;
+
+  %label {
+    font-size  : 14px;
+    font-weight: 500;
+    color      : var(--color-gray-60);
+  }
+
+  &>div {
+    position: relative;
+  }
+
+  &>.background {
+    position   : absolute;
+    padding-top: 70%;
+    width      : 100%;
+    top        : 110px;
+    left       : calc(50% - 50vw);
+    background : no-repeat center/cover;
+  }
+
+
+  &>.bread-crumb {
+    grid-column: 1 / span 2;
+  }
+
+  &>.descriptions {
+    display: grid;
+    gap    : 50px;
+
+    &>.image-container {
+      background     : rgba(255, 255, 255, 0.02);
+      backdrop-filter: blur(10px);
+      border-radius  : 10px;
+      padding-top    : 90.23%;
+      position       : relative;
+      position       : relative;
+
+      &::before {
+        content      : "";
+        position     : absolute;
+        inset        : 0;
+        border-radius: 10px;
+        padding      : 1px;
+        background   : linear-gradient(129.39deg, rgba(255, 255, 255, 0.2) 0.48%, rgba(255, 255, 255, 0) 50.76%, rgba(255, 255, 255, 0.1) 100%);
+
+        -webkit-mask:
+          linear-gradient(#fff 0 0) content-box,
+          linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite        : exclude;
+      }
+
+      &>.game-logo {
+        width        : 50px;
+        height       : 50px;
+        background   : no-repeat center/cover;
+        position     : absolute;
+        top          : 30px;
+        left         : 30px;
+        border-radius: 5px;
+        z-index      : 1;
+      }
+
+      &>.content {
+        position       : absolute;
+        top            : 0;
+        left           : 0;
+        bottom         : 0;
+        right          : 0;
+        display        : flex;
+        justify-content: center;
+        align-items    : center;
+        z-index        : 2;
+
+        &>.product-image {
+          width      : 360px;
+          max-width  : 80%;
+          padding-top: 77.71%;
+          background : no-repeat center/contain;
+
+          @include md {
+            width: 230px;
+          }
+        }
+      }
+    }
+
+    &>.description {
+      display: grid;
+      gap    : 10px;
+
+      &>.label {
+        @extend %label;
+      }
+
+      &>.content {
+        font-size  : 14px;
+        font-weight: 400;
+        line-height: 20px;
+        white-space: pre-line;
+      }
+    }
+
+    &>.game-info {
+      display                 : grid;
+      // grid-template-columns: min-content 1fr;
+      gap                     : 19px;
+      align-items             : center;
+
+
+
+      &>.image-container {
+        background   : no-repeat center/cover;
+        width        : 90px;
+        height       : 120px;
+        border-radius: 3px;
+      }
+
+      &>.content {
+        display              : grid;
+        grid-template-columns: repeat(3, 1fr);
+        height               : fit-content;
+        row-gap              : 34px;
+
+        &>.product-info-item {
+          display  : grid;
+          gap      : 7px;
+          font-size: 14px;
+          height   : min-content;
+
+          &>.label {
+            @extend %label;
+          }
+
+          &>.value {
+            text-transform: capitalize;
+          }
+        }
+      }
+
+      @include md {
+        grid-template-columns: 1fr;
+
+        &>.image-container {
+          display: none
+        }
+
+        &>.content {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+    }
+
+    &>.product-questions {
+      @extend %product-questions;
+    }
+
+    &>.purchase-condition {
+      @extend %purchase-condition;
+    }
+  }
+
+  &>.detail {
+    display      : grid;
+    padding      : 30px 25px;
+    border       : 1px solid var(--color-gray-100);
+    border-radius: 10px;
+    height       : fit-content;
+
+    @include md {
+      border : none;
+      padding: 0px 0px;
+    }
+
+    &>.product-detail {
+      @extend %product-detail;
+    }
+  }
+
+  &>.related-product {
+    grid-column: 1 / span 2;
+  }
+
+  &>.shortcut-action {
+    z-index: 999;
+
+    &>button {
+      position: fixed;
+      bottom  : 30px;
+      right   : 30px;
+
+      &>.content {
+        padding: 17.5px 17.5px !important;
+
+        &>.mercado-icon {
+          font-size: 25px;
+          color    : var(--color-gray-130)
+        }
+      }
+    }
+
+    &>.stortcut-content {
+      position        : fixed;
+      bottom          : 115px;
+      right           : 50px;
+      background-color: var(--color-gray-110);
+      padding         : 11.5px 23px;
+      box-shadow      : 0px 7px 25px rgba(0, 0, 0, 0.1);
+      border-radius   : 5px;
+
+      &>.menu-container {
+        &>.content {
+          &>ul {
+            display: grid;
+            gap    : 25px;
+
+            &>li {
+              display    : flex;
+              align-items: center;
+              color      : var(--color-gray-60);
+              font-style : normal;
+              font-weight: 400;
+              font-size  : 14px;
+              line-height: 17px;
+              cursor     : pointer;
+
+              &>.mercado-icon {
+                margin-right: 9.5px;
+              }
+
+              &:hover {
+                color: white;
+              }
+            }
+          }
+        }
+
+        &>.mercado-modal {
+          &>.modal-content {
+            width: 450px;
+
+            &>.content {
+              width: initial;
+
+              &>form {
+                display: grid;
+                gap    : 25px
+              }
+            }
+          }
+        }
+      }
+    }
+
+    @include md {
+      display: none;
+    }
+  }
+
+  @include md {
+    grid-template-columns: 1fr;
+    grid-template-areas  : 'bread-crumb'
+      'detail'
+      'descriptions'
+      'related-product'
+    ;
+    padding-top  : 21px;
+    padding-left : 16px;
+    padding-right: 16px;
+
+    &>.background {
+      top   : 56px;
+      height: 460px;
+    }
+
+    &>.bread-crumb {
+      grid-area: bread-crumb;
+    }
+
+    &>.descriptions {
+      grid-area: descriptions;
+
+      &>.image-container {
+        display: none;
+      }
+    }
+
+    &>.defail {
+      grid-area: detail;
+    }
+
+    &>.related-product {
+      grid-column: 1;
+    }
+  }
+
+  @include xxs {
+    padding-left  : 12px;
+    padding-right : 12px;
+    padding-bottom: 50px;
+
+    &>.detail {
+      &>.product-detail {
+        gap: 20px;
+
+        &>.title {
+          font-size: 20px;
+        }
+
+        &>.image-container {
+          &>.game-logo {
+            left: 15px;
+          }
+
+          &>.content {
+            &>.product-image {
+              height: 197px;
+            }
+          }
+        }
+
+        &>.price {
+          &>.value {
+            font-size: 24px;
+          }
+        }
+
+        &>.game-type {
+          &>li {
+            &>.label {
+              font-size: 14px;
+            }
+
+
+          }
+        }
+
+        &>.cart-count {
+          &>.action-menu-item {
+            &>.label {
+              font-size: 12px;
+            }
+
+            &>.mercado-wrap-label {
+              font-size: 12px;
+            }
+          }
+
+          &>.message {
+            font-size: 12px;
+          }
+        }
+
+        &>.move-cart {
+          &>button {
+            &>.content {
+              padding: 10px 30px;
+            }
+          }
+        }
+
+        &>.add-cart {
+          &>button {
+            &>.content {
+              padding: 10px 30px;
+            }
+          }
+        }
+
+        &>.information-seller {
+          &>.user-information {
+            padding: 15px;
+
+            &>.avatar {
+              width : 50px;
+              height: 50px;
+            }
+
+            &>.content {
+              &>.information {
+                &>.user-name {
+                  font-size: 12px;
+                }
+
+                &>.info {
+                  font-size: 12px;
+                }
+              }
+
+              &>.mercado-tooltip-container {
+                &>.content {
+                  &>.rate {
+                    width : 40px;
+                    height: 46px;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+      }
+    }
+
+    &>.descriptions {
+      &>.product-questions {
+        gap: 25px;
+
+        &>.add-question {
+          &>.content {
+            &>button {
+              &>.content {
+                padding: 10px 30px;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &>.related-product {
+      padding: 25px 0px;
+
+      &>.label {
+        font-size: 20px;
+      }
+    }
+  }
+
+  @include m-xxs {
+    padding-left : 12px;
+    padding-right: 12px;
+
+    &>.detail {
+      &>.product-detail {
+        gap: 20px;
+
+        &>.title {
+          font-size: 20px;
+        }
+
+        &>.image-container {
+          &>.game-logo {
+            left: 15px;
+          }
+
+          &>.content {
+            &>.product-image {
+              height: 197px;
+            }
+          }
+        }
+
+        &>.price {
+          &>.value {
+            font-size: 24px;
+          }
+        }
+
+        &>.game-type {
+          &>li {
+            &>.label {
+              font-size: 12px;
+            }
+          }
+        }
+
+        &>.cart-count {
+          &>.action-menu-item {
+            &>.label {
+              font-size: 12px;
+            }
+
+            &>.mercado-wrap-label {
+              font-size: 12px;
+            }
+          }
+
+          &>.message {
+            font-size: 12px;
+          }
+        }
+
+        &>.move-cart {
+          &>button {
+            &>.content {
+              padding: 10px 30px;
+            }
+          }
+        }
+
+        &>.add-cart {
+          &>button {
+            &>.content {
+              padding: 10px 30px;
+            }
+          }
+        }
+
+        &>.information-seller {
+          padding: 20px 0px;
+
+          &>.user-information {
+            padding: 15px;
+
+            &>.avatar {
+              width : 50px;
+              height: 50px;
+            }
+
+            &>.content {
+              &>.information {
+                &>.user-name {
+                  font-size: 12px;
+                }
+
+                &>.info {
+                  font-size: 12px;
+                }
+              }
+
+              &>.mercado-tooltip-container {
+                &>.content {
+                  &>.rate {
+                    width : 40px;
+                    height: 46px;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        &>.payment-methods {
+          &>.content {
+            margin-top           : 12px;
+            grid-template-columns: repeat(auto-fill, 77px);
+          }
+        }
+      }
+    }
+
+    &>.descriptions {
+      &>.product-questions {
+        gap: 25px;
+
+        &>.add-question {
+          &>.content {
+            &>button {
+              &>.content {
+                padding: 10px 30px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

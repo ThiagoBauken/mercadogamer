@@ -1,0 +1,66 @@
+.individual-device-card {
+  &>.card-background {
+    background   : no-repeat center/cover;
+    border-radius: 5px;
+
+    &>.each-card {
+      padding: 32.5px 36.5px 39.5px 36.5px;
+
+      &>.title {
+        font-style : normal;
+        font-weight: 600;
+        font-size  : 38px;
+        line-height: 46px;
+        color      : white;
+        margin-top : 10px;
+      }
+
+      &>.content {
+        font-style   : normal;
+        font-weight  : 500;
+        font-size    : 16px;
+        line-height  : 22px;
+        color        : var(--color-gray-30);
+        margin-top   : 5px;
+        margin-bottom: 15px;
+        width        : 50%;
+      }
+
+      &>button {
+        &>.content {
+          font-style : normal;
+          font-weight: 600;
+          font-size  : 13px;
+          line-height: 16px;
+          color      : var(--color-gray-130);
+          padding    : 9.5px 20px;
+        }
+      }
+    }
+  }
+
+  @include xs {
+    &>.card-background {
+      &>.each-card {
+        padding-left  : 16px;
+        padding-top   : 16px;
+        padding-bottom: 26px;
+
+        &>.title {
+          font-style : normal;
+          font-weight: 600;
+          font-size  : 20px;
+          line-height: 24px;
+        }
+
+        &>.content {
+          font-style : normal;
+          font-weight: 500;
+          font-size  : 12px;
+          line-height: 18px;
+          width      : 70%;
+        }
+      }
+    }
+  }
+}

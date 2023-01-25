@@ -1,0 +1,9 @@
+.create-ticket-modal {
+  width    : 90vw;
+  max-width: 450px;
+
+  &>form {
+    display: grid;
+    gap    : 25px;
+  }
+}

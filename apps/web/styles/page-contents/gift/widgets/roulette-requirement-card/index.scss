@@ -1,0 +1,112 @@
+.roulette-requirement-card {
+  gap             : 10px;
+  background-color: var(--color-gray-120);
+  border-radius   : 8px;
+  padding         : 30px;
+
+  &>.card {
+    display        : flex;
+    justify-content: space-between;
+    align-items    : center;
+
+    &>.content {
+      display: grid;
+      gap    : 10px;
+
+      &>.title {
+        font-size  : 18px;
+        font-weight: 500;
+      }
+
+      &>.message {
+        color: var(--color-gray-60);
+
+        @include md {
+          font-size: 12px;
+        }
+      }
+
+      &>.action {
+        margin-top     : 12px;
+        display        : grid;
+        grid-auto-flow : column;
+        justify-content: space-between;
+        align-items    : center;
+
+
+
+        &>.validated {
+          color                : var(--color-primary);
+          display              : grid;
+          align-items          : center;
+          grid-template-columns: min-content 1fr;
+          gap                  : 6px;
+          font-weight          : 500;
+
+          &>.icon {
+            display  : flex;
+            font-size: 18px;
+          }
+        }
+      }
+
+    }
+
+    &>.icon {
+      display  : flex;
+      font-size: 60px;
+      color    : #0F0F11;
+    }
+  }
+
+  @include md {
+    &>.card {
+      display: block;
+
+      &>.mobile-action {
+        margin-top     : 29px;
+        display        : flex;
+        justify-content: space-between;
+
+        &>.action {
+          margin-top     : 12px;
+          display        : grid;
+          grid-auto-flow : column;
+          justify-content: space-between;
+          align-items    : center;
+
+          &>.validated {
+            color                : var(--color-primary);
+            display              : grid;
+            align-items          : center;
+            grid-template-columns: min-content 1fr;
+            gap                  : 6px;
+            font-weight          : 500;
+
+            &>.icon {
+              display  : flex;
+              font-size: 18px;
+            }
+          }
+
+        }
+
+        &>.icon {
+          display  : flex;
+          font-size: 34.8px;
+          color    : #0F0F11;
+        }
+      }
+    }
+
+    &>.content {
+      &>.title {
+        font-size: 16px;
+      }
+
+      &>.message {
+        font-size: 12px;
+      }
+    }
+  }
+}

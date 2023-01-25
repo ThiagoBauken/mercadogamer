@@ -1,0 +1,123 @@
+%product-questions {
+  display: grid;
+  gap    : 40px;
+
+  &>.add-question {
+    display: grid;
+    gap    : 20px;
+
+    &>.label {
+      @extend %label
+    }
+
+    &>.content {
+      display              : grid;
+      grid-template-columns: 1fr min-content;
+      align-items          : center;
+      gap                  : 20px;
+
+      &>.mercado-wrap-label {
+        width: 100%;
+
+        .mercado-input {
+          min-width: 100px;
+        }
+      }
+
+      @include md {
+        grid-template-columns: 1fr;
+
+        button {
+          width: 100%;
+        }
+      }
+    }
+
+    &>.unlogged-question {
+      font-style : normal;
+      font-weight: 500;
+      font-size  : 14px;
+      line-height: 17px;
+
+      &>span {
+        color : var(--color-primary);
+        cursor: pointer;
+      }
+    }
+  }
+
+  &>.qa-title {
+    font-style   : normal;
+    font-weight  : 600;
+    font-size    : 12px;
+    line-height  : 15px;
+    color        : $primary;
+    background   : rgba(247, 138, 14, 0.1);
+    padding      : 5px 8px;
+    width        : 93px;
+    height       : 25px;
+    border-radius: 5px;
+    cursor       : pointer;
+  }
+
+  &>.more-btn {
+    color                : var(--color-gray-80);
+    font-style           : normal;
+    font-weight          : 500;
+    font-size            : 14px;
+    line-height          : 17px;
+    display              : grid;
+    grid-template-columns: min-content 1fr;
+    justify-content      : center;
+    align-items          : center;
+    cursor               : pointer;
+
+    &>span {
+      font-size: 24px;
+
+      &>svg {
+        margin-top: 5px;
+      }
+    }
+  }
+
+  &>.qa-content {
+    display: grid;
+    gap    : 40px;
+
+    &>.qa-items {
+      display: grid;
+      gap    : 12px;
+
+      &>.question {
+        font-weight: 500;
+      }
+
+      &>.answer {
+        color: var(--color-gray-60);
+
+        &>span {
+          margin-left: 5px;
+          color      : var(--color-gray-90);
+        }
+      }
+    }
+  }
+
+  @include xxs {
+    &>.qa-content {
+      width: 250px;
+
+      &>.qa-items {
+        &>.answer {
+          display       : flex;
+          flex-direction: column;
+
+          &>span {
+            margin-left: 0px;
+          }
+        }
+      }
+    }
+  }
+}

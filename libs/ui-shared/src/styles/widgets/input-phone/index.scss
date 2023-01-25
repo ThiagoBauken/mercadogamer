@@ -1,0 +1,65 @@
+.mercado-input-phone {
+  &>.wrap-label-content {
+    display              : grid;
+    align-items          : center;
+    padding              : 0px 10px;
+    grid-template-columns: min-content 1fr;
+    gap                  : 15px;
+    min-height           : 45px;
+    border               : 1px solid var(--color-gray-100);
+    border-radius        : 5px;
+    width                : 100%;
+
+    &>.mercado-menu {
+      &>.content {
+        display: grid;
+        gap    : 15px;
+
+
+        &>.select-country {
+          display       : grid;
+          grid-auto-flow: column;
+          width         : fit-content;
+          gap           : 4px;
+
+          &>.icon {
+            width     : 25.06px;
+            height    : 16px;
+            background: no-repeat center/contain;
+          }
+        }
+      }
+    }
+
+    &>.phone-number {
+      display              : grid;
+      gap                  : 1rem;
+      grid-template-columns: min-content 1fr;
+      align-items          : center;
+
+      @supports(-webkit-touch-callout: none) {
+        input {
+          font-size: 16px !important;
+        }
+      }
+
+      input {
+        background-color: transparent;
+        border          : none;
+        font-size       : 14px;
+        appearance      : none;
+        width           : 100%;
+        color           : white;
+        padding         : 0;
+
+        &:focus {
+          outline: none;
+        }
+
+        &::placeholder {
+          color: var(--color-gray-80);
+        }
+      }
+    }
+  }
+}

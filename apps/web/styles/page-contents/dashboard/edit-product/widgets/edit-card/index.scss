@@ -1,0 +1,52 @@
+.mercado-card {
+  &>.mercado-expansion {
+    &>.header {
+      .edit-product-card-header {
+        display: grid;
+        gap    : 6px;
+
+        &:hover {
+          font-weight: 400;
+        }
+
+        &>.title {
+          font-weight: 500;
+        }
+
+        &>.description {
+          color: var(--color-primary);
+        }
+      }
+    }
+
+    &>.content {
+      &>.expantion-content {
+        display: grid;
+        gap    : 25px;
+
+        &>.mercado-radiobox {
+          &>.label {
+            display        : grid;
+            grid-auto-flow : column;
+            gap            : 1rem;
+            justify-content: flex-start;
+
+            &>span {
+              color: var(--color-gray-60);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @include md {
+    padding: 16px;
+
+    &>.mercado-expansion {
+      &>.header {
+        border-bottom: unset;
+      }
+    }
+  }
+}

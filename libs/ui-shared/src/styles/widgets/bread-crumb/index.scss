@@ -1,0 +1,72 @@
+.mercado-bread-crumb {
+  display       : grid;
+  grid-auto-flow: column;
+  width         : fit-content;
+  gap           : 10px;
+  align-items   : center;
+
+  &>.item {
+    display       : grid;
+    grid-auto-flow: column;
+    gap           : 10px;
+    align-items   : center;
+    font-size     : 14px;
+    font-weight   : 400;
+
+    &>.spin {
+      display: flex;
+    }
+
+    &>.label {
+      cursor        : pointer;
+      color         : var(--color-gray-60);
+      text-transform: capitalize;
+
+      &:hover {
+        color: white;
+      }
+    }
+
+
+    &:first-of-type {
+      &>.spin {
+        display: none;
+      }
+    }
+
+    &:last-of-type {
+
+      &>.label {
+        color: var(--color-gray-60)
+      }
+    }
+  }
+
+  @include xxs {
+    gap: 5px;
+
+    &>.item {
+      font-size: 10px;
+      gap      : 5px;
+
+      &>.label {
+        text-transform: capitalize;
+        width         : 44px;
+        white-space   : nowrap;
+        overflow      : hidden;
+        text-overflow : ellipsis;
+      }
+    }
+  }
+
+  @include xs {
+    &>.item {
+      font-size: 12px;
+
+      &>.label {
+        text-transform: capitalize;
+        width         : 44px;
+      }
+    }
+  }
+}

@@ -1,0 +1,53 @@
+@import '../../components/card.scss';
+@import '../../components/cardContainer.scss';
+
+section.roullet-page-content {
+  &>.header {
+    &>.filter {
+      display: grid;
+      grid-auto-flow: column;
+      gap: 20px;
+    }
+  }
+
+  &>.content {
+    display: grid;
+    gap: 100px;
+
+    &>.card-container {
+      &>.chat-container {
+        display: grid;
+      }
+
+      &>.informations {
+        display: grid;
+        gap: 20px;
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    &>.table-container {
+      display: grid;
+      gap: 30px;
+
+      &>.title {
+        font-size: 24px;
+      }
+
+      &>.mercado-data-table {
+        &>table {
+          &>tbody {
+            td {
+              &>.picture {
+                width: 35px;
+                height: 35px;
+                border-radius: 50%;
+                background: no-repeat center/contain;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

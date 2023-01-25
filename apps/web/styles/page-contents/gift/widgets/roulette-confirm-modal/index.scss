@@ -1,0 +1,128 @@
+.roulette-confirm-modal {
+  display        : flex;
+  flex-direction : column;
+  align-items    : center;
+  justify-content: center;
+  position       : relative;
+
+  &>div {
+    position: relative;
+  }
+
+  &>.background {
+    position: absolute;
+    inset   : 0;
+    z-index : 0;
+
+    // display        : flex;
+    // justify-content: center;
+    &>.mercado-icon {
+      justify-content: center;
+    }
+  }
+
+  &>.title {
+    font-size  : 20px;
+    font-weight: 500;
+    line-height: 24px;
+  }
+
+  &>.content {
+    font-style : normal;
+    font-weight: 500;
+    font-size  : 14px;
+    line-height: 17px;
+    margin-top : 5px;
+    color      : var(--color-gray-40)
+  }
+
+  &>.image-container {
+    width     : 160px;
+    height    : 160px;
+    background: no-repeat center/contain;
+    margin-top: 20px;
+  }
+
+  &>.value {
+    font-size  : 24px;
+    font-weight: 500;
+    line-height: 29px;
+    margin-top : 10px;
+    color      : var(--color-gray-40) !important;
+  }
+
+  &>.description {
+    color      : var(--color-gray-80);
+    margin-top : 10px;
+    font-style : normal;
+    font-weight: 400;
+    font-size  : 14px;
+    line-height: 17px;
+  }
+
+  &>button {
+    margin-top: 30px;
+
+    &>.content {
+      font-style : normal;
+      font-weight: 600;
+      font-size  : 14px;
+      line-height: 17px;
+    }
+  }
+
+  &>.shared-message {
+    display              : grid;
+    grid-template-columns: 1fr max-content 1fr;
+    margin-top           : 30px;
+    width                : 100%;
+    align-items          : center;
+    gap                  : 16px;
+    font-weight          : 500;
+
+    &::before,
+    &::after {
+      content         : '';
+      height          : 1px;
+      background-color: var(--color-gray-100);
+    }
+  }
+
+
+
+  &>.communication {
+    display   : grid;
+    gap       : 15px;
+    height    : fit-content;
+    margin-top: 15px;
+
+    &>ul {
+      display       : grid;
+      gap           : 20px;
+      grid-auto-flow: column;
+      width         : fit-content;
+
+      &>li {
+        display        : flex;
+        justify-content: center;
+        align-items    : center;
+        width          : 35px;
+        height         : 35px;
+        border-radius  : 50%;
+        cursor         : pointer;
+
+        &>.icon {
+          display  : flex;
+          font-size: 35px;
+          color    : var(--color-gray-80);
+        }
+      }
+    }
+  }
+
+  &>.confirm-action {
+    margin-top : 34px;
+    font-weight: 500;
+    cursor     : pointer;
+  }
+}

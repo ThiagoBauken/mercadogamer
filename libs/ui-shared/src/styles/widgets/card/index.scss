@@ -1,0 +1,7 @@
+.mercado-card {
+  padding         : 30px;
+  overflow        : hidden;
+  background-color: var(--mercado-card-bg-color);
+  border          : 1px solid var(--mercado-card-border-color);
+  border-radius   : var(--mercado-card-radius);
+}

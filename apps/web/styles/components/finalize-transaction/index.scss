@@ -1,0 +1,16 @@
+.finalize-transaction-modal {
+  display: grid;
+  gap    : 30px;
+
+  &>.description {
+    color: var(--color-gray-60);
+  }
+
+  &>.mercado-checkbox {
+    align-items: flex-start;
+
+    &>.label {
+      white-space: normal;
+    }
+  }
+}

@@ -1,0 +1,77 @@
+.skins-sell-section {
+  &>.skins-sell-card {
+    background           : no-repeat center/cover;
+    height               : 300px;
+    border-radius        : 5px;
+    display              : grid;
+    grid-template-columns: 1fr 1fr;
+    position             : relative;
+
+    &>.first-divide {
+      position: relative;
+
+
+      &>.skin-user-img {
+        background: no-repeat center/cover;
+        position  : absolute;
+        bottom    : 0px;
+        left      : 170px
+      }
+
+      &>.skin-axe-img {
+        background: no-repeat center/cover;
+        position  : absolute;
+        bottom    : 67.95px;
+        right     : 460px
+      }
+    }
+
+    &>.second-divide {
+      &>.skin-gun-img {
+        background: no-repeat center/cover;
+        position  : absolute;
+        bottom    : 110px;
+        right     : 21px
+      }
+
+      &>.skin-weapon-img {
+        background: no-repeat center/cover;
+        position  : absolute;
+        top       : 213.62px;
+        right     : 94.25px
+      }
+
+      &>.title {
+        font-style : normal;
+        font-weight: 600;
+        font-size  : 38px;
+        line-height: 46px;
+        padding-top: 49px;
+
+        span {
+          color: #F78A0E
+        }
+      }
+
+      &>.content {
+        font-style   : normal;
+        font-weight  : 500;
+        font-size    : 16px;
+        line-height  : 22px;
+        color        : var(--color-gray-30);
+        margin-top   : 20.19px;
+        margin-bottom: 27px
+      }
+
+      &>button {
+        &>.content {
+          font-style : normal;
+          font-weight: 600;
+          font-size  : 13px;
+          line-height: 16px;
+          color      : var(--color-gray-130)
+        }
+      }
+    }
+  }
+}

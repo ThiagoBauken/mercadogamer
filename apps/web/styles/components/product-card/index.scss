@@ -1,0 +1,258 @@
+.mercado-product-card {
+  width: 206.75px;
+  display: grid;
+  gap: 15px;
+  grid-template-rows: min-content 1fr min-content min-content;
+  position: relative;
+  background: var(--color-gray-120);
+  border-radius: 5px;
+  cursor: pointer;
+
+  a {
+    color: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    text-decoration: none;
+  }
+
+  .card-action {
+    cursor: pointer;
+  }
+
+  .favorite {
+    display: none;
+    transition: all 0.2s;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    font-size: 30px;
+    cursor: pointer;
+  }
+
+  .product-img {
+    position: relative;
+
+    .game-logo {
+      width: 30px;
+      height: 30px;
+      background: no-repeat center/cover;
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      border-radius: 5px;
+      z-index: 1;
+
+      @include md {
+        width: 24px;
+        height: 24px;
+        top: 10px;
+        left: 10px;
+      }
+    }
+
+    span {
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      transition: .4s, background-position 2s;
+      width: 100% !important;
+      cursor: pointer;
+
+      .hover-1:hover {
+        --p: 100%;
+        background-position: right;
+      }
+    }
+
+    .portfolio-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: linear-gradient(222.04deg, rgba(0, 0, 0, 0.4) 0%, rgba(36, 35, 35, 0.005) 35.02%);
+      opacity: 0;
+      transition: all .3s ease;
+    }
+
+    :hover {
+      .portfolio-overlay {
+        opacity: 0.6;
+      }
+    }
+
+  }
+
+  .title {
+    font-weight: 500;
+    line-height: 17.07px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .price-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 9px;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    .price {
+      font-style: normal;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 17px;
+
+      @include md {
+        font-size: 12px;
+      }
+    }
+
+    .icon {
+      color: var(--color-gray-40);
+    }
+
+    &>.discount {
+      font-size: 12px;
+      color: #606577;
+      text-decoration-line: line-through;
+
+    }
+
+    &>.icon {
+      font-size: 18px;
+    }
+  }
+
+  .action {
+    display: grid;
+
+    &>button {
+      width: 100%;
+
+      &>.content:hover {
+        display: flex;
+        justify-content: center;
+
+        &>span {
+          margin-left: 10px;
+          color: black !important
+        }
+      }
+
+
+      &:not(:hover) {
+        &>.background {
+          background-color: var(--color-gray-110);
+          border-color: var(--color-gray-110);
+          border-bottom-left-radius: 5px;
+          border-bottom-right-radius: 5px;
+          border-top-left-radius: 0px;
+          border-top-right-radius: 0px;
+        }
+
+        &>.content {
+          color: white;
+          padding: 9px;
+          font-style: normal;
+          font-weight: 600;
+          font-size: 14px;
+          line-height: 17px;
+          display: flex;
+          justify-content: center;
+
+          &>span {
+            margin-left: 10px;
+            color: white
+          }
+
+        }
+      }
+    }
+  }
+
+  &:hover {
+    &>.favorite {
+      // This feature will be added later
+      display: none;
+    }
+  }
+
+
+
+  @include md {
+    width: 130px;
+  }
+}
+
+@include lg_up {
+  .mercado-product-card:hover {
+    background: var(--color-gray-110);
+
+    &>.action {
+      display: grid;
+
+      &>button {
+        width: 100%;
+
+        &>.background {
+          border-bottom-left-radius: 5px;
+          border-bottom-right-radius: 5px;
+          border-top-left-radius: 0px;
+          border-top-right-radius: 0px;
+          background-color: var(--color-primary);
+        }
+
+        &>.content {
+          color: var(--color-gray-120);
+          padding: 9px;
+          font-style: normal;
+          font-weight: 600;
+          font-size: 14px;
+          line-height: 17px;
+
+          &>span {
+            color: var(--color-gray-120);
+          }
+        }
+      }
+    }
+  }
+}
+
+@include md {
+  .mercado-product-card {
+    .action:hover {
+      display: grid;
+
+      button {
+        width: 100%;
+
+        .background {
+          border-bottom-left-radius: 5px;
+          border-bottom-right-radius: 5px;
+          border-top-left-radius: 0px;
+          border-top-right-radius: 0px;
+          background-color: var(--color-primary);
+        }
+
+        .content {
+          color: var(--color-gray-120);
+          padding: 9px;
+          font-style: normal;
+          font-weight: 600;
+          font-size: 14px;
+          line-height: 17px;
+
+          span {
+            color: var(--color-gray-120);
+          }
+        }
+      }
+    }
+  }
+}

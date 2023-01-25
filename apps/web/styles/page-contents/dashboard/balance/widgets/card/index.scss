@@ -1,0 +1,89 @@
+.balance-card {
+  display         : grid;
+  padding         : 30px;
+  background-color: var(--color-gray-120);
+  border-radius   : 8px;
+  align-items     : flex-start;
+  font-style      : normal;
+  font-weight     : 400;
+  font-size       : 14px;
+  line-height     : 17px;
+
+  .missing-data {
+    color: var(--color-negative);
+
+    a {
+      color: var(--color-negative);
+      text-decoration: none;
+      font-weight: 600;
+      text-decoration: underline;
+    }
+  }
+
+  &>.header {
+    display        : grid;
+    align-items    : center;
+    grid-auto-flow : column;
+    justify-content: space-between;
+
+    &>.title {
+      font-size  : 20px;
+      font-weight: 400;
+      line-height: 24px;
+    }
+
+    &>.mercado-tooltip-container {
+      &>.content {
+        font-size: 24px;
+        color    : var(--color-gray-70);
+      }
+
+      &>.mercado-tooltip {
+        background-color: var(--color-gray-100);
+        border-radius   : 5px;
+        padding         : 6px;
+      }
+    }
+  }
+
+  &>.value {
+    margin-top : 20.53px;
+    font-style : normal;
+    font-weight: 500;
+    font-size  : 28px;
+    line-height: 34px;
+  }
+
+  &>.description {
+    margin-top: 7.19px;
+    color     : var(--color-gray-60);
+    font-size : 14px;
+  }
+
+  &>.mercado-button {
+    margin-top: 18.4px;
+
+    &>.content {
+      padding  : 14px 40px;
+      font-size: 14px;
+    }
+  }
+
+
+  @include md {
+    &>.header {
+      &>.title {
+        font-size: 18px;
+      }
+    }
+
+    &>.description {
+      font-size: 14px;
+    }
+  }
+
+  @include xxs {
+    padding: 15px;
+    width  : 100%;
+  }
+}

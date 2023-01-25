@@ -1,0 +1,20 @@
+.rate-user-modal {
+  display: grid;
+  gap    : 30px;
+
+  &>.user-info {
+    display: grid;
+    gap    : 15px;
+
+    &>div {
+      margin: 0 auto;
+
+      &.avatar {
+        width        : 100px;
+        height       : 100px;
+        border-radius: 50%;
+        background   : no-repeat center/contain;
+      }
+    }
+  }
+}

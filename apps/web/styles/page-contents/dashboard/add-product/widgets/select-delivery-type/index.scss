@@ -1,0 +1,106 @@
+.select-delivery-type {
+  &>.content {
+    width       : 100%;
+    max-width   : 600px;
+    justify-self: center;
+    gap         : 50px;
+    display     : grid;
+
+    &>ul {
+      display              : grid;
+      grid-template-columns: repeat(2, 1fr);
+
+      &>li {
+        padding        : 14px;
+        display        : flex;
+        justify-content: center;
+        align-items    : center;
+        border         : 1px solid var(--color-gray-100);
+        cursor         : pointer;
+        color          : var(--color-gray-80);
+
+        &:first-of-type {
+          border-radius: 5px 0 0 5px;
+        }
+
+        &:last-of-type {
+          border-radius: 0px 5px 5px 0px;
+        }
+
+        &.active {
+          border-color    : var(--color-primary);
+          background-color: #F78A0E12;
+          color           : white;
+        }
+      }
+
+      @include md {
+        grid-template-columns: 1fr;
+        gap                  : 10px;
+
+        &>li {
+          &:first-of-type {
+            border-radius: 5px 5px 0px 0px;
+          }
+
+          &:last-of-type {
+            border-radius: 0px 0px 5px 5px;
+          }
+        }
+      }
+    }
+
+    &>.edit-content {
+      display: grid;
+      gap    : 30px;
+
+      .edit-code {
+        display: grid;
+
+        &>.wrap-label-content {
+          display: grid;
+          gap    : 30px;
+
+          &>.record {
+            display              : grid;
+            align-items          : center;
+            grid-template-columns: 1fr min-content;
+            gap                  : 8pz;
+          }
+        }
+      }
+
+      &>.action {
+        display              : grid;
+        gap                  : 6px;
+        align-items          : center;
+        color                : var(--color-gray-80);
+        grid-template-columns: min-content 1fr;
+        cursor               : pointer;
+        width                : fit-content;
+        font-weight          : 500;
+
+        &>.icon {
+          display  : flex;
+          font-size: 18px;
+        }
+
+        &:hover {
+          color: white;
+        }
+      }
+    }
+
+    &>.action {
+      justify-self: flex-end;
+
+      @include md {
+        width: 100%;
+
+        button {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

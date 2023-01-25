@@ -1,0 +1,55 @@
+.shopping-card {
+  display           : grid;
+  grid-template-rows: min-content 1fr;
+  gap               : 20px;
+  padding           : 20px;
+  background-color  : var(--color-gray-120);
+  border-radius     : 8px;
+  position          : relative;
+
+  &>.title {
+    font-weight: 500;
+    position   : relative;
+  }
+
+  &>.value {
+    font-size: 50px;
+    color    : var(--color-primary);
+    position : relative;
+  }
+
+  &>.image {
+    position                  : absolute;
+    background                : no-repeat center/cover;
+    width                     : 300px;
+    top                       : 0.00px;
+    right                     : 0;
+    bottom                    : 0;
+    z-index                   : 0;
+    border-top-right-radius   : 8px 8px;
+    border-bottom-right-radius: 8px 8px;
+  }
+
+  @include md {
+    &>.title {
+      font-style : normal;
+      font-weight: 500;
+      font-size  : 14px;
+      line-height: 17px;
+    }
+
+    &>.value {
+      font-size: 40px;
+    }
+
+    &>.image {
+      position  : absolute;
+      background: no-repeat center/cover;
+      width     : 300px;
+      top       : 0px;
+      right     : 0;
+      bottom    : 0;
+      z-index   : 0;
+    }
+  }
+}

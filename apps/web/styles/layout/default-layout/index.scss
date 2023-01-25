@@ -1,0 +1,81 @@
+@import '@ui-shared/styles/components/footer/index.scss';
+@import './header/index.scss';
+
+.mercado-default-layout {
+  display           : grid;
+  margin            : 0 auto;
+  position          : relative;
+  width             : 100%;
+  min-height        : 100vh;
+  grid-template-rows: min-content 1fr min-content;
+
+  @include lg {
+    padding: 0px;
+  }
+
+  &>.content {
+    max-width: 1220px;
+    width    : 100%;
+    margin   : auto;
+
+    &>section>.page-title {
+      font-size  : 36px;
+      font-weight: 500;
+      line-height: 44px;
+
+      @include md {
+        font-style : normal;
+        font-weight: 500;
+        font-size  : 24px;
+        line-height: 29px;
+      }
+    }
+
+    &.full {
+      max-width: unset;
+      padding  : 0;
+      margin   : 0%
+    }
+  }
+
+  &>header.mercado-default-layout-header {
+    @extend %default-layout-header;
+  }
+
+  &>footer.mercado-default-layout-footer {
+    @extend %default-layout-footer;
+
+    @include xs {
+      margin-top: 0px;
+    }
+  }
+
+  &>footer.mercado-default-layout-footer {
+    max-width: 1180px;
+    margin   : 0 auto;
+  }
+
+  &>header.mercado-default-layout-header {
+    margin         : 0 auto;
+    display        : grid;
+    justify-content: center;
+  }
+
+  &.full {
+    max-width: unset;
+    padding  : 0;
+
+    &>.content {
+      padding: 0;
+    }
+  }
+
+  @import './checkout-header/index.scss';
+  @import './comming-soon-header/index.scss';
+}
+
+@include sm {
+  .mercado-default-layout-header {
+    border-bottom: 1px solid #16171D;
+  }
+}

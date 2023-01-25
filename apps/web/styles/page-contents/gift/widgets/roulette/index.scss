@@ -1,0 +1,252 @@
+.roulette-container {
+  display: grid;
+  gap    : 60px;
+
+  &>.roulette-spiner {
+    overflow        : hidden;
+    padding         : 10px;
+    background-color: var(--color-gray-120);
+    position        : relative;
+
+    &::before {
+      content   : '';
+      position  : absolute;
+      inset     : 0;
+      background: linear-gradient(90deg, #111217 0%, transparent 20%, transparent 80%, #111217 100%);
+      z-index   : 2;
+    }
+
+    &>.indicator {
+      position          : absolute;
+      top               : 0;
+      bottom            : 0;
+      width             : 16px;
+      display           : grid;
+      grid-template-rows: max-content 1fr max-content;
+      left              : 50%;
+      z-index           : 500;
+
+      &::before,
+      &::after {
+        margin      : 0 auto;
+        content     : '';
+        width       : 16px;
+        height      : 8px;
+        width       : 0;
+        height      : 0;
+        border-style: solid;
+        border-width: 0 16px 16px 16px;
+        border-color: transparent transparent var(--color-primary) transparent;
+      }
+
+      &::before {
+        transform: rotateZ(180deg);
+      }
+
+      &>.line {
+        margin          : 0 auto;
+        width           : 1px;
+        background-color: var(--color-primary);
+        position        : relative;
+
+        &::before {
+          content         : '';
+          width           : 3px;
+          position        : absolute;
+          background-color: var(--color-primary);
+          top             : 0;
+          bottom          : 0;
+          filter          : blur(7px);
+        }
+      }
+    }
+
+    &>.roulette {
+      display       : grid;
+      grid-auto-flow: column;
+      width         : 100%;
+      transition    : all 3s cubic-bezier(.29, 1.01, 0);
+      position      : relative;
+
+      &>.roulette-card {
+        border-bottom: 2px solid currentColor;
+        box-sizing   : border-box;
+        position     : relative;
+        background   : linear-gradient(180deg, #17181E 0%, #201A33 100%);
+        margin-left  : 5px;
+        margin-right : 5px;
+
+        &.type-2 {
+          background: linear-gradient(180deg, #16171D 0%, #1C1D24 100%);
+        }
+
+        &.type-3 {
+          background: linear-gradient(180deg, #17181E 0%, #282931 100%);
+        }
+
+        &.type-4 {
+          background: linear-gradient(180deg, #17181E 0%, #282931 100%);
+        }
+
+        &.type-5 {
+          background: linear-gradient(180deg, #17181E 0%, #172133 100%);
+        }
+
+        &.type-6 {
+          background: linear-gradient(180deg, #18181E 0%, #2D231C 100%);
+        }
+
+        &>.card-content {
+          padding       : 38px 18px;
+          padding-bottom: 30px;
+          display       : grid;
+          width         : 120px;
+          height        : 200px;
+          position      : relative;
+
+          &>.image-container {
+            background: no-repeat center/contain;
+            width     : 84px;
+            height    : 84px;
+            margin    : 0 auto;
+          }
+
+          &>.label {
+            margin: 0 auto;
+            height: min-content;
+          }
+        }
+      }
+    }
+  }
+
+  &>.action {
+    display: grid;
+    margin : 0 auto;
+    gap    : 15px;
+
+    &>.group {
+      display        : flex;
+      justify-content: center;
+      gap            : 10px
+    }
+
+    &>* {
+      margin: 0 auto;
+    }
+
+    &>.invite {
+      font-style : normal;
+      font-weight: 400;
+      font-size  : 14px;
+      line-height: 17px;
+      color      : var(--color-gray-40);
+    }
+
+    &>.description {
+      font-size : 12px;
+      color     : var(--color-gray-80);
+      text-align: center;
+    }
+
+    &>button {
+      width: 100%;
+    }
+
+    @include md {
+      width: 100%;
+
+      &>.mercado-button {
+        &>.content {
+          font-size  : 14px;
+          font-style : normal;
+          font-weight: 600;
+          font-size  : 14px;
+          line-height: 17px;
+        }
+      }
+    }
+  }
+
+
+  &>.mercado-modal {
+    top  : 0%;
+    left : 0%;
+    width: 100vw;
+
+    &>.modal-content {
+      &>.content {
+        padding-top: 0px !important
+      }
+    }
+  }
+
+  @include md {
+    gap: 40px;
+
+    &>.roulette-spiner {
+      padding-left : 0px;
+      padding-right: 0px;
+
+      &>.roulette {
+        &>.roulette-card {
+          margin-left : 2.5px;
+          margin-right: 2.5px;
+
+          &>.card-content {
+            width  : 66px;
+            height : 110px;
+            padding: 25px 9px;
+
+            &>.image-container {
+              width : 41.85px;
+              height: 41.85px;
+            }
+
+            &>.label {
+              margin-top: 19px;
+            }
+          }
+
+        }
+      }
+    }
+
+    &>.action {
+      padding-left : 16px;
+      padding-right: 16px;
+
+      &>.group {
+        display: inline;
+        width  : 100%;
+
+        button {
+          margin-bottom: 10px;
+          width        : 100%;
+        }
+      }
+
+      &>button {
+        width: 100%;
+
+        &>.content {
+          padding    : 14px 0px;
+          font-style : normal;
+          font-weight: 600;
+          font-size  : 14px;
+          line-height: 17px;
+        }
+      }
+    }
+  }
+
+  @include sm {
+    &>.mercado-modal {
+      &>.modal-content {
+        padding: 18px
+      }
+    }
+  }
+
+  @import '../roulette-confirm-modal/index.scss';
+}

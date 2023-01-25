@@ -1,0 +1,909 @@
+body {
+  overflow-x: hidden;
+}
+
+.mercado-home-page {
+  display              : grid;
+  grid-template-columns: 1fr;
+  gap                  : 20px;
+  padding-top          : 50px;
+  padding-bottom       : 50px;
+
+  .slider-space {
+    display : flex;
+    position: relative;
+
+    .new-slider {
+      z-index    : 10;
+      width      : 99vw;
+      margin-left: calc(50% - 50vw);
+      position   : absolute;
+
+      .swiper-slide {
+        opacity: 0.5;
+
+        img {
+          width        : 100%;
+          border-radius: 10px;
+          height       : 100%;
+        }
+      }
+
+      .swiper-slide-active {
+        opacity: 1;
+      }
+    }
+  }
+
+  .slider-space {
+    height: 22.5vw;
+
+    .new-slider .swiper-slide {
+      height: 22.5vw;
+    }
+  }
+
+  &>.banner-button {
+    display              : grid;
+    grid-template-columns: auto auto auto auto;
+    gap                  : 20px;
+    border               : 1px solid var(--color-gray-100);
+    border-radius        : 5px;
+    padding              : 23.5px 20px;
+    margin-top           : 50px;
+  }
+
+  &>.home-mobile-banner {
+    padding: 0 16px;
+    order  : 2;
+
+    &>.mobile-banner-button {
+      display              : grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap                  : 20px;
+      border               : 1px solid var(--color-gray-100);
+      border-radius        : 5px;
+      padding              : 23.5px 20px;
+      margin-top           : 50px;
+
+      &>.mercado-banner-button {
+        border-right   : none;
+        justify-content: left;
+      }
+    }
+  }
+
+  &>.recommended-stock-section {
+    margin-top: 44px;
+    overflow  : hidden;
+
+    &>.recommended {
+      &>.title {
+        font-style : normal;
+        font-weight: 400;
+        font-size  : 24px;
+        line-height: 29px;
+      }
+
+      &>.stock-item-group {
+        display              : grid;
+        grid-template-columns: repeat(5, min-content);
+        margin-top           : 30px;
+        justify-content      : space-between;
+      }
+    }
+  }
+
+  &>.featured-stock-section {
+    margin-top: 55px;
+    overflow  : hidden;
+
+    &>.featured {
+      &>.title {
+        font-style : normal;
+        font-weight: 400;
+        font-size  : 24px;
+        line-height: 29px;
+      }
+
+      &>.stock-item-group {
+        display              : grid;
+        grid-template-columns: repeat(5, min-content);
+        margin-top           : 30px;
+        justify-content      : space-between;
+      }
+    }
+  }
+
+  &>.discount-stock-section {
+    margin-top: 50px;
+    overflow  : hidden;
+
+    &>.discount-week {
+      &>.title {
+        font-style : normal;
+        font-weight: 400;
+        font-size  : 24px;
+        line-height: 29px;
+      }
+
+      &>.stock-item-group {
+        display              : grid;
+        grid-template-columns: repeat(5, min-content);
+        margin-top           : 30px;
+        justify-content      : space-between;
+      }
+    }
+  }
+
+  &>.devices-section {
+    display              : grid;
+    grid-template-columns: auto auto;
+    gap                  : 20px;
+    margin-top           : 65px;
+    margin-bottom        : 30px;
+  }
+
+  &>.game-category-section {
+    margin-top   : 55px;
+    margin-bottom: 50px;
+    overflow     : hidden;
+
+    &>.game-category {
+      &>.title {
+        font-style : normal;
+        font-weight: 400;
+        font-size  : 24px;
+        line-height: 29px;
+      }
+
+      &>.games-item-group {
+        display              : grid;
+        grid-template-columns: repeat(6, min-content);
+        margin-top           : 30px;
+        justify-content      : space-between;
+      }
+    }
+  }
+
+  .sell-by-skins-section {
+    margin-top   : 85px;
+    margin-bottom: 30px;
+  }
+
+  .category-section {
+    margin-top: 50px;
+
+    &>.title {
+      font-style : normal;
+      font-weight: 400;
+      font-size  : 24px;
+      line-height: 29px;
+    }
+
+    &>.categories {
+      display              : grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap                  : 20px;
+      margin-top           : 30px;
+
+
+    }
+  }
+
+  .shortcut-action {
+    z-index: 999;
+
+    &>button {
+      position: fixed;
+      bottom  : 30px;
+      right   : 30px;
+
+      &>.content {
+        padding: 17.5px 17.5px !important;
+
+        &>.mercado-icon {
+          font-size: 25px;
+          color    : var(--color-gray-130)
+        }
+      }
+    }
+
+    &>.stortcut-content {
+      position        : fixed;
+      bottom          : 115px;
+      right           : 50px;
+      background-color: var(--color-gray-110);
+      padding         : 11.5px 23px;
+      box-shadow      : 0px 7px 25px rgba(0, 0, 0, 0.1);
+      border-radius   : 5px;
+
+      &>.menu-container {
+        &>.content {
+          &>ul {
+            display: grid;
+            gap    : 25px;
+
+            &>li {
+              display    : flex;
+              align-items: center;
+              color      : var(--color-gray-60);
+              font-style : normal;
+              font-weight: 400;
+              font-size  : 14px;
+              line-height: 17px;
+              cursor     : pointer;
+
+              &>.mercado-icon {
+                margin-right: 9.5px;
+              }
+
+              &:hover {
+                color: white;
+              }
+            }
+          }
+        }
+
+        &>.mercado-modal {
+          &>.modal-content {
+            width: 450px;
+
+            &>.content {
+              width: initial;
+
+              &>form {
+                display: grid;
+                gap    : 25px
+              }
+            }
+          }
+        }
+      }
+    }
+
+    @include md {
+      display: none;
+    }
+  }
+
+
+  @include lg {
+    grid-template-columns: unset;
+    position             : relative;
+
+
+    &>.recommended-stock-section {
+      margin-bottom: 20px;
+      padding      : 0 16px;
+
+      &>.recommended {
+        &>.title {
+          font-style : normal;
+          font-weight: 400;
+          font-size  : 20px;
+          line-height: 24px;
+        }
+
+        &>.stock-item-group {
+          overflow-x: scroll;
+          gap       : 16px;
+        }
+
+        ::-webkit-scrollbar {
+          display: none;
+        }
+      }
+    }
+
+    &>.featured-stock-section {
+      margin-bottom: 20px;
+      padding      : 0 16px;
+
+      &>.featured {
+        margin-top: 10px;
+
+        &>.title {
+          font-style : normal;
+          font-weight: 400;
+          font-size  : 20px;
+          line-height: 24px;
+        }
+
+        &>.stock-item-group {
+          overflow-x: scroll;
+          gap       : 16px;
+        }
+
+        ::-webkit-scrollbar {
+          display: none;
+        }
+      }
+    }
+
+    &>.devices-section {
+      grid-template-columns: auto auto;
+      margin-top           : 10px;
+      margin-bottom        : 10px;
+      padding              : 0 16px;
+    }
+
+    &>.discount-stock-section {
+      margin-top   : 10px;
+      margin-bottom: 10px;
+      padding      : 0 16px;
+
+      &>.discount-week {
+        &>.title {
+          font-style : normal;
+          font-weight: 400;
+          font-size  : 20px;
+          line-height: 24px;
+        }
+
+        &>.stock-item-group {
+          overflow-x: scroll;
+          gap       : 16px;
+        }
+
+        ::-webkit-scrollbar {
+          display: none;
+        }
+      }
+    }
+
+    &>.game-category-section {
+      margin-top   : 10px;
+      margin-bottom: 10px;
+      padding      : 0 16px;
+
+      &>.game-category {
+        &>.title {
+          font-weight: 400;
+          font-size  : 20px;
+          line-height: 24px;
+        }
+
+        &>.games-item-group {
+          gap       : 10px;
+          overflow-x: scroll;
+
+          &>.individual-games-card {
+            margin: auto;
+
+            &>.game-card {
+              width : 180px;
+              height: 250px;
+            }
+          }
+
+          &::-webkit-scrollbar {
+            display: none;
+          }
+        }
+
+
+      }
+    }
+
+    &>.sell-by-skins-section {
+      margin-top   : 10px;
+      margin-bottom: 10px;
+      padding      : 0 16px;
+
+      &>.skins-sell-section {
+        &>.skins-sell-card {
+          height: 190px;
+
+          &>.first-divide {
+            &>.skin-user-img {
+              height: 231px;
+              width : 228px;
+              left  : 50px;
+            }
+
+            &>.skin-axe-img {
+              display: none;
+            }
+          }
+
+          &>.second-divide {
+            padding-right: 16px;
+
+            &>.skin-gun-img {
+              display: none;
+            }
+
+            &>.skin-weapon-img {
+              display: none;
+            }
+
+            &>.title {
+              font-size  : 16px;
+              line-height: 20px;
+              margin-top : 15px;
+            }
+
+            &>.content {
+              font-weight  : 500;
+              font-size    : 10px;
+              line-height  : 14px;
+              margin-top   : 5px;
+              margin-bottom: 10px;
+            }
+          }
+        }
+      }
+    }
+
+    &>.category-section {
+      margin-top   : 10px;
+      margin-bottom: 10px;
+      padding      : 0 16px;
+
+      &>.title {
+        font-weight: 400;
+        font-size  : 20px;
+        line-height: 24px;
+      }
+
+      &>.categories {
+        grid-template-columns: repeat(2, 1fr);
+
+        &>.category-card {
+          padding-top   : 24px;
+          padding-bottom: 24px;
+          font-size     : 16px;
+          font-weight   : 600;
+        }
+      }
+    }
+
+  }
+
+  @include md {
+    grid-template-columns: unset;
+    position             : relative;
+
+    .slider-space {
+      $val  : 32.5vw;
+      height: $val;
+
+      .new-slider .swiper-slide {
+        height: $val;
+      }
+    }
+
+    &>.banner-button {
+      grid-template-columns: repeat(1, 1fr);
+      order                : 2;
+      margin-top           : 20px;
+      padding-left         : 16px;
+      padding-right        : 16px;
+
+      &>.mercado-banner-button {
+        border-right   : none;
+        justify-content: left;
+
+
+        span {
+          padding-right: 0px;
+          font-weight  : 500;
+          font-size    : 13px;
+        }
+      }
+
+    }
+
+    &>.recommended-stock-section {
+      margin-top   : 25px;
+      margin-bottom: -15px;
+      order        : 1;
+
+      &>.recommended {
+
+        &>.title {
+          font-style : normal;
+          font-weight: 400;
+          font-size  : 20px;
+          line-height: 24px;
+        }
+
+        &>.stock-item-group {
+          overflow  : scroll;
+          gap       : 16px;
+          margin-top: 20px;
+
+          .mercado-product-card {
+            gap: 10px
+          }
+        }
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
+      }
+    }
+
+    &>.featured-stock-section {
+      margin-top   : 10px;
+      margin-bottom: 10px;
+      order        : 3;
+
+      &>.featured {
+        margin-top: 10px;
+
+        &>.title {
+          font-style : normal;
+          font-weight: 400;
+          font-size  : 20px;
+          line-height: 24px;
+        }
+
+        &>.stock-item-group {
+          overflow-x: scroll;
+          gap       : 16px;
+          margin-top: 20px;
+
+          .mercado-product-card {
+            gap: 10px
+          }
+        }
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
+      }
+    }
+
+    &>.devices-section {
+      grid-template-columns: auto;
+      margin-top           : 0px;
+      margin-bottom        : 10px;
+      order                : 3;
+      gap                  : 16px;
+    }
+
+    &>.discount-stock-section {
+      margin-top   : 10px;
+      margin-bottom: -9px;
+      order        : 3;
+
+      &>.discount-week {
+        &>.title {
+          font-style : normal;
+          font-weight: 400;
+          font-size  : 20px;
+          line-height: 24px;
+        }
+
+        &>.stock-item-group {
+          overflow-x: scroll;
+          gap       : 16px;
+          margin-top: 20px;
+
+          .mercado-product-card {
+            gap: 10px
+          }
+        }
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
+      }
+    }
+
+    &>.game-category-section {
+      margin-top   : 10px;
+      margin-bottom: 10px;
+      order        : 3;
+
+      &>.game-category {
+        margin-top: 15px;
+
+        &>.title {
+          font-weight: 400;
+          font-size  : 20px;
+          line-height: 24px;
+        }
+
+        &>.games-item-group {
+          gap       : 10px;
+          overflow-x: scroll;
+          margin-top: 20px;
+
+          &>.individual-games-card {
+            width : 90px !important;
+            height: 120px !important;
+
+            &>.game-card {
+              width : 90px;
+              height: 120px;
+            }
+          }
+        }
+
+        ::-webkit-scrollbar {
+          display: none;
+        }
+      }
+    }
+
+    &>.sell-by-skins-section {
+      margin-top   : 10px;
+      margin-bottom: 10px;
+      order        : 3;
+
+      &>.skins-sell-section {
+        &>.skins-sell-card {
+          height: 190px;
+
+          &>.first-divide {
+            &>.skin-user-img {
+              height: 151px;
+              width : 148px;
+              left  : 3.2px;
+            }
+
+            &>.skin-axe-img {
+              display: none;
+            }
+          }
+
+          &>.second-divide {
+            padding-right: 16px;
+
+            &>.skin-gun-img {
+              display: none;
+            }
+
+            &>.skin-weapon-img {
+              display: none;
+            }
+
+            &>.title {
+              font-size  : 16px;
+              line-height: 20px;
+              padding-top: 16px;
+            }
+
+            &>.content {
+              font-weight  : 500;
+              font-size    : 10px;
+              line-height  : 14px;
+              margin-top   : 10px;
+              margin-bottom: 15px;
+            }
+          }
+        }
+      }
+    }
+
+    &>.category-section {
+      margin-top   : 10px;
+      margin-bottom: 10px;
+      order        : 3;
+
+      &>.title {
+        font-weight: 400;
+        font-size  : 20px;
+        line-height: 24px;
+      }
+
+      &>.categories {
+        grid-template-columns: repeat(2, 1fr);
+
+        &>.category-card {
+          padding-top   : 24px;
+          padding-bottom: 24px;
+          font-size     : 16px;
+          font-weight   : 600;
+        }
+      }
+    }
+
+  }
+
+  @include sm {
+    .slider-space {
+      $val  : min(150px, 25vh);
+      height: $val;
+
+      .new-slider .swiper-slide {
+        height: $val;
+      }
+    }
+
+    &>.sell-by-skins-section {
+      &>.skins-sell-section {
+        &>.skins-sell-card {
+          &>.second-divide {
+            &>.title {
+              margin-top: 0px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @include xxs {
+    padding-top: 25px;
+
+    &>.slider-space {
+      height: min(130px, 20vh);
+    }
+
+    &>.home-mobile-banner {
+      &>.mobile-banner-button {
+        &>.mercado-banner-button {
+          &>span {
+            font-size: 12px;
+          }
+        }
+      }
+    }
+
+    &>.recommended-stock-section {
+      margin-top: 0px;
+    }
+
+    &>.sell-by-skins-section {
+      &>.skins-sell-section {
+        &>.skins-sell-card {
+          &>.first-divide {
+            &>.skin-user-img {
+              width : 130px;
+              height: 136px;
+            }
+          }
+
+          &>.second-divide {
+            &>.title {
+              font-size: 12px;
+            }
+
+            &>button {
+              &>.content {
+                padding    : 5.5px 10px;
+                font-weight: 500;
+                font-size  : 12px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @include m-xxs {
+    padding-top: 15px;
+
+    &>.slider-space {
+      height: min(130px, 20vh);
+    }
+
+    &>.recommended-stock-section {
+      &>.recommended {
+        &>.title {
+          font-size: 18px;
+        }
+
+        &>.stock-item-group {
+          &>.mercado-product-card {
+            width: 120px;
+
+            &>a {
+              &>.title {
+                font-size: 12px;
+              }
+            }
+
+          }
+        }
+      }
+    }
+
+    &>.home-mobile-banner {
+      &>.mobile-banner-button {
+        margin-top: 25px;
+        padding   : 13.5px 10px;
+
+        &>.mercado-banner-button {
+          &>span {
+            padding-right: 0px;
+          }
+        }
+      }
+    }
+
+    &>.featured-stock-section {
+      margin-top: 0px;
+
+      &>.featured {
+        margin-top: 10px;
+
+        &>.title {
+          font-size: 18px;
+        }
+      }
+    }
+
+    &>.devices-section {
+      &>.pc-option {
+        &>.individual-device-card {
+          &>.card-background {
+            &>.each-card {
+              padding-left  : 12px;
+              padding-top   : 12px;
+              padding-bottom: 16px;
+
+              &>.content {
+                width: 100%;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &>.discount-stock-section {
+      &>.discount-week {
+        &>.title {
+          font-size: 18px;
+        }
+      }
+    }
+
+    &>.game-category-section {
+      &>.game-category {
+        &>.title {
+          font-size: 18px;
+        }
+      }
+    }
+
+    &>.sell-by-skins-section {
+      &>.skins-sell-section {
+        &>.skins-sell-card {
+          &>.first-divide {
+            &>.skin-user-img {
+              width : 120px;
+              height: 130px;
+            }
+          }
+
+          &>.second-divide {
+            &>.title {
+              margin-top : 0px;
+              padding-top: 7px;
+              font-size  : 12px;
+            }
+
+            &>button {
+              &>.content {
+                padding    : 5.5px 10px;
+                font-weight: 500;
+                font-size  : 12px;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &>.category-section {
+      &>.title {
+        font-size: 18px;
+      }
+
+      &>.categories {
+        &>.category-card {
+          font-size     : 14px;
+          padding-top   : 14px;
+          padding-bottom: 14px;
+        }
+      }
+    }
+  }
+}

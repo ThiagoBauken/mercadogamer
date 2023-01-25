@@ -1,0 +1,25 @@
+.mercado-information-badge {
+  color        : var(--mercado-information-badge-color);
+  padding      : 9.5px 15px;
+  overflow     : hidden;
+  border-radius: 50px;
+  position     : relative;
+  border       : 1px solid currentColor;
+
+  &::before {
+    content         : '';
+    inset           : 0;
+    background-color: currentColor;
+    opacity         : 0.07;
+    position        : absolute;
+    z-index         : 0;
+  }
+
+  &>.content {
+    display       : grid;
+    grid-auto-flow: column;
+    gap           : 6px;
+    align-items   : center;
+    position      : relative;
+  }
+}

@@ -1,0 +1,263 @@
+section.inventory-content-page {
+  display: grid;
+  gap    : 80px;
+
+  &>.title {
+    display              : grid;
+    gap                  : 20px;
+    align-items          : center;
+    grid-template-columns: min-content 1fr min-content;
+
+    &>.label-content {
+      display       : grid;
+      grid-auto-flow: column;
+      gap           : 20px;
+
+      &>.count {
+        font-size  : 14px;
+        font-weight: 400;
+        line-height: 17px;
+        color      : var(--color-gray-80);
+        display    : flex;
+        align-items: flex-end;
+        height     : 100%;
+        white-space: nowrap;
+      }
+    }
+
+    &>.action {
+      display        : grid;
+      gap            : 15px;
+      align-items    : center;
+      justify-content: flex-end;
+      grid-auto-flow : column;
+      font-size      : 14px;
+      font-weight    : 400;
+      line-height    : 17.07px;
+
+      &>.mobile-add {
+        border          : solid 1px var(--color-primary);
+        padding         : 10px;
+        border-radius   : 50%;
+        font-size       : 32px;
+        background-color: var(--color-primary);
+        color           : #1A1A1A;
+        cursor          : pointer;
+      }
+
+      .download-type-menu {
+        width          : 45px;
+        height         : 45px;
+        cursor         : pointer;
+        border         : 2px solid var(--color-primary);
+        display        : flex;
+        justify-content: center;
+        align-items    : center;
+        font-size      : 24px;
+        border-radius  : 50%;
+      }
+    }
+  }
+
+  &>.content {
+    display: grid;
+    gap    : 34px;
+
+    &>.filter-config {
+      display        : flex;
+      justify-content: space-between;
+
+      &>.filter-menus {
+        display       : grid;
+        grid-auto-flow: column;
+        align-items   : center;
+        gap           : 20px;
+
+        &>.divition {
+          width           : 1px;
+          height          : 25px;
+          background-color: var(--color-gray-100);
+        }
+      }
+
+      &>.mercado-wrap-label {
+        width: fit-content
+      }
+
+      @include lg_in {
+        display: block;
+
+        &>.mercado-wrap-label {
+          width: 100%;
+        }
+
+        &>.filter-menus {
+          justify-content: flex-end;
+        }
+      }
+    }
+
+    &>.mercado-data-table {
+      &>table {
+        &>tbody {
+          &>tr {
+            &>td {
+              font-size     : 14px;
+              font-style    : normal;
+              font-weight   : 400;
+              text-transform: capitalize;
+
+              &>.default {
+                &>.icon {
+                  font-size: 13.5px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+  }
+
+  @include md {
+    &>.title {
+      gap        : 0px;
+      align-items: center;
+
+      &>.label-content {
+        grid-auto-flow: row;
+        gap           : 10px
+      }
+    }
+
+    &>.content {
+      @import './widgets/product-detail-card/index.scss';
+
+      &>.filter-config {
+        &>.filter-menus {
+          display: none;
+        }
+      }
+
+      &>.mobile-filter {
+        position        : fixed;
+        inset           : 0;
+        display         : flex;
+        align-items     : center;
+        justify-content : center;
+        background-color: var(--color-gray-130);
+        z-index         : 999;
+        display         : flex;
+        flex-direction  : column;
+        height          : 100vh;
+        width           : 100vw;
+        top             : 0%;
+        left            : 0%;
+
+        &>.content {
+          width           : 300px;
+          background-color: var(--color-gray-120);
+          overflow        : scroll;
+          max-height      : 100vh;
+          box-shadow      : 0px 7px 25px rgba(0, 0, 0, 0.1);
+          border-radius   : 5px;
+
+          &>.action {
+            display         : flex;
+            justify-content : flex-end;
+            padding-bottom  : 20px;
+            background-color: var(--color-gray-130);
+          }
+
+          .mercado-expansion {
+            &>.title {
+              display: none;
+            }
+
+            &>.header {
+              .expansion-header {
+                display: grid;
+                gap    : 4px;
+                padding: 9px 16px;
+
+                &>.label {
+                  font-size  : 13px;
+                  font-weight: 500;
+                }
+
+                &>.message {
+                  font-size: 11px;
+                  color    : var(--color-primary);
+                }
+              }
+            }
+
+            .expantion-content {
+              padding: 0;
+            }
+          }
+
+          .filter-group-container {
+            font-size: 14px;
+
+            &>li {
+              padding      : 10px 16px;
+              border-bottom: 1px solid var(--color-gray-100)
+            }
+          }
+        }
+
+        &>.content::-webkit-scrollbar {
+          display: none;
+        }
+
+        @include xxs {
+          &>.content {
+            width: 260px
+          }
+        }
+      }
+    }
+
+    &>.mercado-modal {
+      &>.modal-content {
+        padding: 15px;
+        width  : 100%;
+
+        &>.content {
+          padding: 0px;
+
+          &>.action {
+            grid-auto-flow: revert;
+          }
+        }
+      }
+    }
+  }
+
+  @include xxs {
+    &>.mercado-modal {
+      &>.modal-content {
+        padding: 15px;
+        width  : 100%;
+
+        &>.content {
+          padding: 0px;
+
+          &>.action {
+            grid-auto-flow: revert;
+
+            &>button {
+              &>.content {
+                padding: 10px 30px
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @import './widgets/product-delete-modal/index.scss';
+}

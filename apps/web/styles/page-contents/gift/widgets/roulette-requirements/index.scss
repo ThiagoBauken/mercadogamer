@@ -1,0 +1,105 @@
+.roulette-requirements {
+  display: grid;
+  gap    : 10px;
+
+  &>.title {
+    font-size  : 24px;
+    font-weight: 500;
+    line-height: 29px;
+    text-align : center;
+  }
+
+  &>.description {
+    font-size  : 16px;
+    font-weight: 400;
+    line-height: 20px;
+    text-align : center;
+    color      : var(--color-gray-60);
+  }
+
+  &>.content {
+    display              : grid;
+    gap                  : 20px;
+    grid-template-columns: repeat(2, 1fr);
+    margin-top           : 20px;
+
+    @import '../roulette-requirement-card/index.scss';
+  }
+
+  &>.mercado-modal {
+    &>.modal-content {
+      max-width: 100%;
+
+      &>.content {
+        padding-top: 46.5px;
+
+        &>.mercado-input-phone {
+          &>.wrap-label-content {
+            &>.phone-number {
+              &>.dial-code {
+                color      : var(--color-gray-80);
+                font-style : normal;
+                font-weight: 400;
+                font-size  : 14px;
+              }
+
+              @supports(-webkit-touch-callout: none) {
+                input {
+                  font-size: 16px !important;
+                }
+              }
+
+              &>input {
+                color      : var(--color-gray-80);
+                font-style : normal;
+                font-weight: 400;
+                font-size  : 14px;
+              }
+            }
+          }
+        }
+
+        &>.mercado-button {
+          &>.content {
+            padding    : 14px 0px;
+            font-style : normal;
+            font-weight: 600;
+            font-size  : 14px;
+          }
+        }
+      }
+    }
+  }
+
+  @import '../verification-phone/index.scss';
+
+  @include md {
+    gap          : 15px;
+    padding-left : 16px;
+    padding-right: 16px;
+
+    &>.title {
+      font-size: 20px;
+    }
+
+    &>.content {
+      grid-template-columns: unset;
+    }
+  }
+
+  @include xxs {
+    &>.mercado-modal {
+      &>.modal-content {
+        max-width: 100%;
+        padding  : 20px;
+
+        &>.header {
+          &>.title {
+            font-size: 17px;
+          }
+
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,427 @@
+%product-detail {
+  display: grid;
+  gap    : 24.5px;
+
+  &>.header {
+    display              : grid;
+    grid-template-columns: 1fr min-content;
+
+    &>.product-number {
+      color: var(--color-gray-80);
+    }
+
+    &>.favorite {
+      opacity        : 0.4;
+      width          : 35px;
+      height         : 35px;
+      border         : 1px solid white;
+      border-radius  : 50%;
+      display        : flex;
+      justify-content: center;
+      align-items    : center;
+      cursor         : pointer;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  &>.title {
+    font-size  : 22px;
+    font-weight: 600;
+    line-height: 27px;
+    margin-top : -19px;
+  }
+
+  &>.image-container {
+    background     : rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(10px);
+    border-radius  : 10px;
+    padding-top    : 90.23%;
+    position       : relative;
+    border         : 1px solid rgba(255, 255, 255, 0.2);
+    display        : none;
+
+    // border-image-source: linear-gradient(129.39deg, rgba(255, 255, 255, 0.2) 0.48%, rgba(255, 255, 255, 0) 50.76%, rgba(255, 255, 255, 0.1) 100%);
+
+    &>.game-logo {
+      width        : 50px;
+      height       : 50px;
+      background   : no-repeat center/cover;
+      position     : absolute;
+      top          : 30px;
+      left         : 30px;
+      border-radius: 5px;
+      z-index      : 1;
+
+      @include md {
+        width : 30px;
+        height: 30px;
+      }
+    }
+
+    &>.content {
+      position       : absolute;
+      top            : 0;
+      left           : 0;
+      bottom         : 0;
+      right          : 0;
+      display        : flex;
+      justify-content: center;
+      align-items    : center;
+
+      &>.product-image {
+        width      : 230px;
+        max-width  : 80%;
+        padding-top: 77.71%;
+        background : no-repeat center/cover;
+      }
+    }
+  }
+
+
+  &>.price {
+    display       : grid;
+    grid-auto-flow: column;
+    gap           : 30px;
+    align-items   : flex-end;
+    width         : fit-content;
+
+    &>.value {
+      font-size  : 26px;
+      font-style : normal;
+      font-weight: 400;
+      font-size  : 26px;
+      line-height: 32px;
+    }
+
+    &>.discount {
+      margin-top          : -15px;
+      font-size           : 20px;
+      text-decoration-line: line-through;
+      color               : var(--color-gray-70);
+    }
+
+    &>.discount-amount {
+      font-size       : 11px;
+      padding         : 5px 12px;
+      background-color: var(--color-primary);
+      border-radius   : 20px;
+    }
+  }
+
+  &>.status {
+    color      : var(--color-primary);
+    font-style : normal;
+    font-weight: 400;
+    font-size  : 18px;
+    line-height: 22px;
+  }
+
+  &>.eanble {
+    color      : var(--color-primary);
+    font-style : normal;
+    font-weight: 400;
+    font-size  : 18px;
+    line-height: 22px;
+  }
+
+  &>.game-type {
+    display: grid;
+    gap    : 20px;
+
+    &>li {
+      display       : grid;
+      grid-auto-flow: column;
+      gap           : 10px;
+      width         : fit-content;
+      align-items   : center;
+
+      &>.icon {
+        display  : flex;
+        font-size: 20px;
+        color    : var(--color-primary);
+      }
+
+      &>.label {
+        color      : var(--color-gray-20);
+        font-style : normal;
+        font-weight: 400;
+        font-size  : 14px;
+        line-height: 17px;
+      }
+
+      &>.helper {
+        display: flex;
+
+        .mercado-tooltip-container {
+
+          &>.mercado-tooltip {
+            width  : 180px;
+            padding: 6px;
+          }
+
+          &>.content {
+            display  : flex;
+            font-size: 20px;
+            color    : var(--color-gray-80);
+
+            &>.veiw-detail {
+              font-style : normal;
+              font-weight: 500;
+              font-size  : 14px;
+              line-height: 17px;
+              color      : var(--color-primary)
+            }
+          }
+        }
+
+      }
+
+      &>.detail {
+        display: flex;
+
+        .mercado-tooltip-container {
+
+          &>.mercado-tooltip {
+            width         : 200px;
+            text-transform: capitalize;
+            padding       : 6px;
+          }
+
+
+          &>.content {
+            display  : flex;
+            font-size: 20px;
+            color    : var(--color-gray-80);
+
+            &>.veiw-detail {
+              font-style : normal;
+              font-weight: 500;
+              font-size  : 14px;
+              line-height: 17px;
+              color      : var(--color-primary)
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &>.cart-count {
+    display        : grid;
+    grid-auto-flow : column;
+    justify-content: flex-start;
+    align-items    : center;
+
+    &>.action-menu-item {
+
+      &>.label {
+        font-style : normal;
+        font-weight: 500;
+        font-size  : 14px;
+        line-height: 17px;
+      }
+
+      &>.mercado-wrap-label {
+        font-style : normal;
+        font-weight: 400;
+        font-size  : 14px;
+        line-height: 17px;
+
+        &>.wrap-label-content {
+          &>.mercado-menu {
+            &>.content {
+              &>.mercado-select {
+                min-width: 80px;
+              }
+            }
+          }
+        }
+      }
+
+      &>.label {
+        color: white;
+      }
+    }
+
+    &>.message {
+      color      : var(--color-gray-70);
+      font-style : normal;
+      font-weight: 400;
+      font-size  : 14px;
+      line-height: 17px;
+    }
+  }
+
+  &>.add-cart {
+    z-index: 1;
+    display: grid;
+  }
+
+  &>.move-cart {
+    z-index: 1;
+    display: grid;
+  }
+
+  &>.security {
+    display              : grid;
+    grid-template-columns: min-content 1fr;
+    gap                  : 10px;
+
+    &>.icon {
+      display  : flex;
+      font-size: 38px;
+      color    : var(--color-gray-80);
+    }
+
+    &>.content {
+      font-size  : 12px;
+      font-weight: 400;
+      line-height: 15px;
+      color      : var(--color-gray-70);
+    }
+  }
+
+  &>.information-seller {
+    display           : grid;
+    gap               : 16px;
+    padding           : 30px 0;
+    border            : 1px solid var(--color-gray-100);
+    border-left-color : transparent;
+    border-right-color: transparent;
+
+    &>.label {
+      @extend %label;
+      color: var(--color-gray-60);
+    }
+
+    &>.user-information {
+      background-color: var(--color-gray-120);
+      padding         : 20px;
+      border-radius   : 8px;
+      display         : flex;
+      align-items     : center;
+      gap             : 14px;
+
+      &>.avatar {
+        background   : no-repeat center/cover;
+        width        : 60px;
+        height       : 60px;
+        border-radius: 50%;
+        border       : 1px solid var(--color-gray-100);
+        border       : 1px solid #262831;
+        cursor       : pointer;
+      }
+
+      &>.content {
+        align-items    : center;
+        display        : flex;
+        justify-content: space-between;
+        flex           : 1;
+
+        &>.information {
+          display: grid;
+          gap    : 8px;
+          cursor : pointer;
+
+          &>.user-name {
+            font-size  : 16px;
+            font-weight: 500;
+
+          }
+
+          &>.info {
+            font-style : normal;
+            font-weight: 400;
+            font-size  : 14px;
+            line-height: 17px;
+            color      : var(--color-gray-40)
+          }
+        }
+
+        .rate {
+          background: no-repeat center/cover;
+          width     : 50px;
+          height    : 56px;
+        }
+      }
+    }
+  }
+
+  &>.payment-methods {
+    display: grid;
+    gap    : 10px;
+
+    &>.label {
+      @extend %label;
+    }
+
+    &>.content {
+      margin-top           : 22px;
+      display              : grid;
+      grid-template-columns: repeat(auto-fill, 70px);
+      gap                  : 10px;
+      justify-content      : space-around;
+
+      &>li {
+        height          : 45px;
+        background-color: var(--color-gray-110);
+
+        &>.image-container {
+          background: no-repeat center;
+          width     : 100%;
+          height    : 100%;
+        }
+      }
+    }
+  }
+
+  @include md {
+    margin-top: -20px;
+
+    &>.image-container {
+      display: block;
+
+      &>.game-logo {
+        width : 40px;
+        height: 40px;
+      }
+
+      &>.content {
+        &>.product-image {
+          height: 230px;
+          width : 60vw;
+        }
+      }
+    }
+
+    &>.game-type {
+      margin-top: -10px;
+    }
+
+    .product-number {
+      color: white !important;
+    }
+  }
+
+  @include sm {
+    &>.image-container {
+      display: block;
+
+      &>.game-logo {
+        top   : 15px;
+        width : 30px;
+        height: 30px;
+      }
+
+      &>.content {
+        &>.product-image {
+          height: 230px;
+          width : 50vw;
+        }
+      }
+    }
+  }
+}

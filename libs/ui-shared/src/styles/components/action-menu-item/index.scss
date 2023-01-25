@@ -1,0 +1,18 @@
+.action-menu-item {
+  display       : grid;
+  gap           : 8px;
+  width         : fit-content;
+  grid-auto-flow: column;
+  align-items   : center;
+
+  &>.label {
+    color      : var(--color-gray-60);
+    white-space: nowrap;
+  }
+
+  .mercado-menu {
+    .mercado-select.mini-size {
+      min-width: 100px;
+    }
+  }
+}

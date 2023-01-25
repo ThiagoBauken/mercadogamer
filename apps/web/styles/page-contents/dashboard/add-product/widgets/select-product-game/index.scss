@@ -1,0 +1,65 @@
+.select-product-game {
+  &>ul {
+    display              : grid;
+    grid-template-columns: repeat(auto-fill, 150px);
+    gap                  : 30px;
+    max-width            : 870px;
+    width                : 100%;
+    justify-self         : center;
+
+    &>li {
+      background-color: var(--color-gray-120);
+      border-radius   : 8px;
+      overflow        : hidden;
+      border          : 1px solid transparent;
+
+      &>.mercado-tooltip-container>.content {
+        .content {
+          height         : 200px;
+          display        : flex;
+          justify-content: center;
+          align-items    : center;
+          font-size      : 20px;
+          font-weight    : 500;
+          line-height    : 24px;
+          background     : no-repeat center/cover;
+          padding        : 0px 36px;
+          text-align     : center;
+        }
+      }
+
+      &.active {
+        border-color: var(--color-primary);
+      }
+    }
+
+    @include md {
+      grid-template-columns: repeat(auto-fill, 98.67px);
+      width                : calc(100vw - 32px);
+      justify-content      : space-between;
+
+      &>li {
+        &>.mercado-tooltip-container>.content {
+          .content {
+            height   : 131.56px;
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+
+  @import '../other-select-game-modal/index.scss';
+
+  @include md {
+    &>ul {
+      gap: 16px
+    }
+
+    &>.mercado-modal {
+      &>.modal-content {
+        max-width: 100%;
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+.create-feedback-modal {
+  width    : 90vw;
+  max-width: 450px;
+
+  &>form {
+    display: grid;
+    gap    : 25px;
+  }
+
+  @include md {
+    width: initial;
+  }
+}

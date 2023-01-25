@@ -1,0 +1,76 @@
+.avatar-card {
+  display              : grid;
+  grid-template-columns: min-content 1fr;
+  gap                  : 35.18px;
+  align-items          : center;
+
+  &>.avatar {
+    width          : 140px;
+    height         : 140px;
+    border-radius  : 50%;
+    padding        : 2px;
+    background     : linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 36.98%, rgba(255, 255, 255, 0) 64.06%, rgba(255, 255, 255, 0.4) 100%);
+    overflow       : hidden;
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+    background-clip: border-box;
+
+    &>.user-photo {
+      width        : calc(100% - 2px);
+      height       : calc(100% - 2px);
+      border-radius: 50%;
+      border       : 3px solid black;
+      background   : no-repeat center/cover;
+    }
+
+  }
+
+  &>.name-space {
+    display: grid;
+    gap    : 16px;
+
+    &>.name {
+      display        : grid;
+      grid-auto-flow : column;
+      align-items    : center;
+      font-style     : normal;
+      font-weight    : 600;
+      font-size      : 30px;
+      line-height    : 37px;
+      color          : #FFFFFF;
+      justify-content: flex-start;
+
+      &>span {
+        color      : var(--color-primary);
+        margin-left: 16.67px;
+      }
+    }
+
+    &>.rate {
+      display        : grid;
+      grid-auto-flow : column;
+      justify-content: flex-start;
+      gap            : 9px;
+      align-items    : baseline;
+
+      &>span {
+        color      : var(--color-gray-70);
+        font-style : normal;
+        font-weight: 500;
+        font-size  : 14px;
+        color      : var(--color-gray-60);
+      }
+    }
+
+  }
+
+  @include md {
+    gap: 19px;
+
+    &>.avatar {
+      width : 62px;
+      height: 62px;
+    }
+  }
+}

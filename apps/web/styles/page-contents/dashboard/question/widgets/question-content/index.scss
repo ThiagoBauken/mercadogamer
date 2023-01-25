@@ -1,0 +1,213 @@
+.question-content {
+  display   : grid;
+  border-top: 1px solid var(--color-gray-100);
+
+  &>.header {
+    padding        : 21px 30px;
+    display        : grid;
+    align-items    : center;
+    justify-content: space-between;
+    grid-auto-flow : column;
+    color          : var(--color-gray-40);
+
+    &>.message {
+      display       : grid;
+      grid-auto-flow: column;
+      gap           : 20px;
+
+      &>span {
+        display: none;
+      }
+    }
+
+    &>.action {
+      display       : grid;
+      grid-auto-flow: column;
+      align-items   : center;
+      gap           : 26px;
+      font-size     : 24px;
+
+      &>.unread {
+        width           : 10px;
+        height          : 10px;
+        border-radius   : 50%;
+        background-color: var(--color-primary);
+      }
+
+      &>.action {
+        cursor: pointer;
+        color : var(--color-gray-80);
+      }
+
+      &>.trash {
+        &:hover {
+          color: var(--color-negative);
+        }
+      }
+    }
+
+    &.active {
+      color: white;
+
+      &>.message {
+        font-weight: 600;
+
+        &>span {
+          display    : block;
+          color      : var(--color-gray-80);
+          font-weight: 400;
+        }
+      }
+    }
+  }
+
+  &>.answer {
+    padding: 0 30px 30px;
+    color  : var(--color-gray-60);
+
+    &>.edit-answer {
+      display  : grid;
+      gap      : 20px;
+      max-width: 800px;
+
+      &>.action {
+        display        : grid;
+        grid-auto-flow : column;
+        gap            : 15px;
+        align-items    : center;
+        justify-content: flex-start;
+      }
+    }
+  }
+
+  @include md {
+    &>.header {
+      grid-auto-flow : initial;
+      justify-content: initial;
+      gap            : 20px;
+
+      &>.message {
+        display        : flex;
+        justify-content: space-between;
+        align-items    : center;
+        font-style     : normal;
+        font-weight    : 400;
+        font-size      : 14px;
+        line-height    : 17px;
+
+        &>.open {
+          display    : flex;
+          align-items: center;
+          gap        : 15px;
+
+          &>.unread {
+            width           : 10px;
+            height          : 10px;
+            border-radius   : 50%;
+            background-color: var(--color-primary);
+          }
+
+          &>.expand {
+            font-size: 24px;
+            cursor   : pointer;
+            color    : var(--color-gray-80);
+          }
+        }
+
+      }
+    }
+
+    &>.answer {
+      &>.date-remove {
+        &>.remove {
+          display        : flex;
+          justify-content: space-between;
+          align-items    : center;
+          margin-bottom  : 20px;
+
+          &>.date {
+            color      : var(--color-gray-80);
+            font-style : normal;
+            font-weight: 400;
+            font-size  : 14px;
+            line-height: 17px;
+          }
+
+          &>.action {
+            display        : flex;
+            justify-content: space-between;
+            align-items    : center;
+            gap            : 9.75px;
+            color          : var(--color-negative);
+            font-style     : normal;
+            font-weight    : 500;
+            font-size      : 14px;
+          }
+        }
+
+        &>.view-answer {
+          font-style : normal;
+          font-weight: 400;
+          font-size  : 14px;
+          line-height: 20px;
+        }
+      }
+
+      &>.edit-answer {
+        &>.date-remove {
+          &>.remove {
+            display        : flex;
+            justify-content: space-between;
+            align-items    : center;
+            margin-bottom  : 20px;
+
+            &>.date {
+              color      : var(--color-gray-80);
+              font-style : normal;
+              font-weight: 400;
+              font-size  : 14px;
+              line-height: 17px;
+            }
+
+            &>.action {
+              display        : flex;
+              justify-content: space-between;
+              align-items    : center;
+              gap            : 9.75px;
+              color          : var(--color-negative);
+              font-style     : normal;
+              font-weight    : 500;
+              font-size      : 14px;
+            }
+          }
+
+          &>.view-answer {
+            font-style : normal;
+            font-weight: 400;
+            font-size  : 14px;
+            line-height: 20px;
+          }
+        }
+
+        &>.action {
+          grid-auto-flow : initial;
+          justify-content: initial;
+          gap            : 25px;
+
+          &>.mercado-button {
+            width: 100%;
+
+            &>.content {
+              padding-top   : 14px;
+              padding-bottom: 14px;
+              font-style    : normal;
+              font-weight   : 600;
+              font-size     : 14px;
+              line-height   : 17px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,60 @@
+.mercado-expansion {
+  display           : grid;
+  grid-template-rows: max-content 1fr;
+  width             : 100%;
+
+  &>.header {
+    display              : grid;
+    padding              : 16px 0;
+    border-bottom        : 1px solid var(--color-gray-100);
+    grid-template-columns: 1fr min-content;
+    cursor               : pointer;
+    user-select          : none;
+    align-items          : center;
+
+    &>.title {
+      color: var(--color-gray-40);
+    }
+
+    &>.icon {
+      font-size    : 24px;
+      display      : flex;
+      padding-right: 16px;
+    }
+
+    &:hover {
+      &>.title {
+        color         : white;
+        // font-weight: 500;
+      }
+    }
+  }
+
+  &>.content {
+    background-color: var(--background-layout-body);
+    transition      : max-height 0.25s ease-in-out;
+    overflow        : hidden;
+
+    &>.expantion-content {
+      padding: 10px;
+    }
+  }
+
+  &.collapsed {
+    &>.content {
+      max-height: 0px;
+    }
+  }
+
+  &.hide-on-desktop {
+    @include lg_up {
+      &>.header {
+        display: none;
+      }
+
+      &>.content {
+        max-height: unset;
+      }
+    }
+  }
+}

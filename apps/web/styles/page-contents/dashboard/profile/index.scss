@@ -1,0 +1,105 @@
+section.profile-page-content {
+  display: grid;
+  gap    : 50px;
+
+  &>.content {
+    display  : grid;
+    gap      : 40px;
+    max-width: 715px;
+
+    &>.edit-avatar {
+      display              : grid;
+      grid-template-columns: min-content 1fr;
+      align-items          : center;
+      gap                  : 20px;
+
+      .avatar {
+        width          : 120px;
+        height         : 120px;
+        border         : 1px dashed var(--color-gray-90);
+        border-radius  : 50%;
+        display        : flex;
+        justify-content: center;
+        align-items    : center;
+        cursor         : pointer;
+        background     : no-repeat center/cover;
+      }
+
+      &>.content {
+        display: grid;
+        gap    : 14px;
+
+        &>.description {
+          color: var(--color-gray-60);
+        }
+      }
+    }
+
+    &>.edit-form {
+      display: grid;
+      gap    : 25px;
+
+      &>.row {
+        display              : grid;
+        gap                  : 20px;
+        align-items          : flex-start;
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    &>.action {
+      display        : grid;
+      justify-content: flex-end;
+    }
+  }
+
+  @include md {
+    gap: 40px;
+
+    &>.content {
+      gap: 35.8px;
+
+      &>.edit-avatar {
+        grid-template-columns: repeat(1, 1fr);
+
+        &>.content {
+          &>.message {
+            font-style : normal;
+            font-weight: 400;
+            font-size  : 14px;
+            line-height: 17px;
+          }
+
+          &>.description {
+            font-style : normal;
+            font-weight: 400;
+            font-size  : 14px;
+            line-height: 17px;
+          }
+        }
+      }
+
+      &>.edit-form {
+        &>.row {
+          grid-template-columns: repeat(1, 1fr);
+        }
+      }
+
+      &>.action {
+        justify-content: unset;
+
+        &>.mercado-button {
+          width: 100%;
+
+          &>.content {
+            padding    : 14px;
+            font-style : normal;
+            font-weight: 600;
+            font-size  : 14px;
+            line-height: 17px;
+          }
+        }
+      }
+    }
+  }
+}

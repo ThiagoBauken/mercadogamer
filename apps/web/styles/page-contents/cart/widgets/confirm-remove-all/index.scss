@@ -1,0 +1,37 @@
+.confirm-remove-all {
+  display: grid;
+  gap    : 20px;
+  padding: 30px;
+
+  &>div {
+    margin: 0 auto;
+  }
+
+  &>.icon {
+    position       : relative;
+    width          : 65px;
+    height         : 65px;
+    font-size      : 30px;
+    color          : var(--color-negative);
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+    overflow       : hidden;
+    border-radius  : 50%;
+
+    &::before {
+      content         : '';
+      position        : absolute;
+      inset           : 0;
+      background-color: currentColor;
+      opacity         : 0.1;
+    }
+  }
+
+  &>.action {
+    margin-top    : 10px;
+    display       : grid;
+    grid-auto-flow: column;
+    gap           : 15px;
+  }
+}

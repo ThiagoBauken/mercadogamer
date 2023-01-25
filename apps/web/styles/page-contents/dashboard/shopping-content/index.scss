@@ -1,0 +1,270 @@
+section.shopping-content {
+  display: grid;
+  gap    : 60px;
+
+  .title {
+    display       : grid;
+    gap           : 20px;
+    grid-auto-flow: column;
+    width         : fit-content;
+    align-items   : flex-end;
+
+    span {
+      color      : var(--color-gray-80);
+      font-size  : 14px;
+      line-height: normal;
+    }
+  }
+
+  &>.shopping-info {
+    display       : grid;
+    grid-auto-flow: column;
+    gap           : 40px;
+
+    @import './widgets/shopping-card/index.scss';
+  }
+
+  &>.content {
+    display: grid;
+    gap    : 40px;
+
+    &>button {
+      &>.content {
+        padding    : 15px 20px;
+        font-style : normal;
+        font-weight: 500;
+        font-size  : 14px;
+        line-height: 17px;
+        text-align : center;
+      }
+    }
+
+    &>.header {
+      display        : grid;
+      grid-auto-flow : column;
+      justify-content: space-between;
+
+      &>.action-menu {
+        display       : grid;
+        gap           : 20px;
+        grid-auto-flow: column;
+      }
+
+      @include lg_in {
+        grid-auto-flow : initial;
+        justify-content: initial;
+
+        &>.action-menu {
+          justify-content: flex-end;
+        }
+      }
+    }
+
+    &>.table-container {
+      padding      : 20px 30px;
+      border-radius: 8px;
+      border       : 1px solid var(--color-gray-100);
+      height       : 660px;
+      overflow     : overlay;
+      padding-top  : 0px;
+
+      table {
+        thead {
+
+          th {
+            padding    : 19px;
+            padding-top: 39px;
+
+          }
+        }
+
+        tbody {
+          tr {
+            &>.product-name {
+              cursor: pointer;
+            }
+
+            td {
+              &:first-of-type {
+                padding-left: 30px;
+              }
+
+              &>.product-picture {
+                background: no-repeat center/cover;
+                width     : 40px;
+                height    : 51.11px;
+                cursor    : pointer;
+              }
+
+
+
+              &>.action-menu {
+                cursor: pointer;
+              }
+
+              &>.has-message {
+                width           : 10px;
+                height          : 10px;
+                background-color: var(--color-primary);
+                border-radius   : 50%;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &>.mobile-filter {
+      position        : fixed;
+      inset           : 0;
+      display         : flex;
+      align-items     : center;
+      justify-content : center;
+      z-index         : 999;
+      display         : flex;
+      flex-direction  : column;
+      backdrop-filter : blur(3px);
+      height          : 100vh;
+      width           : 100vw;
+      top             : 0%;
+      left            : 0%;
+      background-color: var(--color-gray-130);
+
+
+      &>.content {
+        width           : 300px;
+        background-color: var(--color-gray-120);
+        overflow        : scroll;
+        max-height      : 100vh;
+        box-shadow      : 0px 7px 25px rgba(0, 0, 0, 0.1);
+        border-radius   : 5px;
+
+        &>.action {
+          display         : flex;
+          justify-content : flex-end;
+          padding-bottom  : 20px;
+          background-color: var(--color-gray-130);
+        }
+
+        .mercado-expansion {
+          &>.title {
+            display: none;
+          }
+
+          &>.header {
+            .expansion-header {
+              display: grid;
+              gap    : 4px;
+              padding: 9px 16px;
+
+              &>.label {
+                font-size  : 13px;
+                font-weight: 500;
+              }
+
+              &>.message {
+                font-size: 11px;
+                color    : var(--color-primary);
+              }
+            }
+          }
+
+          .expantion-content {
+            padding: 0;
+          }
+        }
+
+        .filter-group-container {
+          font-size: 14px;
+
+          &>li {
+            padding      : 10px 16px;
+            border-bottom: 1px solid var(--color-gray-100)
+          }
+        }
+      }
+
+      &>.content::-webkit-scrollbar {
+        display: none;
+      }
+
+      @include xxs {
+        &>.content {
+          width: 260px
+        }
+      }
+    }
+
+    &>.order-list {
+      @import './widgets/order-detail-card/index.scss';
+    }
+  }
+
+  @include md {
+    gap: 30px;
+
+    &>.title {
+      grid-template-columns: unset;
+      grid-auto-flow       : row;
+      gap                  : 0px
+    }
+
+    &>.shopping-info {
+      grid-auto-flow       : unset;
+      grid-template-columns: repeat(2, 1fr);
+      gap                  : 16px;
+
+      &>.shopping-card {
+        &:first-of-type {
+          grid-column: 1 / span 2;
+        }
+      }
+    }
+
+    &>.content {
+      margin-top: 44px;
+
+      &>.header {
+        justify-content: normal;
+
+        &>.mercado-wrap-label {
+          width: 100%;
+
+          &>.wrap-label-content {
+            &>div {
+              width    : 100%;
+              min-width: 100% !important;
+            }
+          }
+        }
+
+        &>.action-menu {
+          display: none;
+        }
+      }
+    }
+  }
+
+  @include xxs {
+    &>.shopping-info {
+
+      &>.shopping-card {
+        padding: 15px;
+        gap    : 10px;
+
+        &>.value {
+          font-size: 36px;
+        }
+      }
+    }
+
+    &>.content {
+      &>button {
+        &>.content {
+          padding: 10px 30px;
+        }
+      }
+    }
+  }
+
+}

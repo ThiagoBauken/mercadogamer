@@ -1,0 +1,73 @@
+section.user-page-content {
+  &>.header {
+    &>.action {
+      display        : grid;
+      gap            : 15px;
+      align-items    : center;
+      justify-content: flex-end;
+      grid-auto-flow : column;
+      font-size      : 14px;
+      font-weight    : 400;
+      line-height    : 17.07px;
+
+      .download-type-menu {
+        width          : 45px;
+        height         : 45px;
+        cursor         : pointer;
+        border         : 2px solid var(--color-primary);
+        display        : flex;
+        justify-content: center;
+        align-items    : center;
+        font-size      : 24px;
+        border-radius  : 50%;
+      }
+    }
+  }
+
+  &>.filter-config {
+    display        : flex;
+    justify-content: space-between;
+
+    &>.search {
+      &>.mercado-wrap-label {
+        width: fit-content
+      }
+    }
+
+    &>.filter {
+      display       : grid;
+      grid-auto-flow: column;
+      gap           : 20px;
+    }
+  }
+
+  &>.content {
+    display: grid;
+    gap    : 100px;
+
+
+    &>.table-container {
+      display: grid;
+      gap    : 30px;
+
+      &>.title {
+        font-size: 24px;
+      }
+
+      &>.mercado-data-table {
+        &>table {
+          &>tbody {
+            td {
+              &>.picture {
+                width        : 35px;
+                height       : 35px;
+                border-radius: 50%;
+                background   : no-repeat center/contain;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

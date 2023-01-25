@@ -1,0 +1,37 @@
+section.comming-soon-page-content {
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+  height         : 100%;
+
+  &>.content {
+    display: grid;
+    gap    : 20px;
+
+    &>div {
+      justify-self: center;
+    }
+
+    &>.image-container {
+      margin    : 50px 0;
+      background: no-repeat center/contain url('/assets/imgs/comming-soon.webp');
+      height    : 260.553466796875px;
+      width     : 372.30194091796875px;
+    }
+
+    &>.title {
+      font-weight: 700;
+      font-size  : 60px;
+    }
+
+    &>.description {
+      width        : 285px;
+      font-size    : 16px;
+      font-weight  : 500;
+      line-height  : 20px;
+      text-align   : center;
+      color        : var(--color-gray-60);
+      margin-bottom: 100px;
+    }
+  }
+}

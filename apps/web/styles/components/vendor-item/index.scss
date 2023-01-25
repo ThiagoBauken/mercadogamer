@@ -1,0 +1,24 @@
+.vendor-item {
+  display        : flex;
+  flex-direction : column;
+  justify-content: center;
+  align-items    : center;
+
+  &>.title {
+    font-style : normal;
+    font-weight: 600;
+    font-size  : 20px;
+    line-height: 24px;
+    text-align : center;
+    margin-top : 15.3px;
+  }
+
+  &>.content {
+    font-style : normal;
+    font-weight: 400;
+    font-size  : 14px;
+    line-height: 20px;
+    text-align : center;
+    margin-top : 13.5px;
+  }
+}

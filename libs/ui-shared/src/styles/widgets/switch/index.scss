@@ -1,0 +1,24 @@
+.mercado-switch {
+  display         : flex;
+  width           : 28px;
+  height          : 16px;
+  border-radius   : 16px;
+  background-color: var(--color-gray-90);
+  cursor          : pointer;
+  align-items     : center;
+  justify-content : flex-start;
+  padding         : 2px;
+  transition      : all 0.3s;
+
+  .circle {
+    width           : 12px;
+    height          : 12px;
+    border-radius   : 50%;
+    background-color: white;
+  }
+
+  &.active {
+    background-color: var(--mercado-switch-bg-color);
+    justify-content : flex-end;
+  }
+}

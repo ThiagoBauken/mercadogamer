@@ -1,0 +1,19 @@
+section.not-find-page {
+  display        : grid;
+  justify-content: center;
+  align-items    : center;
+  height         : 100%;
+  gap            : 50px;
+
+  &>div {
+    text-align: center;
+  }
+
+  &>.title {
+    font-size: 5rem;
+  }
+
+  &>.content {
+    font-size: 3rem;
+  }
+}

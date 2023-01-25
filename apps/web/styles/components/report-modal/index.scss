@@ -1,0 +1,8 @@
+.report-modal {
+  display: grid;
+  gap    : 25px;
+
+  &>.mercado-button {
+    margin-top: 5px;
+  }
+}

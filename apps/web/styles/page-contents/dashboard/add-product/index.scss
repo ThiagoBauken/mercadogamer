@@ -1,0 +1,115 @@
+section.add-product-content-page {
+  display   : grid;
+  // gap    : 40px;
+
+  @import './widgets/step-add-product/index.scss';
+
+  &>form {
+    justify-self: center;
+    width       : 100%;
+
+    &>.product-detail {
+      &>.content {
+        &>.action {
+          z-index: 1;
+        }
+      }
+    }
+
+    &>.content {
+      display     : grid;
+      gap         : 40px;
+      justify-self: center;
+      margin-top  : 60px;
+
+      &>.title {
+        font-size   : 24px;
+        font-weight : 500;
+        line-height : 29px;
+        justify-self: center;
+
+
+
+
+        @include md {
+          font-size : 18px;
+          text-align: center
+        }
+      }
+    }
+
+    @import './widgets/publication-type-card/index.scss';
+    @import './widgets/select-product-type/index.scss';
+    @import './widgets/select-product-game/index.scss';
+    @import './widgets/product-detail/index.scss';
+    @import './widgets/select-delivery-type/index.scss';
+    @import './widgets/edit-price/index.scss';
+  }
+
+  .success-modal {
+    display  : grid;
+    gap      : 10px;
+    max-width: 450px;
+
+    &>.image-container {
+      width       : 142.56px;
+      height      : 142.56px;
+      background  : no-repeat center/cover;
+      justify-self: center;
+    }
+
+    &>.label {
+      margin-top : 10px;
+      font-size  : 20px;
+      font-weight: 500;
+      line-height: 24px;
+      text-align : center;
+    }
+
+    &>.description {
+      text-align: center;
+      color     : var(--color-gray-60);
+    }
+
+    &>button {
+      margin-top: 20px;
+    }
+  }
+
+  @include xxs {
+    &>.title {
+      font-size: 22px;
+    }
+
+    &>form {
+      &>.select-publication {
+        &>.cards {
+          &>.publication-type-card {
+            padding: 15px;
+            width  : 100%;
+          }
+        }
+      }
+
+      &>.select-product-type {
+        &>ul {
+          grid-template-columns: repeat(1, 1fr);
+        }
+      }
+
+      &>.select-product-game {
+        &>ul {
+          width: calc(100vw - 60px);
+        }
+      }
+
+      &>.product-detail {
+        &>.content {
+          &>.platform-category {
+            grid-template-columns: repeat(1, 1fr);
+          }
+        }
+      }
+    }
+  }
+}

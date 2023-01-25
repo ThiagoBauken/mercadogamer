@@ -1,0 +1,202 @@
+$width:300px;
+
+aside.mobile-navigation {
+  position          : fixed !important;
+  display           : none;
+  height            : 100vh;
+  width             : $width;
+  top               : 0;
+  left              : -$width;
+  background-color  : var(--color-gray-120);
+  grid-template-rows: min-content 1fr min-content;
+  z-index           : 996;
+  transition        : all 0.2s;
+
+  @include md {
+    display           : grid;
+    grid-template-rows: min-content min-content min-content;
+    height            : 100vh;
+    overflow          : scroll;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    &>.action {
+      margin-top: 45px !important;
+    }
+  }
+
+  &.active {
+    left: 0;
+  }
+
+  &>.header {
+    display        : grid;
+    align-items    : center;
+    grid-auto-flow : column;
+    justify-content: space-between;
+    padding        : 20px;
+
+    &>.logo {
+      font-size: 35px;
+    }
+
+    &>.action {
+      font-size: 30px;
+    }
+  }
+
+  &>.content {
+    display: grid;
+    height : fit-content;
+
+    &>.user-avatar {
+      display              : grid;
+      grid-template-columns: min-content 1fr;
+      gap                  : 11px;
+      align-items          : center;
+      padding              : 20px;
+
+      &>.avatar {
+        width        : 60px;
+        height       : 60px;
+        background   : no-repeat center/cover;
+        border-radius: 50%;
+      }
+
+      &>.user-info {
+        display    : grid;
+        gap        : 8px;
+        font-weight: 500;
+        height     : fit-content;
+
+        &>.name {
+          font-size     : 20px;
+          text-transform: capitalize;
+        }
+
+        &>.balance {
+          font-size: 15px;
+          color    : var(--color-primary);
+        }
+      }
+    }
+
+    &>.mobile-shortcut-menu {
+      display              : grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap                  : 10px;
+      padding              : 13px 20px;
+
+      &>.menu-item {
+        font-style   : normal;
+        font-weight  : 500;
+        font-size    : 11px;
+        line-height  : 13px;
+        text-align   : center;
+        color        : var(--color-gray-40);
+        display      : grid;
+        gap          : 9.8px;
+        background   : var(--color-gray-100);
+        border-radius: 5px;
+        padding      : 12px 13px;
+        cursor       : pointer;
+
+        &>.mercado-icon {
+          font-size: 17px;
+          margin   : auto;
+        }
+      }
+    }
+
+    ul {
+      display : grid;
+      height  : fit-content;
+      overflow: overlay;
+
+      &>li.navigation-item {
+        display              : grid;
+        grid-template-columns: min-content 1fr;
+        align-items          : center;
+        gap                  : 14px;
+        padding              : 13px 20px;
+        cursor               : pointer;
+
+        &>.icon {
+          display  : flex;
+          font-size: 24px;
+          width    : 24px;
+          height   : 24px;
+          color    : var(--color-gray-60);
+        }
+
+        &>.label {
+          font-size  : 16px;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+
+  &>.action {
+    ul {
+      display : grid;
+      height  : fit-content;
+      overflow: overlay;
+
+      &>li.navigation-item {
+        display              : grid;
+        grid-template-columns: min-content 1fr;
+        align-items          : center;
+        gap                  : 14px;
+        padding              : 13px 3px;
+        cursor               : pointer;
+
+        &>.icon {
+          display  : flex;
+          font-size: 24px;
+          width    : 24px;
+          height   : 24px;
+          color    : var(--color-gray-60);
+        }
+
+        &>.label {
+          font-size  : 16px;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+
+  &.login {
+
+    &>.content {
+
+      &>div,
+      &>ul {
+        border-bottom : 1px solid var(--color-gray-100);
+        padding-bottom: 20px;
+        padding-top   : 20px;
+      }
+    }
+  }
+
+  &>.action {
+    margin    : 20px 0px;
+    margin-top: 0;
+    padding   : 0px 16px;
+  }
+
+  @include xxs {
+    width: 270px !important;
+
+    &>.content {
+      &>.mobile-shortcut-menu {
+        &>.menu-item {
+          padding: 12px 8px;
+        }
+      }
+    }
+  }
+}

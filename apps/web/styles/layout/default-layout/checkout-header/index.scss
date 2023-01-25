@@ -1,0 +1,58 @@
+.mercado-checkout-layout-header {
+  display              : grid;
+  align-items          : center;
+  grid-template-columns: min-content min-content;
+  justify-content      : space-between;
+  height               : 110px;
+  position             : sticky;
+  top                  : 0;
+  background-color     : var(--color-gray-130);
+  z-index              : 997;
+  padding              : 0 10px;
+  width                : calc(100% - 20px);
+
+  &>* {
+    position: relative;
+  }
+
+  &>.logo {
+    font-size: 60px;
+    display  : flex;
+    cursor   : pointer;
+  }
+
+  &>.secure-purchase {
+    display       : grid;
+    gap           : 10px;
+    grid-auto-flow: column;
+    white-space   : nowrap;
+    font-size     : 14px;
+    font-weight   : 500;
+    color         : var(--color-gray-40);
+    align-items   : center;
+  }
+
+  &::before {
+    content         : '';
+    position        : fixed;
+    inset           : 0;
+    height          : 110px;
+    top             : 0;
+    background-color: var(--color-gray-130);
+    z-index         : 0;
+  }
+
+  @include md {
+    grid-template-columns: min-content min-content 1fr;
+    gap                  : 16px;
+    height               : 55px;
+
+    &::before {
+      height: 55px;
+    }
+
+    &>.logo {
+      font-size: 35px;
+    }
+  }
+}

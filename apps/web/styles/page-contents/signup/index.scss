@@ -1,0 +1,150 @@
+.signup-modal {
+  &>.modal-content {
+    padding : 0 !important;
+    position: relative;
+
+    &>.header {
+      position: absolute;
+      top     : 10px;
+      right   : 10px;
+    }
+
+    .signup-page {
+      display        : flex;
+      justify-content: center;
+      align-items    : center;
+      padding-top    : 0 !important;
+
+      &>.content {
+        width           : 450px;
+        display         : grid;
+        background-color: var(--color-gray-120);
+        box-shadow      : 0px 7px 25px rgba(0, 0, 0, 0.1);
+        border-radius   : 8px;
+        overflow        : hidden;
+
+        &>.header {
+          display   : grid;
+          background: no-repeat center/cover url('/assets/imgs/new-login-header.webp');
+          padding   : 30px;
+          gap       : 15px;
+
+          &>.title {
+            padding-top: 20px;
+            font-size  : 24px;
+            font-weight: 500;
+            line-height: 29px;
+            text-align : center;
+          }
+
+          &>.description {
+            font-size  : 14px;
+            font-weight: 500;
+            line-height: 17px;
+            text-align : center;
+
+            span {
+              cursor: pointer;
+              color : var(--color-primary);
+            }
+          }
+
+          &>ul {
+            display              : grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap                  : 15px;
+            margin               : 15px 0;
+
+            li {
+              height       : 45px;
+              border-radius: 45px;
+
+              &.blue {
+                background-color: #2D75E8;
+              }
+
+              &.red {
+                background-color: #E54545;
+              }
+            }
+          }
+
+          &>.form-title {
+            display              : grid;
+            gap                  : 16px;
+            grid-template-columns: 1fr max-content 1fr;
+            align-items          : center;
+            color                : var(--color-gray-90);
+
+            &::before,
+            &::after {
+              content         : '';
+              height          : 1px;
+              background-color: currentColor;
+            }
+          }
+        }
+
+        &>form {
+          display: grid;
+          gap    : 30px;
+          padding: 0 30px;
+
+          &>.mercado-button {
+            &>.content {
+              padding    : 14px;
+              font-style : normal;
+              font-weight: 500;
+              font-size  : 14px;
+              line-height: 17px;
+            }
+          }
+
+          &>.error-message {
+            height               : 50px;
+            display              : grid;
+            align-items          : center;
+            grid-template-columns: min-content 1fr;
+            gap                  : 10px;
+            border               : 1px solid var(--color-negative);
+            border-radius        : 5px;
+            padding              : 15px;
+            background-color     : rgba(255, 45, 45, 0.07);
+          }
+
+          &>.remember-password {
+            display              : grid;
+            grid-template-columns: min-content 1fr;
+            color                : var(--color-gray-60);
+            gap                  : 10px;
+            align-items          : center;
+            width                : fit-content;
+          }
+
+          &>.description {
+            text-align    : center;
+            padding-bottom: 50px;
+            color         : var(--color-gray-60);
+          }
+        }
+      }
+    }
+  }
+
+  @include xxs {
+    &>.modal-content {
+      &>.signup-page {
+        &>.content {
+          &>.header {
+            padding: 15px;
+          }
+
+          &>form {
+            padding: 0 15px;
+            gap    : 15px
+          }
+        }
+      }
+    }
+  }
+}

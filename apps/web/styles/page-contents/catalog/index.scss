@@ -1,0 +1,450 @@
+@import './catalog-filter-content/index.scss';
+
+.no-products-found-text {
+  text-align : center;
+  font-size  : 16px;
+  padding-top: 1rem;
+}
+
+.mercadco-catalog-page {
+  display              : grid !important;
+  grid-template-columns: 280px 1fr;
+  gap                  : 20px;
+  padding-top          : 60px;
+  padding-bottom       : 113px;
+
+  .load-more-button {
+    display        : flex;
+    border         : 1px solid var(--color-primary);
+    color          : var(--color-primary);
+    justify-content: center;
+    align-items    : center;
+    padding        : 10px 0;
+    border-radius  : 10px;
+    cursor         : pointer;
+    transition     : all 0.1s ease-in-out;
+  }
+
+  .load-more-button:hover {
+    background : var(--color-primary);
+    color      : var(--color-gray-130);
+    box-shadow : 0 1px 15px rgba(#F78A0E, 0.3);
+    font-weight: 800;
+  }
+
+  &>.header {
+    grid-column    : 1 / span 2;
+    display        : grid;
+    grid-auto-flow : column;
+    justify-content: space-between;
+    align-items    : center;
+
+    &>.order {
+      display       : grid;
+      grid-auto-flow: column;
+      align-items   : center;
+      gap           : 8px;
+
+      &>.label {
+        font-size: 14px;
+        color    : var(--color-gray-60);
+      }
+
+      .mercado-select {
+        width: 145px;
+      }
+    }
+  }
+
+  &>.content {
+    display: grid;
+    gap    : 20px;
+    height : fit-content;
+
+    &>.mobile-title {
+      font-style : normal;
+      font-weight: 500;
+      font-size  : 24px;
+      line-height: 29px;
+      display    : none;
+    }
+
+    &>.games-content {
+      display: grid;
+
+      .game-card-filter {
+        width                    : 100%;
+        --swiper-navigation-color: white;
+        --swiper-navigation-size : 15px;
+
+        .swiper-slide {
+          height       : 60px;
+          width        : 100px;
+          border-radius: 5px;
+
+          img {
+            width        : 100%;
+            height       : 100%;
+            object-fit   : cover;
+            border-radius: 5px;
+            opacity      : 0.4;
+            cursor       : pointer;
+          }
+        }
+
+        .first-slide {
+          margin-left: 40px !important;
+        }
+
+        .last-slide {
+          margin-right: 40px !important;
+        }
+
+        .selected {
+          border: 1px solid #FFFFFF4D;
+
+          img {
+            opacity: 1;
+          }
+        }
+
+        .selector-fade {
+          position: absolute;
+          height  : 100%;
+          top     : 0;
+          width   : 60px;
+          z-index : 10;
+        }
+
+        .selector-fade-left {
+          left            : 0;
+          background-image: linear-gradient(to right, $gray_130, rgba(0, 0, 0, 0));
+        }
+
+        .selector-fade-right {
+          right           : 0;
+          background-image: linear-gradient(to left, $gray_130, rgba(0, 0, 0, 0));
+        }
+
+        .swiper-button-prev,
+        .swiper-button-next {
+          z-index: 11;
+        }
+      }
+
+      &>.mobile-juego-title {
+        font-style   : normal;
+        font-weight  : 400;
+        font-size    : 14px;
+        line-height  : 17px;
+        color        : var(--color-gray-60);
+        margin-bottom: 10px;
+        display      : none;
+      }
+    }
+
+    &>.products-content {
+      display              : grid;
+      grid-template-columns: repeat(auto-fill, 206.75px);
+      gap                  : 40px 17.67px;
+      height               : min-content;
+      justify-content      : flex-end;
+
+      &>.mercado-product-card {
+        min-height: 378.33px;
+      }
+    }
+
+    &>button {
+      margin       : auto;
+      width        : auto;
+      border-radius: 50%;
+
+      &>.background {
+        border-radius: 50px;
+      }
+    }
+  }
+
+  &>.filter-content {
+    &>.action {
+      display: none;
+    }
+  }
+
+  &>.filter-action {
+    display: none;
+
+    &>.mercado-button {
+      &>.content {
+        font-style : normal;
+        font-weight: 600;
+        font-size  : 14px;
+        line-height: 17px;
+        /* identical to box height */
+
+        text-align: center;
+      }
+    }
+  }
+
+  &>.shortcut-action {
+    z-index: 999;
+
+    &>button {
+      position: fixed;
+      bottom  : 30px;
+      right   : 30px;
+
+      &>.content {
+        padding: 17.5px 17.5px !important;
+
+        &>.mercado-icon {
+          font-size: 25px;
+          color    : var(--color-gray-130)
+        }
+      }
+    }
+
+    &>.stortcut-content {
+      position        : fixed;
+      bottom          : 115px;
+      right           : 50px;
+      background-color: var(--color-gray-110);
+      padding         : 11.5px 23px;
+      box-shadow      : 0px 7px 25px rgba(0, 0, 0, 0.1);
+      border-radius   : 5px;
+
+      &>.menu-container {
+        &>.content {
+          &>ul {
+            display: grid;
+            gap    : 25px;
+
+            &>li {
+              display    : flex;
+              align-items: center;
+              color      : var(--color-gray-60);
+              font-style : normal;
+              font-weight: 400;
+              font-size  : 14px;
+              line-height: 17px;
+              cursor     : pointer;
+
+              &>.mercado-icon {
+                margin-right: 9.5px;
+              }
+
+              &:hover {
+                color: white;
+              }
+            }
+          }
+        }
+
+        &>.mercado-modal {
+          &>.modal-content {
+            width: 450px;
+
+            &>.content {
+              width: initial;
+
+              &>form {
+                display: grid;
+                gap    : 25px
+              }
+            }
+          }
+        }
+      }
+    }
+
+    @include md {
+      display: none;
+    }
+  }
+
+  @include xl {
+
+    &>.content {
+      &>.products-content {
+        grid-template-columns: repeat(auto-fill, 200.75px);
+        gap                  : 40px 30px;
+      }
+    }
+  }
+
+  @include lg {
+    &>.content {
+      padding-left : 16px;
+      padding-right: 16px;
+    }
+  }
+
+  @include md {
+    grid-template-columns: unset;
+    position             : relative;
+    margin-bottom        : 59px;
+    padding-top          : 0px;
+
+    &>.mercado-loading {
+      display: none;
+    }
+
+    &>.header {
+      display: none;
+    }
+
+    &>.content {
+      padding-top: 40px;
+
+      &>.mobile-title {
+        display: block;
+      }
+
+      &>.games-content {
+        &>.mobile-juego-title {
+          display: block;
+        }
+      }
+
+      &>.products-content {
+        grid-template-columns: repeat(2, 1fr);
+        gap                  : 40px 16px;
+
+        &>.mercado-product-card {
+          width     : 100%;
+          min-height: auto;
+        }
+      }
+    }
+
+    &>.filter-action {
+      display        : grid;
+      justify-content: center;
+      position       : fixed;
+      bottom         : 30px;
+      width          : 100%;
+      z-index        : 10;
+      right          : 0px
+    }
+
+    &>.filter-content {
+      display: none;
+
+      &.active {
+        display                 : grid;
+        gap                     : 10px;
+        grid-template-rows      : min-content 1fr;
+        position                : fixed;
+        left                    : 0;
+        right                   : 0;
+        inset                   : 0;
+        z-index                 : 997;
+        background-color        : var(--color-gray-130);
+        top                     : 0px;
+        bottom                  : 0px;
+        // padding              : 5px 0px 30px 0px;
+        overflow                : scroll;
+        // height            : calc(100vh - 0px);
+        z-index                 : 1002;
+
+        &>.action {
+          display         : flex;
+          justify-content : flex-start;
+          padding-top     : 15px;
+          padding-bottom  : 15px;
+          padding-left    : 15px;
+          padding-right   : 15px;
+          align-items     : center;
+          position        : fixed;
+          z-index         : 1000;
+          width           : 100%;
+          background-color: var(--color-gray-130);
+
+          &>.title {
+            font-size   : 14px;
+            font-weight : 600;
+            color       : var(--color-gray-40);
+            padding-left: 5px;
+          }
+
+          &>button {
+            color: var(--color-gray-40);
+          }
+        }
+
+        &>.catalog-filter-content {
+          background-color          : var(--color-gray-120);
+          padding-top               : 10px;
+          -webkit-overflow-scrolling: touch;
+          white-space               : nowrap;
+          clip-path                 : inset(0 0 10px 0);
+          margin-top                : 50px;
+
+
+
+          &>section {
+            padding-left : 25px;
+            padding-right: 25px;
+          }
+
+          &>.category {
+            padding-bottom: 25px;
+          }
+        }
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
+      }
+    }
+  }
+
+  @include xs {
+    padding-bottom: 50px;
+    margin-bottom : 10px;
+  }
+
+  @include xxs {
+    margin-bottom : 0px;
+    padding-bottom: 50px;
+
+    &>.content {
+      padding-top: 30px;
+      gap        : 15px;
+
+      &>.mobile-title {
+        font-size: 18px;
+      }
+    }
+  }
+
+  @include m-xxs {
+    margin-bottom : 0px;
+    padding-bottom: 50px;
+
+    &>.content {
+      padding-top  : 30px;
+      gap          : 15px;
+      padding-left : 12px;
+      padding-right: 12px;
+
+      &>.mobile-title {
+        font-size: 18px;
+      }
+
+      &>.products-content {
+        gap: 20px 10px
+      }
+    }
+
+    &>.filter-action {
+      &>button {
+        &>.content {
+          padding: 10px 25px;
+        }
+      }
+    }
+  }
+}

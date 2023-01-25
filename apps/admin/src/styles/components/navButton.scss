@@ -1,0 +1,19 @@
+.nav-link {
+  text-decoration: none;
+  color: var(--color-gray-40);
+  width: calc(100% - 60px);
+  padding: 15px 0px;
+  padding-left: 60px;
+  font-weight: 500;
+  transition: all 0.1s ease-in-out;
+}
+
+.nav-link:hover {
+  color: var(--color-primary);
+  background: var(--color-gray-110);
+}
+
+.nav-link-active {
+  color: var(--color-primary);
+  background: var(--color-gray-100);
+}

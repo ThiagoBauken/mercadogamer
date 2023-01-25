@@ -1,0 +1,328 @@
+section.sale-content-page {
+  display: grid;
+  gap    : 80px;
+
+  &>.title {
+    display              : grid;
+    gap                  : 20px;
+    align-items          : center;
+    grid-template-columns: min-content 1fr min-content;
+
+    &>.count {
+      font-size  : 14px;
+      font-weight: 400;
+      line-height: 17px;
+      color      : var(--color-gray-80);
+      display    : flex;
+      align-items: flex-end;
+      height     : 100%;
+    }
+
+    &>.action {
+      display        : grid;
+      gap            : 15px;
+      align-items    : center;
+      justify-content: flex-end;
+      grid-auto-flow : column;
+      font-size      : 14px;
+      font-weight    : 400;
+      line-height    : 17.07px;
+
+      .download-type-menu {
+        width          : 45px;
+        height         : 45px;
+        cursor         : pointer;
+        border         : 2px solid var(--color-primary);
+        display        : flex;
+        justify-content: center;
+        align-items    : center;
+        font-size      : 24px;
+        border-radius  : 50%;
+      }
+    }
+  }
+
+  &>.mobile-title {
+    display        : flex;
+    justify-content: space-between;
+
+    &>.title {
+
+      &>.label {
+        font-style : normal;
+        font-weight: 500;
+        font-size  : 24px;
+        line-height: 29px;
+      }
+
+      &>.count {
+        font-size  : 14px;
+        font-weight: 400;
+        line-height: 17px;
+        color      : var(--color-gray-80);
+        display    : flex;
+        height     : 100%;
+        margin-top : 10px;
+      }
+    }
+
+
+
+    &>.action {
+      display        : grid;
+      gap            : 15px;
+      align-items    : center;
+      justify-content: flex-end;
+      grid-auto-flow : column;
+      font-size      : 14px;
+      font-weight    : 400;
+      line-height    : 17.07px;
+
+      .download-type-menu {
+        width          : 45px;
+        height         : 45px;
+        cursor         : pointer;
+        border         : 2px solid var(--color-primary);
+        display        : flex;
+        justify-content: center;
+        align-items    : center;
+        font-size      : 24px;
+        border-radius  : 50%;
+      }
+    }
+  }
+
+  &>.content {
+    display: grid;
+    gap    : 34px;
+
+
+    &>.mobile-filter {
+      position        : fixed;
+      inset           : 0;
+      display         : flex;
+      align-items     : center;
+      justify-content : center;
+      background-color: var(--color-gray-130);
+      z-index         : 999;
+      display         : flex;
+      flex-direction  : column;
+      top             : 0%;
+      left            : 0%;
+      height          : 100vh;
+      width           : 100vw;
+
+
+      &>.content {
+        width           : 300px;
+        background-color: var(--color-gray-120);
+        overflow        : scroll;
+        max-height      : 100vh;
+        box-shadow      : 0px 7px 25px rgba(0, 0, 0, 0.1);
+        border-radius   : 5px;
+
+        &>.action {
+          display         : flex;
+          justify-content : flex-end;
+          padding-bottom  : 20px;
+          background-color: var(--color-gray-130);
+        }
+
+        .mercado-expansion {
+          &>.title {
+            display: none;
+          }
+
+          &>.header {
+            .expansion-header {
+              display: grid;
+              gap    : 4px;
+              padding: 9px 16px;
+
+              &>.label {
+                font-size  : 13px;
+                font-weight: 500;
+              }
+
+              &>.message {
+                font-size: 11px;
+                color    : var(--color-primary);
+              }
+            }
+          }
+
+          .expantion-content {
+            padding: 0;
+          }
+        }
+
+        .filter-group-container {
+          font-size: 14px;
+
+          &>li {
+            padding      : 10px 16px;
+            border-bottom: 1px solid var(--color-gray-100)
+          }
+        }
+      }
+
+      &>.content::-webkit-scrollbar {
+        display: none;
+      }
+
+      @include xxs {
+        &>.content {
+          width: 260px;
+        }
+      }
+    }
+
+    &>.orders-status {
+      display              : grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap                  : 20px;
+      margin-bottom        : 46px;
+      @import './widgets/status-count-card/index.scss';
+
+    }
+
+    &>.filter-config {
+      display        : flex;
+      justify-content: space-between;
+
+      &>.mercado-wrap-label {
+        width: fit-content
+      }
+
+      &>.filter-menus {
+        display       : grid;
+        grid-auto-flow: column;
+        align-items   : center;
+        gap           : 20px;
+
+        &>.divition {
+          width           : 1px;
+          height          : 25px;
+          background-color: var(--color-gray-100);
+        }
+      }
+    }
+
+    &>.mercado-data-table {
+      .table-button-container {
+        display: flex;
+        justify-content: center;
+        padding-top: 16px;
+      }
+
+      &>table {
+        &>tbody {
+          &>tr {
+
+            &>td {
+              font-size     : 14px;
+              font-style    : normal;
+              font-weight   : 400;
+              text-transform: capitalize;
+
+              &>.product-picture {
+                cursor: pointer;
+              }
+
+              &>.product-name {
+                cursor: pointer;
+              }
+
+              &>.default {
+                &>.icon {
+                  font-size: 13.5px;
+                }
+              }
+
+              &>.has-unread-message {
+                width           : 10px;
+                height          : 10px;
+                border-radius   : 50%;
+                background-color: var(--color-primary);
+                margin          : 0 auto;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &>.sale-list {
+      @import './widgets/sale-content-card/index.scss';
+    }
+
+    @include md {
+      &>.filter-config {
+        &>.mercado-wrap-label {
+          width: 100%;
+        }
+
+        &>.filter-menus {
+          display: none;
+        }
+      }
+
+      &>.orders-status {
+        grid-template-columns: repeat(2, 1fr);
+        margin-bottom        : 0px;
+      }
+
+      &>.mercado-button {
+        &>.content {
+          padding: 14px 141.5px
+        }
+      }
+    }
+  }
+
+  @import 'widgets/cancel-sale-modal/index.scss';
+
+  @include md {
+    gap: 30px
+  }
+
+  @include xxs {
+    &>.content {
+      &>.orders-status {
+        grid-template-columns: repeat(1, 1fr);
+        gap                  : 15px
+      }
+
+      &>button {
+        &>.content {
+          padding: 10px 30px !important;
+        }
+      }
+
+
+      &>.sale-list {
+        &>.sale-detail-card {
+          &>.date-status {
+            gap: 10px;
+
+            &>.date {
+              font-size: 10px;
+            }
+
+            &>.price {
+              font-size: 10px;
+            }
+
+            &>.order-status-bagde {
+              &>.content {
+                &>.status {
+                  font-size: 10px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

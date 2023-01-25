@@ -1,0 +1,69 @@
+# *
+User-agent: *
+Disallow: /cart
+Disallow: /checkout
+Disallow: /icon-lists
+Disallow: /purchase
+Disallow: /profile
+Disallow: /product-detail
+Disallow: /dashboard/balance
+Disallow: /dashboard/inventory
+Disallow: /dashboard/inventory/add
+Disallow: /dashboard/order
+Disallow: /dashboard/profile
+Disallow: /dashboard/qas
+Disallow: /dashboard/question
+Disallow: /dashboard/sale
+Disallow: /dashboard/store
+Disallow: /dashboard/support
+Disallow: /term-condition/101
+Disallow: /term-condition/102
+Disallow: /term-condition/103
+Disallow: /term-condition/104
+Disallow: /term-condition/105
+Disallow: /security-privacy/101
+Disallow: /security-privacy/102
+Disallow: /security-privacy/103
+Disallow: /security-privacy/104
+Disallow: /security-privacy/105
+Disallow: /rb
+ 
+# until it's ready
+Disallow: /catalogo?juego=New+World 
+Disallow: /catalogo?juego=FIFA+21
+Disallow: /catalogo?juego=Pokemon+GO 
+Disallow: /catalogo?juego=Genshin+Impact 
+Disallow: /catalogo?juego=Minecraft
+Disallow: /catalogo?juego=Wild+Rift 
+Disallow: /catalogo?juego=Pixel+Worlds 
+Disallow: /catalogo?juego=Clash+of+Clans 
+Disallow: /catalogo?juego=Clash+Royale
+Disallow: /catalogo?juego=Lords+Mobile 
+Disallow: /catalogo?juego=PUBG 
+Disallow: /catalogo?juego=PUBG+Mobile 
+Disallow: /catalogo?juego=Albion+Online 
+Disallow: /catalogo?juego=Dota+2 
+Disallow: /catalogo?juego=Elden+Ring 
+Disallow: /catalogo?juego=Lego+Saga 
+Disallow: /catalogo?juego=Fallout+76 
+Disallow: /catalogo?juego=Lost+Ark 
+Disallow: /catalogo?juego=World+of+Warcraft 
+Disallow: /catalogo?juego=WOW+Classic+ERA 
+Disallow: /catalogo?juego=WOW+WotLK+Classic 
+Disallow: /catalogo?juego=ARK%3A+Survival+Evolved 
+Disallow: /catalogo?juego=GTA+5
+Disallow: /catalogo?juego=Rust 
+Disallow: /catalogo?juego=Sea+of+Thieves 
+Disallow: /catalogo?juego=Valheim
+ 
+User-agent: *
+Allow: /$
+Allow: /regalos
+Allow: /catalogo
+ 
+ 
+# Host
+Host: https://www.mercadogamer.com/
+ 
+# Sitemaps
+Sitemap: https://www.mercadogamer.com/sitemap.xml

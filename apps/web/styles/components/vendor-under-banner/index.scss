@@ -1,0 +1,195 @@
+.vendor-sell-section {
+  background   : no-repeat 50%/cover;
+  height       : 350px;
+  border-radius: 8px;
+  position     : relative;
+  display      : flex;
+
+  &>.vendor-sell-card {
+    border-radius        : 5px;
+    display              : grid;
+    grid-template-columns: 1fr 1fr;
+
+    &>.action {
+      // height     : 350px;
+      display    : flex;
+      align-items: center;
+
+      &>div {
+        display       : flex;
+        margin-left   : 95px;
+        gap           : 25px;
+        flex-direction: column;
+
+        &>.title {
+          font-style : normal;
+          font-weight: 600;
+          font-size  : 38px;
+          line-height: 46px;
+          padding-top: 49px;
+
+          span {
+            color: #F78A0E
+          }
+        }
+
+        &>.content {
+          font-style : normal;
+          font-weight: 500;
+          font-size  : 16px;
+          line-height: 22px;
+          color      : var(--color-gray-30);
+          width      : 75% !important;
+        }
+
+        &>button {
+          &>.content {
+            font-style : normal;
+            font-weight: 600;
+            font-size  : 13px;
+            line-height: 16px;
+            color      : var(--color-gray-130)
+          }
+        }
+      }
+    }
+
+    &>.image {
+      &>.vendor-img {
+        background: no-repeat center/cover;
+        position  : absolute;
+        bottom    : 0px;
+        right     : 95px
+      }
+    }
+  }
+
+  @include lg {}
+
+  @include md {
+    &>.vendor-sell-card {
+      &>.action {
+        &>div {
+          margin-left: 20px;
+
+          &>.title {
+            padding-top: 20px;
+          }
+        }
+      }
+
+      &>.image {
+        &>.vendor-img {
+          right : 0px;
+          height: 310px;
+        }
+      }
+    }
+  }
+
+  @include sm {
+    &>.vendor-sell-card {
+      grid-template-columns: 1fr min-content;
+
+      &>.action {
+        &>div {
+          margin-left: 20px;
+
+          &>.title {
+            padding-top: 20px;
+            font-size  : 25px;
+          }
+
+          &>.content {
+            font-size: 14px;
+            width    : 65% !important;
+          }
+        }
+      }
+
+      &>.image {
+        &>.vendor-img {
+          right : 0px;
+          height: 310px;
+        }
+      }
+    }
+  }
+
+  @include xs {
+    height: 175px;
+
+    &>.vendor-sell-card {
+
+      &>.action {
+        height: unset;
+
+        &>div {
+          gap        : 0px;
+          margin-left: 10px;
+
+          &>.title {
+            padding-top: 0px;
+            font-size  : 18px;
+            line-height: 20px;
+            width      : 56%;
+          }
+
+          &>.content {
+            font-size: 10px;
+            width    : 60% !important;
+          }
+
+          &>button {
+            &>.content {
+              padding  : 5.5px 15px;
+              font-size: 10px;
+            }
+          }
+        }
+      }
+
+      &>.image {
+        &>.vendor-img {
+          right : 0px;
+          height: 140px;
+          width : 116px;
+        }
+      }
+    }
+  }
+
+  @include xxs {
+    &>.vendor-sell-card {
+
+      &>.action {
+        height: unset;
+
+        &>div {
+          gap        : 0px;
+          margin-left: 10px;
+
+          &>.title {
+            padding-top: 0px;
+            font-size  : 16px;
+            line-height: 20px;
+            width      : 56%;
+          }
+
+          &>.content {
+            font-size: 8px;
+            width    : 60% !important;
+          }
+        }
+      }
+
+      &>.image {
+        &>.vendor-img {
+          right : 0px;
+          height: 130px;
+          width : 106px;
+        }
+      }
+    }
+  }
+}

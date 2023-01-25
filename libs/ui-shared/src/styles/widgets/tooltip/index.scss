@@ -1,0 +1,123 @@
+.mercado-tooltip-container {
+  $triangle-width: 5px;
+  font-size      : 12px;
+  cursor         : pointer;
+
+  &>.mercado-tooltip {
+    border-radius: 5px;
+    padding      : 6px;
+    text-align   : center;
+  }
+
+  &:hover {
+    &>.mercado-tooltip {
+      visibility: visible;
+      opacity   : 1;
+    }
+  }
+
+  &.show {
+    &>.mercado-tooltip {
+      visibility: visible;
+      opacity   : 1;
+    }
+  }
+
+  &>.mercado-tooltip {
+    position        : fixed;
+    transition      : opacity .6s;
+    z-index         : 999;
+    visibility      : hidden;
+    background-color: var(--mercado-tooltip-background-color);
+    box-shadow      : 0px 0px 0px 1px var(--mercado-tooltip-color);
+    padding         : 4px;
+    opacity         : 0;
+
+    &::before,
+    &::after {
+      content     : '';
+      position    : absolute;
+      border-width: 5px;
+      border-style: solid;
+      z-index     : 2;
+    }
+
+    &::after {
+      border-width: 7px;
+      z-index     : 1;
+    }
+
+    &.move {
+      margin: 20px;
+
+      &::before,
+      &::after {
+        display: none;
+      }
+    }
+
+    &.top {
+
+      &::before,
+      &::after {
+        top         : 100%;
+        margin-left : -5px;
+        left        : 50%;
+        border-color: var(--mercado-tooltip-background-color) transparent transparent transparent;
+      }
+
+      &::after {
+        border-color: var(--mercado-tooltip-color) transparent transparent transparent;
+        margin-left : -7px;
+      }
+    }
+
+    &.bottom {
+
+      &::before,
+      &::after {
+        bottom      : 100%;
+        margin-left : -5px;
+        left        : 50%;
+        border-color: transparent transparent var(--mercado-tooltip-background-color) transparent;
+      }
+
+      &::after {
+        border-color: transparent transparent var(--mercado-tooltip-color) transparent;
+        margin-left : -7px;
+      }
+    }
+
+    &.left {
+
+      &::before,
+      &::after {
+        top         : 50%;
+        margin-top  : -5px;
+        left        : 100%;
+        border-color: transparent transparent transparent var(--mercado-tooltip-background-color);
+      }
+
+      &::after {
+        border-color: transparent transparent transparent var(--mercado-tooltip-color);
+        margin-top  : -7px;
+      }
+    }
+
+    &.right {
+
+      &::before,
+      &::after {
+        top         : 50%;
+        margin-top  : -5px;
+        right       : 100%;
+        border-color: transparent var(--mercado-tooltip-background-color) transparent transparent;
+      }
+
+      &::after {
+        border-color: transparent var(--mercado-tooltip-color) transparent transparent;
+        margin-top  : -7px;
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+.mercado-rating {
+  display       : grid;
+  grid-auto-flow: column;
+  gap           : 6px;
+  align-items   : center;
+  width         : fit-content;
+
+  &>.item {
+    display  : flex;
+    color    : var(--mercado-rating-deactive-color);
+    font-size: var(--mercado-rating-icon-size);
+
+    &.active {
+      color: var(--mercado-rating-active-color);
+    }
+  }
+
+  &.editable {
+    &>.item {
+      cursor: pointer;
+    }
+  }
+}

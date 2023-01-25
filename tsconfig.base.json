@@ -1,0 +1,40 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "noImplicitReturns": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "strictNullChecks": false,
+    "baseUrl": ".",
+    "paths": {
+      "@admin/*": ["apps/admin/src/*"],
+      "@web/*": ["apps/web/src/*"],
+      "@store": ["apps/web/src/store"],
+      "@actions/*": ["apps/web/src/store/actions/*"],
+      "@action-types": ["apps/web/src/store/types"],
+      "@components/*": ["apps/web/src/components/*"],
+      "@page-contents/*": ["apps/web/src/page-contents/*"],
+      "@dashboard/*": ["apps/web/src/page-contents/dashboard/*"],
+      "@theme/*": ["libs/ui-shared/src/theme/*"],
+      "@layout/*": ["apps/web/src/layout/*"],
+      "@widgets/*": ["libs/ui-shared/src/widgets/*"],
+      "@icons": ["libs/ui-shared/src/icons"],
+      "@utils": ["libs/ui-shared/src/utils"],
+      "@utils/*": ["libs/ui-shared/src/utils/*"],
+      "@hooks": ["libs/ui-shared/src/hooks"],
+      "@hooks/*": ["libs/ui-shared/src/hooks/*"],
+      "@ui-shared/*": ["libs/ui-shared/src/*"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

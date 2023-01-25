@@ -1,0 +1,12 @@
+.mercado-icon-button {
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+  font-size      : 30px;
+  color          : var(--mercado-icon-button-color);
+  cursor         : pointer;
+
+  &:hover {
+    color: var(--mercado-icon-button-color--hover);
+  }
+}

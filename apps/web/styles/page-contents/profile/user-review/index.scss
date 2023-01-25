@@ -1,0 +1,35 @@
+.user-review {
+  display              : grid;
+  grid-template-columns: min-content 1fr;
+  padding              : 20px 0;
+  gap                  : 10px;
+
+  // &>.content {
+  //   &>.mercado-rating {
+  //     &>.item {
+  //       color: red
+  //     }
+  //   }
+  // }
+
+  &:not(:last-of-type) {
+    border-bottom: 1px solid var(--color-gray-100);
+  }
+
+  &>.avatar {
+    width        : 30px;
+    height       : 30px;
+    background   : no-repeat center/cover;
+    border-radius: 50%;
+  }
+
+  &>.content {
+    display: grid;
+    gap    : 10px;
+
+    &>.user-name {
+      font-weight: 500;
+      color      : var(--color-gray-60);
+    }
+  }
+}

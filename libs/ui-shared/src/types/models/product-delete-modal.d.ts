@@ -1,0 +1,4 @@
+
+interface ProductDeleteModelType {
+  id: string;
+}

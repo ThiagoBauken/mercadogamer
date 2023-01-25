@@ -1,0 +1,163 @@
+section.store-page-content {
+  display: grid;
+  gap    : 62px;
+
+  &>.content {
+    display: grid;
+    gap    : 20px;
+
+    &>.store-information {
+      display         : grid;
+      padding         : 30px;
+      gap             : 53px;
+      background-color: var(--color-gray-120);
+      border-radius   : 8px;
+
+      &>.header {
+        display        : grid;
+        justify-content: space-between;
+        align-items    : center;
+        grid-auto-flow : column;
+
+        &>.title {
+          font-size: 20px;
+        }
+      }
+
+      &>.content {
+        display        : grid;
+        grid-auto-flow : column;
+        justify-content: space-between;
+        align-items    : center;
+        @import './widgets/store-information-card/index.scss';
+      }
+    }
+
+    &>.banner-personalize {
+      display         : grid;
+      padding         : 30px;
+      gap             : 53px;
+      background-color: var(--color-gray-120);
+      border-radius   : 8px;
+
+      &>.title {
+        font-size: 20px;
+      }
+
+      &>.content {
+        display: grid;
+        gap    : 20px;
+
+        &>.label {
+          color: var(--color-gray-60);
+        }
+
+        &>.mercado-file-selector {
+          width: 100%;
+
+          .upload-file {
+            display        : flex;
+            justify-content: center;
+            align-items    : center;
+            border         : 1px dashed var(--color-gray-100);
+            height         : 150px;
+            border-radius  : 5px;
+            cursor         : pointer;
+            color          : var(--color-gray-60);
+            flex-direction : column;
+            background     : no-repeat center/cover;
+
+            &>.icon {
+              justify-self: center;
+              font-size   : 36px;
+            }
+
+            &>.message {
+              margin-top: 8px;
+            }
+          }
+        }
+      }
+    }
+
+    &>.action {
+      display        : grid;
+      justify-content: flex-end;
+    }
+  }
+
+  @include md {
+    gap: 40px;
+
+    &>.content {
+      &>.store-information {
+        gap: 30px;
+
+        &>.header {
+          &>.title {
+            font-size: 16px;
+          }
+        }
+
+        &>.content {
+          grid-auto-flow: unset;
+          gap           : 30px;
+        }
+      }
+
+      &>.banner-personalize {
+        gap: 16px;
+
+        &>.title {
+          font-size: 16px;
+        }
+
+        &>.content {
+          font-size: 14px;
+        }
+      }
+
+      &>.action {
+        display        : grid;
+        justify-content: initial;
+
+        &>button {
+          width: 100%;
+
+          &>.content {
+            padding-top   : 14px;
+            padding-bottom: 14px
+          }
+        }
+      }
+    }
+  }
+
+  @include xxs {
+    &>.content {
+      &>.store-information {
+        padding: 15px;
+
+        &>.content {
+          gap: 20px;
+
+          &>.store-information-card {
+            &>.icon {
+              margin-right: 8px;
+            }
+
+            &>.content {
+              &>.title {
+                font-size: 14px;
+              }
+            }
+          }
+        }
+      }
+
+      &>.banner-personalize {
+        padding: 15px;
+      }
+    }
+  }
+}

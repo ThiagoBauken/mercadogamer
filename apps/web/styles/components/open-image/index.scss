@@ -1,0 +1,14 @@
+.open-image-modal {
+  height: 650px;
+
+  &>.image {
+    width     : 100%;
+    height    : 100%;
+    background: no-repeat center/contain;
+  }
+
+
+  @include md {
+    width: initial;
+  }
+}

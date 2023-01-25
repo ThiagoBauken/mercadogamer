@@ -1,0 +1,75 @@
+.earnings-page-content {
+  .comision-card-container {
+    display: flex;
+  
+    hr {
+      margin-right: 20px;
+      margin-left: 100px;
+      width: 0px;
+      border: 1px solid #262831;
+    }
+  }
+  
+  .earnings-header {
+    display: flex;
+    justify-content: flex-end;
+    padding-bottom: 50px;
+  }
+
+  .title {
+    font-weight: 500;
+    font-size: 36px;
+  }
+  
+  .facturacion-card-container {
+    display: flex;
+    justify-content: space-between;
+
+    .chart-container {
+      width: calc(100% - 250px);
+      height: 350px;
+    }
+  
+    .facturacion-card-text {
+      width: 250px;
+  
+      ul {
+        display: flex;
+        flex-direction: column;
+        height: 230px;
+        justify-content: space-evenly;
+        font-size: 16px;
+        font-weight: 400;
+  
+        li {
+          display: flex;
+          align-items: center;
+  
+          .bullet {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 5px;
+          }
+  
+          .bullet {
+            background: #3BD42B;
+          }
+
+          span {
+            margin-left: 8px;
+            color: var(--color-gray-60)
+          }
+        }
+  
+        :first-child .bullet {
+          background: #1774FF;
+        }
+  
+        :last-child .bullet {
+          background: #712FFF;
+        }
+      }
+    }
+  }
+}

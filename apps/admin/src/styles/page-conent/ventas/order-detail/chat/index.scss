@@ -1,0 +1,122 @@
+.chat-container {
+  padding-top: 36px;
+  display: flex;
+  flex-direction: column;
+  width: 720px;
+
+  .avatar {
+    border-radius: 50%;
+  }
+
+  .chat-header {
+    display: flex;
+    width: 100%;
+
+    .chat-selector {
+      background: var(--color-gray-110);
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+      padding: 16px;
+      text-align: center;
+      border-bottom: 2px solid var(--color-gray-100);
+      cursor: pointer;
+      display: flex;
+    }
+
+    .chat-selector.selected {
+      background: var(--color-gray-100);
+      border-bottom: 2px solid var(--color-primary);
+    }
+
+    span {
+      padding-left: 8px;
+    }
+  }
+
+  .chat-messages {
+    background: var(--color-gray-120);
+    padding: 16px;
+
+    .messages {
+      display: flex;
+      flex-direction: column;
+      height: 600px;
+      overflow-y: scroll;
+
+      .msg-balloon {
+        display: flex;
+        padding: 16px;
+
+
+        .msg-avatar {
+          border-radius: 50%;
+        }
+        
+        span {
+          display: block;
+          max-width: 350px;
+        }
+
+        .msg-content {
+          padding: 12px;
+        }
+
+        .time {
+          color: var(--color-gray-50);
+          padding-bottom: 12px;
+        }
+      }
+
+      .msg-balloon.left {
+        justify-content: flex-start;
+
+        .msg-content {
+          border-top-right-radius: 16px;
+          border-bottom-left-radius: 16px;
+          border-bottom-right-radius: 16px;
+          background: var(--color-gray-90); 
+        }
+
+        .img-container {
+          padding-right: 8px;
+        }
+      }
+
+      .msg-balloon.right {
+        justify-content: flex-end;
+        
+        .msg-content {
+          border-top-left-radius: 16px;
+          border-bottom-left-radius: 16px;
+          border-bottom-right-radius: 16px;
+          background: var(--color-gray-100); 
+        }
+
+        .img-container {
+          padding-left: 8px;
+        }
+      }
+    }
+
+    .send-message {
+      display: flex;
+      align-items: center;
+      background: var(--color-gray-120);
+      padding: 6px;
+
+      .link {
+        border-radius: 50%;
+        background: var(--color-gray-100);
+        padding: 12px;
+        margin: 0 12px;
+      }
+
+      .send-btn {
+        border-radius: 50%;
+        padding: 12px;
+        background: var(--color-primary);
+      }
+    }
+  }
+}

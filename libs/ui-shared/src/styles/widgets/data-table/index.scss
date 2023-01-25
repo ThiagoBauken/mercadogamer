@@ -1,0 +1,50 @@
+.mercado-data-table {
+  padding      : 20px 30px;
+  border-radius: 8px;
+  border       : 1px solid var(--color-gray-100);
+  height       : var(--mercado-data-table-height);
+  overflow     : overlay;
+  padding-top  : 0px;
+
+  table {
+    thead {
+
+      th {
+        padding    : 19px;
+        padding-top: 39px;
+
+      }
+    }
+
+    tbody {
+      tr {
+        td {
+          &:first-of-type {
+            padding-left: 30px;
+          }
+
+          &.type {
+            white-space: nowrap;
+          }
+
+          &>.product-picture {
+            background: no-repeat center/cover;
+            width     : 40px;
+            height    : 51.11px;
+          }
+
+          &>.action-menu {
+            cursor: pointer;
+          }
+
+          &>.has-message {
+            width           : 10px;
+            height          : 10px;
+            background-color: var(--color-primary);
+            border-radius   : 50%;
+          }
+        }
+      }
+    }
+  }
+}

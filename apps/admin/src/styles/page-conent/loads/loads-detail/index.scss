@@ -1,0 +1,220 @@
+.load-detail-content {
+  display       : flex;
+  flex-direction: column;
+
+  .load-detail-header {
+    display        : flex;
+    justify-content: space-between;
+    align-items    : center;
+
+    .action-group {
+      display        : flex;
+      justify-content: space-between;
+      align-items    : center;
+      gap            : 15px;
+
+      .primary {
+        .background {
+          background-color: var(--color-finished);
+          border          : var(--color-finished);
+        }
+      }
+
+      .secondary {
+        .background {
+          background-color: var(--color-negative);
+          border          : var(--color-negative);
+        }
+
+        .content {
+          color: var(--color-gray-130)
+        }
+      }
+    }
+  }
+
+  .load-details-cards-container {
+    background-color: var(--color-gray-120);
+    padding         : 30px;
+    width           : 713px;
+    border-radius   : 8px;
+
+    .sm-title {
+      display        : flex;
+      justify-content: space-between;
+      align-items    : center;
+
+      .title {
+        font-style : normal;
+        font-weight: 400;
+        font-size  : 16px;
+        line-height: 20px;
+      }
+
+      .status {
+        color: white;
+
+        .paid {
+          display        : flex;
+          align-items    : center;
+          justify-content: center;
+          gap            : 7.34px;
+          border         : 1px solid #3BD42B;
+          background     : rgba(59, 212, 43, 0.07);
+          border-radius  : 5px;
+          padding        : 11px 15px;
+          color          : #3BD42B;
+        }
+
+        .pending {
+          display        : flex;
+          align-items    : center;
+          justify-content: center;
+          gap            : 7.34px;
+          border         : 1px solid #73778A;
+          background     : rgba(115, 119, 138, 0.12);
+          border-radius  : 5px;
+          padding        : 11px 15px;
+          color          : #73778A;
+        }
+
+      }
+    }
+
+    .price {
+      font-style : normal;
+      font-weight: 400;
+      font-size  : 22px;
+      line-height: 27px;
+      color      : var(--color-primary);
+      margin-top : 10px;
+    }
+
+    .user {
+      display        : flex;
+      justify-content: start;
+      align-items    : center;
+      gap            : 10px;
+      margin-top     : 30px;
+
+      .photo {
+        span {
+          img {
+            border-radius: 50%;
+          }
+        }
+      }
+
+      .name {
+        font-style : normal;
+        font-weight: 500;
+        font-size  : 16px;
+        line-height: 20px;
+      }
+    }
+
+    .detail {
+      .item {
+        display        : flex;
+        justify-content: flex-start;
+        align-items    : center;
+        color          : var(--color-pending);
+        padding-top    : 10px;
+        padding-bottom : 10px;
+        gap            : 7px;
+      }
+    }
+  }
+
+  .load-details-explain {
+    background-color: var(--color-gray-120);
+    padding         : 30px;
+    width           : 713px;
+    border-radius   : 8px;
+    margin-top      : 20px;
+
+    .title {
+      font-style   : normal;
+      font-weight  : 400;
+      font-size    : 16px;
+      line-height  : 20px;
+      margin-bottom: 15px;
+    }
+
+    .content {
+      font-style : normal;
+      font-weight: 400;
+      font-size  : 14px;
+      line-height: 20px;
+      color      : var(--color-pending)
+    }
+  }
+
+  .mercado-modal {
+    .modal-content {
+      width: 450px;
+
+      .withdrawls-approve-modal {
+        padding-top: 48px !important;
+
+        .total-balance {
+          font-style : normal;
+          font-weight: 400;
+          font-size  : 14px;
+          line-height: 17px;
+
+          span {
+            font-weight: 600;
+          }
+        }
+
+        &>.edit-price-input {
+          display              : grid;
+          grid-template-columns: min-content 1fr;
+          gap                  : 10px;
+          align-items          : center;
+          margin-top           : 30px;
+
+          .mercado-input {
+            border: unset;
+
+            &>.spin {
+              display: none;
+            }
+
+            &>input {
+              font-size  : 50px;
+              font-weight: 400;
+              color      : white;
+              text-align : center;
+            }
+          }
+        }
+
+        .fee {
+          text-align : center;
+          font-style : normal;
+          font-weight: 400;
+          font-size  : 16px;
+          line-height: 20px;
+          color      : var(--color-negative);
+          margin-top : 20px;
+        }
+
+        form {
+          button {
+            margin-top: 30px;
+          }
+        }
+      }
+
+      .withdrawls-reject-modal {
+        form {
+          button {
+            margin-top: 30px;
+          }
+        }
+      }
+    }
+  }
+}
