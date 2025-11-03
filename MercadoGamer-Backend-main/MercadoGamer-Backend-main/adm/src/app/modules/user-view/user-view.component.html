@@ -1,0 +1,78 @@
+<app-loading *ngIf="loading"></app-loading>
+<div class="header">
+  <div class="user-name">
+    <div
+      class="avatar"
+      [style]="
+        pageService.global.getBackgroundUrl(
+          userInfo.picture,
+          '/assets/imgs/avatar.png'
+        )
+      "
+    ></div>
+    <div class="name">{{ getUserName(userInfo) }}</div>
+  </div>
+  <div class="email">{{ userInfo.emailAddress }}</div>
+  <div class="phone">
+    {{ formatPhoneNumber() }}
+    <div class="remove-phone-number">Borrar celular</div>
+  </div>
+</div>
+
+<div class="action">
+  <app-button bgColor="#F70E0E" [radius]="4" [width]="160" padding="11px 2px"
+    >Vetar usuario</app-button
+  >
+  <app-button bgColor="#F70E0E" [radius]="4" [width]="160" padding="11px 2px"
+    >Historial de baneos</app-button
+  >
+  <app-button bgColor="#50C33D" [radius]="4" [width]="160" padding="11px 2px"
+    >Remover ban</app-button
+  >
+</div>
+
+<div class="sub-category">
+  <div
+    *ngFor="let category of categories"
+    [ngClass]="{
+      'category-button': true,
+      active: currentCategory === category.key
+    }"
+    (click)="currentCategory = category.key"
+  >
+    {{ category.label }}
+  </div>
+</div>
+
+<div class="content">
+  <app-user-category-sales
+    *ngIf="currentCategory === 'shopping'"
+    [userId]="userId"
+    type="buyer"
+    [perPage]="perPage"
+  ></app-user-category-sales>
+
+  <app-user-category-sales
+    *ngIf="currentCategory === 'sale'"
+    [userId]="userId"
+    type="seller"
+    [perPage]="perPage"
+  ></app-user-category-sales>
+
+  <app-user-category-products
+    *ngIf="currentCategory === 'product'"
+    [userId]="userId"
+    [country]="country"
+    [perPage]="perPage"
+  ></app-user-category-products>
+
+  <app-user-category-tickets
+    *ngIf="currentCategory === 'ticket'"
+    [perPage]="perPage"
+  ></app-user-category-tickets>
+
+  <app-user-category-withdrawals
+    *ngIf="currentCategory === 'withdrawal'"
+    [perPage]="perPage"
+  ></app-user-category-withdrawals>
+</div>

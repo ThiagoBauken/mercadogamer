@@ -1,0 +1,74 @@
+@import 'src/assets/styles/_variables';
+
+:host {
+  padding         : 16px;
+  display         : grid;
+  background-color: #202020;
+  border-radius   : 4px;
+  gap             : 7px;
+  box-shadow      : 7px 7px rgba($color: #000000, $alpha: 1.0);
+  cursor          : pointer;
+
+  &>.image-container {
+    background-color: #C4C4C4;
+    background      : center/cover no-repeat;
+    padding-top     : 100%;
+  }
+
+  &>.subject {
+    display           : -webkit-box;
+    white-space       : normal;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow          : hidden;
+    font-size         : 14px;
+    font-weight       : 600;
+    height            : 40px;
+    margin-top        : 4px;
+  }
+
+  &>.line {
+    height    : 2px;
+    background: black;
+  }
+
+  &>.price {
+    text-align : center;
+    font-weight: 600;
+  }
+
+  &>.delivery,
+  &>.type {
+    display              : grid;
+    grid-template-columns: min-content 1fr;
+    gap                  : 8px;
+    align-items          : center;
+
+    &>mat-icon {
+      width : 25px;
+      height: 25px;
+      color : $primary;
+    }
+
+    &>.label {
+      font-size  : 12px;
+      font-weight: 500;
+      color      : #A7A8AF;
+    }
+  }
+
+  // @include brackpoint-md {
+
+  //   &>.subject,
+  //   &>.price {
+  //     font-size: 12px;
+  //   }
+
+  //   &>.delivery,
+  //   &>.type {
+  //     &>.label {
+  //       font-size: 10px;
+  //     }
+  //   }
+  // }
+}

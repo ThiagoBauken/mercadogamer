@@ -1,0 +1,82 @@
+<div class="container">
+  <div class="header">
+    <div class="title">{{ title }}</div>
+    <div class="description">
+      {{ description }}
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="title">Ingresá tu código de verificación SMS</div>
+    <div class="phone">{{ getPhoneNumber() }}</div>
+    <div class="input-group">
+      <input
+        #inputs
+        [(ngModel)]="value[0]"
+        type="text"
+        size="1"
+        maxLength="1"
+        (ngModelChange)="onKeyup(1)"
+        (focus)="onFocus($event)"
+      />
+      <input
+        #inputs
+        [(ngModel)]="value[1]"
+        type="text"
+        size="1"
+        maxLength="1"
+        (ngModelChange)="onKeyup(2)"
+        (focus)="onFocus($event)"
+      />
+      <input
+        #inputs
+        [(ngModel)]="value[2]"
+        type="text"
+        size="1"
+        maxLength="1"
+        (ngModelChange)="onKeyup(3)"
+        (focus)="onFocus($event)"
+      />
+      <input
+        #inputs
+        [(ngModel)]="value[3]"
+        type="text"
+        size="1"
+        maxLength="1"
+        (ngModelChange)="onKeyup(4)"
+        (focus)="onFocus($event)"
+      />
+      <input
+        #inputs
+        [(ngModel)]="value[4]"
+        type="text"
+        size="1"
+        maxLength="1"
+        (ngModelChange)="onKeyup(5)"
+        (focus)="onFocus($event)"
+      />
+      <input
+        #inputs
+        [(ngModel)]="value[5]"
+        type="text"
+        size="1"
+        maxLength="1"
+        (focus)="onFocus($event)"
+      />
+    </div>
+  </div>
+
+  <div class="action">
+    <app-button
+      width="241px"
+      (btnClick)="sendSms()"
+      bgColor="#065AFA"
+      padding="3px 31px"
+      radius="4px"
+      [disabled]="!resend"
+    >
+      Volver a enviar código
+    </app-button>
+    <app-button width="200px" (btnClick)="confirm()">Continuar</app-button>
+  </div>
+</div>

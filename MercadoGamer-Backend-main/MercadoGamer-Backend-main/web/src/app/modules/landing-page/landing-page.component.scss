@@ -1,0 +1,71 @@
+@import 'src/assets/styles/_variables';
+
+:host {
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+  min-height     : 100vh;
+  font-family    : Montserrat;
+
+  &>.main-container {
+    display              : grid;
+    grid-template-columns: min-content 1fr;
+    gap                  : 20px;
+    align-items          : center;
+
+    &>.logo {
+      width     : 257px;
+      height    : 124px;
+      background: center/contain no-repeat url('/assets/imgs/logo-grande.png');
+    }
+
+    &>.content {
+      text-align     : center;
+      display        : grid;
+      align-items    : center;
+      justify-content: center;
+      flex-direction : column;
+
+      &>.title {
+        font-size  : 40px;
+        color      : red;
+        line-height: 48.76px;
+      }
+
+      &>.description {
+        font-size  : 30px;
+        color      : white;
+        line-height: 36.57px;
+        max-width  : 589px;
+        margin     : 0 auto;
+      }
+    }
+  }
+
+  @include brackpoint-md {
+    &>.main-container {
+      width                : 100%;
+      grid-template-columns: unset;
+      gap                  : 39px;
+
+      &>.logo {
+        margin: 0 auto;
+      }
+
+      &>.content {
+        gap: 39px;
+
+        &>.title {
+          font-size  : 32px;
+          line-height: 39px;
+        }
+
+        &>.description {
+          font-size  : 20px;
+          line-height: 24.38px;
+        }
+      }
+    }
+  }
+
+}

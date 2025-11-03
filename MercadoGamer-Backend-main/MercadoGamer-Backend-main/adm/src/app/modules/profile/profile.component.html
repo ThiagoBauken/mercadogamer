@@ -1,0 +1,370 @@
+<div class="contenedor">
+  <div class="d-flex flex-column">
+    <div class="header-container">
+      <img
+        [src]="filesUrl + profile?.bannerDesktop"
+        onerror="this.src = 'assets/imgs/placeholder.png'"
+        class="header seller"
+        [ngClass]="{ seller: roleSelected === 'seller' }"
+      />
+      <div class="user-info">
+        <img
+          [src]="filesUrl + profile?.picture"
+          onerror="this.src = 'assets/imgs/avatar.png'"
+          class="avatar"
+          alt=""
+        />
+        <div *ngIf="profile">
+          <span class="name">{{ profile?.username }}</span> <br />
+          <i
+            class="fa fa-star"
+            *ngFor="let item of [].constructor(5); index as i"
+            [ngClass]="[
+              i + 0.5 <= profile[roleSelected + 'Qualification']
+                ? 'text-primary'
+                : 'disabled',
+              i === 0 ? 'init' : ''
+            ]"
+          ></i>
+
+          <span class="qualification"
+            >{{
+              profile[roleSelected + 'Qualification'] | number: '1.2-2'
+            }}/5.0</span
+          >
+          <span class="votes"
+            >{{ profile[roleSelected + 'TotalQualifications'] }} votos</span
+          >
+        </div>
+      </div>
+
+      <div class="select-profile" (click)="selectRole = !selectRole">
+        <span>{{
+          roleSelected === 'seller'
+            ? 'Perfil de Vendedor'
+            : 'Perfil de Comprador'
+        }}</span>
+        <i class="fa fa-chevron-down text-light"></i> <br />
+        <p
+          *ngIf="selectRole"
+          (click)="roleSelected = roleSelected === 'seller' ? 'user' : 'seller'"
+        >
+          {{
+            roleSelected === 'seller'
+              ? 'Perfil de Comprador'
+              : 'Perfil de Vendedor'
+          }}
+        </p>
+      </div>
+    </div>
+
+    <div class="row pl-4 pr-4 mt-4">
+      <div class="col-md-6 mt-4 columna1">
+        <span class="title">{{
+          roleSelected === 'seller' ? 'Productos Destacados' : 'Resumen'
+        }}</span>
+
+        <hr />
+
+        <div *ngIf="roleSelected == 'user'">
+          <div class="card">
+            <div class="row align-items-center pl-3">
+              <div class="icon-check">
+                <img src="assets/imgs/check.png" alt="" />
+              </div>
+              <span class="mount">{{ orders?.finished }}</span>
+              <span class="description">Compras completadas</span>
+            </div>
+          </div>
+
+          <div class="card mt-3">
+            <div class="row align-items-center pl-3">
+              <div class="icon-process">
+                <img src="assets/imgs/process.png" alt="" />
+              </div>
+              <span class="mount">{{ orders?.pending }}</span>
+              <span class="description">Compras en proceso</span>
+            </div>
+          </div>
+
+          <div class="card mt-3">
+            <div class="row align-items-center pl-3">
+              <div class="icon-claim">
+                <img src="assets/imgs/open-claim.png" alt="" />
+              </div>
+              <span class="mount">{{ orders?.complaint }}</span>
+              <span class="description">Compras con reclamo</span>
+            </div>
+          </div>
+
+          <div class="card mt-3 mb-3">
+            <div class="row align-items-center pl-3">
+              <div class="icon-reject">
+                <img src="assets/imgs/reject.png" alt="" />
+              </div>
+              <span class="mount">{{ orders?.cancelled }}</span>
+              <span class="description">Compras canceladas</span>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="roleSelected == 'seller'">
+          <div class="row ml-0 mr-0 filter-group">
+            <div class="filters">
+              <button mat-button [matMenuTriggerFor]="platformMenu" class="btn">
+                {{
+                  selectedPlatformFilter
+                    ? selectedPlatformFilter.name
+                    : 'Plataforma'
+                }}
+                <i class="fa fa-chevron-down"></i>
+              </button>
+              <mat-menu #platformMenu="matMenu" class="customize">
+                <a
+                  mat-menu-item
+                  (click)="filterProducts('selectedPlatformFilter', null)"
+                  >Todas</a
+                >
+                <a
+                  mat-menu-item
+                  *ngFor="let platform of platforms"
+                  (click)="filterProducts('selectedPlatformFilter', platform)"
+                  >{{ platform.name }}</a
+                >
+              </mat-menu>
+            </div>
+            <div class="filters">
+              <button mat-button [matMenuTriggerFor]="productsMenu" class="btn">
+                {{
+                  selectedTypeFilter ? selectedTypeFilter.label : 'Productos'
+                }}
+                <i class="fa fa-chevron-down"></i>
+              </button>
+              <mat-menu #productsMenu="matMenu" class="customize">
+                <a
+                  mat-menu-item
+                  (click)="filterProducts('selectedTypeFilter', null)"
+                  >Todos</a
+                >
+                <a
+                  mat-menu-item
+                  *ngFor="let type of settings.products.types"
+                  (click)="filterProducts('selectedTypeFilter', type)"
+                  >{{ type.label }}</a
+                >
+              </mat-menu>
+            </div>
+            <div class="filters">
+              <button
+                mat-button
+                [matMenuTriggerFor]="categoriesMenu"
+                class="btn"
+              >
+                {{
+                  selectedCategoryFilter
+                    ? selectedCategoryFilter.name
+                    : 'Categorias'
+                }}
+                <i class="fa fa-chevron-down"></i>
+              </button>
+              <mat-menu #categoriesMenu="matMenu" class="customize">
+                <a
+                  mat-menu-item
+                  (click)="filterProducts('selectedCategoryFilter', null)"
+                  >Todas</a
+                >
+                <a
+                  mat-menu-item
+                  *ngFor="let category of categories"
+                  (click)="filterProducts('selectedCategoryFilter', category)"
+                  >{{ category.name }}</a
+                >
+              </mat-menu>
+            </div>
+          </div>
+          <div class="card-qualification mt-5 pr-3" *ngIf="!products?.length">
+            <div class="row pl-4 pt-1">
+              <div class="col-md-12 text-center">
+                <p class="text-primary">
+                  Aún no hay ningún producto de este vendedor.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="row product-container">
+            <app-category-item
+              *ngFor="let product of products"
+              [imageUrl]="product.picture"
+              [label]="product.name"
+              [price]="
+                product.price
+                  | toUSD
+                  | currency: country?.currency:'symbol-narrow':'1.0-2':'es-US'
+              "
+              [delivery]="product.stockProduct?.retirementType"
+              [type]="product.platform?.name"
+              (click)="goToProductDetail(product.id)"
+              (middleClick)="goToProductDetail(product.id, true)"
+            ></app-category-item>
+          </div>
+
+          <div class="row mt-4 pb-4">
+            <div class="col text-right">
+              <span class="pagined"
+                ><i
+                  class="fa fa-chevron-left text-light pr-2"
+                  (click)="previousPage()"
+                  *ngIf="productsPage !== 1"
+                ></i>
+                {{ productsPage }}/{{ productsPages }}
+                <i
+                  class="fa fa-chevron-right text-light"
+                  (click)="nextPage()"
+                  *ngIf="productsPage !== productsPages"
+                ></i
+              ></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 mt-4 columna2">
+        <span class="title">Calificaciones</span>
+        <!-- <i class="fa fa-plus-circle text-primary float-right"></i> -->
+        <hr />
+
+        <div class="row justify-content-between">
+          <div class="options">
+            <button
+              class="btn"
+              (click)="handleReviewsFilter()"
+              [ngClass]="
+                ![roleSelected + 'ReviewsFilter'] ? 'btn-primary active' : ''
+              "
+            >
+              <i
+                class="fa fa-clock-o text-info"
+                aria-hidden="true"
+                style="color: #1a61be !important"
+              ></i>
+              Recientes
+            </button>
+          </div>
+          <div class="options">
+            <button
+              class="btn"
+              (click)="handleReviewsFilter('positive')"
+              [ngClass]="
+                [roleSelected + 'ReviewsFilter'] == 'positive'
+                  ? 'btn-primary active'
+                  : ''
+              "
+            >
+              <i class="fa fa-check text-success"></i>
+              Positivas
+            </button>
+          </div>
+          <div class="options">
+            <button
+              class="btn"
+              (click)="handleReviewsFilter('negative')"
+              [ngClass]="
+                [roleSelected + 'ReviewsFilter'] == 'negative'
+                  ? 'btn-primary active'
+                  : ''
+              "
+            >
+              <i class="fa fa-close text-danger"></i>
+              Negativas
+            </button>
+          </div>
+        </div>
+
+        <ng-container *ngIf="roleSelected === 'seller'">
+          <div
+            class="card-qualification mt-3 pr-3"
+            *ngIf="sellerReviews?.length === 0"
+          >
+            <div class="row pl-4 pt-1">
+              <div class="col-md-12 text-center">
+                <p class="text-primary">
+                  Aún no hay ninguna calificación de este vendedor.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="card-qualification mt-3 pr-3"
+            *ngFor="let review of sellerReviews"
+          >
+            <div class="row pl-4 pt-1 align-items-center">
+              <img
+                class="avatar"
+                [src]="filesUrl + review.qualifier?.picture"
+                onerror="this.src = 'assets/imgs/avatar.png'"
+              />
+              <span class="title-qualification">{{
+                review.qualifier?.username
+              }}</span>
+            </div>
+            <div class="row pl-4 stars">
+              <i
+                class="fa fa-star"
+                *ngFor="let item of [].constructor(5); index as i"
+                [ngClass]="
+                  i + 0.5 <= review?.qualification ? 'text-primary' : ''
+                "
+              ></i>
+            </div>
+            <div class="row pl-4 pr-3 comments">
+              <p class="comment">{{ review?.body }}</p>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="roleSelected === 'user'">
+          <div
+            class="card-qualification mt-3 pr-3"
+            *ngIf="userReviews?.length === 0"
+          >
+            <div class="row pl-4 pt-1">
+              <div class="col-md-12 text-center">
+                <p class="text-primary">
+                  Aún no hay ninguna calificación de este usuario.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="card-qualification mt-3 pr-3"
+            *ngFor="let review of userReviews"
+          >
+            <div class="row pl-4 pt-1 align-items-center">
+              <img
+                class="avatar"
+                [src]="filesUrl + review.qualifier?.picture"
+                onerror="this.src = 'assets/imgs/avatar.png'"
+              />
+              <span class="title-qualification">{{
+                review.qualifier?.username
+              }}</span>
+            </div>
+            <div class="row pl-4 stars">
+              <i
+                class="fa fa-star"
+                *ngFor="let item of [].constructor(5); index as i"
+                [ngClass]="
+                  i + 0.5 <= review?.qualification ? 'text-primary' : ''
+                "
+              ></i>
+            </div>
+            <div class="row pl-4 pr-3 comments">
+              <p class="comment">{{ review?.body }}</p>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>

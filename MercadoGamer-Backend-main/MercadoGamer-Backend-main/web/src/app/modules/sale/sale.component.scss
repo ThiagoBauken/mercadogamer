@@ -1,0 +1,424 @@
+@import "../../../assets/styles/_variables";
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url("../../../assets/fonts/Montserrat-Regular.ttf");
+}
+
+    
+    .contenedor {
+        background: #141414;
+        padding: 25px;
+        overflow-x: hidden !important;
+        width: 100%;
+        .mt-6 {
+            margin-top: 5rem;
+        }
+        .mb-6 {
+            margin-bottom: 5rem;
+        }
+        .title {
+            color: $primary;
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 500;
+            font-size: 24px;
+            line-height: 20px;  
+            margin-left: 16px;
+        }
+        .subtitle {
+            color: $primary;
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 24px;
+            line-height: 20px;  
+            margin-left: 16px;
+        }
+
+        .selected-chat {
+            background: #F78A0E;
+            margin-bottom: -3px;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px 5px 0px 0px;
+            span {
+                font-family: 'Montserrat';
+                font-style: normal;
+                font-weight: 500;
+                font-size: 16px;
+                line-height: 20px;
+                color: $light;
+            }
+        }
+
+        .not-selected-chat {
+            background: #333333;
+            margin-bottom: -3px;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            border-radius: 5px;
+            img {
+                margin-left: 16px;
+            }
+            span {
+                margin-left: 10px;
+                font-family: 'Montserrat';
+                font-style: normal;
+                font-weight: 500;
+                font-size: 16px;
+                line-height: 20px;
+                color: rgba(235, 235, 245, 0.6);
+            }
+        }
+
+        .card-chat {
+            position: relative;
+            background: #333333;
+            border: 1px solid $primary;
+            border-radius: 5px;
+            height: 513px;
+
+            .message-other {
+                width: 100%;
+                padding: 30px;
+                padding-right: 80px;
+                padding-bottom: 0;
+                display: flex;
+                height: auto;
+                position: relative;
+                .avatar {
+                    width: 5%;
+                    position: absolute;
+                    bottom: 0;
+                    img {
+                        height: 31px;
+                        width: 31px;
+                        border-radius: 50%;
+                    }
+                }
+                .bubble {
+                    margin-left: 45px;
+                    width: 95%;
+                    padding: 16px;
+                    border-top-left-radius: 20px;
+                    border-top-right-radius: 20px;
+                    border-bottom-right-radius: 20px;
+                    background-color: rgba(20, 20, 20, 0.5);
+                    span {
+                        color: $light;
+                        font-family: 'Montserrat';
+                        font-style: normal;
+                        font-weight: normal;
+                        font-size: 16px;
+                        line-height: 20px;
+                    }
+                }
+            }
+
+            .message-me {
+                width: 100%;
+                padding: 30px;
+                padding-right: 80px;
+                padding-bottom: 0;
+                display: flex;
+                height: auto;
+                position: relative;
+                .avatar {
+                    width: 5%;
+                    position: absolute;
+                    bottom: 0;
+                    img {
+                        height: 31px;
+                        width: 31px;
+                        border-radius: 50%;
+                    }
+                }
+                .bubble {
+                    margin-left: 45px;
+                    width: 95%;
+                    padding: 16px;
+                    border-top-left-radius: 20px;
+                    border-top-right-radius: 20px;
+                    border-bottom-right-radius: 20px;
+                    background-color: $primary;
+                    span {
+                        color: $light;
+                        font-family: 'Montserrat';
+                        font-style: normal;
+                        font-weight: normal;
+                        font-size: 16px;
+                        line-height: 20px;
+                    }
+                }
+            }
+
+            .send-footer {
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                height: 61px;
+                background-color: #141414;
+                border-top-right-radius: 5px;
+                border-bottom-right-radius: 5px;
+                border-bottom-left-radius: 5px;
+
+                .form-group {
+                    border-bottom: 0;
+                    margin-top: 10px;
+                    margin-bottom: 0 !important;
+                    input {
+                        outline: none !important;
+                        outline-style: none !important;
+                        box-shadow: none !important;
+                        border-color: transparent !important;
+                    }
+                
+                    .form-control {
+                        background-color: transparent !important;
+                        border: transparent !important;
+                        color: rgba(235, 235, 245, 0.6) !important;
+                        width: 100% !important;
+
+                
+                        &.selectoBackground {
+                            background-color: $primary !important;
+                        }
+                
+                        &.form-control::placeholder {
+                            color: rgba(235, 235, 245, 0.6) !important;
+                        }
+                    }
+                }
+
+                .icon {
+                    margin-top: 11px;
+                    margin-right: 26px;
+                    &.clip {
+                        width: 11px;
+                        height: 22px;
+                    }
+                    &.send {
+                        width: 24px;
+                        height: 24px;
+                    }
+                }
+            }
+        }
+        
+        .card {
+            padding: 30px;
+            padding-bottom: 60px;
+            background: #333333;
+            border-radius: 5px;
+            ::ng-deep .mat-checkbox-layout {
+                white-space: normal !important;
+            }
+            ::ng-deep .mat-checkbox-inner-container {
+                margin-top: 3px !important;
+                margin-left: 16px;
+                border: 1px solid rgba(235, 235, 245, 0.6);
+                box-sizing: border-box;
+                border-radius: 2px;
+            }
+            mat-checkbox {
+                white-space: normal !important;
+                color: rgba(235, 235, 245, 0.6);
+                font-family: 'Montserrat';
+                font-style: normal;
+                margin: 0;
+                font-weight: 500;
+                font-size: 16px;
+            }
+            .avatar {
+                border-radius: 50%;
+                width: 102px;
+                height: 102px;  
+                object-fit: cover;
+            }
+            .disabled {
+                color: rgba(235, 235, 245, 0.6);
+            }
+            .fa-star {
+                font-size: 18px;
+                margin-right: 3px;
+            }
+            .qualification {
+                font-size: 16px;
+                line-height: 20px;
+                color: $light;
+                margin-left: 10px;
+            }
+            .votes {
+                font-weight: normal;
+                margin-left: 10px;
+                font-size: 16px;
+                line-height: 20px;
+                color: rgba(235, 235, 245, 0.6);
+            }
+            .name {
+                font-family: 'Montserrat';
+                font-style: normal;
+                font-weight: 600;
+                margin-top: 16px;
+                margin-bottom: 5px;
+                font-size: 24px;
+                line-height: 34px;
+                color: $light;
+            }
+            .image-game {
+                object-fit: cover;
+                border-radius: 6px;
+            }
+            .price {
+                margin-top: 20px;
+                font-family: 'Montserrat';
+                font-style: normal;
+                font-weight: 500;
+                font-size: 16px;
+                line-height: 20px;
+                color: $primary;
+            }
+            .description {
+                margin-top: 20px;
+                font-family: 'Montserrat';
+                font-style: normal;
+                font-weight: 500;
+                font-size: 16px;
+                line-height: 20px;
+                color: $light;
+            }
+            .image-name {
+                font-family: 'Montserrat';
+                font-style: normal;
+                font-weight: bold;
+                font-size: 18px;
+                line-height: 22px;
+                color: $light;
+                margin-top: 16px;
+            }
+            .finish {
+                background-color: #11BA18;
+                border-radius: 2px;
+                height: 58px;
+                font-family: 'Montserrat';
+                font-style: normal;
+                font-weight: bold;
+                font-size: 18px;
+                line-height: 22px;
+                color: #FFFFFF;
+            }
+            .claim {
+                background-color: #FF0000;
+                border-radius: 2px;
+                height: 58px;
+                font-family: 'Montserrat';
+                font-style: normal;
+                font-weight: bold;
+                font-size: 18px;
+                line-height: 22px;
+                color: #FFFFFF;
+            }
+            .subtitle-white {
+                color: $light;
+                font-family: 'Montserrat';
+                font-style: normal;
+                font-weight: 600;
+                font-size: 18px;
+                line-height: 20px;  
+                margin-left: 16px;
+            }
+            .text {
+                margin-top: 16px;
+                margin-left: 16px;
+                color: #FFFFFF;
+                font-family: 'Montserrat';
+                font-style: normal;
+                font-weight: 500;
+                font-size: 16px;
+                line-height: 20px;
+            }
+            .code {
+                margin: 16px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: #141414;
+                border: 1px solid #F78A0E;
+                box-sizing: border-box;
+                height: 58px;
+                border-radius: 2px;
+                span {
+                    font-family: 'Montserrat';
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 18px;
+                    line-height: 22px;
+                    text-align: center;
+                    color: #FFFFFF;
+                }
+            }
+        }
+    }
+
+    .text-modal {
+        color: $light;
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 29px;
+        text-align: center;
+    }
+
+    .finish {
+        background-color: #11BA18;
+        border-radius: 2px;
+        height: 58px;
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 22px;
+        color: #FFFFFF;
+        text-transform: initial;
+    }
+
+    .claim {
+        background-color: #FF0000;
+        border-radius: 2px;
+        height: 58px;
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 22px;
+        color: #FFFFFF;
+        text-transform: initial;
+    }
+
+    .comment {
+        textarea {
+            background-color: transparent !important; 
+            border-radius: 10px !important;
+            border: 1px solid rgba(235, 235, 245, 0.6);
+            color: rgba(197, 197, 197, 0.5);
+            font-family: 'Montserrat';
+            font-size: 15px;
+        }
+    }
+
+    mat-select {
+        background-color: #333333 !important;
+        border: 1px solid rgba(235, 235, 245, 0.6) !important;
+        height: 44px;
+        text-align: left;
+        border-radius: 10px;
+        color: rgba(235, 235, 245, 0.6) !important;
+        width: 100% !important;
+    }
+
+   

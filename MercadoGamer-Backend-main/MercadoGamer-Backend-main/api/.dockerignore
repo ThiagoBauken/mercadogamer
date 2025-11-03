@@ -1,0 +1,43 @@
+# Dependencies
+node_modules
+npm-debug.log
+yarn-error.log
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Git
+.git
+.gitignore
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs
+*.log
+
+# Certificates (should be mounted as volumes in production)
+*.pem
+*.key
+*.crt
+
+# Temp files
+tmp
+temp
+uploads/*
+files/*
+
+# Documentation
+README.md
+docs

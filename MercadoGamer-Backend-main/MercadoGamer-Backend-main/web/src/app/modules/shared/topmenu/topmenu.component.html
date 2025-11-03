@@ -1,0 +1,155 @@
+<div class="main-container">
+  <div class="logo-container" [routerLink]="['/home']">
+    <mat-icon svgIcon="logo-mg"></mat-icon>
+  </div>
+
+  <div [ngClass]="{ search: true, active: showSearch }">
+    <div [ngClass]="{ 'search-container': true, active: showSearch }">
+      <mat-icon svgIcon="search"></mat-icon>
+      <input
+        type="text"
+        placeholder="Buscar en MercadoGamer"
+        aria-label="Search"
+        mdbInput
+        (keyup.enter)="searchCatalogue()"
+        [(ngModel)]="search"
+        [ngModelOptions]="{ standalone: true }"
+      />
+      <div class="back-button" (click)="setShowSearch(false)">
+        <mat-icon svgIcon="arrow-right"></mat-icon>
+      </div>
+    </div>
+  </div>
+
+  <div class="action-group">
+    <div class="category" [routerLink]="['/catalogue']">Catálogo</div>
+
+    <div
+      class="gift-button"
+      [routerLink]="user ? ['/my-account/gifts'] : ['/login']"
+    >
+      <mat-icon svgIcon="gift"></mat-icon>
+      <div class="label">Regalos</div>
+    </div>
+
+    <div
+      class="product-button"
+      [routerLink]="user ? ['/product-type'] : ['/login']"
+    >
+      Vender
+    </div>
+
+    <ng-container *ngIf="user; else notUser">
+      <div class="notification-menu" [matMenuTriggerFor]="notificationsMenu">
+        <mat-icon svgIcon="bell"></mat-icon>
+        <div class="badge" *ngIf="notifications?.length">
+          {{ notifications.length }}
+        </div>
+      </div>
+
+      <div
+        class="user-menu"
+        [matMenuTriggerFor]="menu"
+        [style]="
+          global.getBackgroundUrl(user.picture, 'assets/imgs/avatar.png')
+        "
+      ></div>
+      <mat-menu
+        #notificationsMenu="matMenu"
+        class="notifications"
+        xPosition="before"
+      >
+        <div class="notification-subject">Notificaciones</div>
+        <ng-container *ngIf="notifications.length === 0; else elseTemplate">
+          <button mat-menu-item disabled>No hay notifications nuevas</button>
+        </ng-container>
+        <ng-template #elseTemplate>
+          <div
+            *ngFor="let notification of notifications; let i = index"
+            class="notification-item-container"
+            (click)="handleNotification(notification)"
+          >
+            <div class="icon">
+              <mat-icon
+                [svgIcon]="notificationType[notification.action]"
+              ></mat-icon>
+            </div>
+            <div class="content">
+              <div class="title">{{ notification.title }}</div>
+              <div class="description">{{ notification.description }}</div>
+            </div>
+          </div>
+        </ng-template>
+      </mat-menu>
+      <mat-menu #menu="matMenu" class="user-menu-container" xPosition="before">
+        <div
+          mat-menu-item
+          [routerLink]="['/profile/user/' + user.id]"
+          class="user"
+        >
+          <div class="label">{{ user.username }}</div>
+          <div
+            class="avatar"
+            [style]="
+              global.getBackgroundUrl(user.picture, 'assets/imgs/avatar.png')
+            "
+          ></div>
+        </div>
+
+        <div mat-menu-item [routerLink]="['/my-account/shopping']">
+          <div class="label">Compras</div>
+          <div class="icon">
+            <mat-icon svgIcon="shopping-cart"></mat-icon>
+          </div>
+        </div>
+
+        <div mat-menu-item [routerLink]="['/my-account/sales']">
+          <div class="label">Ventas</div>
+          <div class="icon">
+            <mat-icon svgIcon="bill"></mat-icon>
+          </div>
+        </div>
+
+        <div mat-menu-item [routerLink]="['/my-account/settings']">
+          <div class="label">Ajustes</div>
+          <div class="icon">
+            <mat-icon svgIcon="ajustes"></mat-icon>
+          </div>
+        </div>
+
+        <div mat-menu-item (click)="logout()" class="logout">
+          <div class="label">Cerrar Sesión</div>
+          <div class="icon">
+            <mat-icon svgIcon="user-menu-exit"></mat-icon>
+          </div>
+        </div>
+      </mat-menu>
+    </ng-container>
+
+    <div class="search-button" (click)="setShowSearch(true)">
+      <mat-icon svgIcon="search"></mat-icon>
+    </div>
+    <div class="mobile-menu-button" (click)="handleSidebar()">
+      <mat-icon *ngIf="!user; else userAvatar" svgIcon="user"></mat-icon>
+      <ng-template #userAvatar>
+        <div
+          class="user-menu"
+          [style]="
+            global.getBackgroundUrl(user.picture, 'assets/imgs/avatar.png')
+          "
+        ></div>
+      </ng-template>
+    </div>
+
+    <ng-template #notUser>
+      <div class="login-button" [routerLink]="['/login']">Inicia Sesión</div>
+    </ng-template>
+  </div>
+</div>
+
+<div class="mobile-bar">
+  <div class="item" [routerLink]="['/catalogue']">Catálogo</div>
+  <div class="item sale" [routerLink]="user ? ['/product-type'] : ['/login']">
+    Vender
+  </div>
+</div>

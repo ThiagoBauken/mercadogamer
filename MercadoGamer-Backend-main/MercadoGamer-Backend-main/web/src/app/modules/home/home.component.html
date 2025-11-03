@@ -1,0 +1,235 @@
+<div class="carousel-section">
+  <ngx-slick-carousel
+    #slickModal="slick-carousel"
+    [config]="slideConfig"
+    (init)="slickInit($event)"
+    (breakpoint)="breakpoint($event)"
+    (afterChange)="afterChange($event)"
+    (beforeChange)="beforeChange($event)"
+    class="carousel cursor-pointer"
+  >
+    <div
+      *ngFor="
+        let slide of deviceInfo['max-599'] ? mobileBanners : desktopBanners
+      "
+      ngxSlickItem
+      class="slide"
+      [style]="
+        global.getBackgroundUrl(slide.picture, 'assets/imgs/placeholder.png')
+      "
+    >
+      <!-- <img [src]="filesUrl + slide.picture" alt width="100%" /> -->
+    </div>
+  </ngx-slick-carousel>
+</div>
+
+<div class="container">
+  <div class="banner-button-section justify-content-center">
+    <div class="banner-button d-flex justify-content-center align-items-center">
+      <span>
+        <img
+          class="pr-2"
+          src="assets/imgs/garantia-mg-logo.png"
+          width="34px"
+          height="26px"
+        /> </span
+      ><span class="font-montserrat">Garantia MG</span>
+    </div>
+    <div class="banner-button d-flex justify-content-center align-items-center">
+      <span>
+        <img class="pr-2" src="assets/imgs/mp-new.png" height="34px" />
+      </span>
+      <span class="font-montserrat">Todos los medios de pago</span>
+    </div>
+  </div>
+
+  <div class="stock-section">
+    <span class="title">Tendencias</span>
+    <div class="stock-item-group overflow-x-scroll">
+      <div
+        *ngFor="let item of tendencias"
+        (mouseup)="goToProduct($event, item.product?.id)"
+        class="stock-item position-relative"
+      >
+        <!-- <div class="decrease">
+          20% OFF
+        </div> -->
+        <div class="stock-item-body position-relative cursor-pointer">
+          <img [src]="filesUrl + item.product?.picture" />
+          <div class="position-absolute">
+            <p class="item-title">{{ item.product?.name }}</p>
+            <p class="item-price">
+              {{
+                item.product?.price
+                  | toUSD
+                  | currency: country.currency:'symbol-narrow':'1.0-2':'es-US'
+              }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stock-section">
+    <span class="title">Juegos</span>
+    <div class="stock-item-group overflow-x-scroll">
+      <div
+        *ngFor="let item of juegos"
+        (mouseup)="goToProduct($event, item.product?.id)"
+        class="stock-item position-relative"
+      >
+        <!-- <div class="decrease">
+          20% OFF
+        </div> -->
+        <div class="stock-item-body position-relative cursor-pointer">
+          <img
+            [src]="filesUrl + item.product?.picture"
+            class="position-absolute m-auto"
+          />
+          <div class="position-absolute">
+            <p class="item-title">{{ item.product?.name }}</p>
+            <p class="item-price">
+              {{
+                item.product?.price
+                  | toUSD
+                  | currency: country.currency:'symbol-narrow':'1.0-2':'es-US'
+              }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sell-now-element-desktop position-relative mx-auto">
+    <div class="content-image">
+      <img
+        class="position-absolute main-img"
+        src="assets/imgs/sell-now-element/kisspng-counter-strike.png"
+      />
+    </div>
+    <div class="content-block">
+      <div class="title">
+        <div>Vendé tu SKIN</div>
+        <div>
+          <span>y cobrá por </span>
+          <span>
+            <img src="assets/imgs/sell-now-element/mercado-pago.png" />
+          </span>
+        </div>
+      </div>
+      <div class="content-block-button">
+        <a [routerLink]="user ? ['/product-type'] : ['/login']">Vendé ahora!</a>
+      </div>
+      <div>
+        <span> Ventas seguras protegidas con </span>
+        <span>
+          <img class="pl-2" src="assets/imgs/sell-now-element/garantia.png" />
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sell-now-element-mobile position-relative mx-auto">
+    <div class="content-block">
+      <div class="title">
+        <div class="title-body">
+          <div>Vendé tu SKIN</div>
+          <div>y cobrá por</div>
+          <div class="content-block-button">
+            <a [routerLink]="user ? ['/product-type'] : ['/login']"
+              >Vendé ahora!</a
+            >
+          </div>
+        </div>
+        <div>
+          <span>
+            <img
+              class="title-image"
+              src="assets/imgs/sell-now-element/mercado-pago.png"
+            />
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="charactor">
+      <img
+        class="position-absolute main-img"
+        src="assets/imgs/sell-now-element/kisspng-counter-strike.png"
+      />
+    </div>
+  </div>
+
+  <div class="stock-section">
+    <span class="title">Skins</span>
+    <div class="stock-item-group overflow-x-scroll">
+      <div
+        *ngFor="let item of skins"
+        (mouseup)="goToProduct($event, item.product?.id)"
+        class="stock-item position-relative"
+      >
+        <!-- <div class="decrease">
+          20% OFF
+        </div> -->
+        <div class="stock-item-body position-relative cursor-pointer">
+          <img [src]="filesUrl + item.product?.picture" />
+          <div class="position-absolute">
+            <p class="item-title">{{ item.product?.name }}</p>
+            <p class="item-price">
+              {{
+                item.product?.price
+                  | toUSD
+                  | currency: country.currency:'symbol-narrow':'1.0-2':'es-US'
+              }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer-gallary">
+  <div class="title text-center">Ver catálogo del juego</div>
+  <div class="gallary-body overflow-x-scroll">
+    <div
+      *ngFor="let item of gameCatalogues"
+      (click)="goToCatalogue(item.game.id)"
+      class="columns cursor-pointer"
+    >
+      <img
+        [src]="filesUrl + item.picture"
+        onerror="this.src = 'assets/imgs/placeholder.png'"
+      />
+    </div>
+  </div>
+</div>
+
+<!-- <app-mercado-dialog
+  [open]="showModal === true"
+  (onCloseDialog)="showModal = false"
+>
+  <div class="notification-modal">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="title">ANUNCIO IMPORTANTE:</div>
+      </div>
+      <div class="col-md-9">
+        <div class="description">
+          Encontramos ciertos errores que dificultan el uso correcto de la
+          plataforma, por lo que decidimos deshabilitar las compras hasta poder
+          asegurar el correcto funcionamiento del sitio.<br /><br />
+          Todas las compras que ya han sido abiertas, podrán finalizar su curso
+          normal. En caso de tener alguna consulta, por favor comunicarse por
+          mail a: <a>soporte@mercadogamer.com</a>. <br /><br />
+          Avisaremos por nuestro <a>Instagram@mercadogamer_com</a> cuando el
+          sitio este operando nuevamente. Muchas gracias por su comprensión.
+        </div>
+      </div>
+    </div>
+    <div class="close-modal" (click)="showModal = false">
+      <mat-icon svgIcon="modal-close"></mat-icon>
+    </div>
+  </div>
+</app-mercado-dialog> -->

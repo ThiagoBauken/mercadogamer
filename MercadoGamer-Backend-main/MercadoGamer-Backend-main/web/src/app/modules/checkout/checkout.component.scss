@@ -1,0 +1,304 @@
+@import '../../../assets/styles/_variables';
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../../../assets/fonts/Montserrat-Regular.ttf');
+}
+::ng-deep {
+  .contenedor {
+    padding: 25px 65px 25px 65px;
+    overflow-x: hidden !important;
+    width: 100%;
+    font-family: 'Montserrat';
+
+    .mt-6 {
+      margin-top: 5rem;
+    }
+    .mb-6 {
+      margin-bottom: 5rem;
+    }
+    .title {
+      color: $primary;
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: bold;
+      font-size: 24px;
+      line-height: 20px;
+    }
+    .billing-form {
+      margin-top: 46px;
+      .flex-column-15 {
+        flex-direction: column;
+        gap: 15px;
+        margin-bottom: 15px;
+      }
+    }
+    .product {
+      color: $primary;
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: bold;
+      font-size: 18px;
+      line-height: 22px;
+      text-align: left;
+    }
+  
+    .detail {
+      color: rgba(235, 235, 245, 0.6);
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 22px;
+    }
+  
+    .description {
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 22px;
+      color: #ffffff;
+  
+      .price {
+        margin-left: 25px;
+      }
+    }
+  
+    .description-total {
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: normal;
+      font-size: 18px;
+      line-height: 22px;
+      color: rgba(235, 235, 245, 0.6);
+  
+      .price-total {
+        margin-left: 25px;
+        color: #f78a0e;
+        font-weight: bold;
+      }
+    }
+  
+    .btn {
+      border-radius: 10px;
+      color: $light;
+      padding: 8px;
+      height: 54px;
+    }
+  
+    mat-select {
+      background-color: #242424 !important;
+      border: 1px solid rgba(235, 235, 245, 0.6) !important;
+      height: 56px;
+      border-radius: 10px;
+      color: #c5c5c5 !important;
+      width: 100% !important;
+    }
+  
+    .form-group {
+      border-bottom: 1px solid rgba(235, 235, 245, 0.6) !important;
+      border: 1px solid rgba(235, 235, 245, 0.6);
+      border-radius: 10px;
+      margin-bottom: 0;
+      input {
+        height: 56px;
+        color: #c5c5c5;
+        opacity: 0.6;
+        border: 0;
+        color: $light;
+        width: 100px;
+        font-family: 'Montserrat';
+        outline: none !important;
+        outline-style: none !important;
+        box-shadow: none !important;
+        border-color: transparent !important;
+      }
+      .form-control {
+        background-color: #242424 !important;
+        border: 1px solid rgba(235, 235, 245, 0.6);
+        color: $light !important;
+        width: 100% !important;
+  
+        &.selectoBackground {
+          background-color: $primary !important;
+        }
+  
+        &.form-control::placeholder {
+          color: white !important;
+        }
+      }
+    }
+  
+    .success {
+      border: 1px solid greenyellow !important;
+    }
+    .error {
+      border: 1px solid red !important;
+    }
+  
+    .product-image {
+      width: 270px;
+      border-radius: 6px;
+      object-fit: cover;
+      height: 360px;
+      margin-top: 48px;
+      margin-bottom: 16px;
+    }
+  
+    .game-name {
+      font-family: 'Montserrat';
+      color: $light;
+      font-size: 16px;
+      font-weight: 600;
+      &.discount {
+        opacity: 0.6;
+        text-decoration: line-through;
+        font-weight: 400;
+      }
+    }
+  
+    .other-form {
+      width: 100%;
+      height: 1px;
+      background: rgba(235, 235, 245, 0.6);
+      margin-top: 50px;
+    }
+  
+    .separator {
+      background-color: $primary;
+      width: 83px;
+      height: 1px;
+      margin-top: 10px;
+      margin-bottom: 5px;
+      margin-left: 0px;
+    }
+  }
+}
+
+.text {
+  color: white;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 29px;
+}
+
+.mt-5 {
+  margin-top: 7.5rem !important;
+}
+
+.image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 120px;
+  height: 120px;
+  margin: -60px 0 0 -60px;
+  -webkit-animation: spin 2s linear infinite;
+  -moz-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+.btn-use-discount {
+  border: 1px solid rgba(235, 235, 245, 0.6) !important;
+  height: 56px;
+  border-radius: 10px;
+  background-color: #11BA18;
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+  line-height: 22px;
+  text-align: left;
+  padding-left: 25px;
+}
+.discount-balance {
+  color: #11BA18;
+}
+@-moz-keyframes spin {
+  100% {
+    -moz-transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 767px) {
+  .contenedor {
+    flex-direction: column-reverse;
+    gap: 35px;
+    padding: 15px;
+    margin-right: 0px;
+    margin-left: 0px;
+    .product {
+      font-size: 16px;
+    }
+    .product-image {
+      width: 100%;
+      height: auto;
+      max-height: 505px;
+      margin-top: 20px;
+    }
+    .game-name {
+      font-size: unset;
+    }
+    .title {
+      font-size: 16px;
+    }
+    .form-group{
+      .form-control {
+        font-size: unset;
+      }
+    }
+    .detail {
+      font-size: unset;
+    }
+    .description {
+      font-size: unset;
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .contenedor {
+    padding: 15px;
+    margin-right: 0px;
+    margin-left: 0px;
+    .product {
+      font-size: 16px;
+    }
+    .product-image {
+      width: 100%;
+      height: 368px;
+      object-fit: cover;
+      max-height: 368px;
+      margin-top: 46pxpx;
+    }
+    .game-name {
+      font-size: unset;
+    }
+    .title {
+      font-size: 16px;
+    }
+    .form-group{
+      .form-control {
+        font-size: unset;
+      }
+    }
+    .detail {
+      font-size: unset;
+    }
+    .description {
+      font-size: unset;
+    }
+  }
+}

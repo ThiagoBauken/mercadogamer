@@ -1,0 +1,10 @@
+<div class="icon">
+  <mat-icon svgIcon="search"></mat-icon>
+</div>
+<div class="content">
+  <input
+    [(ngModel)]="value"
+    [placeholder]="placeholder"
+    (change)="valueChange.emit(_value)"
+  />
+</div>

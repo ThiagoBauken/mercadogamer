@@ -1,0 +1,290 @@
+<div class="mt-6 mb-6 contenedor row">
+  <div class="col-md-8 text-left">
+    <span class="title">Completa los datos de facturación</span>
+    <form class="billing-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-md-6 d-flex flex-column-15">
+          <div
+            class="form-group"
+            [ngClass]="{
+              error: !isFieldValid('firstName'),
+              success: isFieldValid('firstName') && form.value?.firstName
+            }"
+          >
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Nombre"
+              formControlName="firstName"
+              [ngClass]="{
+                error: !isFieldValid('firstName'),
+                success: isFieldValid('firstName') && form.value?.firstName
+              }"
+            />
+          </div>
+          <div
+            class="form-group"
+            [ngClass]="{
+              error: !isFieldValid('address'),
+              success: isFieldValid('address') && form.value?.address
+            }"
+          >
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Domicilio"
+              formControlName="address"
+              [ngClass]="{
+                error: !isFieldValid('address'),
+                success: isFieldValid('address') && form.value?.address
+              }"
+            />
+          </div>
+          <div class="form-group success">
+            <input
+              type="text"
+              class="form-control success"
+              placeholder="País"
+              [value]="country.name"
+              readonly
+            />
+          </div>
+          <div
+            class="form-group"
+            [ngClass]="{
+              error: !isFieldValid('emailAddress'),
+              success: isFieldValid('emailAddress') && form.value?.emailAddress
+            }"
+          >
+            <input
+              type="email"
+              class="form-control"
+              placeholder="Email"
+              formControlName="emailAddress"
+              [ngClass]="{
+                error: !isFieldValid('emailAddress'),
+                success:
+                  isFieldValid('emailAddress') && form.value?.emailAddress
+              }"
+            />
+          </div>
+        </div>
+        <div class="col-md-6 d-flex flex-column-15">
+          <div
+            class="form-group"
+            [ngClass]="{
+              error: !isFieldValid('lastName'),
+              success: isFieldValid('lastName') && form.value?.lastName
+            }"
+          >
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Apellido"
+              formControlName="lastName"
+              [ngClass]="{
+                error: !isFieldValid('lastName'),
+                success: isFieldValid('lastName') && form.value?.lastName
+              }"
+            />
+          </div>
+          <div
+            class="form-group"
+            [ngClass]="{
+              error: !isFieldValid('postalCode'),
+              success: isFieldValid('postalCode') && form.value?.postalCode
+            }"
+          >
+            <input
+              type="number"
+              class="form-control"
+              placeholder="Código postal"
+              formControlName="postalCode"
+              [ngClass]="{
+                error: !isFieldValid('postalCode'),
+                success: isFieldValid('postalCode') && form.value?.postalCode
+              }"
+            />
+          </div>
+          <div
+            class="form-group"
+            [ngClass]="{
+              error: !isFieldValid('phoneNumber'),
+              success: isFieldValid('phoneNumber') && form.value?.phoneNumber
+            }"
+          >
+            <input
+              type="number"
+              class="form-control"
+              placeholder="Teléfono"
+              formControlName="phoneNumber"
+              [ngClass]="{
+                error: !isFieldValid('phoneNumber'),
+                success: isFieldValid('phoneNumber') && form.value?.phoneNumber
+              }"
+            />
+          </div>
+        </div>
+      </div>
+
+      <hr class="other-form" />
+      <span class="detail">Detalle de compra</span>
+      <div class="row mt-4">
+        <div class="col-md-6">
+          <mat-select
+            [(value)]="paymentMethod"
+            class="mb-3 select"
+            (valueChange)="paymentMethodChange()"
+          >
+            <!-- [disabled]="balancePay && (total | toUSD) < user.gift" -->
+            <mat-option value="select">Seleccione un método de pago</mat-option>
+            <mat-option value="mercadoPago">Mercado Pago</mat-option>
+          </mat-select>
+        </div>
+        <div class="col-md-6">
+          <button
+            *ngIf="user.gift > 0"
+            class="btn btn-info btn-block btn-use-discount"
+            type="button"
+            (click)="useBalance()"
+            [disabled]="
+              paymentMethod === 'mercadoPago' && user.gift > (total | toUSD)
+            "
+          >
+            Usar balance de regalo ({{
+              (balancePay
+                ? (total | toUSD) > user.gift
+                  ? 0
+                  : user.gift - (total | toUSD)
+                : user.gift
+              ) | currency: country.currency:'symbol-narrow':'1.0-2':'es-US'
+            }})
+          </button>
+        </div>
+      </div>
+
+      <div class="row mt-4">
+        <div class="col-md-6" *ngIf="!deviceInfo['max-1024']"></div>
+        <div
+          class="col-md-6 text-right"
+          [ngClass]="deviceInfo['max-1024'] ? 'col-md-12' : 'col-md-6'"
+          *ngIf="product && processingFee"
+        >
+          <p class="description">
+            {{ product.name }}
+            <span class="price">{{
+              (product.discount ? product.priceWithDiscount : product.price)
+                | toUSD
+                | currency: country.currency:'symbol-narrow':'1.0-2':'es-US'
+            }}</span>
+          </p>
+          <p class="description">
+            Cuotas de procesamiento
+            <span class="price">{{
+              processingFee
+                | toUSD
+                | currency: country.currency:'symbol-narrow':'1.0-2':'es-US'
+            }}</span>
+          </p>
+          <p class="description discount-balance" *ngIf="balancePay">
+            Descuento balance regalo
+            <span class="price">{{
+              (user.gift > (total | toUSD) ? -(total | toUSD) : -user.gift)
+                | currency: country.currency:'symbol-narrow':'1.0-2':'es-US'
+            }}</span>
+          </p>
+          <p class="description-total">
+            Total a Pagar
+            <span class="price-total">{{
+              (balancePay
+                ? user.gift > (total | toUSD)
+                  ? 0
+                  : (total | toUSD) - user.gift
+                : (total | toUSD)
+              ) | currency: country.currency:'symbol-narrow':'1.0-2':'es-US'
+            }}</span>
+          </p>
+          <button
+            class="btn btn-primary btn-block mt-4"
+            (click)="openModal(buySuccess)"
+            type="submit"
+            [disabled]="
+              (paymentMethod == 'select' && (total | toUSD) > user.gift) || sent
+            "
+          >
+            Continuar
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="col-md-4" *ngIf="product">
+    <span class="product">Producto</span> <br />
+    <img
+      [src]="filesUrl + product.picture"
+      onerror="this.src = 'assets/imgs/placeholder.png'"
+      class="product-image"
+    />
+    <br />
+    <span class="game-name">{{ product.name }}</span>
+    <hr class="separator" />
+    <span class="game-name" [ngClass]="product.discount ? 'discount' : ''">{{
+      product.price
+        | toUSD
+        | currency: country.currency:'symbol-narrow':'1.0-2':'es-US'
+    }}</span>
+    <span class="game-name text-primary ml-2" *ngIf="product.discount">{{
+      product.priceWithDiscount
+        | toUSD
+        | currency: country.currency:'symbol-narrow':'1.0-2':'es-US'
+    }}</span>
+  </div>
+</div>
+
+<ng-template #buySuccess let-modal>
+  <div
+    class="modal-body text-center"
+    style="height: 500px; width: 500px; background-color: #141414"
+  >
+    <ng-container *ngIf="!success && !error">
+      <img
+        src="assets/imgs/arrow.png"
+        width="97px"
+        height="97px"
+        class="image"
+      />
+      <div
+        class="row justify-content-center align-items-center"
+        style="margin-top: 330px"
+      >
+        <p class="text-center text">Cargando...</p>
+      </div>
+      <div class="row justify-content-center align-items-center">
+        <p class="text-center text">El pago está siendo procesado</p>
+      </div>
+    </ng-container>
+    <!-- <img src="assets/imgs/arrow.png" class="image" width="78px" height="78px" alt=""> -->
+    <ng-container *ngIf="success">
+      <div class="row justify-content-center align-items-center mt-5">
+        <img src="assets/imgs/success.png" width="97px" height="97px" alt="" />
+      </div>
+      <div class="row justify-content-center align-items-center mt-4">
+        <p class="text-center text">Felicidades!</p>
+      </div>
+      <div class="row justify-content-center align-items-center">
+        <p class="text-center text">Tu compra fue realizada con éxito!</p>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="error">
+      <div class="row justify-content-center align-items-center mt-5">
+        <img src="assets/imgs/reject.png" width="97px" height="97px" alt="" />
+      </div>
+      <div class="row justify-content-center align-items-center mt-4">
+        <p class="text-center text">Error</p>
+      </div>
+      <div class="row justify-content-center align-items-center">
+        <p class="text-center text">{{ error }}</p>
+      </div>
+    </ng-container>
+  </div>
+</ng-template>

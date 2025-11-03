@@ -1,0 +1,136 @@
+version: '3.8'
+
+services:
+  # MongoDB Database
+  mongodb:
+    image: mongo:7.0
+    container_name: mercadogamer-mongodb
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_DATABASE: mercadogamer
+    volumes:
+      - mongodb-data:/data/db
+    networks:
+      - mercadogamer-network
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Backend API (Express.js)
+  backend:
+    build:
+      context: ./MercadoGamer-Backend-main/MercadoGamer-Backend-main/api
+      dockerfile: Dockerfile
+    container_name: mercadogamer-backend
+    restart: unless-stopped
+    ports:
+      - "3000:3000"      # HTTP API
+      - "10111:10111"    # Socket.IO
+    environment:
+      NODE_ENV: development
+      DATABASE_HOST: mongodb:27017
+      DATABASE_NAME: mercadogamer
+      SOCKET_PORT_SOI: 10111
+      BASE_URL: http://localhost:3000
+      UPLOAD_DIR: /app/uploads
+      IMAGES_DIR: /app/files
+      # Email (MailHog for development)
+      SMTP_HOST: mailhog
+      SMTP_PORT: 1025
+      SMTP_USER: ""
+      SMTP_PASS: ""
+      # MercadoPago
+      MP_ACCESS_TOKEN: ${MP_ACCESS_TOKEN:-}
+      # Stripe
+      STRIPE_KEY: ${STRIPE_KEY:-}
+    volumes:
+      - ./MercadoGamer-Backend-main/MercadoGamer-Backend-main/api:/app
+      - /app/node_modules
+      - uploads:/app/files
+      - uploads:/app/uploads
+    depends_on:
+      mongodb:
+        condition: service_healthy
+      mailhog:
+        condition: service_started
+    networks:
+      - mercadogamer-network
+    command: npm run local
+
+  # Frontend - Web (Marketplace público)
+  frontend-web:
+    build:
+      context: ./MercadoGamer
+      dockerfile: Dockerfile.web
+      args:
+        APP_NAME: web
+    container_name: mercadogamer-frontend-web
+    restart: unless-stopped
+    ports:
+      - "3001:3000"
+    environment:
+      NODE_ENV: development
+      NEXT_PUBLIC_SERVER_URL: http://localhost:3000/api
+      NEXT_PUBLIC_SOCKET_URL: http://localhost:10111
+      NEXT_PUBLIC_FILE_URL: http://localhost:3000/files
+      NEXT_PUBLIC_DOMAIN: http://localhost:3001
+    volumes:
+      - ./MercadoGamer:/app
+      - /app/node_modules
+      - /app/.next
+    depends_on:
+      - backend
+    networks:
+      - mercadogamer-network
+    command: npx nx serve web --host 0.0.0.0 --port 3000
+
+  # Frontend - Admin (Painel administrativo)
+  frontend-admin:
+    build:
+      context: ./MercadoGamer
+      dockerfile: Dockerfile.admin
+      args:
+        APP_NAME: admin
+    container_name: mercadogamer-frontend-admin
+    restart: unless-stopped
+    ports:
+      - "4300:4300"
+    environment:
+      NODE_ENV: development
+      NEXT_PUBLIC_SERVER_URL: http://localhost:3000/api
+      NEXT_PUBLIC_SOCKET_URL: http://localhost:10111
+      NEXT_PUBLIC_FILE_URL: http://localhost:3000/files
+    volumes:
+      - ./MercadoGamer:/app
+      - /app/node_modules
+      - /app/.next
+    depends_on:
+      - backend
+    networks:
+      - mercadogamer-network
+    command: npx nx serve admin --host 0.0.0.0 --port 4300
+
+  # MailHog (SMTP server para desenvolvimento)
+  mailhog:
+    image: mailhog/mailhog:latest
+    container_name: mercadogamer-mailhog
+    restart: unless-stopped
+    ports:
+      - "1025:1025"  # SMTP server
+      - "8025:8025"  # Web UI
+    networks:
+      - mercadogamer-network
+
+networks:
+  mercadogamer-network:
+    driver: bridge
+
+volumes:
+  mongodb-data:
+    driver: local
+  uploads:
+    driver: local

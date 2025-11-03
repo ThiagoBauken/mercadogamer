@@ -1,0 +1,11 @@
+<app-topmenu></app-topmenu>
+<div *ngIf="user; else defaultRouter" class="app-container">
+  <div class="nav-container">
+    <app-nav-bar></app-nav-bar>
+  </div>
+  <div class="main-container"><router-outlet></router-outlet></div>
+</div>
+<ng-template #defaultRouter>
+  <router-outlet></router-outlet>
+</ng-template>
+<app-footer></app-footer>

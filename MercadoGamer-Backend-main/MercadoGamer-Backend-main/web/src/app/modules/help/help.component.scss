@@ -1,0 +1,131 @@
+@import "../../../assets/styles/_variables";
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url("../../../assets/fonts/Montserrat-Regular.ttf");
+}
+::ng-deep {
+    .container-fluid {
+        font-family: "Montserrat" !important;
+    }
+}
+.min-h-vh {
+    min-height: calc(100vh - 275px);
+}
+.row {
+    overflow-x: hidden !important;
+    .col {
+        overflow-x: hidden !important;
+    }
+    .vertical { 
+        position: absolute;
+        right: 0;
+        border: none;
+        border-left: 1px solid #38383A;
+        height: 650px;
+        width: 1px;       
+    }
+
+    .vertical-left {
+        position: absolute;
+        left: 0;
+        border: none;
+        border-left: 1px solid #38383A;
+        height: 650px;
+        width: 1px;  
+    }
+
+    .title {
+        color: $primary;
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 20px;
+        &.quest {
+            font-size: 22px !important; 
+        }
+    }
+    .text {
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 20px;
+        color: $light;
+    }
+
+    .disabled {
+        color: rgba(235, 235, 245, 0.6);
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        padding: 12px;
+        text-align: center;
+        line-height: 20px;
+        border-radius: 12px;
+        &.enabled {
+            background: #2F2F2F;
+            color: $primary !important;
+            font-weight: 600;
+        }
+        i {
+            margin-right: 5px;
+            font-size: 1.2rem;
+            color: rgba(235, 235, 245, 0.6);
+        }
+        .icon-enabled {
+            color: $primary !important;
+        }
+    }
+
+    .list-sell {
+        a {
+            text-decoration: none;
+            color: rgba(235, 235, 245, 0.6);
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 20px;
+            margin-top: 16px;
+            cursor: pointer;
+            text-align: center;
+            &.active {
+                color: $primary;
+                font-weight: 600;
+            }
+        }
+    }
+
+    .img-container {
+        .img-game {
+            border-radius: 6px;
+            width: 116px;
+            height: 156px;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+        span {
+            font-family: 'Montserrat';
+            font-style: normal;
+            line-height: 20px;
+        }
+        .name {
+            color: $light;
+            font-size: 16px;
+            font-weight: 600;
+        }
+        .category {
+            color: rgba(235, 235, 245, 0.6);
+        }
+    }
+
+
+}
+
+
+
+
+    

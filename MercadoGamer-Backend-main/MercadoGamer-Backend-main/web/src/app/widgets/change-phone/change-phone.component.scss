@@ -1,0 +1,27 @@
+:host {
+  display: grid;
+  gap    : 27px;
+
+  .page-title {
+    font-size: 20px;
+  }
+
+  &>.content {
+    display  : grid;
+    gap      : 14px;
+    max-width: 678px;
+
+    &>app-mercado-phone-input {
+      width: 329px;
+    }
+
+    &>.action {
+      display        : grid;
+      justify-content: flex-end;
+    }
+  }
+
+  &>app-verification-code {
+    padding: 0;
+  }
+}

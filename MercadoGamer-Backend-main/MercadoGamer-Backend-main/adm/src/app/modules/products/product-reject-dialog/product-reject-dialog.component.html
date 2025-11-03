@@ -1,0 +1,47 @@
+<div class="h-100 w-100 position-relative">
+  <div mat-dialog-title class="text-white">{{ data.title }}</div>
+  <div mat-dialog-content class="pl-5">
+    <div
+      *ngFor="let optionItem of data.options; let i = index"
+      class="list-item"
+    >
+      <mat-checkbox
+        [value]="optionItem.id"
+        (change)="data.options[i].status = !optionItem.status"
+        color="warn"
+        class="text-white"
+      >
+      </mat-checkbox>
+      <div class="label">{{ optionItem.name }}</div>
+    </div>
+    <div class="list-item">
+      <mat-checkbox
+        [value]="customMessage"
+        (change)="customMessage = !customMessage"
+        color="warn"
+        class="text-white custom-message"
+      >
+      </mat-checkbox>
+      <div class="label">
+        <textarea
+          [(ngModel)]="message"
+          rows="7"
+          [disabled]="!customMessage"
+        ></textarea>
+      </div>
+    </div>
+  </div>
+  <div
+    mat-dialog-actions
+    class="position-absolute w-100 d-flex justify-content-end"
+  >
+    <button
+      mat-button
+      cdkFocusInitial
+      class="btn-ok text-white"
+      (click)="onNoClick()"
+    >
+      {{ data.ok }}
+    </button>
+  </div>
+</div>

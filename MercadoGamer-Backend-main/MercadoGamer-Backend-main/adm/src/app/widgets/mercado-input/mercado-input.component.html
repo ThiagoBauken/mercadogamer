@@ -1,0 +1,23 @@
+<div
+  [ngClass]="{
+    'mercado-input': true,
+    'has-value': value === 0 || !!value || focus,
+    error: error
+  }"
+>
+  <div *ngIf="label" [ngClass]="{ label: true }">
+    {{ label }}
+  </div>
+  <input
+    [(ngModel)]="value"
+    [type]="type"
+    [readonly]="editable ? '' : 'readonly'"
+    [maxLength]="maxLength"
+    [placeholder]="label ? '' : placeholder"
+    (focus)="setFocus($event, true)"
+    (focusout)="setFocus($event, false)"
+  />
+</div>
+<div *ngIf="!hideHelper || helper" [ngClass]="{ helper: true, error: error }">
+  {{ helper }}
+</div>

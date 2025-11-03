@@ -1,0 +1,6 @@
+<div [class]="status">
+  <i *ngIf="status === 'finished'" class="fa fa-check-circle"></i>
+  <i *ngIf="status === 'paid'" class="fa fa-rotate-right"></i>
+  <mat-icon *ngIf="status === 'complaint'" svgIcon="complaint"></mat-icon>
+  <mat-icon *ngIf="status === 'cancelled'" svgIcon="order-cancelled"></mat-icon>
+</div>

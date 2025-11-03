@@ -1,0 +1,66 @@
+@import "../../assets/styles/_variables";
+
+.mt-25 {
+  margin-top: 25px;
+}
+
+
+
+.upload-container {
+  border: 1px solid #dadada;
+  padding: 1em;
+  background: white;
+  border-radius: 5px;
+}
+
+.check-grp{
+  display: flex;
+  justify-content: space-between;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.input-icon {
+  position: relative;
+}
+
+.input-icon>i {
+  position: absolute;
+  display: block;
+  transform: translate(0, -50%);
+  top: 50%;
+  pointer-events: none;
+  width: 25px;
+  text-align: center;
+  font-style: normal;
+}
+
+.input-icon>input {
+  padding-left: 1.15rem;
+  padding-bottom: 5px;
+}
+
+.scroll {
+  overflow: auto;
+  white-space: nowrap;
+}
+
+.list-group-item {
+  border: none;
+}
+
+.icon-close-image {
+  margin-top: -10px;
+  margin-right: -9px;
+}
+fieldset {
+  margin-bottom: 1rem;
+}

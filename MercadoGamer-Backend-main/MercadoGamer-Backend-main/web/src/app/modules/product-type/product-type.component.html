@@ -1,0 +1,43 @@
+<div class="page-title">Añadir nuevo producto</div>
+
+<div class="description" [routerLink]="['/my-account/shopping']">
+  <div class="icon"><i class="fa fa-chevron-left"></i></div>
+  <div class="label">Regresar a mi cuenta</div>
+</div>
+
+<div class="content">
+  <app-card-product-type
+    *ngIf="!user?.hasFirstSale"
+    (click)="goToProductAdd('free')"
+    title="Gratuita"
+    subTitle="Sin comisión"
+    borderColor="#EBEBF599"
+    imageUrl="assets/imgs/free.svg"
+  ></app-card-product-type>
+
+  <app-card-product-type
+    (click)="goToProductAdd('normal')"
+    title="Normal"
+    subTitle="Comisión de 7% + IVA (8,47%) "
+    imageUrl="assets/imgs/normal.svg"
+    [descriptions]="[
+      'Mejor posición en busquedas que las
+      publicaciones gratuitas',
+      'Producto recomendado'
+    ]"
+  ></app-card-product-type>
+
+  <app-card-product-type
+    (click)="goToProductAdd('pro')"
+    title="PRO"
+    subTitle="Comisión de 10% + IVA (12,1%) "
+    imageUrl="assets/imgs/pro.svg"
+    borderColor="#F78A0E"
+    [descriptions]="[
+      'Mejor posición en busquedas',
+      'Mayor recomendación del producto',
+      'Potencial producto publicitado',
+      'Posibilidad de estar en el inicio'
+    ]"
+  ></app-card-product-type>
+</div>

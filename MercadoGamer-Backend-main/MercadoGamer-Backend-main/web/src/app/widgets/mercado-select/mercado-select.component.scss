@@ -1,0 +1,82 @@
+@import 'src/assets/styles/_globals';
+
+:host {
+  display: block;
+
+  &>.mercado-select {
+    border       : 1px solid #EBEBF599;
+    border-radius: 10px;
+    padding      : 4px 24px;
+    display      : grid;
+    align-items  : center;
+    min-height   : 44px;
+    position     : relative;
+
+    &>.label {
+      font-size  : 14px;
+      line-height: normal;
+      color      : $field-label;
+      position   : absolute;
+      top        : 0;
+      left       : 28px;
+      right      : 0;
+      bottom     : 0;
+      display    : grid;
+      align-items: center;
+      z-index    : 0;
+    }
+
+    &>.select-container {
+      position: relative;
+
+      ::ng-deep {
+        .mat-select-trigger {
+          margin-top: 0;
+
+          mat-select-trigger {
+            display              : grid;
+            grid-template-columns: min-content 1fr;
+            align-items          : center;
+            gap                  : 19px;
+
+            &>.icon {
+              background: center/contain no-repeat;
+              width     : 38px;
+              height    : 24px;
+            }
+          }
+        }
+
+        .mat-select-placeholder {
+          color: #EBEBF599;
+        }
+      }
+    }
+
+    &.has-value {
+      &>.label {
+        font-size  : 12px;
+        line-height: 12px;
+        position   : unset;
+      }
+    }
+
+    &.error {
+      &>.label {
+        color: $field-error;
+      }
+    }
+  }
+
+  &>.helper {
+    font-size  : 12px;
+    color      : $field-label;
+    line-height: 12px;
+    height     : 12px;
+    padding    : 0 28px;
+
+    &.error {
+      color: $field-error;
+    }
+  }
+}

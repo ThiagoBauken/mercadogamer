@@ -1,0 +1,315 @@
+<div class="contenedor">
+  <div class="d-flex flex-column">
+    <div class="row">
+      <div class="col-md-6">
+        <div
+          class="bg-image"
+          [style]="
+            'background-image: linear-gradient(272deg, rgb(11 11 12) 20%, rgba(20, 20, 20, 0.9) 80%), url(' +
+            filesUrl +
+            product?.picture +
+            ');'
+          "
+        ></div>
+        <div class="text-right">
+          <img
+            [src]="filesUrl + product?.picture"
+            onerror="this.src = 'assets/imgs/placeholder.png'"
+            class="cover bd-radius-10"
+          />
+        </div>
+      </div>
+      <div class="col-md-6 mt-4 pt-2">
+        <div
+          class="d-flex mt-3 ml-4 pl-3 column-gap-20 justify-content-between max-w-795"
+        >
+          <div class="product-name">
+            <h1 class="game-name">{{ product?.name }}</h1>
+          </div>
+          <div class="d-flex product-user justify-content-end">
+            <div
+              class="d-flex align-items-center user-avatar"
+              (click)="goToSellerProfile()"
+            >
+              <div class="">
+                <img
+                  [src]="filesUrl + product?.user.picture"
+                  onerror="this.src = 'assets/imgs/avatar.png'"
+                  class="avatar-img"
+                />
+              </div>
+              <div class="">
+                <span class="business-name ml-1">{{
+                  product?.user.username
+                }}</span>
+                <br />
+                <ng-container *ngIf="product?.user.sellerTotalQualifications">
+                  <i
+                    class="fa fa-star"
+                    *ngFor="let item of [].constructor(5); index as i"
+                    [ngClass]="{
+                      'text-primary':
+                        i + 0.5 <= product?.user.sellerQualification,
+                      'ml-1': i === 0
+                    }"
+                  ></i>
+                </ng-container>
+                <span
+                  style="
+                    font-family: 'Montserrat';
+                    color: gray;
+                    font-size: 15px;
+                    font-weight: 500;
+                    margin-left: 3px;
+                  "
+                  *ngIf="!product?.user.sellerTotalQualifications"
+                  >Sin Calificar</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ml-4 pl-3" style="gap: 30px">
+          <!-- <button
+            class="btn btn-clear btn-category d-flex align-items-center"
+            (click)="goToCatalogue('type', product?.type)"
+          >
+            <mat-icon svgIcon="cube-outline" class="mr-2"></mat-icon>
+            {{ settings.products.type[product?.type]?.label }}
+          </button>
+          <button
+            class="btn btn-clear btn-category d-flex align-items-center"
+            (click)="goToCatalogue('category', product?.category.id)"
+          >
+            <mat-icon
+              svgIcon="category"
+              class="mr-2"
+              style="width: 20px"
+            ></mat-icon>
+            {{ product?.category?.name }}
+          </button>
+          <button
+            class="btn btn-clear btn-category d-flex align-items-center"
+            (click)="goToCatalogue('platform', product?.platform.id)"
+          >
+            <mat-icon svgIcon="productos" class="mr-2"></mat-icon>
+            {{ product?.platform?.name }}
+          </button> -->
+          <div class="row delivery">
+            <mat-icon
+              [svgIcon]="
+                deliver === 'automatic'
+                  ? 'delivery-automatic'
+                  : 'delivery-coordinate'
+              "
+            ></mat-icon>
+            <div class="label">
+              {{
+                deliver === 'automatic'
+                  ? 'Entrega automática'
+                  : 'Entrega coordinada'
+              }}
+            </div>
+          </div>
+          <div class="row delivery">
+            <mat-icon svgIcon="game"></mat-icon>
+            <div class="lable">
+              {{ product?.platform?.name }}
+            </div>
+          </div>
+        </div>
+
+        <div class="row align-items-center ml-4 mt-4" *ngIf="product">
+          <span class="price">{{
+            (product.discount ? product.priceWithDiscount : product.price)
+              | toUSD
+              | currency: country.currency:'symbol-narrow':'1.0-2':'es-US'
+          }}</span>
+          <span class="price-old" *ngIf="product.discount">{{
+            product.price
+              | toUSD
+              | currency: country.currency:'symbol-narrow':'1.0-2':'es-US'
+          }}</span>
+        </div>
+
+        <div class="ml-4 mt-4 mr-4 pl-3">
+          <span class="description">{{ product?.description }}</span>
+        </div>
+
+        <div *ngIf="product?.stock > 0" class="row ml-4 mr-4 mt-4">
+          <button
+            [disabled]="product?.user?.id == user?.id || !product.enabled"
+            class="btn btn-primary btn-buy"
+            (click)="goToCheckout()"
+          >
+            {{
+              product?.user?.id == user?.id || !product.enabled
+                ? 'No se puede comprar'
+                : 'Comprar'
+            }}
+          </button>
+        </div>
+        <div *ngIf="product?.stock == 0" class="row ml-4 mr-4 mt-4">
+          <button
+            [disabled]="product?.user?.id == user?.id"
+            class="btn btn-primary btn-buy"
+          >
+            No hay stock
+          </button>
+        </div>
+        <div class="row my-4 mr-4 ml-4 pl-2">
+          <div>
+            <div class="mb-4">
+              <a
+                routerLink="/help/garantia-mg"
+                class="text-white text-decoration-none"
+              >
+                <img src="assets/imgs/support.png" class="mr-3" />
+                <span>Garantia MG</span>
+              </a>
+            </div>
+            <span class="title">Preguntas</span>
+            <div
+              class="row mt-3 mr-4 max-w-795"
+              *ngIf="productsQAs?.length === 0"
+            >
+              <div class="col-md-12 text-left">
+                <span class="text-gray"
+                  >Aún no se ha realizado ninguna pregunta sobre este
+                  producto.</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="card bd-dark mt-3">
+            <div class="d-flex flex-wrap">
+              <div class="w-auto">
+                <img src="assets/imgs/avatar.png" class="img-profile" />
+              </div>
+              <div class="flex-grow-1 pl-2 pr-3">
+                <textarea
+                  class="w-100"
+                  rows="3"
+                  maxlength="400"
+                  [(ngModel)]="question"
+                  placeholder="Escribe tu pregunta."
+                ></textarea>
+              </div>
+              <div class="w-auto align-self-center">
+                <button
+                  class="btn btn-buy border-0 bg-blue px-5 py-2 w-auto h-auto"
+                  (click)="sendQuestion()"
+                  [disabled]="!question"
+                >
+                  Preguntar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="row ml-4 pl-2 mt-3 mr-4"
+          *ngFor="let productQA of productsQAs"
+        >
+          <div class="card bd-dark">
+            <div class="d-flex flex-wrap">
+              <div
+                class="w-auto"
+                (click)="
+                  pageService.navigateRoute(
+                    'profile/user/' + productQA.buyer.id
+                  )
+                "
+              >
+                <img
+                  [src]="filesUrl + productQA.buyer?.picture"
+                  onerror="this.src = 'assets/imgs/avatar.png'"
+                  class="img-profile"
+                />
+              </div>
+              <div class="flex-grow-1 px-2 pr-3 py-1">
+                <span class="comment">{{ productQA.question }}</span>
+              </div>
+              <div class="d-flex flex-wrap pl-4 mt-3" *ngIf="productQA.answer">
+                <div
+                  class="w-auto"
+                  (click)="
+                    pageService.navigateRoute(
+                      'profile/seller/' + product?.user.id
+                    )
+                  "
+                >
+                  <img
+                    [src]="filesUrl + product?.user.picture"
+                    onerror="this.src = 'assets/imgs/avatar.png'"
+                    class="img-profile"
+                    alt=""
+                  />
+                </div>
+                <div class="flex-grow-1 px-2 pr-3 py-1">
+                  <span class="comment">{{ productQA.answer }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="related-product">
+          <div class="title">
+            Quienes vieron este producto también compraron
+          </div>
+          <div class="content">
+            <app-category-item
+              *ngFor="let product of featuredProducts"
+              [imageUrl]="product?.picture"
+              [label]="product?.name"
+              [price]="
+                product?.price
+                  | toUSD
+                  | currency: country.currency:'symbol-narrow':'1.0-2':'es-US'
+              "
+              [delivery]="product?.stockProduct?.retirementType"
+              [type]="product?.platform?.name"
+              (click)="goToProductDetail(product.id)"
+              (middleClick)="goToProductDetail(product.id, true)"
+            ></app-category-item>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #askQuestion let-modal>
+  <div
+    class="modal-body text-center card-modal"
+    style="height: 400px; width: 500px; background-color: #141414"
+  >
+    <div class="row justify-content-center mt-4">
+      <span class="quest">Escribe tu pregunta</span>
+    </div>
+    <div class="card-consultations">
+      <div class="form-group mt-4">
+        <textarea
+          class="form-control"
+          placeholder="Escribe tu pregunta."
+          cols="50"
+          rows="5"
+          maxlength="400"
+          [(ngModel)]="question"
+        ></textarea>
+      </div>
+      <div class="row justify-content-center mt-4 ml-4 mr-4">
+        <button
+          class="btn btn-primary btn-block btn-calificate"
+          (click)="sendQuestion()"
+          [disabled]="!question"
+        >
+          <span class="text-light"> Enviar </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</ng-template>

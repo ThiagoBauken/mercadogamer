@@ -1,0 +1,125 @@
+@import 'src/assets/styles/_globals';
+
+:host {
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+  padding        : 180px 0;
+
+  .container {
+    background-color: #202020;
+    width           : fit-content;
+    padding         : 50px 40px;
+    border-radius   : 15px;
+    display         : grid;
+    gap             : 27px;
+    font-weight     : 500;
+
+    &>.header {
+      display: grid;
+      gap    : 6px;
+
+      &>.title {
+        font-size : 20px;
+        text-align: center;
+        color     : $primary;
+      }
+
+      &>.description {
+        text-align: center;
+        color     : #A7A8AF;
+      }
+    }
+
+    &>.content {
+      display: grid;
+      gap    : 8px;
+
+      &>.title {
+        text-align: center;
+      }
+
+      &>.phone {
+        text-align: center;
+        color     : #065AFA;
+      }
+
+      &>.input-group {
+        display       : grid;
+        gap           : 18px;
+        grid-auto-flow: column;
+
+        &>input {
+          background-color: #0B0B0C;
+          border          : none;
+          width           : 40px;
+          height          : 50px;
+          border-radius   : 6px;
+          color           : white;
+          font-size       : 30px;
+          text-align      : center;
+        }
+      }
+    }
+
+    &>.action {
+      display        : grid;
+      justify-content: center;
+      gap            : 27px;
+      justify-content: center;
+
+      &>app-button {
+        margin: 0 auto;
+      }
+    }
+
+  }
+
+  @include brackpoint-md {
+    align-items: flex-start;
+    padding    : 0px 0;
+
+    &>.container {
+      background-color: transparent;
+      width           : fit-content;
+      padding         : 21px 19px;
+
+      &>.header {
+        gap       : 4px;
+        margin-top: 114px;
+
+        &>.title {
+          font-size : 14px;
+          text-align: center;
+          color     : white;
+        }
+
+        &>.description {
+          text-align: center;
+          color     : #A7A8AF;
+        }
+      }
+
+      &>.content {
+        gap: 7px;
+
+        &>.title {
+          text-align: left;
+        }
+
+        &>.phone {
+          text-align: left;
+        }
+
+        &>.input-group {
+          margin-top: 18px;
+
+          &>input {
+            background-color: #242424;
+            font-size       : 20px;
+          }
+        }
+      }
+    }
+  }
+}

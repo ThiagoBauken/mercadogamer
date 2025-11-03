@@ -1,0 +1,260 @@
+<div class="container-fluid p-0">
+  <div class="row cont justify-content-center pr-4 pb-4">
+    <div class="col">
+      <div class="row">
+        <div class="col-md-6">
+          <span class="title quest ml-4">Solicitudes de retiro</span>
+        </div>
+        <div class="col-md-6 text-right">
+          <button mat-button [matMenuTriggerFor]="menu">
+            <span
+              class="text-primary ml-2"
+              style="
+                font-family: 'Montserrat';
+                font-weight: 600;
+                font-size: 1rem;
+              "
+              >{{
+                selectedStatus
+                  ? settings.withdrawals.status[selectedStatus].label
+                  : 'Todas las solicitude'
+              }}s</span
+            >
+            <i class="fa fa-chevron-down text-primary ml-2"></i>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="selectedStatus = null; getItems()">
+                Todas las solicitudes
+              </button>
+              <button
+                mat-menu-item
+                (click)="
+                  selectedStatus = settings.withdrawals.status.pending.code;
+                  getItems()
+                "
+              >
+                {{ settings.withdrawals.status.pending?.label }}s
+              </button>
+              <button
+                mat-menu-item
+                (click)="
+                  selectedStatus = settings.withdrawals.status.paid.code;
+                  getItems()
+                "
+              >
+                {{ settings.withdrawals.status.paid?.label }}s
+              </button>
+            </mat-menu>
+          </button>
+        </div>
+      </div>
+
+      <div class="table-responsive mt-4">
+        <table class="table">
+          <thead>
+            <tr>
+              <th class="text-center">
+                <button type="button" class="btn btn-clear">
+                  <span class="text-light">ID</span>
+                  <i class="fa" aria-hidden="true"></i>
+                </button>
+              </th>
+              <th class="text-center">
+                <button type="button" class="btn btn-clear">
+                  <span class="text-light">Monto</span>
+                  <i class="fa" aria-hidden="true"></i>
+                </button>
+              </th>
+
+              <th class="text-center">
+                <button type="button" class="btn btn-clear">
+                  <span class="text-light">Método de pago</span>
+                  <i class="fa" aria-hidden="true"></i>
+                </button>
+              </th>
+              <th class="text-center">
+                <button type="button" class="btn btn-clear">
+                  <span class="text-light">Usuario</span>
+                  <i class="fa" aria-hidden="true"></i>
+                </button>
+              </th>
+              <th class="text-center">
+                <button type="button" class="btn btn-clear">
+                  <span class="text-light">Fecha</span>
+                  <i class="fa" aria-hidden="true"></i>
+                </button>
+              </th>
+              <th class="text-center">
+                <button type="button" class="btn btn-clear">
+                  <span class="text-light">Moneda</span>
+                  <i class="fa" aria-hidden="true"></i>
+                </button>
+              </th>
+              <th class="text-center">
+                <button type="button" class="btn btn-clear">
+                  <span class="text-light">Estado</span>
+                  <i class="fa" aria-hidden="true"></i>
+                </button>
+              </th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <!-- Cargador -->
+            <tr *ngIf="loading" class="text-center">
+              <td colspan="6">
+                <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
+                Cargando...
+              </td>
+            </tr>
+            <!-- Texto cuando no hay resultados  -->
+            <tr
+              *ngIf="!loading && withdrawals?.length == 0"
+              class="text-center"
+            >
+              <td colspan="6">
+                <span class="text-muted">
+                  <i class="fa fa-close" aria-hidden="true"></i>
+                  No hay solicitudes para mostrar
+                </span>
+              </td>
+            </tr>
+
+            <tr
+              (click)="openModal(approbe, withdrawal)"
+              *ngFor="let withdrawal of withdrawals"
+            >
+              <td class="text-center">
+                {{ withdrawal.id }}
+              </td>
+              <td class="text-center">
+                {{
+                  withdrawal.amount
+                    | currency
+                      : withdrawal.user.country.currency
+                      : 'code'
+                      : '1.0-2'
+                      : 'es-US'
+                }}
+              </td>
+              <td class="px-4 text-center">
+                {{
+                  settings.paymentMethods?.type[withdrawal.paymentMethod?.type]
+                    ?.label
+                }}
+              </td>
+              <td class="px-4 text-center">
+                {{ withdrawal.user?.username }}
+              </td>
+              <td class="px-4 text-center">
+                {{ withdrawal.createdAt | date: 'dd/MM/yyyy' }}
+              </td>
+              <td class="px-4 text-center">
+                {{ withdrawal.user?.country.currency }}
+                <img
+                  [src]="filesUrl + withdrawal.user.country.picture"
+                  onerror="this.src = 'assets/imgs/placeholder.png'"
+                />
+              </td>
+              <td class="text-center">
+                <button
+                  class="btn btn-small"
+                  [ngClass]="
+                    settings.withdrawals.status[withdrawal.status].class
+                  "
+                >
+                  <span class="text-light">{{
+                    settings.withdrawals.status[withdrawal.status].label
+                  }}</span>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="row pt-4 pb-4 pr-4">
+        <div class="col-10"></div>
+        <div class="col-2 text-right">
+          <span class="pagined"
+            ><i
+              class="fa fa-chevron-left text-light"
+              (click)="previousPage()"
+              *ngIf="page !== 1"
+              style="cursor: pointer"
+            ></i>
+            {{ page }}/{{ totalPages }}
+            <i
+              class="fa fa-chevron-right text-light"
+              (click)="nextPage()"
+              *ngIf="page !== totalPages && totalPages > 0"
+              style="cursor: pointer"
+            ></i
+          ></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #approbe let-modal>
+  <div
+    class="modal-body text-center"
+    style="height: 500px; width: 500px; background-color: #141414"
+  >
+    <div class="row mt-4 justify-content-center">
+      <p class="text-center title-modal">Aprobar retiro</p>
+    </div>
+    <div class="row mt-4 justify-content-center">
+      <p class="text-center text-modal">{{ selectedItem?.user.username }}</p>
+    </div>
+    <div class="row mt-4 justify-content-center" *ngIf="selectedItem">
+      <p class="text-center ammount">
+        {{
+          selectedItem.amount
+            | currency
+              : selectedItem.user.country.currency
+              : 'code'
+              : '1.0-2'
+              : 'es-US'
+        }}
+      </p>
+    </div>
+    <div class="row mt-4 justify-content-center">
+      <img
+        [src]="
+          settings.paymentMethods.type[selectedItem.paymentMethod?.type]?.img
+        "
+        width="25px"
+        height="25px"
+      />
+      <p class="text-center text-modal ml-3">
+        {{ selectedItem?.userInfo }}
+      </p>
+    </div>
+    <div class="row mt-4 justify-content-center">
+      <p class="text-center text-modal ml-3">
+        <span style="color: #dc3545; font-weight: 600">CUIT/CUIL :</span>
+        {{ selectedItem?.taxId }}
+      </p>
+    </div>
+    <div class="row mt-2 justify-content-center">
+      <p class="text-center text-modal">
+        {{ selectedItem.createdAt | date: 'dd/MM/yyyy' }}
+      </p>
+    </div>
+    <div class="row mt-4">
+      <div class="col-md-1"></div>
+      <div class="col-md-5">
+        <button class="btn btn-block btn-danger" (click)="close()">
+          <span class="text-light">Cancelar</span>
+        </button>
+      </div>
+      <div class="col-md-5">
+        <button class="btn btn-block btn-success" (click)="pay()">
+          <span class="text-light">Aprobar</span>
+        </button>
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+  </div>
+</ng-template>

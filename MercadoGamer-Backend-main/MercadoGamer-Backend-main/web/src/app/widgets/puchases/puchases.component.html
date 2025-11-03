@@ -1,0 +1,89 @@
+<section class="puchases-list">
+  <!-- <div class="sub-page-title">Compras</div> -->
+  <div class="content">
+    <div class="list">
+      <ng-template ngFor let-order [ngForOf]="data?.items">
+        <!-- <ng-template > -->
+        <app-purchase-card
+          *ngIf="order?.product"
+          (click)="onCardClick(order, false)"
+          [title]="order?.product.name"
+          [imageUrl]="order?.product.picture"
+          [status]="order?.status"
+          [price]="
+            (order?.product?.discount
+              ? order?.product?.priceWithDiscount
+              : order?.product?.price +
+                (order.product?.price / 100) * 4 +
+                order.country?.processingFee * order.country?.toUSD
+            )
+              | toUSD
+              | currency: country.currency:'symbol-narrow':'1.0-2':'es-US'
+          "
+          [date]="order?.createdAt"
+        ></app-purchase-card>
+        <!-- </ng-template> -->
+      </ng-template>
+    </div>
+
+    <div class="information">
+      <app-product-information
+        *ngIf="selected"
+        [imageUrl]="global.getFullUrl(selected?.product?.picture)"
+        [name]="selected?.product?.name"
+        [showAction]="
+          selected?.status !== 'cancelled' && selected?.status !== 'returned'
+        "
+        (action)="goToPurchase(selected, false)"
+        [price]="
+          (selected?.product?.discount
+            ? selected?.product?.priceWithDiscount
+            : selected?.product?.price +
+              ((selected.product?.price / 100) * 4 +
+                selected.country?.processingFee * selected.country?.toUSD)
+          )
+            | toUSD
+            | currency: country.currency:'symbol-narrow':'1.0-2':'es-US'
+        "
+        [date]="selected?.updatedAt"
+        [content]="[
+          {
+            label: 'Producto',
+            color: '#50C33D',
+            value:
+              selected.product?.price
+              | toUSD
+              | currency: country.currency:'symbol-narrow':'1.0-2':'es-US'
+          },
+          {
+            label: 'Comisión',
+            color: '#FF5935',
+            value:
+              (selected.product?.price / 100) * 4 +
+                selected.country?.processingFee * selected.country?.toUSD
+              | toUSD
+              | currency: country.currency:'symbol-narrow':'1.0-2':'es-US'
+          },
+          {
+            label: 'Total',
+            value:
+              selected.product?.price +
+                ((selected.product?.price / 100) * 4 +
+                  selected.country?.processingFee * selected.country?.toUSD)
+              | toUSD
+              | currency: country.currency:'symbol-narrow':'1.0-2':'es-US'
+          }
+        ]"
+        [userInfo]="{
+          id: selected?.seller?.id,
+          type: 'seller',
+          label: 'Vendedor',
+          userName:
+            selected?.seller?.firstName + ' ' + selected?.seller?.username,
+          image: global.getFullUrl(selected?.seller?.picture),
+          showAction: selected?.status === 'pending'
+        }"
+      ></app-product-information>
+    </div>
+  </div>
+</section>

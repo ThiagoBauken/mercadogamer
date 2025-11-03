@@ -1,0 +1,449 @@
+@import '../../../assets/styles/_variables';
+
+@font-face {
+  font-family: 'Montserrat';
+  src        : url('../../../assets/fonts/Montserrat-Regular.ttf');
+}
+
+.contenedor {
+  overflow-x: hidden !important;
+  width     : 100%;
+  padding   : 0px 10px 0px 0px;
+
+  .mt-6 {
+    margin-top: 5rem;
+  }
+
+  .mb-6 {
+    margin-bottom: 5rem;
+  }
+
+  .max-w-795 {
+    max-width: 795px;
+  }
+
+  .bg-blue {
+    background-color: #065AFA;
+  }
+
+  .cover {
+    width     : 366px;
+    height    : 471px;
+    object-fit: cover;
+    position  : absolute;
+    right     : 0px;
+    top       : 53px;
+  }
+
+  .bg-image {
+    position         : relative;
+    background-repeat: no-repeat;
+    background-size  : cover;
+    height           : 919px;
+    width            : 100%;
+    right            : 10px;
+    filter           : blur(2px);
+    -webkit-filter   : blur(2px);
+  }
+
+  .game-name {
+    font-family   : 'Montserrat';
+    font-style    : normal;
+    font-weight   : 700;
+    font-size     : 42px;
+    line-height   : 42px;
+    text-transform: uppercase;
+    color         : $light;
+    text-shadow   : 0px 2px 2px rgba(0, 0, 0, 0.2);
+  }
+
+  .product-user {
+    min-width    : 150px;
+    margin-bottom: 16px;
+    align-items  : start;
+
+    .user-avatar {
+      gap   : 10px;
+      cursor: pointer;
+
+      .avatar-img {
+        border-radius: 50%;
+        width        : 33px;
+        height       : 33px;
+        object-fit   : cover;
+      }
+    }
+  }
+  .delivery {
+    display              : grid;
+    grid-template-columns: min-content 1fr;
+    gap                  : 8px;
+    align-items          : center;
+    margin-left: 5px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-size: 18px;
+    &>mat-icon {
+      width : 35px;
+      height: 35px;
+      color : $primary;
+    }
+
+    &>.label {
+      // margin-left: 1 px;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 21px;
+      color: $light
+    }
+  }
+  .business-name {
+    font-family: 'Montserrat';
+    font-style : normal;
+    font-weight: normal;
+    font-size  : 16px;
+    line-height: 20px;
+    color      : $light;
+  }
+
+  .fa-star {
+    margin-right: 5px;
+    color       : rgba(235, 235, 245, 0.6);
+  }
+
+  .btn-category {
+    color        : rgba(235, 235, 245, 0.6);
+    font-family  : 'Montserrat';
+    font-style   : normal;
+    font-weight  : normal;
+    font-size    : 16px;
+    line-height  : 20px;
+    padding-left : 0;
+    padding-right: 0;
+
+    i {
+      margin-right: 5px;
+    }
+  }
+
+  .price {
+    font-family: 'Montserrat';
+    font-style : normal;
+    font-weight: 600;
+    font-size  : 32px;
+    line-height: 39px;
+    margin-left: 16px;
+    color      : $primary;
+  }
+
+  .price-old {
+    font-family    : 'Montserrat';
+    font-style     : normal;
+    color          : rgba(235, 235, 245, 0.6);
+    font-weight    : 600;
+    font-size      : 20px;
+    line-height    : 24px;
+    margin-left    : 30px;
+    margin-top     : 2px;
+    text-decoration: line-through;
+  }
+
+  .description {
+    color      : #FFFFFF;
+    font-family: 'Montserrat';
+    font-style : normal;
+    font-weight: normal;
+    font-size  : 16px;
+    line-height: 20px;
+    white-space: pre-line;
+  }
+
+  .btn-buy {
+    border-radius: 35px;
+    color        : $light;
+    width        : 172px;
+    height       : 48px;
+    padding      : 8px;
+    font-size    : 14px;
+    line-height  : 17px;
+    font-weight  : normal;
+    font-family  : 'Montserrat';
+
+    &:disabled {
+      color: $gray-600;
+    }
+  }
+
+  .title {
+    font-family: 'Montserrat';
+    font-style : normal;
+    font-weight: 600;
+    font-size  : 18px;
+    line-height: 22px;
+    color      : $primary;
+  }
+
+  hr {
+    background : #95959b;
+    height     : 1px;
+    width      : 100%;
+    margin-left: 16px;
+  }
+
+  .fa-plus-circle {
+    font-size: 1.5rem;
+    color    : #065afa;
+  }
+
+  .card {
+    background   : transparent !important;
+    // border: 1px solid rgba(235, 235, 245, 0.6);
+    border-radius: 5px;
+    padding      : 10px;
+    width        : 100%;
+
+    .img-profile {
+      width        : 31px;
+      height       : 31px;
+      border-radius: 50%;
+      object-fit   : cover;
+    }
+
+    .comment {
+      font-family: 'Montserrat';
+      font-style : normal;
+      font-weight: normal;
+      font-size  : 16px;
+      line-height: 20px;
+      color      : #ffffff;
+    }
+
+    textarea {
+      background-color: transparent !important;
+      border          : none;
+      outline         : none;
+      color           : white;
+      resize          : none;
+    }
+  }
+
+  .related-product {
+    display: grid;
+    gap    : 22px;
+    margin : 25px 1.5rem;
+
+    &>.title {
+      font-size: 18px;
+      color    : $primary;
+    }
+
+    &>.content {
+      display              : grid;
+      grid-template-columns: repeat(auto-fill, 200px);
+      gap                  : 25px;
+
+      @include brackpoint-md {
+        row-gap              : 40px;
+        column-gap           : 10px;
+        grid-template-columns: repeat(auto-fill, 162px);
+      }
+    }
+
+  }
+}
+
+::ng-deep .modal-content {
+  background-color: unset;
+}
+
+.card-modal {
+  padding         : 0;
+  border-radius   : 12px;
+  background-color: #141414 !important;
+
+  .card-consultations {
+    padding      : 16px;
+    border-radius: 12px;
+
+    .row {
+      padding: 0;
+    }
+
+    .text-resumen {
+      font-family: 'Montserrat';
+      font-style : normal;
+      font-weight: normal;
+      font-size  : 14px;
+      line-height: 16px;
+      text-align : left;
+      color      : #fafafb;
+    }
+
+    .time {
+      color      : rgba(235, 235, 245, 0.6);
+      font-family: 'Montserrat';
+      font-style : normal;
+      font-weight: normal;
+      font-size  : 16px;
+      line-height: 20px;
+    }
+  }
+}
+
+.quest {
+  font-family: 'Montserrat';
+  font-style : normal;
+  font-weight: bold;
+  font-size  : 24px;
+  line-height: 29px;
+  color      : $light;
+}
+
+.form-control {
+  background-color: transparent !important;
+  border          : 1px solid rgba(235, 235, 245, 0.6);
+  color           : $light !important;
+  width           : 100% !important;
+
+  &.selectoBackground {
+    background-color: $primary !important;
+  }
+
+  &.form-control::placeholder {
+    color: white !important;
+  }
+}
+
+@media (min-width:1025px) and (max-width:1410px) {}
+
+@media (max-width: 1024px) {
+  .ml-4 {
+    margin-left: 0px !important;
+  }
+
+  .mr-4 {
+    margin-right: 0px !important;
+  }
+
+  .pl-3 {
+    padding-left: 0px !important;
+  }
+
+  .contenedor {
+
+    .product-name {
+      h1 {
+        font-size  : 14px;
+        line-height: 18px;
+      }
+    }
+
+    .product-user {
+      align-items: end;
+    }
+
+    .btn-category {
+      font-size  : 14px;
+      line-height: 25px;
+    }
+
+    .btn-buy {
+      width      : 100%;
+      margin-left: 0px;
+    }
+
+    .description {
+      margin-left: 0px;
+    }
+
+    .price {
+      margin-left: 0px;
+    }
+
+    hr {
+      margin-left: 0px;
+    }
+
+    .related-product {
+      gap: 11px;
+
+      .card-games {
+        margin-left: 0px;
+      }
+
+      .game-name-list {
+        margin-left: 0px;
+      }
+
+      .line-game {
+        margin-left: 0px;
+      }
+
+      .discount {
+        padding-right: 3px;
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .card-games {
+    height: 200px !important;
+  }
+}
+
+@media (min-width: 506px) and (max-width: 767px) {
+  .contenedor {
+    padding: 10px;
+  }
+}
+
+@media (min-width: 506px) and (max-width: 620px) {
+  .card-games {
+    height: 230px !important;
+  }
+}
+
+@media (min-width: 375px) and (max-width: 505px) {
+  .contenedor {
+    padding: 10px;
+  }
+
+  .card-games {
+    height: 200px !important;
+  }
+}
+
+@media (max-width: 374px) {
+  .contenedor {
+    padding: 10px;
+  }
+
+  .card-games {
+    height: 150px !important;
+  }
+}
+
+@media (min-width: 425px) and (max-width: 767px) {
+  .bg-image {
+    height: 500px !important;
+  }
+
+  .cover {
+    width: 70% !important;
+    right: 20px !important;
+  }
+}
+
+@media (max-width: 425px) {
+  .bg-image {
+    height: 320px !important;
+  }
+
+  .cover {
+    width : 70% !important;
+    right : 20px !important;
+    height: 300px !important;
+  }
+}

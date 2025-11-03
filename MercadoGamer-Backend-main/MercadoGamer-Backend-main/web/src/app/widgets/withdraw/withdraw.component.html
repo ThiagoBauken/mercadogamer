@@ -1,0 +1,158 @@
+<app-loading *ngIf="loading"></app-loading>
+<div class="sub-page-title">Retirar</div>
+<div class="content">
+  <div class="card balnace">
+    <div class="info">
+      <div class="label current-balance">Tu balance es:</div>
+      <div class="value">
+        {{
+          user.balance
+            | currency: country.currency:'symbol-narrow':'1.0-2':'es-US'
+        }}
+      </div>
+    </div>
+    <div class="action">
+      <app-button (btnClick)="openModal()">
+        {{ paymentMethods.length ? 'Retirar' : 'Añadir método de pago' }}
+      </app-button>
+      <div class="description">
+        Los pagos se envían todos los Martes y Viernes
+      </div>
+    </div>
+  </div>
+
+  <div class="card last-sales">
+    <div class="header">
+      <div class="title">Últimas ventas concretadas</div>
+      <div class="description_">Estas ventas conforman tu balance.</div>
+    </div>
+    <div class="content">
+      <table>
+        <thead>
+          <tr>
+            <th>N° Orden</th>
+            <th>Cantidad</th>
+            <th>Ganancia</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-template [ngIf]="lastSales.length">
+            <ng-container *ngFor="let item of lastSales">
+              <tr>
+                <td>{{ item?.number }}</td>
+                <td>1</td>
+                <td class="price">${{ item?.sellerProfit.toFixed(2) }}</td>
+              </tr>
+              <tr *ngIf="item.firstSale" class="bonus">
+                <td>¡BONUS PRIMERA VENTA!</td>
+                <td>1</td>
+                <td class="price">$1000</td>
+              </tr>
+            </ng-container>
+          </ng-template>
+          <ng-template [ngIf]="!lastSales.length">
+            <tr>
+              <td colspan="4">
+                {{ loading ? 'Cargando...' : 'No hay resultados para mostrar' }}
+              </td>
+            </tr>
+          </ng-template>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="card withdrawal-request">
+    <div class="title">Solicitudes de retiro</div>
+    <div class="content">
+      <table>
+        <thead>
+          <tr>
+            <th>Monto</th>
+            <th>Metodo de Pago</th>
+            <th>Fecha</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-template [ngIf]="withdrawals.length">
+            <tr *ngFor="let item of withdrawals">
+              <td>
+                {{
+                  item.amount
+                    | currency: country.currency:'symbol-narrow':'1.0-2':'es-US'
+                }}
+              </td>
+              <td>
+                {{
+                  settings.paymentMethods.type[item.paymentMethod.type].label
+                }}
+              </td>
+              <td>
+                {{ item.createdAt | date: 'dd/MM/yyyy' }}
+              </td>
+              <td class="withdraw-status">
+                <div [ngClass]="['status', item?.status]">
+                  {{ settings.withdrawals.status[item.status].label }}
+                </div>
+              </td>
+            </tr>
+          </ng-template>
+          <ng-template [ngIf]="!withdrawals.length">
+            <tr>
+              <td colspan="4">
+                {{ loading ? 'Cargando...' : 'No hay resultados para mostrar' }}
+              </td>
+            </tr>
+          </ng-template>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<app-mercado-dialog [open]="modal === 'payment'" (onCloseDialog)="modal = ''">
+  <div class="payment-dialog">
+    <div class="close-button" (click)="modal = ''">
+      <mat-icon>close</mat-icon>
+    </div>
+    <div class="title">
+      {{
+        !paymentMethods.length ? 'Añadir método de pago' : 'Solicitud de Retiro'
+      }}
+    </div>
+    <div class="content">
+      <app-mercado-select
+        label="Seleccione un metodo de pago"
+        [value]="paymentData.payment"
+        [items]="
+          paymentMethods?.length ? paymentMethods : defaultPaymentMethods
+        "
+        (change)="onChangeModal('payment', $event)"
+      >
+      </app-mercado-select>
+
+      <app-mercado-input
+        label="Ingrese su  CVU/CBU"
+        [value]="paymentData.userInfo"
+        (valueChange)="onChangeModal('userInfo', $event)"
+      ></app-mercado-input>
+
+      <app-mercado-input
+        *ngIf="paymentMethods.length"
+        label="Monto"
+        [editable]="false"
+        [value]="user.balance?.toFixed(2)"
+      ></app-mercado-input>
+    </div>
+    <div class="action">
+      <app-button
+        (btnClick)="retire()"
+        width="100%"
+        padding="17px 10px"
+        [disabled]="!checkEnableRetireButton()"
+      >
+        {{ paymentMethods.length ? 'Retirar' : 'Añadir método de pago' }}
+      </app-button>
+    </div>
+  </div>
+</app-mercado-dialog>

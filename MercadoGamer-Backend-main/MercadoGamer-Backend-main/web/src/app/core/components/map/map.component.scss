@@ -1,0 +1,27 @@
+.map {
+  width: 100%;
+  height: 400px;
+}
+
+.mapSmall {
+  width: 100%;
+  height: 110px;
+}
+
+
+.centerMarker{
+  position:absolute;
+  /*url of the marker*/
+  background:url(../../../../assets/marker.png) no-repeat;
+  /*center the marker*/
+  top:47%;
+  left:50%;
+  z-index:1;
+  /*fix offset when needed*/
+  margin-left:-17px;
+  margin-top:-20px;
+  /*size of the image*/
+  height:50px;
+  width:50px;
+  cursor:pointer;
+}

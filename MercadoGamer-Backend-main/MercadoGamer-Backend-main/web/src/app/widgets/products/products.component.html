@@ -1,0 +1,18 @@
+<section class="products-list">
+  <div class="header">
+    <div class="label">Productos</div>
+    <div class="action">
+      <app-button (btnClick)="goToProductType()" class="add-product-btn"
+        >Agregar Producto</app-button
+      >
+    </div>
+  </div>
+  <div class="content">
+    <app-product-card
+      *ngFor="let item of items"
+      [product]="item"
+      [country]="country"
+      (reloadEvent)="reloadEvent.emit()"
+    ></app-product-card>
+  </div>
+</section>

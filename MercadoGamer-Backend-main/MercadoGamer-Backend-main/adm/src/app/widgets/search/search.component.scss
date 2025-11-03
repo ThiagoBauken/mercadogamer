@@ -1,0 +1,33 @@
+:host {
+  display              : grid;
+  grid-template-columns: max-content 1fr;
+  gap                  : 8px;
+  padding              : 10px;
+  background-color     : #FFFFFF1A;
+  border-radius        : 50px;
+  color                : white;
+  font-family          : Montserrat;
+
+  &>.icon {
+    color: #EBEBF599;
+
+    &>mat-icon {
+      width : 13px;
+      height: 13px;
+    }
+  }
+
+  &>.content {
+    &>input {
+      width           : 100%;
+      background-color: transparent;
+      border          : unset;
+      color           : currentColor;
+
+      &:focus {
+        outline: unset;
+      }
+
+    }
+  }
+}

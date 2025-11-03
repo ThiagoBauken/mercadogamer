@@ -1,0 +1,97 @@
+:host {
+  .mat-dialog-content {
+    display: grid;
+
+    .list-item {
+      display              : grid;
+      color                : white;
+      gap                  : 10px;
+      grid-template-columns: min-content 1fr;
+    }
+
+    textarea {
+      background-color: transparent;
+      padding         : 1rem;
+      color           : white;
+      border          : 1px solid #EBEBF599;
+      resize          : none;
+      width           : 100%;
+
+      &:disabled {
+        background-color: #EBEBF530;
+        color           : #EBEBF599;
+      }
+    }
+  }
+}
+
+::ng-deep {
+  .mat-dialog-container {
+    background-color: #141414;
+    box-shadow      : unset;
+    font-family     : "Montserrat";
+    padding         : 15px 27px 20px 27px;
+
+    .mat-dialog-title {
+      margin     : 0 0 24px;
+      font-weight: 600;
+      font-size  : 18px;
+      line-height: 22px;
+      font-family: "Montserrat";
+    }
+
+    .mat-dialog-content {
+      overflow: unset;
+    }
+
+    .mat-checkbox-layout {
+      margin-bottom: 11px;
+
+      .mat-checkbox-inner-container {
+        margin-right: 10px;
+      }
+
+      .mat-checkbox-label {
+        font-family: "Montserrat";
+        font-size  : 16px;
+        line-height: 20px;
+      }
+    }
+
+    .mat-dialog-actions {
+      bottom: 15px;
+
+      .btn-ok {
+        background-color: #219653;
+        width           : 185px;
+        height          : 54px;
+        border-radius   : 10px;
+        font-weight     : 600;
+        font-size       : 16px;
+        font-family     : "Montserrat";
+        line-height     : 22px;
+        font-style      : normal;
+      }
+    }
+
+    .mat-checkbox-checked:not(.mat-checkbox-disabled).mat-warn .mat-ripple-element {
+      background-color: #F78A0E;
+    }
+
+    .mat-checkbox-indeterminate.mat-warn .mat-checkbox-background,
+    .mat-checkbox-checked.mat-warn .mat-checkbox-background {
+      background-color: #F78A0E;
+    }
+
+    .mat-checkbox-frame {
+      border       : 1px solid rgba(235, 235, 245, 0.6);
+      border-radius: 2px;
+    }
+
+    .mat-checkbox-background {
+      svg {
+        display: none;
+      }
+    }
+  }
+}

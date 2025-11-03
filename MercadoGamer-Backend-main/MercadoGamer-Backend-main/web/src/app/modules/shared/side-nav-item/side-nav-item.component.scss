@@ -1,0 +1,147 @@
+@import 'src/assets/styles/_variables';
+
+:host {
+  display           : grid;
+  outline           : none;
+  font-family       : 'Montserrat';
+  padding           : 10px 0;
+  min-height        : calc(100vh - 20px);
+  grid-template-rows: repeat(3, min-content) 1fr min-content;
+
+  &>.title {
+    display              : grid;
+    grid-template-columns: min-content 1fr;
+    gap                  : 42px;
+    padding              : 7px 24px;
+    align-items          : center;
+
+    &>.label {
+      font-size  : 16px;
+      font-weight: 500;
+      color      : $primary;
+    }
+  }
+
+  &>.user-profile {
+    display              : grid;
+    grid-template-columns: min-content 1fr;
+    padding              : 7px 24px;
+    gap                  : 11px;
+    align-items          : center;
+    margin               : 14px 0;
+
+    &>.avatar {
+      width        : 49px;
+      height       : 49px;
+      background   : center/contain no-repeat;
+      border-radius: 50%;
+    }
+
+    &>.content {
+      display    : grid;
+      height     : min-content;
+      font-weight: 500;
+
+      &>.user-name {
+        font-size: 16px;
+      }
+
+      &>.action {
+        font-size: 12px;
+        color    : #065AFA;
+      }
+    }
+  }
+
+  &>.bonus {
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+    flex-direction : column;
+    width          : 100%;
+    margin         : 10px 0;
+
+    &>.title {
+      height         : 30px;
+      display        : flex;
+      align-items    : center;
+      justify-content: center;
+      text-transform : uppercase;
+      color          : white;
+      font-size      : 16px;
+      font-weight    : 600;
+      background     : $primary;
+      width          : 100%;
+    }
+
+    &>.action {
+      border       : 1px solid $primary;
+      cursor       : pointer;
+      padding      : 5px 25px;
+      font-size    : 16px;
+      font-weight  : 600;
+      border-radius: 4px;
+      color        : $primary;
+    }
+  }
+
+  &>.content {
+    &>.menu-content {
+
+      &>.title {
+        font-size  : 14px;
+        font-weight: 600;
+        color      : #6A6A6A;
+        margin     : 16px 0 0 0;
+
+        padding   : 10px 26px;
+        border-top: 3px solid #202020;
+      }
+
+      &>.content {
+        display              : grid;
+        grid-template-columns: repeat(2, 1fr);
+        row-gap              : 27px;
+
+        &>.menu-item {
+          display              : grid;
+          grid-template-columns: min-content 1fr;
+          gap                  : 16px;
+          padding              : 8px 16px;
+          align-items          : center;
+          border-radius        : 6px;
+          cursor               : pointer;
+          margin               : 0 10px;
+          font-size            : 14px;
+          font-weight          : 600;
+          color                : #A7A8AF;
+
+          &.active {
+            background-color: $primary;
+            color           : white;
+          }
+        }
+      }
+    }
+  }
+
+  &>.logout {
+    display        : grid;
+    justify-content: center;
+    align-items    : center;
+    grid-auto-flow : column;
+    gap            : 24px;
+    padding        : 25px 0;
+    color          : #EB5757;
+    font-size      : 14px;
+    font-weight    : 500;
+    cursor         : pointer;
+
+    &>.icon {
+      &>.mat-icon {
+        width : 18px;
+        height: 18px;
+      }
+    }
+  }
+}

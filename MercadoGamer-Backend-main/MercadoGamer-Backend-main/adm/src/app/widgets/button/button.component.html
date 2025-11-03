@@ -1,0 +1,15 @@
+<button
+  class="mercado-button"
+  [style]="getButtonStyle()"
+  [disabled]="disabled"
+  [type]="type"
+  (click)="onClick($event)"
+>
+  <div class="background"></div>
+  <div class="content">
+    <ng-content select="[icon]"></ng-content>
+    <div class="content">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</button>

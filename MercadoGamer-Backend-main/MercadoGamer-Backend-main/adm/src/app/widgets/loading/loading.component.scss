@@ -1,0 +1,49 @@
+.mercado-loading {
+  --loading-size : 25px;
+  --loading-color: green;
+
+  position       : absolute;
+  inset          : 0;
+  display        : flex;
+  flex-direction : column;
+  justify-content: center;
+  align-items    : center;
+  backdrop-filter: blur(1px);
+  top            : 0;
+  right          : 0;
+  left           : 0;
+  bottom         : 0;
+  z-index        : 999;
+
+  &>.spinner {
+    width            : var(--loading-size);
+    height           : var(--loading-size);
+    border-top-color : var(--loading-color);
+    border-left-color: var(--loading-color);
+
+    animation          : loading-spinner 1s linear infinite;
+    border-bottom-color: transparent;
+    border-right-color : transparent;
+    border-style       : solid;
+    border-width       : 2px;
+    border-radius      : 50%;
+    box-sizing         : border-box;
+    display            : inline-block;
+    vertical-align     : middle;
+  }
+
+  &>.text {
+    margin-top : 10px;
+    white-space: nowrap;
+  }
+}
+
+@keyframes loading-spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

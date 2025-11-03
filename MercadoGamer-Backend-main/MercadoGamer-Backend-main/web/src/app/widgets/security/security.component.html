@@ -1,0 +1,42 @@
+<div class="page-title">Seguridad</div>
+<div *ngIf="!actionStatus" class="content">
+  <div class="sms-setting">
+    <div class="label">Verificación en 2 pasos (SMS)</div>
+    <div class="phone">{{ getPhoneNumber() }}</div>
+    <div class="config">
+      <div
+        [ngClass]="{ active: user.verificationSms }"
+        (click)="setVerification(true)"
+      >
+        on
+      </div>
+      <div
+        [ngClass]="{ active: !user.verificationSms }"
+        (click)="setVerification(false)"
+      >
+        off
+      </div>
+    </div>
+  </div>
+  <div class="change-password action" (click)="setActionStatus('password')">
+    Cambiar contraseña
+  </div>
+  <div class="change-phone action" (click)="setActionStatus('phone')">
+    Cambiar celular
+  </div>
+</div>
+
+<app-verification-code
+  *ngIf="currentStep === 'verification'"
+  (confirmAction)="confirmAction()"
+></app-verification-code>
+
+<app-change-password
+  *ngIf="currentStep === 'change-password'"
+  (onCompleted)="successChangePassword()"
+></app-change-password>
+
+<app-change-phone
+  *ngIf="currentStep === 'change-phone'"
+  (onCompleted)="successChangePassword()"
+></app-change-phone>

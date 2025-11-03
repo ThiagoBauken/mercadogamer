@@ -1,0 +1,549 @@
+<div class="mt-6 mb-6 contenedor">
+  <div class="d-flex flex-column">
+    <span class="title"
+      >Número de Orden: #{{ order?.number }}
+      <span
+        style="
+          color: white;
+          font-size: 14px;
+          font-weight: 500;
+          margin-left: 10px;
+        "
+        >Orden abierta en:
+        <span type="date">{{ order?.createdAt | date: 'dd/MM/YYYY' }}</span>
+        a las {{ order?.createdAt | date: 'HH:mm' }}</span
+      ></span
+    >
+    <div class="row mt-4">
+      <div class="col-md-6">
+        <div class="card p-0 pr-3">
+          <div class="row">
+            <div class="col-md-4">
+              <img
+                [src]="filesUrl + order?.product?.picture"
+                onerror="this.src = 'assets/imgs/placeholder.png'"
+                class="image-game"
+                width="218px"
+                height="307px"
+              />
+            </div>
+            <div class="col-md-8 mt-4" *ngIf="order">
+              <p class="image-name">{{ order.product.name }}</p>
+              <p class="description">{{ order.product.description }}</p>
+              <p class="price">
+                {{
+                  (order.product.discount
+                    ? order.product.priceWithDiscount
+                    : order.product.price
+                  ) | currency: 'USD':'symbol-narrow':'1.0-2':'es-US'
+                }}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-4">
+          <div class="col-md-4 pr-0">
+            <div
+              [ngClass]="
+                currentChat === 'users' ? 'selected-chat' : 'not-selected-chat'
+              "
+              (click)="currentChat = 'users'"
+            >
+              <span>Usuarios</span>
+            </div>
+          </div>
+          <div class="col-md-4 p-0">
+            <div
+              [ngClass]="
+                currentChat === 'buyer' ? 'selected-chat' : 'not-selected-chat'
+              "
+              (click)="currentChat = 'buyer'"
+            >
+              <img
+                [src]="filesUrl + order?.buyer.picture"
+                onerror="this.src = 'assets/imgs/avatar.png'"
+                width="30"
+              />
+              <span>Comprador</span>
+            </div>
+          </div>
+          <div class="col-md-4 pl-0">
+            <div
+              [ngClass]="
+                currentChat === 'seller' ? 'selected-chat' : 'not-selected-chat'
+              "
+              (click)="currentChat = 'seller'"
+            >
+              <img
+                [src]="filesUrl + order?.seller.picture"
+                onerror="this.src = 'assets/imgs/avatar.png'"
+                width="30"
+              />
+              <span>Vendedor</span>
+            </div>
+          </div>
+        </div>
+        <div class="contenedor-chat">
+          <div class="card-chat" #divMessages>
+            <ng-container *ngIf="currentChat === 'users'">
+              <div
+                *ngFor="let message of usersConversationMessages"
+                class="cont-bubble"
+                [ngClass]="
+                  message.author?.id === user?.id ||
+                  message?.author === user?.id
+                    ? 'message-me'
+                    : 'message-other'
+                "
+              >
+                <div
+                  class="avatar"
+                  (click)="
+                    pageService.navigateRoute(
+                      'profile/user/' + message.author.id
+                    )
+                  "
+                >
+                  <img
+                    [src]="filesUrl + message.author?.picture"
+                    onerror="this.src = 'assets/imgs/avatar.png'"
+                  />
+                </div>
+                <div class="bubble">
+                  <span
+                    *ngIf="checkBody(message.body) === 'string'; else elseBlock"
+                    [innerHTML]="message.body"
+                  ></span>
+                  <ng-template #elseBlock>
+                    <div
+                      class="preview-image"
+                      [style]="getImageUrl(message.body)"
+                      (click)="openPreviewImage(getImageUrl(message.body))"
+                    ></div>
+                  </ng-template>
+                  <div class="message-date">
+                    <p>
+                      {{ message.createdAt | date: 'dd/MM/YYYY HH:mm'
+                      }}<span><i class="fa fa-clock-o"></i></span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+            <ng-container *ngIf="currentChat === 'buyer'">
+              <div
+                *ngFor="let message of buyerConversationMessages"
+                class="cont-bubble"
+                [ngClass]="message.author ? 'message-other' : 'message-me'"
+              >
+                <div class="avatar">
+                  <img
+                    [src]="
+                      message.authorName === 'Administrador'
+                        ? 'assets/imgs/garantia-mg-logo.png'
+                        : message.author?.picture
+                        ? filesUrl + message.author?.picture
+                        : 'assets/imgs/avatar.png'
+                    "
+                  />
+                </div>
+                <div class="bubble">
+                  <span
+                    *ngIf="checkBody(message.body) === 'string'; else elseBlock"
+                    >{{ message.body }}</span
+                  >
+                  <ng-template #elseBlock>
+                    <div
+                      class="preview-image"
+                      [style]="getImageUrl(message.body)"
+                      (click)="openPreviewImage(getImageUrl(message.body))"
+                    ></div>
+                  </ng-template>
+                  <div class="message-date">
+                    <p>
+                      {{ message.createdAt | date: 'dd/MM/YYYY HH:mm'
+                      }}<span><i class="fa fa-clock-o"></i></span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+            <ng-container *ngIf="currentChat === 'seller'">
+              <div
+                *ngFor="let message of sellerConversationMessages"
+                class="cont-bubble"
+                [ngClass]="message.author ? 'message-other' : 'message-me'"
+              >
+                <div class="avatar">
+                  <img
+                    [src]="
+                      message?.authorName === 'Administrador'
+                        ? 'assets/imgs/garantia-mg-logo.png'
+                        : message.author?.picture
+                        ? filesUrl + message.author?.picture
+                        : 'assets/imgs/avatar.png'
+                    "
+                  />
+                </div>
+                <div class="bubble">
+                  <span
+                    *ngIf="checkBody(message.body) === 'string'; else elseBlock"
+                    >{{ message.body }}</span
+                  >
+                  <ng-template #elseBlock>
+                    <div
+                      class="preview-image"
+                      [style]="getImageUrl(message.body)"
+                      (click)="openPreviewImage(getImageUrl(message.body))"
+                    ></div>
+                  </ng-template>
+                  <div class="message-date">
+                    <p>
+                      {{ message.createdAt | date: 'dd/MM/YYYY HH:mm'
+                      }}<span><i class="fa fa-clock-o"></i></span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+          <div class="send-footer" *ngIf="currentChat !== 'users'">
+            <div class="row align-items-center">
+              <div class="col-md-10">
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Escribe tu mensaje"
+                    [(ngModel)]="newMessage"
+                    (keyup.enter)="sendMessage()"
+                  />
+                </div>
+              </div>
+              <div class="col-md-2">
+                <img
+                  src="assets/imgs/clip.png"
+                  class="icon clip"
+                  (click)="sendImage()"
+                />
+                <img
+                  src="assets/imgs/send.png"
+                  class="icon send"
+                  (click)="sendMessage()"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6" *ngIf="order">
+        <div
+          class="card mb-4 pb-3"
+          *ngIf="order.stockProduct.retirementType === 'automatic'"
+        >
+          <span class="subtitle">Producto</span>
+          <div class="code">
+            <span>{{ order?.stockProduct.code }}</span>
+          </div>
+        </div>
+
+        <div class="card mb-4">
+          <span class="subtitle">Comprador</span>
+          <div class="row align-items-center mt-4 ml-2">
+            <div class="col-md-2">
+              <img
+                [src]="filesUrl + order.buyer.picture"
+                onerror="this.src = 'assets/imgs/avatar.png'"
+                class="avatar-buyer"
+              />
+            </div>
+            <div class="col-md-10 pl-3">
+              <p class="name">
+                {{ order.buyer?.username }}
+              </p>
+              <i
+                class="fa fa-star"
+                *ngFor="let item of [].constructor(5); index as i"
+                [ngClass]="{
+                  'text-primary': i + 0.5 <= order.buyer.userQualification,
+                  init: i === 0
+                }"
+              ></i>
+              <span class="qualification"
+                >{{ order.buyer.userQualification | number: '1.2-2' }}/5,0</span
+              >
+              <span class="votes"
+                >{{ order.buyer.userTotalQualifications }} votos</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="card mb-4">
+          <span class="subtitle">Vendedor</span>
+          <div class="row align-items-center mt-4 ml-2">
+            <div class="col-md-2">
+              <img
+                [src]="filesUrl + order.seller.picture"
+                onerror="this.src = 'assets/imgs/avatar.png'"
+                class="avatar-buyer"
+              />
+            </div>
+            <div class="col-md-10 pl-3">
+              <p class="name">
+                {{ order.seller?.username }}
+              </p>
+              <i
+                class="fa fa-star"
+                *ngFor="let item of [].constructor(5); index as i"
+                [ngClass]="{
+                  'text-primary': i + 0.5 <= order.seller.sellerQualification,
+                  init: i === 0
+                }"
+              ></i>
+              <span class="qualification"
+                >{{
+                  order.seller.sellerQualification | number: '1.2-2'
+                }}/5,0</span
+              >
+              <span class="votes"
+                >{{ order.seller.sellerTotalQualifications }} votos</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <ng-container
+          *ngIf="
+            !['cancelled', 'finished', 'returned'].includes(order.status) &&
+            !orderFinished
+          "
+        >
+          <div class="card mt-4">
+            <span class="subtitle-white">Revisa y completa la Compra</span>
+            <p class="text">
+              He recibido y verificado el buen funcionamiento del producto
+            </p>
+            <mat-checkbox
+              class="example-margin"
+              color="warn"
+              [(ngModel)]="agree"
+              >Estoy de acuerdo en completar la compra, el vendedor recibira el
+              dinero correspondiente a la compra</mat-checkbox
+            >
+
+            <button
+              class="btn mt-3 mb-4 btn-block finish"
+              (click)="sendQualification()"
+              [disabled]="!agree"
+            >
+              Finalizar Compra
+            </button>
+            <div class="remain-time">
+              <div class="icon">
+                <mat-icon>access_time</mat-icon>
+              </div>
+              <div class="content">
+                {{ remainTime }}
+              </div>
+            </div>
+          </div>
+
+          <div class="card mt-4" *ngIf="order.status !== 'complaint'">
+            <span class="subtitle-white">Abrir un reclamo</span>
+            <p class="text">
+              No he recibido el producto / el producto recibido no funciona
+              correctamente
+            </p>
+
+            <button
+              class="btn mt-3 mb-4 btn-block claim"
+              (click)="openModal(claim)"
+            >
+              Abrir Reclamo
+            </button>
+          </div>
+        </ng-container>
+
+        <div
+          class="card mt-4 pb-2"
+          *ngIf="!['cancelled', 'finished', 'returned'].includes(order.status)"
+        >
+          <span class="subtitle-white">Cancelar la venta</span>
+          <!-- <p class="text">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.</p> -->
+
+          <button
+            class="btn mt-3 mb-4 btn-block claim"
+            (click)="openModal(cancel)"
+          >
+            Cancelar la venta
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #cancel let-modal>
+  <div
+    class="modal-body text-center"
+    style="height: 500px; width: 654px; background-color: #141414"
+  >
+    <div class="row">
+      <div class="col text-right">
+        <button class="btn btn-clear" (click)="close()">
+          <i class="fa fa-close text-primary"></i>
+        </button>
+      </div>
+    </div>
+    <div class="pt-2">
+      <span class="text-modal">Cancelar Venta</span>
+    </div>
+    <div class="pt-5">
+      <span class="text-modal">¿Está seguro que desea cancelar la venta?</span>
+    </div>
+
+    <div class="btn-container pt-5 pl-4 pr-4">
+      <button class="btn mt-3 mb-4 btn-block claim" (click)="cancelOrder()">
+        Si, estoy seguro
+      </button>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #buySuccess let-modal>
+  <div
+    class="modal-body text-center"
+    style="height: 500px; width: 500px; background-color: #141414"
+  >
+    <ng-container *ngIf="!orderFinished">
+      <img
+        src="assets/imgs/arrow.png"
+        width="97px"
+        height="97px"
+        class="image"
+      />
+    </ng-container>
+    <ng-container *ngIf="orderFinished">
+      <div class="row justify-content-center align-items-center mt-5">
+        <img src="assets/imgs/success.png" width="97px" height="97px" alt="" />
+      </div>
+      <div class="row justify-content-center align-items-center mt-4">
+        <p class="text-center text">Felicidades!</p>
+      </div>
+      <div class="row justify-content-center align-items-center">
+        <p class="text-center text">
+          {{
+            qualificationSent
+              ? 'Tu calificación fue enviada con éxito'
+              : 'El usuario ha finalizado la compra!'
+          }}
+        </p>
+      </div>
+    </ng-container>
+    <div
+      class="row justify-content-center mt-4 ml-4 mr-4"
+      *ngIf="qualificationSent"
+    >
+      <button
+        class="btn btn-primary btn-block btn-calificate"
+        (click)="goToHome()"
+      >
+        Volver
+      </button>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #finish let-modal>
+  <div
+    class="modal-body text-center"
+    style="height: 500px; width: 654px; background-color: #141414"
+  >
+    <div *ngIf="!orderFinished || order?.seller.id === user.id">
+      <div class="row justify-content-center mt-4">
+        <span class="quest"
+          >¿Cómo Calificas a
+          {{
+            orderFinished ? order?.buyer.username : order?.seller.username
+          }}?</span
+        >
+      </div>
+      <div class="row justify-content-center mt-4">
+        <img
+          [src]="
+            filesUrl +
+            (orderFinished ? order?.buyer.picture : order?.seller.picture)
+          "
+          onerror="this.src = 'assets/imgs/avatar.png'"
+          class="avatar-user"
+        />
+      </div>
+      <div class="row justify-content-center mt-4">
+        <i
+          class="fa fa-star"
+          *ngFor="let item of [].constructor(5); index as i"
+          [ngClass]="i < qualification ? 'text-primary' : 'disabled'"
+          (click)="qualification = i + 1"
+        ></i>
+      </div>
+      <div class="row justify-content-center mt-4">
+        <textarea
+          class="input-custom"
+          cols="50"
+          rows="5"
+          [(ngModel)]="qualificationBody"
+        ></textarea>
+      </div>
+      <div class="row justify-content-center mt-4 ml-4 mr-4">
+        <button
+          class="btn btn-primary btn-block btn-calificate"
+          (click)="sendQualification()"
+          [disabled]="!qualification || !qualificationBody"
+        >
+          Calificar
+        </button>
+      </div>
+    </div>
+    <div *ngIf="orderFinished && order?.seller.id !== user.id">
+      <div class="row">
+        <div class="col text-right">
+          <button class="btn btn-clear" (click)="close()">
+            <i class="fa fa-close text-primary"></i>
+          </button>
+        </div>
+      </div>
+      <div class="mt-4 pt-4">
+        <span class="text-modal">Felicidades por concretar tu</span> <br />
+        <span class="text-modal">primera compra en el sitio!</span>
+      </div>
+      <div class="mt-4 pt-4">
+        <div class="form-group comment">
+          <textarea
+            cols="70"
+            rows="5"
+            placeholder="¿Tenes algun comentario o sugerencia sobre el sitio?"
+            [(ngModel)]="feedbackBody"
+          ></textarea>
+        </div>
+      </div>
+
+      <div class="btn-container pt-4 pl-4 pr-4">
+        <button class="btn mt-4 mb-4 btn-block finish" (click)="sendFeedback()">
+          Enviar Comentario
+        </button>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<app-mercado-dialog
+  [open]="openPreviewImageStatus.open"
+  (onCloseDialog)="openPreviewImageStatus = { open: false, image: '' }"
+>
+  <div
+    class="preview-image-dialog"
+    [style]="openPreviewImageStatus.image"
+  ></div>
+</app-mercado-dialog>

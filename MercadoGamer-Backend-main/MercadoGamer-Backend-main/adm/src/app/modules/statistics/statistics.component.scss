@@ -1,0 +1,138 @@
+@import "src/assets/styles/_variables";
+
+:host {
+  display   : grid;
+  gap       : 23px;
+  padding   : 0 15px;
+  font-style: normal;
+
+  &>.title {
+    font-size  : 20px;
+    font-weight: 700;
+    color      : $primary;
+  }
+
+  &>section {
+    display: grid;
+    gap    : 24px;
+
+    &>.section-title {
+      font-size      : 18px;
+      font-weight    : 500;
+      color          : $primary;
+      display        : grid;
+      grid-auto-flow : column;
+      justify-content: space-between;
+      align-items    : flex-end;
+
+      &>.action {
+        display       : grid;
+        grid-auto-flow: column;
+        align-items   : center;
+        gap           : 14px;
+
+        &>.filter {
+          &>.filter-content {
+            display              : grid;
+            grid-template-columns: 1fr min-content;
+            gap                  : 8px;
+            align-items          : center;
+            font-size            : 14px;
+            font-weight          : 700;
+            cursor               : pointer;
+          }
+        }
+
+        mat-select {
+          background-color: transparent !important;
+          border          : 1px solid rgba(235, 235, 245, 0.6) !important;
+          border-radius   : 10px;
+          color           : $light;
+          width           : 375px;
+          padding         : 10px;
+
+          ::ng-deep {
+            .mat-select-trigger {
+              margin-top: 0;
+            }
+          }
+        }
+      }
+    }
+
+    &>.content {
+      .chart-container {
+        padding         : 10px;
+        border-radius   : 10px;
+        background-color: #333333;
+      }
+
+      &.visit-users {
+        display              : grid;
+        grid-template-columns: 1fr 375px;
+        gap                  : 15px;
+
+        &>.card-container {
+          display: grid;
+          gap    : 16px;
+          height : min-content;
+        }
+      }
+
+      &.sales {
+        display              : grid;
+        gap                  : 24px;
+        grid-template-columns: repeat(2, 1fr);
+
+        &>.card-container {
+          display              : grid;
+          gap                  : 24px;
+          grid-template-columns: repeat(2, 1fr);
+          height               : min-content;
+        }
+      }
+    }
+  }
+}
+
+::ng-deep {
+
+  .apexcharts-tooltip-text,
+  .apexcharts-text {
+    font-family: 'Montserrat' !important;
+  }
+
+  .apexcharts-legend {
+    justify-content: center !important;
+
+    .apexcharts-legend-series {
+      display    : flex;
+      column-gap : 3px;
+      align-items: center;
+      width      : 210px;
+
+      span {
+        font-family: 'Montserrat' !important;
+      }
+    }
+  }
+
+  .mat-menu-panel {
+    margin-top: 10px;
+    background: #0B0B0C !important;
+    border    : 1px solid #F78A0E;
+
+    .mat-menu-item {
+      color: white;
+
+      &:hover {
+        background-color: #8080801f;
+      }
+
+      &.active {
+        color      : $primary;
+        font-weight: 700;
+      }
+    }
+  }
+}

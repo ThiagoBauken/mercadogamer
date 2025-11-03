@@ -1,0 +1,28 @@
+@import "src/assets/styles/_globals";
+
+:host {
+  display  : grid;
+  max-width: 1080px;
+  margin   : 0 auto;
+  padding  : 50px;
+
+
+  &>.description {
+    font-weight    : 600;
+    display        : grid;
+    gap            : 12px;
+    grid-auto-flow : column;
+    justify-content: flex-start;
+    align-items    : center;
+    margin-top     : 10px;
+    cursor         : pointer;
+  }
+
+  &>.content {
+    margin-top     : 65px;
+    display        : flex;
+    gap            : 34px;
+    flex-wrap      : wrap;
+    justify-content: center;
+  }
+}

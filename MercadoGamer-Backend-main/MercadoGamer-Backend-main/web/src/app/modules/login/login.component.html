@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="title">Iniciar sesión</div>
+  <div class="input-container">
+    <app-mercado-input
+      label="Usuario o mail"
+      [value]="username"
+      [error]="!!errors.username"
+      [helper]="errors.username"
+      (valueChange)="changeValue('username', $event)"
+    ></app-mercado-input>
+    <app-mercado-input
+      label="Contraseña"
+      type="password"
+      [value]="password"
+      [error]="!!errors.password"
+      [helper]="errors.password"
+      (valueChange)="changeValue('password', $event)"
+    ></app-mercado-input>
+  </div>
+  <div class="forgot-password">
+    <a [routerLink]="['/recover-password']">Olvide mi clave</a>
+  </div>
+  <app-button width="100%" (btnClick)="onSubmit()">Iniciar Sesion</app-button>
+  <div class="submit-error">{{ submitError }}</div>
+  <div class="register">
+    <a [routerLink]="['/register']"> Registrate! </a>
+  </div>
+</div>

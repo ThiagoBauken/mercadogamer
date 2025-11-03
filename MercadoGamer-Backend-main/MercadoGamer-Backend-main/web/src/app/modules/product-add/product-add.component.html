@@ -1,0 +1,406 @@
+<div class="page-title">Añadir nuevo producto</div>
+
+<div class="description" [routerLink]="['/product-type']">
+  <div class="icon"><i class="fa fa-chevron-left"></i></div>
+  <div class="label">Tipo de Publicación</div>
+</div>
+
+<div class="d-flex justify-content-center">
+  <div class="mt-6 mb-6 contenedor">
+    <div class="row justify-content-between mt-5">
+      <div class="col min-w-xxs">
+        <form
+          [formGroup]="form"
+          (ngSubmit)="onSubmit()"
+          class="step-form p-4 mb-4"
+        >
+          <div class="d-flex flex-column">
+            <span class="each-step">Paso {{ stepIndex + 1 }}/3</span>
+            <span class="each-step-title">{{ stepTitles[stepIndex] }}</span>
+          </div>
+          <!-- BEGIN STEP BAR -->
+          <div class="d-flex stepbar mt-4 mb-5">
+            <div
+              *ngFor="let index of [0, 1, 2]"
+              [ngClass]="{ col: true, 'bg-primary': stepIndex === index }"
+            ></div>
+          </div>
+          <!-- END STEP BAR -->
+          <!-- BEGIN STEP ONE -->
+          <div class="step-one" *ngIf="stepIndex === 0">
+            <div
+              [ngClass]="{
+                error:
+                  !isFieldValid('name') ||
+                  (!validStepOne && form.value.name === null),
+                success: isFieldValid('name') && form.value?.name
+              }"
+              class="form-group"
+            >
+              <input
+                type="text"
+                formControlName="name"
+                class="form-control"
+                placeholder="Título del Producto"
+              />
+            </div>
+            <div
+              [ngClass]="{
+                error:
+                  !isFieldValid('price') ||
+                  (!validStepOne && form.value.price === null),
+                success: isFieldValid('price') && form.value?.price
+              }"
+              class="form-group mt-3"
+            >
+              <mat-form-field appearance="fill">
+                <img
+                  matPrefix
+                  src="assets/imgs/usa.png"
+                  class="mr-2"
+                  width="20px"
+                  height="20px"
+                />
+                <input
+                  matInput
+                  type="number"
+                  class="form-control"
+                  formControlName="price"
+                  [(ngModel)]="price_val"
+                  placeholder="$ USD"
+                />
+              </mat-form-field>
+            </div>
+            <div class="counted-value d-flex mt-2">
+              <img
+                [src]="filesUrl + country?.flag"
+                onerror="this.src = 'assets/imgs/placeholder.png'"
+                class="ml-3"
+              />
+              <span class="prefix-price ml-3">$ Pesos</span>
+              <span class="value ml-3">
+                {{
+                  (!price_val ? 0 : price_val)
+                    | toUSD
+                    | currency: country.currency + ' $ ':'code':'1.0-2':'es-US'
+                }}
+              </span>
+            </div>
+            <p class="info-stepone mt-3">
+              El precio en dolares
+              <span class="text-primary"
+                >es unicamente para ventas internacionales,</span
+              >
+              los usuarios de Argentina verán el precio en
+              <span class="text-primary">pesos argentinos.</span>
+            </p>
+          </div>
+          <!-- BEGIN STEP ONE -->
+          <!-- BEGIN STEP TWO -->
+          <div class="step-two" *ngIf="stepIndex === 1">
+            <span>Seleccionar portada</span>
+            <div class="upload-image-area">
+              <div
+                [hidden]="form.value.picture"
+                (click)="uploadFile()"
+                class="upload form-group mt-2 mb-4"
+                [ngClass]="{
+                  error:
+                    !isFieldValid('picture') ||
+                    (!validStepTwo && form.value.picture === null),
+                  success: isFieldValid('picture') && form.value?.picture
+                }"
+              >
+                <i class="fa fa-plus"></i>
+              </div>
+              <div class="limit-upload-size">
+                <p>Tamaño máximo:<br />3MB</p>
+              </div>
+            </div>
+            <div
+              *ngIf="form.value.picture"
+              (click)="uploadFile()"
+              class="upload mt-2 mb-4"
+            >
+              <img
+                style="width: 100px"
+                [src]="filesUrl + form.value.picture"
+                alt=""
+              />
+
+              <!-- <video
+                autoplay
+                loop
+                muted
+                playsinline="true"
+                webkit-playsinline="true"
+                [src]="filesUrl + form.value.picture"
+                type="video/mp4"
+                style="width: 100px"
+              ></video> -->
+            </div>
+            <p>Descripción</p>
+            <div class="mt-2 mb-3">
+              <div
+                class="form-group mb-4"
+                [ngClass]="{
+                  error:
+                    !isFieldValid('description') ||
+                    (!validStepTwo && form.value.description === null),
+                  success:
+                    isFieldValid('description') && form.value?.description
+                }"
+              >
+                <textarea
+                  formControlName="description"
+                  class="form-control"
+                  name=""
+                  id=""
+                  cols="30"
+                  rows="3"
+                  placeholder="Descripción"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+          <!-- END STEP TWO -->
+          <!-- BEGIN STEP THREE -->
+          <div class="step-three" *ngIf="stepIndex === 2">
+            <div class="row mb-3">
+              <div class="col min-w-200">
+                <mat-select
+                  [ngClass]="{
+                    error: !isFieldValid('platform'),
+                    success: isFieldValid('platform') && form.value?.platform
+                  }"
+                  formControlName="platform"
+                  placeholder="Plataforma"
+                  class="country-select form-group mt-4"
+                >
+                  <mat-option
+                    *ngFor="let item of data?.platforms"
+                    [value]="item.id"
+                  >
+                    <span class="ml-3">{{ item.name }}</span>
+                  </mat-option>
+                </mat-select>
+              </div>
+              <div class="col min-w-200">
+                <mat-select
+                  [ngClass]="{
+                    error: !isFieldValid('category'),
+                    success: isFieldValid('category') && form.value?.category
+                  }"
+                  formControlName="category"
+                  placeholder="Categoría"
+                  class="country-select form-group mt-4"
+                >
+                  <mat-option
+                    *ngFor="let item of data?.categories"
+                    [value]="item.id"
+                  >
+                    <span class="ml-3">{{ item.name }}</span>
+                  </mat-option>
+                </mat-select>
+              </div>
+              <div class="col min-w-200">
+                <mat-select
+                  [ngClass]="{
+                    error: !isFieldValid('type'),
+                    success: isFieldValid('type') && form.value?.type
+                  }"
+                  formControlName="type"
+                  [(ngModel)]="type_val"
+                  selectchange
+                  placeholder="Tipo"
+                  class="country-select form-group mt-4"
+                >
+                  <mat-option
+                    *ngFor="let item of settings.products.types; index as i"
+                    [value]="item.code"
+                  >
+                    <span class="ml-3">{{ item.label }}</span>
+                  </mat-option>
+                </mat-select>
+              </div>
+              <div class="col min-w-200">
+                <mat-form-field class="search-game-list" appearance="fill">
+                  <div
+                    [ngClass]="{
+                      error: !isFieldValid('game'),
+                      success: isFieldValid('game') && form.value?.game
+                    }"
+                    class="form-group mt-4 mb-3 position-relative"
+                  >
+                    <input
+                      type="text"
+                      matInput
+                      formControlName="game"
+                      class="form-control"
+                      placeholder="Juego"
+                      [matAutocomplete]="autoGroup"
+                    />
+                  </div>
+                  <mat-autocomplete
+                    class="play-mode-list"
+                    #autoGroup="matAutocomplete"
+                    [displayWith]="displayFn"
+                  >
+                    <mat-option value="_">NO APLICA</mat-option>
+                    <mat-option
+                      *ngFor="let item of gamesOption | async"
+                      [value]="item"
+                    >
+                      {{ item.name }}
+                    </mat-option>
+                  </mat-autocomplete>
+                </mat-form-field>
+              </div>
+            </div>
+            <span>Tipo de entrega</span>
+            <!-- BEGIN DELIVERY TYPE TOGGLE BUTTON -->
+            <div
+              class="delivery-type mt-2 d-flex justify-content-between align-items-center"
+            >
+              <span
+                [ngClass]="{
+                  'col d-inline-flex justify-content-center align-items-center h-100 bg-primary cursor-pointer': true,
+                  'bg-primary': form.value.retirementType === 'automatic'
+                }"
+                (click)="handleRetirementType('automatic')"
+                >Automatica</span
+              >
+              <span
+                [ngClass]="{
+                  'col d-inline-flex justify-content-center align-items-center h-100 bg-primary cursor-pointer': true,
+                  'bg-primary': form.value.retirementType === 'coordinated'
+                }"
+                (click)="handleRetirementType('coordinated')"
+                >Manual</span
+              >
+            </div>
+            <!-- END DELIVERY TYPE TOGGLE BUTTON -->
+            <ng-container
+              *ngIf="
+                form.value.retirementType === 'automatic';
+                else elseTemplate
+              "
+            >
+              <div formArrayName="code" class="mt-3 mb-3">
+                <div
+                  *ngFor="let codefield of codeFields.controls; let i = index"
+                  [ngClass]="{
+                    error: codefield.invalid && codefield.touched,
+                    success: codefield.valid
+                  }"
+                  class="form-group mt-2"
+                >
+                  <input
+                    type="text"
+                    class="form-control"
+                    [formControlName]="i"
+                    [placeholder]="'Codigo ' + (i + 1)"
+                  />
+                </div>
+              </div>
+              <span class="cursor-pointer" (click)="addCodeField()"
+                >Agregar +</span
+              >
+            </ng-container>
+            <ng-template #elseTemplate>
+              <div
+                [ngClass]="{
+                  error: !isFieldValid('stock'),
+                  success: isFieldValid('stock') && form.value?.stock
+                }"
+                class="form-group stock mt-3 m3-3"
+              >
+                <input
+                  type="number"
+                  formControlName="stock"
+                  class="form-control"
+                  placeholder="Stock"
+                  min="0"
+                />
+              </div>
+            </ng-template>
+            <p class="mt-5">
+              Si la entrega es automatica, deberas cargar las claves de producto
+              previamente
+            </p>
+          </div>
+          <!-- END STEP THREE -->
+          <!-- BEGIN STEP FOOTER -->
+          <div class="step-footer mt-4 d-flex justify-content-end gap-20">
+            <button
+              *ngIf="stepIndex !== 0"
+              type="button"
+              class="btn"
+              (click)="handleStep(-1)"
+            >
+              Regresar
+            </button>
+            <button
+              *ngIf="stepIndex !== 2"
+              type="button"
+              class="btn text-white btn-warning-round"
+              (click)="handleStep(1)"
+            >
+              Continuar
+            </button>
+            <button
+              *ngIf="stepIndex === 2"
+              [disabled]="sent"
+              type="submit"
+              class="btn text-white btn-warning-round"
+            >
+              Publicar
+            </button>
+          </div>
+          <!-- END STEP FOOTER -->
+        </form>
+      </div>
+      <div class="col min-w-xxs">
+        <div class="card bd-primary">
+          <span>Recibiras:</span>
+          <p class="mt-4">
+            {{
+              (!price_val ? 0 : price_val)
+                | toUSD
+                | currency: country.currency:'symbol-narrow':'1.0-2':'es-US'
+            }}
+          </p>
+          <p>
+            -{{
+              getCommissions()
+                | toUSD
+                | currency: country.currency:'symbol-narrow':'1.0-2':'es-US'
+            }}
+            <small>(comisión {{ publicationType_val }})</small>
+          </p>
+          <hr />
+          <span class="total">{{
+            sellerProfit_val
+              | toUSD
+              | currency: country.currency:'symbol-narrow':'1.0-2':'es-US'
+          }}</span>
+        </div>
+        <div class="card p-5 mt-4 bd-dark text-center align-items-center">
+          <img
+            src="assets/imgs/garantia-mg-logo.png"
+            width="50px"
+            height="51px"
+          />
+          <p class="garantia-mg mt-2">
+            Vende protegido gracias a la <br />
+            Garantía MG
+          </p>
+        </div>
+        <div class="card p-5 mt-4 mb-5 bd-dark text-center align-items-center">
+          <p class="text-gray">Cobra por</p>
+          <img src="assets/imgs/mp.png" width="170px" height="50px" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,1294 @@
+<div class="my-account-page">
+  <div class="side-menu mt-4 col">
+    <p class="text-primary text-center">Mi cuenta</p>
+    <ul>
+      <li *ngFor="let menuItem of menuItems">
+        <ng-container *ngIf="menuItem.iconName; else elseTemplate">
+          <div
+            [ngClass]="{
+              'active text-white': menuItem.route
+                ? router.isActive(menuItem.route, true)
+                : false,
+              'side-menu-item': true
+            }"
+            (click)="handleScreen(menuItem)"
+          >
+            <mat-icon class="mr-2" [svgIcon]="menuItem.iconName"></mat-icon>
+            <div class="label">
+              {{ menuItem.displayName }}
+            </div>
+          </div>
+        </ng-container>
+        <ng-template #elseTemplate>
+          <div class="menu-group-name text-center mt-3 mb-2">
+            {{ menuItem.displayName }}
+          </div>
+        </ng-template>
+      </li>
+    </ul>
+  </div>
+  <div class="content">
+    <app-loading *ngIf="loading"></app-loading>
+    <ng-container *ngIf="selectedScreen === 'shopping'">
+      <div class="compras-title">
+        <div class="sub-page-title">Compras</div>
+        <app-pagenation
+          [page]="page"
+          [totalPages]="totalPages"
+          (nextPage)="nextPage()"
+          (previousPage)="previousPage()"
+        ></app-pagenation>
+      </div>
+      <app-puchases [data]="items"></app-puchases>
+    </ng-container>
+    <ng-container
+      *ngIf="selectedScreen === 'sales' && selectedSaleScreen === 'sales'"
+    >
+      <div class="purchase-title">
+        <div class="sub-page-title">Ventas</div>
+        <div class="filters">
+          <div mat-button [matMenuTriggerFor]="productsMenu" class="btn">
+            <div class="label">
+              {{
+                selectedTypeFilter
+                  ? selectedTypeFilter.label
+                  : 'Todas las ventas'
+              }}
+            </div>
+            <i class="fa fa-chevron-down"></i>
+          </div>
+          <mat-menu #productsMenu="matMenu" class="menu-customize">
+            <div
+              mat-menu-item
+              [ngClass]="{ active: !selectedTypeFilter }"
+              (click)="filterProducts('selectedTypeFilter', null)"
+            >
+              Todas las ventas
+            </div>
+            <div
+              mat-menu-item
+              *ngFor="let type of settings.orders.statusArr"
+              [ngClass]="{
+                active:
+                  selectedTypeFilter && selectedTypeFilter.code === type.code
+              }"
+              (click)="filterProducts('selectedTypeFilter', type)"
+            >
+              {{ type.label }}
+            </div>
+          </mat-menu>
+        </div>
+        <app-pagenation
+          [page]="page"
+          [totalPages]="totalPages"
+          (nextPage)="nextPage()"
+          (previousPage)="previousPage()"
+        ></app-pagenation>
+      </div>
+
+      <app-sales
+        *ngIf="selectedScreen === 'sales' && selectedSaleScreen === 'sales'"
+        [data]="items"
+      >
+      </app-sales>
+    </ng-container>
+
+    <ng-container
+      *ngIf="
+        selectedScreen === 'sales' && selectedSaleScreen === 'sales-products'
+      "
+    >
+      <app-products
+        [items]="items"
+        [loading]="loading"
+        (reloadEvent)="getItems()"
+      ></app-products>
+      <div style="margin-top: 15px">
+        <app-pagenation
+          [page]="page"
+          [totalPages]="totalPages"
+          (nextPage)="nextPage()"
+          (previousPage)="previousPage()"
+        ></app-pagenation>
+      </div>
+    </ng-container>
+
+    <app-withdraw
+      *ngIf="
+        selectedScreen === 'sales' && selectedSaleScreen === 'sales-retire'
+      "
+    ></app-withdraw>
+
+    <app-security *ngIf="selectedScreen === 'security'"></app-security>
+
+    <app-use-gifts *ngIf="selectedScreen === 'gifts'"></app-use-gifts>
+
+    <!--BEGIN VENTAS-->
+    <ng-container *ngIf="selectedScreen === 'sales'">
+      <!--BEGIN SUB-VENTAS-->
+      <div class="mt-4 col" *ngIf="selectedSaleScreen === 'sales'">
+        <div class="row">
+          <!-- BEGIN SUB-VENTAS-TABLE -->
+          <!-- END SUB-VENTAS-TABLE -->
+          <!--BEGIN SUB-VENTAS-PRODUCTOS-->
+          <div
+            class="mt-4 col-md-3 hide-mobile"
+            *ngIf="selectedSaleScreen === 'sales'"
+          >
+            <div class="card card-product" *ngIf="itemSelected">
+              <div class="row">
+                <span class="products">Productos</span>
+              </div>
+              <div class="row mt-3 justify-content-center">
+                <img
+                  [src]="filesUrl + itemSelected.product?.picture"
+                  onerror="this.src = 'assets/imgs/placeholder.png'"
+                  class="image-product"
+                  alt=""
+                />
+              </div>
+              <div class="row align-items-center detail-product mt-3">
+                <div class="col-2 no-padding">
+                  <p>x1</p>
+                </div>
+                <div class="col-5 no-padding">
+                  <p class="no-margin text-center">
+                    {{ itemSelected.product?.name }}
+                  </p>
+                  <hr />
+                  <p class="no-margin text-center">
+                    {{
+                      (itemSelected.product.discount
+                        ? itemSelected.product.priceWithDiscount
+                        : itemSelected.product?.price
+                      )
+                        | toUSD
+                        | currency
+                          : country.currency
+                          : 'symbol-narrow'
+                          : '1.0-2'
+                          : 'es-US'
+                    }}
+                  </p>
+                </div>
+                <div class="col-5 no-padding">
+                  <button
+                    class="btn btn-success btn-small btn-block btn-detail"
+                    (click)="goToPurchase(itemSelected, false)"
+                    *ngIf="
+                      itemSelected.status !== 'cancelled' &&
+                      itemSelected.status !== 'returned'
+                    "
+                  >
+                    Ver detalle
+                  </button>
+                </div>
+              </div>
+              <div class="row ml-1 mr-1 mt-4 detail-price">
+                <div class="col-5">
+                  <span>Total</span>
+                </div>
+                <div class="col-2"></div>
+                <div class="col-5 text-right">
+                  <span>{{
+                    (itemSelected.product.discount
+                      ? itemSelected.product.priceWithDiscount
+                      : (itemSelected.product?.price | toUSD)
+                    )
+                      | currency
+                        : country.currency
+                        : 'symbol-narrow'
+                        : '1.0-2'
+                        : 'es-US'
+                  }}</span>
+                </div>
+              </div>
+              <div class="row mt-4">
+                <span class="products">Comprador</span>
+              </div>
+              <div class="row mt-2">
+                <div class="card-seller">
+                  <div class="row align-items-center seller">
+                    <div
+                      class="col-3"
+                      (click)="
+                        pageService.navigateRoute(
+                          'profile/user/' + itemSelected.buyer.id
+                        )
+                      "
+                    >
+                      <img
+                        [src]="filesUrl + itemSelected.buyer?.picture"
+                        onerror="this.src = 'assets/imgs/avatar.png'"
+                        class="avatar-seller"
+                        alt=""
+                      />
+                    </div>
+                    <div class="col-9">
+                      <span>{{
+                        itemSelected.buyer.firstName +
+                          ' ' +
+                          itemSelected.buyer.lastName
+                      }}</span>
+                    </div>
+                    <!-- <div class="col-5">
+                    <button class="btn btn-primary btn-small" (click)="openModal(calificate)">
+                      Calificar
+                    </button>
+                  </div> -->
+                  </div>
+                </div>
+              </div>
+              <!-- <div class="row mt-4 mb-4">
+              <div class="col text-right">
+                <span class="products">Ver comprobante</span>
+              </div>
+            </div> -->
+            </div>
+          </div>
+          <!-- END SUB-VENTAS-PRODUCTOS -->
+        </div>
+      </div>
+      <!--END SUB-VENTAS-->
+
+      <!--BEGIN RESUMEN-->
+
+      <div class="mt-4 col" *ngIf="selectedSaleScreen === 'sales-summary'">
+        <div class="d-flex justify-content-between">
+          <div>
+            <span class="buys ml-4"><b>Resumen</b></span>
+          </div>
+          <div class="w-auto">
+            <button
+              class="filter-by text-primary"
+              mat-button
+              [matMenuTriggerFor]="menu"
+            >
+              Filter By
+              <i
+                class="fa fa-chevron-down text-primary ml-2 vertical-text-top"
+              ></i>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="filterResumenData('d')">
+                Day
+              </button>
+              <button mat-menu-item (click)="filterResumenData('w')">
+                Week
+              </button>
+              <button mat-menu-item (click)="filteresumenData('m')">
+                Month
+              </button>
+            </mat-menu>
+          </div>
+        </div>
+
+        <div class="row row-gap-20 mt-4">
+          <div class="col resumen-item">
+            <div class="card">
+              <div class="d-flex align-items-center">
+                <div class="cont-image">
+                  <div class="blue">
+                    <img src="assets/imgs/heart.svg" alt="" />
+                  </div>
+                </div>
+                <div>
+                  <span class="number-resumen">178+</span> <br />
+                  <span class="text-resumen">Ventas Realizadas</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col resumen-item">
+            <div class="card">
+              <div class="d-flex align-items-center">
+                <div class="cont-image">
+                  <div class="yellow">
+                    <img src="assets/imgs/console.svg" alt="" />
+                  </div>
+                </div>
+                <div>
+                  <span class="number-resumen">20+</span> <br />
+                  <span class="text-resumen">Productos en Stock</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col resumen-item">
+            <div class="card">
+              <div class="d-flex align-items-center">
+                <div class="cont-image">
+                  <div class="green">
+                    <img src="assets/imgs/shape.svg" alt="" />
+                  </div>
+                </div>
+                <div>
+                  <span class="number-resumen">20+</span> <br />
+                  <span class="text-resumen">Productos Vendidos</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col resumen-item">
+            <div class="card">
+              <div class="d-flex align-items-center">
+                <div class="cont-image">
+                  <div class="red">
+                    <img src="assets/imgs/share.svg" alt="" />
+                  </div>
+                </div>
+                <div>
+                  <span class="number-resumen">5+</span> <br />
+                  <span class="text-resumen">Reclamos</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card mt-4">
+          <!-- <span class="buys ml-4"><b>Reporte de ventas</b></span> -->
+          <div class="card-content">
+            <apx-chart
+              [series]="AreaChartOptions.series"
+              [chart]="AreaChartOptions.chart"
+              [xaxis]="AreaChartOptions.xaxis"
+              [yaxis]="AreaChartOptions.yaxis"
+              [title]="AreaChartOptions.title"
+              [dataLabels]="AreaChartOptions.dataLabels"
+              [fill]="AreaChartOptions.fill"
+              [stroke]="AreaChartOptions.stroke"
+              [markers]="AreaChartOptions.markers"
+              [tooltip]="AreaChartOptions.tooltip"
+              [grid]="AreaChartOptions.grid"
+            ></apx-chart>
+          </div>
+        </div>
+
+        <div class="row mt-4 mb-5 row-gap-20">
+          <div class="col-md-6 most-selled-products">
+            <div class="card">
+              <span class="buys ml-2 mb-4"><b>Productos mas vendidos</b></span>
+              <div class="row mt-4 gap-20">
+                <div class="col most-selled-products-img">
+                  <img
+                    src="assets/imgs/play6.jpg"
+                    width="80px"
+                    height="100px"
+                    style="object-fit: cover"
+                    alt=""
+                  />
+                </div>
+                <div class="col">
+                  <span class="text-resumen" style="font-size: 18px"
+                    >Valheim</span
+                  >
+                  <br />
+                  <span
+                    class="number-resumen"
+                    style="font-size: 18px; font-weight: 500"
+                    >$15.000</span
+                  >
+                </div>
+              </div>
+              <hr />
+              <div class="row gap-20">
+                <div class="col most-selled-products-img">
+                  <img
+                    src="assets/imgs/play6.jpg"
+                    width="80px"
+                    height="100px"
+                    style="object-fit: cover"
+                    alt=""
+                  />
+                </div>
+                <div class="col">
+                  <span class="text-resumen" style="font-size: 18px"
+                    >Valheim</span
+                  >
+                  <br />
+                  <span
+                    class="number-resumen"
+                    style="font-size: 18px; font-weight: 500"
+                    >$15.000</span
+                  >
+                </div>
+              </div>
+              <hr />
+              <div class="row gap-20">
+                <div class="col most-selled-products-img">
+                  <img
+                    src="assets/imgs/play6.jpg"
+                    width="80px"
+                    height="100px"
+                    style="object-fit: cover"
+                    alt=""
+                  />
+                </div>
+                <div class="col">
+                  <span class="text-resumen" style="font-size: 18px"
+                    >Valheim</span
+                  >
+                  <br />
+                  <span
+                    class="number-resumen"
+                    style="font-size: 18px; font-weight: 500"
+                    >$15.000</span
+                  >
+                </div>
+              </div>
+              <hr />
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-content">
+                <apx-chart
+                  [series]="DonutChartOptions.series"
+                  [chart]="DonutChartOptions.chart"
+                  [labels]="DonutChartOptions.labels"
+                  [dataLabels]="DonutChartOptions.dataLabels"
+                  [title]="DonutChartOptions.title"
+                  [fill]="DonutChartOptions.fill"
+                  [states]="DonutChartOptions.states"
+                  [plotOptions]="DonutChartOptions.plotOptions"
+                  [stroke]="DonutChartOptions.stroke"
+                  [theme]="DonutChartOptions.theme"
+                  [responsive]="DonutChartOptions.responsive"
+                  [legend]="DonutChartOptions.legend"
+                ></apx-chart>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--END RESUMEN-->
+
+      <!-- BEGIN CONSULTAS -->
+      <div class="mt-4 col" *ngIf="selectedSaleScreen === 'sales-QAs'">
+        <!-- <div class="row">
+        <button mat-button [matMenuTriggerFor]="menu">
+          <i class="fa fa-calendar-o text-light"></i>
+          <span class="text-light ml-2" style="font-family: 'Montserrat';">Todas las fechas</span>
+          <i class="fa fa-chevron-down text-light ml-2"></i>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+              Todas las fechas
+            </button>
+            <button mat-menu-item>
+              últimos 15 días
+            </button>
+            <button mat-menu-item>
+              últimos 30 días
+            </button>
+            <button mat-menu-item>
+              últimos 60 días
+            </button>
+          </mat-menu>
+        </button>
+      </div> -->
+        <span class="buys ml-4"><b>Consultas</b></span>
+        <div class="card-consultations mt-4" *ngIf="items?.length === 0">
+          <div class="row">
+            <div class="col-md-12 text-center">
+              <p class="text-primary">Aún no tienes ninguna consulta!</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card consultations mt-4" *ngFor="let productQA of items">
+          <div class="row">
+            <div class="col product-img">
+              <img
+                [src]="filesUrl + productQA.product?.picture"
+                onerror="this.src = 'assets/imgs/placeholder.png'"
+                width="80px"
+                height="100px"
+                style="object-fit: cover; border-radius: 2px"
+                alt=""
+              />
+            </div>
+            <div class="col-md-3">
+              <span class="name" style="font-size: 16px">{{
+                productQA.product?.name
+              }}</span>
+              <p class="text-primary mt-2 price">
+                {{
+                  productQA.product?.price
+                    | toUSD
+                    | currency: country.currency:'symbol-narrow':'1.0-2':'es-US'
+                }}
+              </p>
+            </div>
+            <div class="col-md-7">
+              <div class="row">
+                <div
+                  class="col-md-1 text-right small-avatar"
+                  (click)="
+                    pageService.navigateRoute(
+                      'profile/user/' + productQA.buyer.id
+                    )
+                  "
+                >
+                  <img
+                    [src]="filesUrl + productQA.buyer?.picture"
+                    onerror="this.src = 'assets/imgs/avatar.png'"
+                    width="35px"
+                    height="35px"
+                    style="border-radius: 50%; object-fit: cover"
+                    alt=""
+                  />
+                </div>
+                <div class="col">
+                  <span class="text-resumen" style="margin-left: 0">{{
+                    productQA.question
+                  }}</span>
+                  <div class="row mt-1 align-items-center">
+                    <div class="col-md-6 text-left">
+                      <span class="time">{{
+                        productQA.createdAt | timeAgo
+                      }}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row pl-3 mt-4" *ngIf="productQA.answer">
+                <div
+                  class="col-md-1 text-center small-avatar"
+                  (click)="
+                    pageService.navigateRoute('profile/seller/' + user.id)
+                  "
+                >
+                  <img
+                    [src]="filesUrl + user?.picture"
+                    onerror="this.src = 'assets/imgs/avatar.png'"
+                    width="35px"
+                    height="35px"
+                    style="border-radius: 50%; object-fit: cover"
+                    alt=""
+                  />
+                </div>
+                <div class="col">
+                  <span class="text-resumen" style="margin-left: 0">{{
+                    productQA.answer
+                  }}</span>
+                  <div class="row mt-1 align-items-center">
+                    <div class="col-md-6 text-left">
+                      <span class="time">{{
+                        productQA.updatedAt | timeAgo
+                      }}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div
+              class="col text-right"
+              (click)="openModal(questions, productQA)"
+              *ngIf="!productQA.answer"
+            >
+              <span class="response"
+                >Responder
+                <mat-icon
+                  svgIcon="comment"
+                  class="text-primary ml-2"
+                ></mat-icon>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="row pt-4 pb-4 pr-4"
+          *ngIf="selectedSaleScreen === 'sales-QAs'"
+        >
+          <div class="col text-right" style="max-width: 1120px">
+            <span class="pagined"
+              ><i
+                class="fa fa-chevron-left text-light mr-1"
+                (click)="previousPage()"
+                *ngIf="page !== 1"
+              ></i>
+              {{ page }}/{{ totalPages }}
+              <i
+                class="fa fa-chevron-right text-light ml-1"
+                (click)="nextPage()"
+                *ngIf="page !== totalPages && totalPages > 0"
+              ></i
+            ></span>
+          </div>
+        </div>
+      </div>
+      <!-- END CONSULTAS -->
+    </ng-container>
+    <!--END VENTAS-->
+
+    <!-- BEGIN TICKETS -->
+    <div class="col mt-4" *ngIf="selectedScreen === 'tickets'">
+      <span class="buys ml-4"><b>Tickets</b></span>
+      <div class="card mt-4">
+        <div class="row align-items-center">
+          <div class="col-md-9">
+            <span class="ticket-intro"
+              >Si tienes una consulta, genera un ticket y con gusto te
+              responderemos.</span
+            >
+          </div>
+          <div class="col-md-3 text-right">
+            <button
+              class="btn btn-primary btn-block btn-add"
+              (click)="openModal(tickets)"
+            >
+              Generar Ticket de consulta
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-4">
+        <div class="col-md-8">
+          <div
+            class="row ticket-selected mt-4 ml-4"
+            *ngIf="items?.length === 0 || loading"
+          >
+            <div class="col-md-12 text-center">
+              <span
+                class="text-primary"
+                style="
+                  font-family: 'Montserrat';
+                  font-weight: 600;
+                  font-size: 18px;
+                "
+                >{{
+                  loading ? 'Cargando...' : 'Aún no has enviado ningún ticket!'
+                }}</span
+              >
+            </div>
+          </div>
+          <div
+            class="row ticket-selected mt-4 ml-4"
+            *ngFor="let ticket of items"
+            (click)="selectItem(ticket)"
+            [hidden]="ticket.body == null"
+          >
+            <div
+              class="col-md-1"
+              (click)="pageService.navigateRoute('profile/user/' + user.id)"
+            >
+              <img
+                [src]="filesUrl + user?.picture"
+                onerror="this.src = 'assets/imgs/avatar.png'"
+                width="35px"
+                height="35px"
+                style="border-radius: 50%; object-fit: cover"
+                alt=""
+              />
+            </div>
+            <div class="col-md-10">
+              <span
+                style="
+                  font-family: 'Montserrat';
+                  font-weight: 600;
+                  color: #ffffff;
+                  font-size: 18px;
+                "
+                >{{ ticket.title }}</span
+              >
+              <p
+                style="
+                  font-family: 'Montserrat';
+                  font-weight: 400;
+                  color: #ffffff;
+                  font-size: 16px;
+                "
+              >
+                {{ ticket.body }}
+              </p>
+            </div>
+            <div class="col-md-1 text-right">
+              <button class="btn btn-clear" *ngIf="!ticket.answer">
+                <i class="fa fa-bell notif"></i>
+              </button>
+            </div>
+          </div>
+          <div class="row pt-4 pb-4 pr-4">
+            <div class="col text-right">
+              <span class="pagined"
+                ><i
+                  class="fa fa-chevron-left text-light mr-1"
+                  (click)="previousPage()"
+                  *ngIf="page !== 1"
+                ></i>
+                {{ page }}/{{ totalPages }}
+                <i
+                  class="fa fa-chevron-right text-light ml-1"
+                  (click)="nextPage()"
+                  *ngIf="page !== totalPages && totalPages > 0"
+                ></i
+              ></span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card" *ngIf="itemSelected">
+            <div class="row mt-4">
+              <div
+                class="col-md-1"
+                (click)="pageService.navigateRoute('profile/user/' + user.id)"
+              >
+                <img
+                  [src]="filesUrl + user?.picture"
+                  onerror="this.src = 'assets/imgs/avatar.png'"
+                  width="35px"
+                  height="35px"
+                  style="border-radius: 50%; object-fit: cover; cursor: pointer"
+                  alt=""
+                />
+              </div>
+              <div class="col-md-11">
+                <span
+                  style="
+                    font-family: 'Montserrat';
+                    font-weight: 600;
+                    color: #ffffff;
+                    font-size: 18px;
+                    margin-left: 8px;
+                  "
+                  >{{ itemSelected.title }}</span
+                >
+                <p
+                  style="
+                    font-family: 'Montserrat';
+                    font-weight: 400;
+                    color: #ffffff;
+                    font-size: 16px;
+                    margin-left: 8px;
+                  "
+                >
+                  {{ itemSelected.body }}
+                </p>
+              </div>
+            </div>
+
+            <div class="row mt-4" *ngIf="itemSelected.answer">
+              <div class="col-md-1">
+                <img
+                  src="assets/imgs/support.png"
+                  width="27px"
+                  height="27px"
+                  style="border-radius: 0%; object-fit: cover"
+                  alt=""
+                />
+              </div>
+              <div class="col-md-11">
+                <p
+                  style="
+                    font-family: 'Montserrat';
+                    font-weight: 400;
+                    color: #ffffff;
+                    font-size: 16px;
+                    margin-left: 8px;
+                  "
+                >
+                  {{ itemSelected.answer }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END TICKETS -->
+
+    <!-- BEGIN AJUSTES -->
+    <div class="col mt-4" *ngIf="selectedScreen === 'settings'">
+      <span class="buys ml-4"><b>Mi cuenta</b></span>
+      <div class="card-setting mt-4 mb-4 position-relative">
+        <div class="row mt-4">
+          <div class="col avatar-setting">
+            <img
+              [src]="filesUrl + user.picture"
+              onerror="this.src = 'assets/imgs/avatar.png'"
+              (click)="handlePicture('picture')"
+            />
+          </div>
+          <div class="col body-setting">
+            <div class="row">
+              <div class="col-md-3">
+                <span class="title-setting">Nombre</span>
+                <input
+                  type="text"
+                  class="form-control pl-0"
+                  [(ngModel)]="user.firstName"
+                  [disabled]="!editing"
+                />
+              </div>
+              <div class="col-md-3">
+                <span class="title-setting">Apellido</span>
+                <input
+                  type="text"
+                  class="form-control pl-0"
+                  [(ngModel)]="user.lastName"
+                  [disabled]="!editing"
+                />
+              </div>
+              <div class="col-md-3">
+                <span class="title-setting">Usuario</span>
+                <input
+                  type="text"
+                  class="form-control pl-0"
+                  [(ngModel)]="user.username"
+                  [disabled]="!editing"
+                />
+              </div>
+              <div class="col-md-3">
+                <span class="title-setting">Email</span>
+                <input
+                  type="email"
+                  class="form-control pl-0"
+                  [(ngModel)]="user.emailAddress"
+                  [disabled]="!editing"
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <span class="title-setting">Dirección</span>
+                <textarea
+                  class="form-control pl-0"
+                  [(ngModel)]="user.address"
+                  [disabled]="!editing"
+                ></textarea>
+              </div>
+            </div>
+            <div class="mt-2">
+              <span class="buys"><b>Tienda</b></span>
+            </div>
+            <div class="row mt-4">
+              <div class="col">
+                <span class="title-setting">Descripción</span>
+                <textarea
+                  class="form-control pl-0"
+                  [(ngModel)]="user.description"
+                  [disabled]="!editing"
+                ></textarea>
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col">
+                <span class="title-setting">Banner Desktop</span>
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col">
+                <img
+                  [src]="filesUrl + user.bannerDesktop"
+                  onerror="this.src = 'assets/imgs/placeholder.png'"
+                  class="desktop-banner-img"
+                  (click)="handlePicture('bannerDesktop')"
+                />
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col">
+                <span class="title-setting">Banner Mobile</span>
+              </div>
+            </div>
+            <div class="row my-4">
+              <div class="col">
+                <img
+                  [src]="filesUrl + user.bannerMobile"
+                  onerror="this.src = 'assets/imgs/placeholder.png'"
+                  class="mobile-banner-img"
+                  (click)="handlePicture('bannerMobile')"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="col btn-setting">
+            <button class="btn btn-clear" (click)="handleEdit()">
+              <i
+                class="fa text-primary"
+                [ngClass]="editing ? 'fa-floppy-o' : 'fa-pencil'"
+              ></i>
+            </button>
+          </div>
+        </div>
+        <!-- <div class="row align-items-center mt-4 ml-2 mb-4">
+        <div class="col-md-1"></div>
+        <div class="col-md-8">
+          <span class="title-setting">Recibir pagos por:</span> <br>
+          <img src="assets/imgs/mp.png" class="mt-4 mr-4" width="120px" height="30px" alt="">
+          <img src="assets/imgs/cbu.png" class="ml-4" alt="">
+          <span class="text-setting ml-4">Transferencia Bancaria</span>
+        </div>
+      </div> -->
+      </div>
+    </div>
+    <!-- END AJUSTES -->
+
+    <!-- BEGIN PREGUNTAS -->
+    <div class="col mt-4" *ngIf="selectedScreen === 'QAs'">
+      <span class="buys ml-4"><b>Preguntas</b></span>
+      <!-- <div class="row ml-2 mt-3">
+        <button mat-button [matMenuTriggerFor]="menu">
+          <i class="fa fa-calendar-o text-light"></i>
+          <span class="text-light ml-2" style="font-family: 'Montserrat'"
+            >Todas las fechas</span
+          >
+          <i class="fa fa-chevron-down text-light ml-2"></i>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>Todas las fechas</button>
+            <button mat-menu-item>últimos 15 días</button>
+            <button mat-menu-item>últimos 30 días</button>
+            <button mat-menu-item>últimos 60 días</button>
+          </mat-menu>
+        </button>
+      </div> -->
+
+      <div class="card-consultations mt-4" *ngIf="items?.length === 0">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <p class="text-primary">Aún no has hecho ninguna consulta!</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card consultations mt-3 ml-2" *ngFor="let productQA of items">
+        <div class="row">
+          <div class="col product-img">
+            <img
+              [src]="filesUrl + productQA.product?.picture"
+              onerror="this.src = 'assets/imgs/placeholder.png'"
+              width="80px"
+              height="100px"
+              style="object-fit: cover; border-radius: 2px"
+            />
+          </div>
+          <div class="col-md-3">
+            <span class="name" style="font-size: 16px">{{
+              productQA.product?.name
+            }}</span>
+            <p class="text-primary mt-2 price">
+              {{
+                productQA.product?.price
+                  | toUSD
+                  | currency: country.currency:'symbol-narrow':'1.0-2':'es-US'
+              }}
+            </p>
+          </div>
+          <div class="col-md-7">
+            <div class="row">
+              <div
+                class="col text-right small-avatar"
+                (click)="pageService.navigateRoute('profile/user/' + user.id)"
+              >
+                <img
+                  [src]="filesUrl + user?.picture"
+                  onerror="this.src = 'assets/imgs/avatar.png'"
+                  width="35px"
+                  height="35px"
+                  style="border-radius: 50%; object-fit: cover"
+                />
+              </div>
+              <div class="col">
+                <span class="text-resumen" style="margin-left: 0">{{
+                  productQA.question
+                }}</span>
+                <div class="row mt-1 align-items-center">
+                  <div class="col-md-6 text-left">
+                    <span class="time">{{
+                      productQA.createdAt | timeAgo
+                    }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row mt-4 pl-3" *ngIf="productQA.answer">
+              <div
+                class="col-md-1 text-right small-avatar"
+                (click)="
+                  pageService.navigateRoute(
+                    'profile/seller/' + productQA.seller.id
+                  )
+                "
+              >
+                <img
+                  [src]="filesUrl + productQA.seller.picture"
+                  onerror="this.src = 'assets/imgs/avatar.png'"
+                  width="35px"
+                  height="35px"
+                  style="border-radius: 50%; object-fit: cover"
+                  alt=""
+                />
+              </div>
+              <div class="col">
+                <span class="text-resumen" style="margin-left: 0">{{
+                  productQA.answer
+                }}</span>
+                <div class="row mt-1 align-items-center">
+                  <div class="col-md-6 text-left">
+                    <span class="time">{{
+                      productQA.updatedAt | timeAgo
+                    }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="col-md-2 text-right">
+          <span style="font-weight: 400; font-family: 'Montserrat'; font-size: 18px; color: rgba(235, 235, 245, 0.6)">{{ productQA.answer ? 1 : 0 }} Respuestas</span>
+          <i class="fa fa-chevron-down" style="color: rgba(235, 235, 245, 0.6); margin-left: 16px;"></i>
+        </div> -->
+        </div>
+      </div>
+
+      <div class="row pt-4 pb-4 pr-4">
+        <div class="col text-right" style="max-width: 1120px">
+          <span class="pagined"
+            ><i
+              class="fa fa-chevron-left text-light mr-1"
+              (click)="previousPage()"
+              *ngIf="page !== 1"
+            ></i>
+            {{ page }}/{{ totalPages }}
+            <i
+              class="fa fa-chevron-right text-light ml-1"
+              (click)="nextPage()"
+              *ngIf="page !== totalPages && totalPages > 0"
+            ></i
+          ></span>
+        </div>
+      </div>
+    </div>
+    <!-- END PREGUNTAS -->
+  </div>
+</div>
+
+<ng-template #calificate let-modal>
+  <div
+    class="modal-body text-center"
+    style="height: 500px; width: 500px; background-color: #141414"
+  >
+    <img
+      *ngIf="success"
+      src="assets/imgs/arrow.png"
+      class="image"
+      width="78px"
+      height="78px"
+      alt=""
+    />
+    <div *ngIf="!success && !showSuccess">
+      <div class="row justify-content-center mt-4">
+        <span class="quest">¿Cómo Calificas a ChtaZone?</span>
+      </div>
+      <div class="row justify-content-center mt-4">
+        <img src="assets/imgs/avatar.png" class="avatar-user" alt="" />
+      </div>
+      <div class="row justify-content-center mt-4">
+        <i class="fa fa-star text-primary"></i>
+        <i class="fa fa-star text-primary"></i>
+        <i class="fa fa-star text-primary"></i>
+        <i class="fa fa-star text-primary"></i>
+        <i class="fa fa-star disabled"></i>
+      </div>
+      <div class="row justify-content-center mt-4">
+        <textarea class="input-custom" cols="50" rows="5"></textarea>
+      </div>
+      <div class="row justify-content-center mt-4 ml-4 mr-4">
+        <button
+          class="btn btn-primary btn-block btn-calificate"
+          (click)="sendQualification()"
+        >
+          Calificar
+        </button>
+      </div>
+    </div>
+    <div class="row justify-content-center align-items-center mt-5">
+      <img
+        *ngIf="showSuccess"
+        src="assets/imgs/success.png"
+        width="97px"
+        height="97px"
+        alt=""
+      />
+    </div>
+    <div class="row justify-content-center align-items-center mt-4">
+      <p *ngIf="showSuccess" class="text-center quest">
+        Tu calificación fue enviada con éxito!
+      </p>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #payment let-modal>
+  <div
+    class="modal-body text-center"
+    style="height: 500px; width: 500px; background-color: #141414"
+  >
+    <div class="row justify-content-center mt-4">
+      <span class="quest">{{
+        !items?.paymentMethods?.length
+          ? 'Añadir método de pago'
+          : 'Solicitud de Retiro'
+      }}</span>
+    </div>
+    <mat-select [(value)]="retirementMethod" class="country-select mb-4 mt-4">
+      <mat-option value="select" disabled
+        >Seleccione un metodo de pago</mat-option
+      >
+      <ng-container *ngIf="!items?.paymentMethods?.length">
+        <mat-option value="mercadoPago">
+          <span class="ml-3">Mercado Pago</span>
+        </mat-option>
+        <mat-option value="bankTransfer">
+          <span class="ml-3">CVU/CBU</span>
+        </mat-option>
+      </ng-container>
+      <mat-option
+        [value]="paymentMethod.id"
+        *ngFor="let paymentMethod of items?.paymentMethods"
+      >
+        <span class="ml-3">{{
+          settings.paymentMethods.type[paymentMethod.type].label
+        }}</span>
+      </mat-option>
+    </mat-select>
+    <div class="form-group mb-4" *ngIf="!items?.paymentMethods?.length">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Ingrese su CVU/CBU"
+        [disabled]="items?.paymentMethods?.length"
+        [(ngModel)]="retirementCBU"
+      />
+    </div>
+    <div class="form-group mb-4" *ngIf="items?.paymentMethods?.length">
+      <input
+        type="number"
+        class="form-control"
+        placeholder="Monto"
+        [(ngModel)]="retirementAmount"
+      />
+    </div>
+    <div class="row justify-content-center mt-4 ml-4 mr-4">
+      <button
+        class="btn btn-primary btn-block btn-calificate"
+        (click)="handlePaymentModal()"
+        [disabled]="
+          retirementMethod === 'select' ||
+          retirementAmount > user.balance ||
+          retirementAmount < 1
+        "
+      >
+        {{
+          !items?.paymentMethods?.length ? 'Añadir método de pago' : 'Retirar'
+        }}
+      </button>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #tickets let-modal>
+  <div
+    class="modal-body text-center"
+    style="height: 500px; width: 500px; background-color: #141414"
+  >
+    <div *ngIf="!success && !showSuccess">
+      <div class="row justify-content-center mt-4">
+        <span class="quest">Creación de Ticket</span>
+      </div>
+      <div class="form-group mb-4 mt-4">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Título de la consulta"
+          [(ngModel)]="ticketTitle"
+        />
+      </div>
+      <div class="form-group mt-4">
+        <textarea
+          class="form-control"
+          placeholder="Escribe tu consulta."
+          cols="50"
+          rows="5"
+          [(ngModel)]="ticketBody"
+        ></textarea>
+      </div>
+      <div class="row justify-content-center mt-4 ml-4 mr-4">
+        <button
+          class="btn btn-primary btn-block btn-calificate"
+          (click)="sendTicket()"
+        >
+          Crear Ticket
+        </button>
+      </div>
+    </div>
+    <ng-container *ngIf="showSuccess">
+      <div class="row justify-content-center align-items-center mt-5">
+        <img src="assets/imgs/success.png" width="97px" height="97px" alt="" />
+      </div>
+      <div class="row justify-content-center align-items-center mt-4">
+        <p class="text-center quest">Tu ticket fue creado con éxito!</p>
+      </div>
+    </ng-container>
+  </div>
+</ng-template>
+
+<ng-template #questions let-modal>
+  <div
+    class="modal-body text-center"
+    style="height: 500px; width: 500px; background-color: #141414"
+  >
+    <div class="card-consultations">
+      <div class="row">
+        <div
+          class="col-md-2 text-center"
+          (click)="
+            pageService.navigateRoute('profile/user/' + itemSelected?.buyer.id)
+          "
+        >
+          <img
+            [src]="filesUrl + itemSelected?.buyer.picture"
+            onerror="this.src = 'assets/imgs/avatar.png'"
+            width="35px"
+            height="35px"
+            style="border-radius: 50%; object-fit: cover"
+          />
+        </div>
+        <div class="col-md-10 text-left">
+          <span class="text-resumen">{{ itemSelected?.question }}</span>
+          <div class="row mt-1 align-items-center">
+            <div class="col-md-6 text-left">
+              <!-- <span class="time">hace 5h</span> -->
+              <span class="time">{{
+                itemSelected?.createdAt | date: 'dd/MM/yyyy HH:mm'
+              }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group mt-4">
+        <textarea
+          class="form-control"
+          placeholder="Escribe tu respuesta."
+          cols="50"
+          rows="5"
+          [(ngModel)]="answer"
+        ></textarea>
+      </div>
+      <div class="row justify-content-center mt-4 ml-4 mr-4">
+        <button
+          class="btn btn-primary btn-block btn-calificate"
+          (click)="sendAnswer()"
+          [disabled]="!answer"
+        >
+          Responder
+        </button>
+      </div>
+    </div>
+  </div>
+</ng-template>

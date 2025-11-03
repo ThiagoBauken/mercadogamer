@@ -1,0 +1,353 @@
+<div class="d-flex justify-content-center">
+  <div class="mt-6 mb-6 contenedor">
+    <div class="title">Editar producto</div>
+    <div
+      class="mt-4 back-button cursor-pointer"
+      [routerLink]="['/my-account/sales-products']"
+    >
+      <p class="text-light">
+        <i class="fa fa-chevron-left text-light mr-2"></i> Lista de productos
+      </p>
+    </div>
+    <div class="row justify-content-between mt-3">
+      <div class="col min-w-xxs">
+        <div
+          *ngIf="product?.status === 'rejected' && product?.rejectedResions"
+          [ngClass]="{
+            'card border-danger mb-3': true,
+            'd-none': !deviceInfo['max-611']
+          }"
+        >
+          <span>Errores:</span>
+          <ul>
+            <li *ngFor="let reasion of product.rejectedResions">
+              {{ reasion }}
+            </li>
+          </ul>
+        </div>
+        <form
+          [formGroup]="form"
+          (ngSubmit)="onSubmit()"
+          class="edit-form p-4 mb-4"
+        >
+          <!-- BEGIN STEP ONE -->
+          <div class="step-one">
+            <div
+              [ngClass]="{
+                error: !isFieldValid('name'),
+                success: isFieldValid('name') && form.value?.name
+              }"
+              class="form-group"
+            >
+              <input
+                type="text"
+                formControlName="name"
+                class="form-control"
+                placeholder="Título del Producto"
+              />
+            </div>
+            <div
+              [ngClass]="{
+                error: !isFieldValid('price'),
+                success: isFieldValid('price') && form.value?.price
+              }"
+              class="form-group mt-3"
+            >
+              <mat-form-field appearance="fill">
+                <img
+                  matPrefix
+                  src="assets/imgs/usa.png"
+                  class="mr-2"
+                  width="20px"
+                  height="20px"
+                />
+                <input
+                  matInput
+                  type="number"
+                  class="form-control"
+                  formControlName="price"
+                  placeholder="$ USD"
+                />
+              </mat-form-field>
+            </div>
+            <div class="counted-value d-flex mt-2">
+              <img
+                [src]="filesUrl + country?.flag"
+                onerror="this.src = 'assets/imgs/placeholder.png'"
+                class="ml-3"
+              />
+              <span class="prefix-price ml-3">$ Pesos</span>
+              <span class="value ml-3">
+                {{
+                  form.value?.price
+                    | toUSD
+                    | currency: country.currency + ' $ ':'code':'1.0-2':'es-US'
+                }}
+              </span>
+            </div>
+            <p class="info-stepone mt-3">
+              El precio en dolares
+              <span class="text-primary"
+                >es unicamente para ventas internacionales,</span
+              >
+              los usuarios de Argentina verán el precio en
+              <span class="text-primary">pesos argentinos.</span>
+            </p>
+          </div>
+          <!-- END STEP ONE -->
+          <!-- BEGIN STEP THREE -->
+          <div class="step-three">
+            <div class="row mb-3">
+              <div class="col min-w-200">
+                <mat-select
+                  [ngClass]="{
+                    error: !isFieldValid('platform'),
+                    success: isFieldValid('platform') && form.value?.platform
+                  }"
+                  class="form-group"
+                  formControlName="platform"
+                  placeholder="Plataforma"
+                  class="country-select mt-4"
+                >
+                  <mat-option
+                    *ngFor="let platform of platforms"
+                    [value]="platform.id"
+                  >
+                    <span class="ml-3">{{ platform.name }}</span>
+                  </mat-option>
+                </mat-select>
+              </div>
+              <div class="col min-w-200">
+                <mat-select
+                  [ngClass]="{
+                    error: !isFieldValid('category'),
+                    success: isFieldValid('category') && form.value?.category
+                  }"
+                  formControlName="category"
+                  placeholder="Categoría"
+                  class="country-select mt-4"
+                >
+                  <mat-option
+                    *ngFor="let category of categories"
+                    [value]="category.id"
+                  >
+                    <span class="ml-3">{{ category.name }}</span>
+                  </mat-option>
+                </mat-select>
+              </div>
+              <div class="col min-w-200">
+                <mat-select
+                  [ngClass]="{
+                    error: !isFieldValid('type'),
+                    success: isFieldValid('type') && form.value?.type
+                  }"
+                  class="form-group"
+                  formControlName="type"
+                  placeholder="Tipo"
+                  class="country-select mt-4"
+                >
+                  <!-- [(ngModel)]="type"
+                  placeholder="Tipo"
+                  class="country-select mt-4"
+                > -->
+                  <mat-option
+                    *ngFor="let type of settings.products.types; index as i"
+                    [value]="type.code"
+                  >
+                    <span class="ml-3">{{ type.label }}</span>
+                  </mat-option>
+                </mat-select>
+              </div>
+              <div class="col min-w-200">
+                <mat-form-field class="search-game-list" appearance="fill">
+                  <div
+                    [ngClass]="{
+                      error: !isFieldValid('game'),
+                      success: isFieldValid('game') && form.value?.game
+                    }"
+                    class="form-group mt-4 mb-3 position-relative"
+                  >
+                    <input
+                      type="text"
+                      matInput
+                      formControlName="game"
+                      class="form-control"
+                      placeholder="Juego"
+                      [matAutocomplete]="autoComp"
+                    />
+                  </div>
+                  <mat-autocomplete
+                    #autoComp="matAutocomplete"
+                    [displayWith]="displayFn"
+                  >
+                    <mat-option
+                      *ngFor="let item of gamesOption | async"
+                      [value]="item"
+                    >
+                      {{ item.name }}
+                    </mat-option>
+                  </mat-autocomplete>
+                </mat-form-field>
+              </div>
+            </div>
+            <span>Tipo de entrega</span>
+            <!-- BEGIN DELIVERY TYPE TOGGLE BUTTON -->
+            <div
+              class="delivery-type mt-2 d-flex justify-content-between align-items-center"
+            >
+              <span
+                [ngClass]="{
+                  'col d-inline-flex justify-content-center align-items-center h-100 bg-primary cursor-pointer': true,
+                  'bg-primary': delivery === 'automatic'
+                }"
+                (click)="delivery = 'automatic'"
+                >Automatica</span
+              >
+              <span
+                [ngClass]="{
+                  'col d-inline-flex justify-content-center align-items-center h-100 bg-primary cursor-pointer': true,
+                  'bg-primary': delivery === 'coordinated'
+                }"
+                (click)="delivery = 'coordinated'"
+                >Manual</span
+              >
+            </div>
+            <!-- END DELIVERY TYPE TOGGLE BUTTON -->
+            <ng-container
+              *ngIf="
+                delivery === 'automatic' && product?.stockProduct;
+                else elseTemplate
+              "
+              formArrayName="code"
+            >
+              <div
+                [ngClass]="{
+                  error: !isFieldValid('name'),
+                  success: isFieldValid('name') && form.value?.name
+                }"
+                class="form-group mt-3 mb-3"
+                *ngFor="let item of product?.stockProduct || [0]; index as i"
+              >
+                <input
+                  type="text"
+                  [formControlName]="i"
+                  class="form-control"
+                  placeholder="Codigo 1"
+                />
+              </div>
+              <div class="add-code" (click)="addNewCode()">Agregar +</div>
+            </ng-container>
+            <ng-template #elseTemplate>
+              <div
+                [ngClass]="{
+                  error: !isFieldValid('name'),
+                  success: isFieldValid('name') && form.value?.name
+                }"
+                class="form-group stock mt-3 mb-3"
+              >
+                <input
+                  type="text"
+                  formControlName="stock"
+                  class="form-control"
+                  placeholder="Stock"
+                />
+              </div>
+            </ng-template>
+          </div>
+          <!-- END STEP THREE -->
+          <!-- BEGIN STEP TWO -->
+          <div class="step-two">
+            <div class="mt-2 mb-3">
+              <div
+                class="form-group mb-4"
+                [ngClass]="{
+                  error: !isFieldValid('description'),
+                  success:
+                    isFieldValid('description') && form.value?.description
+                }"
+              >
+                <textarea
+                  formControlName="description"
+                  class="form-control"
+                  name=""
+                  id=""
+                  cols="30"
+                  rows="3"
+                  placeholder="Descripción"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+          <!-- END STEP TWO -->
+          <!-- BEGIN FOOTER -->
+          <div
+            class="step-footer mt-4 d-flex justify-content-between align-items-end row-gap-20"
+          >
+            <div
+              [hidden]="form.value.picture"
+              (click)="handlePicture()"
+              class="upload"
+            >
+              <i class="fa fa-plus"></i>
+            </div>
+            <div
+              *ngIf="form.value?.picture"
+              (click)="handlePicture()"
+              class="upload"
+            >
+              <img
+                style="width: 100px"
+                [src]="filesUrl + form.value.picture"
+                alt=""
+              />
+            </div>
+            <button type="submit" class="btn text-white btn-warning-round">
+              Guardar y publicar
+            </button>
+          </div>
+          <!-- END FOOTER -->
+        </form>
+      </div>
+      <div class="col min-w-xxs">
+        <div
+          *ngIf="product?.status === 'rejected' && product?.rejectedmessages"
+          [ngClass]="{
+            'card border-danger error-sectoin mb-4': true,
+            'd-none': deviceInfo['max-611']
+          }"
+        >
+          <span>Errores:</span>
+          <ul>
+            <li *ngFor="let reasion of product.rejectedmessages">
+              {{ reasion.body }}
+            </li>
+          </ul>
+        </div>
+        <div class="card bd-primary mb-5">
+          <span>Recibiras:</span>
+          <p class="mt-4">
+            {{
+              this.form.value?.price
+                | toUSD
+                | currency: country.currency:'symbol-narrow':'1.0-2':'es-US'
+            }}
+          </p>
+          <p>
+            -{{
+              getCommissions()
+                | toUSD
+                | currency: country.currency:'symbol-narrow':'1.0-2':'es-US'
+            }}
+            <small>(comisión {{ product?.publicationType }})</small>
+          </p>
+          <hr />
+          <span class="total">{{
+            sellerProfit
+              | toUSD
+              | currency: country.currency:'symbol-narrow':'1.0-2':'es-US'
+          }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,139 @@
+@import 'src/assets/styles/_variables';
+
+.sale-card {
+  display              : grid;
+  gap                  : 6px;
+  grid-template-columns: min-content 1fr min-content;
+  background-color     : #242424;
+  border-radius        : 10px;
+  padding              : 32px 70px;
+  font-size            : 10px;
+  line-height          : normal;
+  cursor               : pointer;
+  box-shadow           : 7px 7px rgba($color: #000000, $alpha: 1.0);
+
+  &>.image-container {
+    background: center/cover no-repeat;
+    width     : 64px;
+    height    : 84px;
+  }
+
+  &>.info {
+    display    : grid;
+    font-size  : 14px;
+    font-weight: 500;
+
+    &>.label {
+      text-overflow: ellipsis;
+      overflow     : hidden;
+      white-space  : nowrap;
+      width: 50%;
+    }
+
+    &>.price {
+      color: #F78A0E;
+    }
+
+    &>.stock {
+      display: none;
+    }
+
+    &>.commission {
+      display: none;
+    }
+  }
+
+  &>.status {
+    display        : grid;
+    justify-content: center;
+    align-items    : center;
+    width: 155px;
+
+    &>.label {
+      font-size  : 14px;
+      font-weight: 500;
+      text-align: right;
+    }
+    &>.date {
+      display        : flex;
+      justify-content: right;
+      align-items    : center;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 500;
+    }
+    &>.icon {
+      display        : flex;
+      justify-content: right;
+      align-items    : center;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 500;
+
+      &.complaint {
+        color: #FFF500;
+      }
+
+      &.finished {
+        color: #50C43D;
+      }
+
+      &.paid {
+        color: #065AFA;
+      }
+
+      &.cancelled {
+        color: #FF0000;
+      }
+
+      .mat-icon {
+        display: flex;
+        width  : 30px;
+        height : 30px;
+      }
+    }
+  }
+
+  @include brackpoint-lg {
+    padding: 15px 25px;
+
+    &>.image-container {
+      width : 36px;
+      height: 48px;
+    }
+    &>.info {
+      font-size: 10px;
+
+      &>.stock {
+        display: block;
+      }
+
+      &>.stock-mobile {
+        display: none;
+      }
+
+      &>.commission {
+        display: block;
+      }
+    }
+
+    &>.status {
+      &>.label {
+        font-size: 10px;
+      }
+      &>.date{
+        font-size: 10px;
+      }
+      &>.icon {
+        font-size: 10px;
+
+        .mat-icon {
+          display: flex;
+          width  : 13.5px;
+          height : 13.5px;
+        }
+      }
+    }
+  }
+  
+}

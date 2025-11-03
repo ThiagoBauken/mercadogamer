@@ -1,0 +1,44 @@
+@import 'src/assets/styles/_variables';
+
+:host {
+  display: block;
+
+  &>ul {
+    display    : grid;
+    margin     : 0;
+    list-style : none;
+    width      : 252px;
+    padding    : 7px 12px;
+    padding-top: 1.5rem;
+    gap        : 18px;
+
+    &>li {
+      display              : grid;
+      gap                  : 12px;
+      grid-template-columns: min-content 1fr;
+      padding              : 12px 37px;
+      opacity              : 0.6;
+      align-items          : center;
+      user-select          : none;
+      cursor               : pointer;
+      font-size            : 16px;
+      font-weight          : 400;
+      border-radius        : 12px;
+
+      &>.icon {
+        mat-icon {
+          width      : 24px;
+          height     : 24px;
+          align-items: center;
+        }
+      }
+
+      &.active {
+        opacity         : 1;
+        color           : $primary;
+        background-color: #2F2F2F;
+        font-weight     : 700;
+      }
+    }
+  }
+}

@@ -1,0 +1,213 @@
+<div class="container-fluid p-0">
+  <div class="row justify-content-center pr-4 pb-4">
+    <div class="col">
+      <div class="row">
+        <div class="col-md-6">
+          <span class="title quest ml-4">Revisión de productos</span>
+        </div>
+        <div class="col-md-6 text-right">
+          <button mat-button [matMenuTriggerFor]="menu">
+            <span
+              class="text-primary ml-2"
+              style="
+                font-family: 'Montserrat';
+                font-weight: 600;
+                font-size: 1rem;
+              "
+              >{{ settings.products.status[status].label }}s</span
+            >
+            <i class="fa fa-chevron-down text-primary ml-2"></i>
+            <mat-menu #menu="matMenu">
+              <button
+                mat-menu-item
+                (click)="filter(settings.products.status.pending.code)"
+              >
+                {{ settings.products.status.pending.label }}s
+              </button>
+              <button
+                mat-menu-item
+                (click)="filter(settings.products.status.approved.code)"
+              >
+                {{ settings.products.status.approved.label }}s
+              </button>
+              <button
+                mat-menu-item
+                (click)="filter(settings.products.status.rejected.code)"
+              >
+                {{ settings.products.status.rejected.label }}s
+              </button>
+            </mat-menu>
+          </button>
+        </div>
+      </div>
+
+      <div class="table-responsive mt-4">
+        <table class="table">
+          <thead>
+            <tr>
+              <th></th>
+              <th class="text-center">
+                <button type="button" class="btn btn-clear">
+                  <span class="text-light">Producto</span>
+                  <i class="fa" aria-hidden="true"></i>
+                </button>
+              </th>
+              <th class="text-center">
+                <button type="button" class="btn btn-clear">
+                  <span class="text-light">Precio (USD)</span>
+                  <i class="fa" aria-hidden="true"></i>
+                </button>
+              </th>
+              <th class="text-center">
+                <button type="button" class="btn btn-clear">
+                  <span class="text-light">Plataforma</span>
+                  <i class="fa" aria-hidden="true"></i>
+                </button>
+              </th>
+              <th class="text-center">
+                <button type="button" class="btn btn-clear">
+                  <span class="text-light">Tipo</span>
+                  <i class="fa" aria-hidden="true"></i>
+                </button>
+              </th>
+              <th class="text-center">
+                <button type="button" class="btn btn-clear">
+                  <span class="text-light">Categorias</span>
+                  <i class="fa" aria-hidden="true"></i>
+                </button>
+              </th>
+              <th class="text-center">
+                <button type="button" class="btn btn-clear">
+                  <span class="text-light">Vendedor</span>
+                  <i class="fa" aria-hidden="true"></i>
+                </button>
+              </th>
+              <th></th>
+              <th *ngIf="status === 'pending'"></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <!-- Cargador -->
+            <tr *ngIf="loading" class="text-center">
+              <td colspan="10">
+                <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
+                Cargando...
+              </td>
+            </tr>
+            <!-- Texto cuando no hay resultados  -->
+            <tr *ngIf="!loading && products?.length == 0" class="text-center">
+              <td colspan="10">
+                <span class="text-muted">
+                  <i class="fa fa-close" aria-hidden="true"></i>
+                  No hay productos para mostrar
+                </span>
+              </td>
+            </tr>
+
+            <tr *ngFor="let product of products">
+              <td
+                class="pt-0 text-center"
+                (click)="goToProductDetail(product.id)"
+              >
+                <img
+                  [src]="filesUrl + product.picture"
+                  onerror="this.src = 'assets/imgs/placeholder.png'"
+                  width="50px"
+                  height="50px"
+                  style="object-fit: cover"
+                />
+              </td>
+              <td
+                class="px-4 text-center"
+                (click)="goToProductDetail(product.id)"
+              >
+                {{ product.name }}
+              </td>
+              <td
+                class="px-4 text-center"
+                (click)="goToProductDetail(product.id)"
+              >
+                ${{ product.price }}
+              </td>
+              <td
+                class="px-4 text-center"
+                (click)="goToProductDetail(product.id)"
+              >
+                <p *ngFor="let platform of product.platform">
+                  {{ platform?.name }}
+                </p>
+              </td>
+              <td
+                class="px-4 text-center"
+                (click)="goToProductDetail(product.id)"
+              >
+                <!-- {{ settings.products.type[product.type]?.label }} -->
+                {{ product?.type }}
+              </td>
+              <td
+                class="px-4 text-center"
+                (click)="goToProductDetail(product.id)"
+              >
+                {{ product?.category?.name }}
+              </td>
+              <td
+                class="px-4 text-center"
+                (click)="goToProductDetail(product.id)"
+              >
+                {{ product?.user?.username }}
+              </td>
+              <td class="pt-0 text-center" *ngIf="status !== 'pending'">
+                <button
+                  class="btn btn-small btn-danger"
+                  (click)="disableProduct(product.id)"
+                >
+                  <span class="text-light">Borrar</span>
+                </button>
+              </td>
+              <ng-container *ngIf="status === 'pending'">
+                <td class="pt-0 text-center">
+                  <button
+                    class="btn btn-small btn-danger"
+                    (click)="handleStatus(product.id, 'reject')"
+                  >
+                    <span class="text-light">Rechazar</span>
+                  </button>
+                </td>
+                <td class="pt-0 text-center">
+                  <button
+                    class="btn btn-small btn-success"
+                    (click)="handleStatus(product.id, 'approve')"
+                  >
+                    <span class="text-light">Aprobar</span>
+                  </button>
+                </td>
+              </ng-container>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="row pt-4 pb-4 pr-4">
+        <div class="col-10"></div>
+        <div class="col-2 text-right">
+          <span class="pagined"
+            ><i
+              class="fa fa-chevron-left text-light"
+              (click)="previousPage()"
+              *ngIf="page !== 1"
+              style="cursor: pointer"
+            ></i>
+            {{ page }}/{{ totalPages }}
+            <i
+              class="fa fa-chevron-right text-light"
+              (click)="nextPage()"
+              *ngIf="page !== totalPages && totalPages > 0"
+              style="cursor: pointer"
+            ></i
+          ></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

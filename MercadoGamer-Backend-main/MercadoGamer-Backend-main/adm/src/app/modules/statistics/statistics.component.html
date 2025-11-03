@@ -1,0 +1,140 @@
+<div class="title">Estadisticas</div>
+<section>
+  <div class="section-title">
+    <div class="title">Visitas de Paginas</div>
+    <div class="action">
+      <div class="filter">
+        <div class="filter-content" [matMenuTriggerFor]="menu">
+          <div class="label">Filter By</div>
+          <i class="fa fa-chevron-down"></i>
+        </div>
+        <mat-menu #menu="matMenu">
+          <div
+            *ngFor="let option of filterOptions"
+            mat-menu-item
+            [ngClass]="{ active: currentFilter === option.code }"
+            (click)="filterData(option.code)"
+          >
+            {{ option.label }}
+          </div>
+        </mat-menu>
+      </div>
+      <mat-select [(value)]="selectedCountry" class="country-select">
+        <mat-option value="select">Seleccionar País</mat-option>
+        <mat-option value="arg">
+          <img with="38" height="24" src="assets/imgs/arg.png" />
+          <span class="ml-3">Argentina</span>
+        </mat-option>
+        <mat-option value="uru">
+          <img with="38" height="24" src="assets/imgs/uru.png" />
+          <span class="ml-3">Uruguay</span>
+        </mat-option>
+        <mat-option value="global">
+          <img with="45" height="32" src="assets/imgs/global.png" />
+          <span class="ml-3">Global</span>
+        </mat-option>
+      </mat-select>
+    </div>
+  </div>
+  <div class="content visit-users">
+    <div class="chart-container">
+      <apx-chart
+        [series]="AreaChartOptions.series"
+        [chart]="AreaChartOptions.chart"
+        [xaxis]="AreaChartOptions.xaxis"
+        [yaxis]="AreaChartOptions.yaxis"
+        [dataLabels]="AreaChartOptions.dataLabels"
+        [fill]="AreaChartOptions.fill"
+        [stroke]="AreaChartOptions.stroke"
+        [markers]="AreaChartOptions.markers"
+        [tooltip]="AreaChartOptions.tooltip"
+        [grid]="AreaChartOptions.grid"
+      ></apx-chart>
+    </div>
+    <div class="card-container">
+      <app-status-card
+        value="20+"
+        label="Vistas hoy"
+        image="assets/imgs/eye.png"
+      ></app-status-card>
+      <app-status-card
+        value="178+"
+        label="Sesiones"
+        image="assets/imgs/logout.png"
+        iconColor="#5B93FF"
+      ></app-status-card>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-title">
+    <div class="title">Compras</div>
+    <div class="action">
+      <div class="filter">
+        <div class="filter-content" [matMenuTriggerFor]="menu">
+          <div class="label">Filter By</div>
+          <i class="fa fa-chevron-down"></i>
+        </div>
+        <mat-menu #menu="matMenu">
+          <div
+            *ngFor="let option of filterOptions"
+            mat-menu-item
+            [ngClass]="{ active: currentFilter === option.code }"
+            (click)="filterData(option.code)"
+          >
+            {{ option.label }}
+          </div>
+        </mat-menu>
+      </div>
+    </div>
+  </div>
+
+  <div class="content sales">
+    <div class="card-container">
+      <app-status-card
+        value="20+"
+        label="Finalizadas"
+        image="assets/imgs/check.png"
+        iconColor="#B1DD8B"
+      ></app-status-card>
+
+      <app-status-card
+        value="20+"
+        label="Reclamos resueltos"
+        image="assets/imgs/auris.png"
+        iconColor="#FFD66B"
+      ></app-status-card>
+
+      <app-status-card
+        value="5+"
+        label="Reclamos devueltos"
+        image="assets/imgs/arrow-back.png"
+        iconColor="#FF8F6B"
+      ></app-status-card>
+
+      <app-status-card
+        value="30+"
+        label="Con descuento"
+        image="assets/imgs/heart.svg"
+        iconColor="#5B93FF"
+      ></app-status-card>
+    </div>
+    <div class="chart-container">
+      <apx-chart
+        [series]="DonutChartOptions.series"
+        [chart]="DonutChartOptions.chart"
+        [labels]="DonutChartOptions.labels"
+        [dataLabels]="DonutChartOptions.dataLabels"
+        [title]="DonutChartOptions.title"
+        [fill]="DonutChartOptions.fill"
+        [states]="DonutChartOptions.states"
+        [plotOptions]="DonutChartOptions.plotOptions"
+        [stroke]="DonutChartOptions.stroke"
+        [theme]="DonutChartOptions.theme"
+        [responsive]="DonutChartOptions.responsive"
+        [legend]="DonutChartOptions.legend"
+      ></apx-chart>
+    </div>
+  </div>
+</section>

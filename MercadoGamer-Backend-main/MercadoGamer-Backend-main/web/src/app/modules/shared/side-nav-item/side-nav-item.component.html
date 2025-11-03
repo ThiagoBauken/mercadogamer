@@ -1,0 +1,63 @@
+<ng-container *ngIf="checkLogin()">
+  <div class="title">
+    <div class="icon" (click)="navService.closeNav()">
+      <mat-icon svgIcon="close"></mat-icon>
+    </div>
+    <div class="label">Mi cuenta</div>
+  </div>
+
+  <div class="user-profile">
+    <div
+      class="avatar"
+      [style]="
+        global.getBackgroundUrl(getUser()?.picture, 'assets/imgs/avatar.png')
+      "
+    ></div>
+    <div class="content">
+      <div class="user-name">{{ getUser()?.username }}</div>
+      <div class="action" (click)="goProfilePage()">Ver perfil</div>
+    </div>
+  </div>
+
+  <div class="bonus">
+    <div class="title">¡$1000 BONUS PRIMERA VENTA!</div>
+    <div
+      class="action"
+      [routerLink]="['/product-type']"
+      (click)="navService.closeNav()"
+    >
+      Vende ahora
+    </div>
+  </div>
+</ng-container>
+<div class="content">
+  <ng-template ngFor let-item [ngForOf]="nav_item">
+    <div class="menu-content" *ngIf="!item.login || checkLogin()">
+      <div class="title" *ngIf="item.label">{{ item.label }}</div>
+      <div class="content">
+        <div
+          *ngFor="let menu of item.item"
+          (click)="onItemSelected(menu)"
+          [ngClass]="{
+            'menu-item': true,
+            active: menu.route ? router.isActive(menu.route, true) : false
+          }"
+        >
+          <div class="icon">
+            <mat-icon [svgIcon]="menu.icon"></mat-icon>
+          </div>
+          <div class="label">
+            {{ menu.label }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>
+
+<div class="logout" (click)="logout()">
+  <div class="label">Cerrar Sesión</div>
+  <div class="icon">
+    <mat-icon svgIcon="user-menu-exit"></mat-icon>
+  </div>
+</div>

@@ -1,0 +1,156 @@
+<div class="header">
+  <div class="title">Ventas</div>
+  <div class="search">
+    <app-search (valueChange)="onChange($event)"></app-search>
+  </div>
+  <div class="filter">
+    <button mat-button [matMenuTriggerFor]="menu">
+      <span
+        class="text-primary ml-2"
+        style="font-family: 'Montserrat'; font-weight: 600; font-size: 1rem"
+        >{{
+          selectedStatus
+            ? settings.orders.status[selectedStatus].label
+            : 'Todas las ventas'
+        }}</span
+      >
+      <i class="fa fa-chevron-down text-primary ml-2"></i>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="selectedStatus = null; getItems()">
+          Todas las ventas
+        </button>
+        <button
+          mat-menu-item
+          *ngFor="let status of settings.orders.statusArr"
+          (click)="selectedStatus = status.code; getItems()"
+        >
+          {{ status.label }}
+        </button>
+      </mat-menu>
+    </button>
+  </div>
+</div>
+<div class="content">
+  <table>
+    <thead>
+      <tr>
+        <th>Estado</th>
+        <th>Producto</th>
+        <th>Retiros ID</th>
+        <th>N° Orden</th>
+        <th>Moneda</th>
+        <th>Total</th>
+        <th>Ganancia V</th>
+        <th>Vendedor</th>
+        <th>Comprador</th>
+        <th>Publicación</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngIf="loading" class="text-center">
+        <td colspan="10">
+          <i class="fa fa-spinner fa-spin" aria-hidden="false"></i>
+          Cargando...
+        </td>
+      </tr>
+
+      <tr *ngIf="!loading && orders?.length == 0" class="text-center">
+        <td colspan="10">
+          <span class="text-muted">
+            <i class="fa fa-close" aria-hidden="true"></i>
+            No hay resultados para mostrar
+          </span>
+        </td>
+      </tr>
+      <ng-container *ngIf="orders">
+        <tr
+          *ngFor="
+            let order of orders.slice(perPage * (page - 1), perPage * page)
+          "
+          (click)="goToPurchase(order)"
+        >
+          <td>
+            <img
+              [src]="settings.orders.status[order.status].img"
+              onerror="this.src = 'assets/imgs/placeholder.png'"
+              width="25px"
+              height="25px"
+            />
+          </td>
+          <td>
+            <div class="product-info">
+              <div
+                class="image-container"
+                [style]="getBackgroundImageUrl(order.product?.picture)"
+              ></div>
+              <div class="label">{{ order.product?.name }}</div>
+            </div>
+          </td>
+
+          <td>
+            {{
+              order.withdrawal
+                ? order.withdrawal
+                : '
+           Empty
+            '
+            }}
+          </td>
+          <td>{{ order.number }}</td>
+
+          <td>
+            <div class="country-info">
+              <div class="label">
+                {{ order?.country?.currency }}
+              </div>
+              <img
+                [src]="filesUrl + order?.country?.picture"
+                onerror="this.src = 'assets/imgs/placeholder.png'"
+                width="25px"
+              />
+            </div>
+          </td>
+          <td>
+            {{
+              order.pricePaid
+                | currency
+                  : order.country?.currency
+                  : 'symbol-narrow'
+                  : '1.0-2'
+                  : 'es-US'
+            }}
+          </td>
+          <td>
+            {{
+              order.sellerProfit
+                | currency
+                  : order.country?.currency
+                  : 'symbol-narrow'
+                  : '1.0-2'
+                  : 'es-US'
+            }}
+          </td>
+          <td>{{ order?.seller?.username }}</td>
+          <td>{{ order?.buyer?.username }}</td>
+          <td class="capitalize">{{ order?.product?.publicationType }}</td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+</div>
+
+<div class="pagined">
+  <i
+    class="fa fa-chevron-left text-light"
+    (click)="previousPage()"
+    *ngIf="page !== 1"
+    style="cursor: pointer"
+  ></i>
+  {{ page }}/{{ totalPages }}
+  <i
+    class="fa fa-chevron-right text-light"
+    (click)="nextPage()"
+    *ngIf="page !== totalPages && totalPages > 0"
+    style="cursor: pointer"
+  ></i>
+</div>

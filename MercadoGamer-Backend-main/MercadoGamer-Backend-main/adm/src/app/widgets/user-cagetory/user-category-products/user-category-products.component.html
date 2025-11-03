@@ -1,0 +1,55 @@
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>PRECIO</th>
+      <th>TIPO DE PRODUCTO</th>
+      <th>PLATAFORMA</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let product of products; let rowIndex = index">
+      <tr *ngIf="rowIndex" class="spacing">
+        <td colspan="5"></td>
+      </tr>
+      <tr>
+        <td>
+          <div class="product-info">
+            <div
+              class="product-picture"
+              [style]="
+                pageService.global.getBackgroundUrl(
+                  product?.picture,
+                  '/assets/imgs/placeholder.png'
+                )
+              "
+            ></div>
+            <div class="name">{{ product.name }}</div>
+          </div>
+        </td>
+        <td>
+          {{
+            product.price / country.toUSD
+              | currency: 'USD':'symbol-narrow':'1.0-2':'es-US'
+          }}
+        </td>
+        <td>
+          {{ product.type }}
+        </td>
+        <td>{{ product.platform?.name }}</td>
+        <td>
+          <app-order-status-icon
+            [status]="product.status"
+          ></app-order-status-icon>
+        </td>
+      </tr>
+    </ng-container>
+  </tbody>
+</table>
+<app-pagenation
+  [totalPages]="totalPage"
+  [page]="currentPage"
+  (nextPage)="nextPage()"
+  (previousPage)="previousPage()"
+></app-pagenation>

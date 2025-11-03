@@ -1,0 +1,71 @@
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>TOTAL</th>
+      <th>PRECIO PROD</th>
+      <th>
+        <div class="label">COMISIÓN</div>
+        <div class="description">vendedor</div>
+      </th>
+      <th>DESCUENTO</th>
+      <th style="width: fit-content"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let order of orders; let rowIndex = index">
+      <tr *ngIf="rowIndex" class="spacing">
+        <td colspan="6"></td>
+      </tr>
+      <tr>
+        <td>
+          <div class="product-info">
+            <div
+              class="product-picture"
+              [style]="
+                pageService.global.getBackgroundUrl(
+                  order.product?.picture,
+                  '/assets/imgs/avatar.png'
+                )
+              "
+            ></div>
+            <div class="name">{{ order.product?.name }}</div>
+          </div>
+        </td>
+        <td>
+          {{
+            order.productPrice | currency: 'USD':'symbol-narrow':'1.0-2':'es-US'
+          }}
+        </td>
+        <td>
+          {{
+            order.sellerProfit | currency: 'USD':'symbol-narrow':'1.0-2':'es-US'
+          }}
+        </td>
+        <td class="commission">
+          {{
+            order.productPrice - order.sellerProfit
+              | currency: 'USD':'symbol-narrow':'1.0-2':'es-US'
+          }}
+        </td>
+        <td class="discount">
+          {{
+            order.initPoint?.unitPrice || 0
+              | currency: 'USD':'symbol-narrow':'1.0-2':'es-US'
+          }}
+        </td>
+        <td>
+          <app-order-status-icon
+            [status]="order.status"
+          ></app-order-status-icon>
+        </td>
+      </tr>
+    </ng-container>
+  </tbody>
+</table>
+<app-pagenation
+  [totalPages]="totalPage"
+  [page]="currentPage"
+  (nextPage)="nextPage()"
+  (previousPage)="previousPage()"
+></app-pagenation>

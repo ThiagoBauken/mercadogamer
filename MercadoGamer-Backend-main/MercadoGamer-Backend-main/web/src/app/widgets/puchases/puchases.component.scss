@@ -1,0 +1,31 @@
+@import 'src/assets/styles/_variables';
+
+:host {
+  display     : block;
+  // max-width: fit-content;
+
+  section.puchases-list {
+    display: grid;
+    gap    : 17px;
+
+    &>.content {
+      display              : grid;
+      grid-template-columns: minmax(200px, 649px) min-content;
+      gap                  : 65px;
+
+      .list {
+        display: grid;
+        gap    : 29px;
+        height : min-content;
+      }
+
+      .information {
+        width: 292px;
+      }
+
+      @include brackpoint-lg {
+        grid-template-columns: unset;
+      }
+    }
+  }
+}

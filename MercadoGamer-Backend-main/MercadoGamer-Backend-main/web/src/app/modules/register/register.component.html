@@ -1,0 +1,94 @@
+<div class="container">
+  <div class="title">Regístrate</div>
+  <div *ngIf="currentStep === 0; else stepTwo" class="content">
+    <app-mercado-input
+      label="Nombre"
+      [value]="userInfo.firstName"
+      [error]="!!errors.firstName"
+      [helper]="errors.firstName"
+      (valueChange)="changeValue('firstName', $event)"
+    ></app-mercado-input>
+
+    <app-mercado-input
+      label="Apellidos"
+      [value]="userInfo.lastName"
+      [error]="!!errors.lastName"
+      [helper]="errors.lastName"
+      (valueChange)="changeValue('lastName', $event)"
+    ></app-mercado-input>
+
+    <app-mercado-input
+      label="Nombre de usuario"
+      [value]="userInfo.username"
+      [error]="!!errors.username"
+      [helper]="errors.username"
+      (valueChange)="changeValue('username', $event)"
+    ></app-mercado-input>
+
+    <app-mercado-input
+      label="Mail"
+      [value]="userInfo.emailAddress"
+      [error]="!!errors.emailAddress"
+      [helper]="errors.emailAddress"
+      (valueChange)="changeValue('emailAddress', $event)"
+    ></app-mercado-input>
+  </div>
+
+  <ng-template #stepTwo class="content">
+    <div class="content">
+      <app-mercado-phone-input
+        label="Teléfono"
+        [value]="phoneNumber"
+        [error]="errors?.phoneNumber"
+        [helper]="errors?.phoneNumber || ''"
+        (valueChange)="setValue('phoneNumber', $event)"
+      ></app-mercado-phone-input>
+
+      <div class="send-code">
+        <app-button
+          bgColor="#219653"
+          (btnClick)="sendSms()"
+          [disabled]="
+            !phoneNumber.countryCode || !phoneNumber.number || sentSms
+          "
+        >
+          Enviar código
+        </app-button>
+        <app-mercado-input
+          label="Código"
+          [value]="userInfo.twoFactor"
+          [error]="errors?.twoFactor"
+          [helper]="errors?.twoFactor || ''"
+          (valueChange)="changeValue('twoFactor', $event)"
+        ></app-mercado-input>
+      </div>
+
+      <app-mercado-input
+        label="Contraseña"
+        type="password"
+        [value]="userInfo.password"
+        [error]="!!errors.password"
+        [helper]="errors.password"
+        (valueChange)="changeValue('password', $event)"
+      ></app-mercado-input>
+
+      <app-mercado-input
+        label="Confirmar Contraseña"
+        type="password"
+        [value]="userInfo.confirm_password"
+        [error]="!!errors.confirm_password"
+        [helper]="errors.confirm_password"
+        (valueChange)="changeValue('confirm_password', $event)"
+      ></app-mercado-input>
+    </div>
+  </ng-template>
+
+  <app-button width="100%" (btnClick)="register()">{{
+    !currentStep ? 'Continuar' : 'Registrarse'
+  }}</app-button>
+
+  <div class="goto-login">
+    Ya tengo mi cuenta:
+    <span [routerLink]="['/login']" class="login">Iniciar Sesión</span>
+  </div>
+</div>

@@ -1,0 +1,52 @@
+:host {
+  display              : grid;
+  grid-template-columns: min-content 1fr;
+  padding              : 10px;
+  border-radius        : 10px;
+  background-color     : #333333;
+  align-items          : center;
+  gap                  : 10px;
+
+  &>.icon {
+    width          : 60px;
+    height         : 60px;
+    position       : relative;
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+    border-radius  : 50%;
+    overflow       : hidden;
+
+    &::before {
+      content         : '';
+      position        : absolute;
+      top             : 0;
+      left            : 0;
+      bottom          : 0;
+      right           : 0;
+      background-color: var(--icon-color);
+      z-index         : 0;
+      opacity         : 0.1;
+    }
+
+    &>.image-container {
+      position  : relative;
+      background: no-repeat center/contain;
+      width     : 20px;
+      height    : 20px;
+    }
+  }
+
+  &>.content {
+    &>.value {
+      font-size  : 22px;
+      font-weight: 800;
+      line-height: 30px;
+    }
+
+    &>.label {
+      font-size: 12px;
+      color    : #FAFAFB;
+    }
+  }
+}

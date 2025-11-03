@@ -1,0 +1,6 @@
+<div [ngClass]="{ 'mercodo-dialog': true, active: open }">
+  <div class="outside" (click)="onClickContainer($event)"></div>
+  <div [ngClass]="['mercodo-dialog--content', class]" [style]="getStyle()">
+    <ng-content></ng-content>
+  </div>
+</div>

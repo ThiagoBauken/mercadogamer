@@ -1,0 +1,228 @@
+@import "src/assets/styles/_variables";
+
+:host {
+	.loading {
+		display: none;
+		z-index: 999;
+
+		&.active {
+			display         : flex;
+			position        : fixed;
+			top             : 0;
+			left            : 0;
+			right           : 0;
+			bottom          : 0;
+			background-color: rgba($color: #000000, $alpha: 0.5);
+			backdrop-filter : blur(2px);
+		}
+	}
+}
+
+.container-fluid {
+	background-color: #141414;
+}
+
+.row {
+	overflow-x: hidden !important;
+
+	.col {
+		overflow-x: hidden !important;
+	}
+
+	.title {
+		color      : $primary;
+		font-family: 'Montserrat';
+		font-style : normal;
+		font-weight: 600;
+		font-size  : 16px;
+		line-height: 20px;
+
+		&.quest {
+			font-size: 22px !important;
+		}
+	}
+
+	.subtitle {
+		color      : $primary;
+		font-family: 'Montserrat';
+		font-style : normal;
+		font-weight: 400;
+		font-size  : 16px;
+		line-height: 20px;
+	}
+
+	mat-select {
+		background-color: transparent !important;
+		border          : 1px solid rgba(235, 235, 245, 0.6) !important;
+		height          : 56px;
+		border-radius   : 10px;
+		color           : $light !important;
+		width           : 100% !important;
+
+	}
+
+	.disabled {
+		color        : rgba(235, 235, 245, 0.6);
+		font-family  : 'Montserrat';
+		font-style   : normal;
+		font-weight  : normal;
+		font-size    : 16px;
+		padding      : 14px;
+		text-align   : center;
+		line-height  : 20px;
+		border-radius: 12px;
+
+		&.enabled {
+			background : #2F2F2F;
+			color      : $primary !important;
+			font-weight: 600;
+		}
+
+		img {
+			margin-right: 5px;
+		}
+
+		i {
+			margin-right: 5px;
+			font-size   : 1.2rem;
+			color       : rgba(235, 235, 245, 0.6);
+		}
+
+		.icon-enabled {
+			color: $primary !important;
+		}
+	}
+
+	.card {
+		padding         : 10px;
+		border-radius   : 10px;
+		background-color: #333333;
+
+		.avatar {
+			width        : 30px;
+			height       : 30px;
+			border-radius: 50%;
+			object-fit   : cover;
+		}
+
+		.icon-check {
+			display         : flex;
+			align-items     : center;
+			justify-content : center;
+			border-radius   : 50%;
+			height          : 70px;
+			width           : 70px;
+			background-color: rgba(177, 221, 139, 0.1);
+		}
+
+		.icon-process {
+			display         : flex;
+			align-items     : center;
+			justify-content : center;
+			border-radius   : 50%;
+			height          : 70px;
+			width           : 70px;
+			background-color: rgba(91, 147, 255, 0.1);
+		}
+
+		.icon-claim {
+			display         : flex;
+			align-items     : center;
+			justify-content : center;
+			border-radius   : 50%;
+			height          : 70px;
+			width           : 70px;
+			background-color: rgba(255, 214, 107, 0.1);
+		}
+
+		.icon-reject {
+			display         : flex;
+			align-items     : center;
+			justify-content : center;
+			border-radius   : 50%;
+			height          : 70px;
+			width           : 70px;
+			background-color: rgba(255, 143, 107, 0.1);
+		}
+
+		.mount {
+			font-style : normal;
+			font-weight: 600;
+			font-size  : 24px;
+			line-height: 33px;
+			color      : $light;
+			margin     : 0;
+		}
+
+		.description {
+			font-family: 'Open Sans';
+			font-style : normal;
+			font-weight: 400;
+			font-size  : 16px;
+			line-height: 25px;
+			color      : $light;
+		}
+
+		.title {
+			font-family: 'Montserrat';
+			font-style : normal;
+			font-weight: 600;
+			font-size  : 18px;
+			color      : white;
+		}
+
+		.text {
+			font-family: 'Montserrat';
+			font-style : normal;
+			font-weight: normal;
+			font-size  : 14px;
+			line-height: 20px;
+			color      : #FFFFFF;
+		}
+
+		.notif {
+			color    : #D77272;
+			font-size: 1.3rem;
+		}
+	}
+
+	th {
+		border: 0;
+	}
+
+	th {
+		span {
+			font-weight: 600;
+			font-size  : 1.2rem;
+		}
+	}
+
+	tr:hover {
+		background-color: #4E4D4D;
+		cursor          : pointer;
+	}
+
+	td {
+		font-family: 'Montserrat';
+		font-style : normal;
+		font-weight: 400;
+		font-size  : 16px;
+		border     : 0;
+		line-height: 15px;
+		color      : #FAFAFA;
+	}
+
+	.pagined {
+		color      : $light;
+		font-family: 'Montserrat';
+		font-style : normal;
+		font-weight: normal;
+		font-size  : 16px;
+		line-height: 20px;
+
+		i {
+			margin-left: 10px;
+		}
+	}
+
+}

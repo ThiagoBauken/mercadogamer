@@ -1,0 +1,82 @@
+<div class="footer">
+  <div class="d-flex justify-content-center">
+    <div class="row justify-content-between container">
+      <div class="footer-column">
+        <p class="footer-column-title mb-4">
+          <span>Menu</span>
+        </p>
+        <p
+          *ngFor="let item of fotterMenu['menu']"
+          (click)="goTo(item.goto)"
+          class="footer-column-item"
+        >
+          {{ item.name }}
+        </p>
+      </div>
+
+      <div class="footer-column" *ngIf="user">
+        <p class="footer-column-title mb-4">
+          <span>Mi cuenta</span>
+        </p>
+        <p
+          *ngFor="let item of fotterMenu['mi-cuenta']"
+          (click)="goTo(item.goto)"
+          class="footer-column-item"
+        >
+          {{ item.name }}
+        </p>
+      </div>
+
+      <div class="footer-column">
+        <p class="footer-column-title mb-4">
+          <span>Contactanos</span>
+        </p>
+        <p
+          class="footer-column-item"
+        >
+          <i class="fa fa-envelope mr-2" aria-hidden="true"></i>
+          soporte@mercadogamer.com
+        </p>
+        <p
+          (click)="windowOpen('https://www.instagram.com/mercadogamer_com/')"
+          class="footer-column-item"
+        >
+          <i class="fa fa-instagram mr-2" aria-hidden="true"></i>
+          @mercadogamer_com
+        </p>
+        <p
+          (click)="
+            windowOpen(
+              'https://www.youtube.com/channel/UChtJEfUIyfx7LB_H0VAvRkw'
+            )
+          "
+          class="footer-column-item"
+        >
+          <i class="fa fa-youtube-play mr-2" aria-hidden="true"></i>
+          Mercado Gamer
+        </p>
+      </div>
+
+      <div class="footer-column">
+        <p class="footer-column-title mb-4">
+          <span>Legales</span>
+        </p>
+        <p
+          *ngFor="let item of fotterMenu['legales']"
+          (click)="goTo(item.goto)"
+          class="footer-column-item"
+        >
+          {{ item.name }}
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-5 justify-content-center">
+    <img src="assets/imgs/mg.svg" alt />
+  </div>
+
+  <div (click)="testSocket()" class="row justify-content-center">
+    <p class="copy mt-4">Copyright ©2022 Mercado Gamer</p>
+  </div>
+</div>

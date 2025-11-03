@@ -1,0 +1,215 @@
+<div class="contenedor">
+  <div class="d-flex flex-column">
+    <div class="row">
+      <div class="col-md-6">
+        <div
+          class="bg-image"
+          [style]="
+            'background-image: linear-gradient(272deg, #141414 20%, rgba(20, 20, 20, 0.9) 80%), url(' +
+            filesUrl +
+            product?.picture +
+            ');'
+          "
+        >
+          <div class="text-right">
+            <img
+              [src]="filesUrl + product?.picture"
+              onerror="this.src = 'assets/imgs/placeholder.png'"
+              class="cover"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 mt-4">
+        <div class="row mt-3 ml-4">
+          <div class="col-md-8">
+            <h1 class="game-name">{{ product?.name }}</h1>
+          </div>
+          <div class="col-md-4">
+            <div class="row align-items-center" style="cursor: pointer">
+              <div class="col-md-2">
+                <img
+                  [src]="filesUrl + product?.user.picture"
+                  onerror="this.src = 'assets/imgs/avatar.png'"
+                  class="avatar"
+                />
+              </div>
+              <div class="col-md-10">
+                <span class="business-name ml-1">{{
+                  product?.user.username
+                }}</span>
+                <br />
+                <ng-container *ngIf="product?.user.sellerTotalQualifications">
+                  <i
+                    class="fa fa-star"
+                    *ngFor="let item of [].constructor(5); index as i"
+                    [ngClass]="{
+                      'text-primary':
+                        i + 0.5 <= product?.user.sellerQualification,
+                      'ml-1': i === 0
+                    }"
+                  ></i>
+                </ng-container>
+                <span
+                  style="
+                    font-family: 'Montserrat';
+                    color: gray;
+                    font-size: 15px;
+                    font-weight: 500;
+                    margin-left: 3px;
+                  "
+                  *ngIf="!product?.user.sellerTotalQualifications"
+                  >Sin Calificar</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row ml-4">
+          <div class="col-md-6">
+            <button class="btn btn-clear btn-category">
+              <mat-icon svgIcon="file"></mat-icon>
+              {{ settings.products.type[product?.type]?.label }}
+            </button>
+          </div>
+          <div class="col-md-6">
+            <button class="btn btn-clear btn-category">
+              <mat-icon svgIcon="productos"></mat-icon>
+              {{ product?.platform.name }}
+            </button>
+          </div>
+          <div class="col-md-6">
+            <button class="btn btn-clear btn-category">
+              <mat-icon svgIcon="windows"></mat-icon>
+              {{ product?.category.name }}
+            </button>
+          </div>
+          <div class="col-md-6">
+            <button class="btn btn-clear btn-category">
+              <mat-icon svgIcon="juegos"></mat-icon>
+              {{ product?.game == null ? 'No aplica' : product.game?.name }}
+            </button>
+          </div>
+        </div>
+
+        <div class="row align-items-center ml-4 mt-4" *ngIf="product">
+          <span class="price">{{
+            (product.discount ? product.priceWithDiscount : product.price)
+              | currency : 'USD' : 'symbol-narrow' : '1.0-2' : 'es-US'
+          }}</span>
+          <span class="price-old" *ngIf="product.discount">{{
+            product.price
+              | currency : 'USD' : 'symbol-narrow' : '1.0-2' : 'es-US'
+          }}</span>
+        </div>
+
+        <div class="row ml-4 mt-4 mr-4">
+          <span class="description">{{ product?.description }}</span>
+        </div>
+
+        <div class="row ml-4 mt-4 mr-4 delivery">
+          <mat-icon
+            [svgIcon]="
+              deliver === 'automatic'
+                ? 'delivery-automatic'
+                : 'delivery-coordinate'
+            "
+          ></mat-icon>
+          <div class="label">
+            {{
+              deliver === 'automatic'
+                ? 'Entrega automática'
+                : 'Entrega coordinada'
+            }}
+          </div>
+        </div>
+
+        <div class="row ml-4 mt-4 mr-4">
+          <div
+            *ngIf="product?.publicationType == 'pro'"
+            class="publication-pro"
+          >
+            Publicación PRO
+          </div>
+          <div
+            *ngIf="product?.publicationType == 'normal'"
+            class="publication-normal"
+          >
+            Publicación Normal
+          </div>
+          <div
+            *ngIf="product?.publicationType == 'free'"
+            class="publication-free"
+          >
+            Publicación Gratis
+          </div>
+        </div>
+
+        <div class="row ml-4 mt-4 mr-4">
+          <div class="col-md-10 mt-4">
+            <span class="title">Preguntas</span>
+          </div>
+          <div class="col-md-2 mt-4 text-right"></div>
+          <hr />
+        </div>
+
+        <div class="row ml-4 mt-3 mr-4" *ngFor="let productQA of productsQAs">
+          <div class="card ml-3">
+            <div class="row justify-content-center align-items-center">
+              <div
+                class="col-md-1 text-center"
+                (click)="
+                  pageService.navigateRoute(
+                    'profile/user/' + productQA.buyer.id
+                  )
+                "
+              >
+                <img
+                  [src]="filesUrl + productQA.buyer.picture"
+                  onerror="this.src = 'assets/imgs/avatar.png'"
+                  class="img-profile"
+                />
+              </div>
+              <div class="col-md-11">
+                <span class="comment">{{ productQA.question }}</span>
+              </div>
+            </div>
+            <div
+              class="row ml-3 mt-3 justify-content-center"
+              *ngIf="productQA.answer"
+            >
+              <div
+                class="col-md-1 text-center"
+                (click)="
+                  pageService.navigateRoute(
+                    'profile/seller/' + product?.user.id
+                  )
+                "
+              >
+                <img
+                  [src]="filesUrl + product?.user.picture"
+                  onerror="this.src = 'assets/imgs/avatar.png'"
+                  class="img-profile"
+                  alt=""
+                />
+              </div>
+              <div class="col-md-11">
+                <span class="comment">{{ productQA.answer }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row ml-4 mt-3 mr-4" *ngIf="productsQAs?.length === 0">
+          <div class="col-md-12 text-center">
+            <span class="text-primary"
+              >Aún no se ha realizado ninguna pregunta sobre este
+              producto.</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

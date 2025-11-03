@@ -1,0 +1,51 @@
+<div class="container-fluid d-flex justify-content-center h-100">
+  <div class="mt-6 mb-6">
+    <div class="d-flex flex-column">
+      <div class="card">
+        <div class="card-header">
+          <div class="container-img mt-3">
+            <span class="title">Iniciar sesión</span>
+          </div>
+        </div>
+        <div class="card-body p-0 mt-3">
+          <form
+            class="w-100 pt-3 container"
+            [formGroup]="form"
+            (ngSubmit)="onSubmit()"
+          >
+            <div class="form-group mb-4">
+              <input
+                type="text"
+                class="form-control"
+                formControlName="username"
+                placeholder="Usuario"
+              />
+            </div>
+
+            <div class="form-group">
+              <input
+                type="password"
+                class="form-control"
+                formControlName="password"
+                placeholder="Contraseña"
+              />
+            </div>
+
+            <div class="row mb-4 mt-3">
+              <!-- <div class="col text-right">
+                <span class="remember">Olvide mi clave</span>
+              </div> -->
+            </div>
+            <button
+              class="btn btn-primary btn-block mb-4"
+              type="submit"
+              [disabled]="!form.valid"
+            >
+              Iniciar Sesión
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

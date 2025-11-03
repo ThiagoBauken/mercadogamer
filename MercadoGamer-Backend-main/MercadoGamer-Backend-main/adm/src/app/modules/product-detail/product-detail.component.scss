@@ -1,0 +1,314 @@
+@import '../../../assets/styles/_variables';
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../../../assets/fonts/Montserrat-Regular.ttf');
+}
+
+.contenedor {
+  background: #141414;
+  overflow-x: hidden !important;
+  width: 100%;
+
+  .mt-6 {
+    margin-top: 5rem;
+  }
+
+  .mb-6 {
+    margin-bottom: 5rem;
+  }
+
+  .bg-image {
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 919px;
+    width: 100%;
+
+    .cover {
+      width: 366px;
+      height: 471px;
+      object-fit: cover;
+      position: absolute;
+      right: -10px;
+      top: 5%;
+    }
+  }
+  .delivery {
+    display              : grid;
+    grid-template-columns: min-content 1fr;
+    gap                  : 8px;
+    align-items          : center;
+    margin-top: 35px !important;
+
+    &>mat-icon {
+      width : 35px;
+      height: 35px;
+      color : $primary;
+    }
+
+    &>.label {
+      margin-left: 15px;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 21px;
+      color: $light
+    }
+  }
+  .publication-pro {
+    border: solid 1px $primary;
+    width: 270px;
+    height: 66px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    color:white;
+    margin-top: 30px;
+  }
+  .publication-normal {
+    border: solid 1px #50C33D;
+    width: 270px;
+    height: 66px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    color:white;
+    margin-top: 30px;
+  }
+  .publication-free {
+    border: solid 1px $light;
+    width: 270px;
+    height: 66px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    color:white;
+    margin-top: 30px;
+  }
+  .game-name {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 42px;
+    text-transform: uppercase;
+    color: $light;
+    text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
+  }
+
+  .avatar {
+    border-radius: 50%;
+    width: 33px;
+    height: 33px;
+    object-fit: cover;
+  }
+
+  .business-name {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 20px;
+    color: $light;
+  }
+
+  .fa-star {
+    margin-right: 5px;
+    color: rgba(235, 235, 245, 0.6);
+  }
+
+  .btn-category {
+    color: rgba(235, 235, 245, 0.6);
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 20px;
+    padding-left: 0;
+    padding-right: 0;
+
+    i {
+      margin-right: 5px;
+    }
+  }
+
+  .price {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 39px;
+    margin-left: 16px;
+    color: $primary;
+  }
+
+  .price-old {
+    font-family: 'Montserrat';
+    font-style: normal;
+    color: rgba(235, 235, 245, 0.6);
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    margin-left: 30px;
+    margin-top: 2px;
+    text-decoration: line-through;
+  }
+
+  .description {
+    color: $light;
+    margin-left: 16px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  .btn-buy {
+    border-radius: 35px;
+    color: $light;
+    width: 172px;
+    height: 48px;
+    padding: 8px;
+    margin-left: 16px;
+    margin-top: 10px;
+    font-size: 14px;
+    line-height: 17px;
+    font-weight: normal;
+    font-family: 'Montserrat';
+  }
+
+  .title {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    color: $primary;
+  }
+
+  hr {
+    background: #95959b;
+    height: 1px;
+    width: 100%;
+    margin-left: 16px;
+  }
+
+  .fa-plus-circle {
+    font-size: 1.5rem;
+    color: #065afa;
+  }
+
+  .card {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(235, 235, 245, 0.6);
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+
+    .img-profile {
+      width: 31px;
+      height: 31px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .comment {
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 20px;
+      color: #ffffff;
+    }
+  }
+
+  .card-games {
+    height: 336px;
+    width: 100%;
+    margin-left: 10px;
+    margin-bottom: 16px;
+    border-radius: 5px;
+    margin-top: 16px;
+
+    img {
+      object-fit: cover;
+      height: 100%;
+      border-radius: 5px;
+      width: 100%;
+    }
+  }
+
+  .game-name-list {
+    font-family: 'Montserrat';
+    color: $light;
+    font-size: 16px;
+    font-weight: 600;
+    margin-left: 16px;
+
+    &.discount {
+      opacity: 0.6;
+      text-decoration: line-through;
+      font-weight: 400;
+    }
+  }
+
+  .line-game {
+    background-color: $primary;
+    width: 83px;
+    height: 1px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 16px;
+  }
+}
+
+::ng-deep .modal-content {
+  background-color: unset;
+}
+
+.card-modal {
+  padding: 0;
+  border-radius: 12px;
+  background-color: #141414 !important;
+
+  .card-consultations {
+    background-color: #333333;
+    padding: 16px;
+    border-radius: 12px;
+    border: 1px solid rgba(235, 235, 245, 0.6);
+
+    .row {
+      padding: 0;
+    }
+
+    .text-resumen {
+      font-family: 'Open Sans';
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 16px;
+      text-align: left;
+      color: #fafafb;
+    }
+
+    .time {
+      color: rgba(235, 235, 245, 0.6);
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 20px;
+    }
+  }
+}

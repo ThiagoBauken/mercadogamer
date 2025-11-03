@@ -1,0 +1,79 @@
+@import 'src/assets/styles/_globals';
+
+:host {
+  display: grid;
+  gap    : 7px;
+
+  &>.mercado-input {
+    padding      : 4px 28px;
+    border       : 1px solid #EBEBF599;
+    border-radius: 10px;
+    display      : grid;
+    align-items  : center;
+    min-height   : 44px;
+    position     : relative;
+
+    &>.label {
+      font-size  : 14px;
+      line-height: normal;
+      color      : $field-label;
+      position   : absolute;
+      top        : 0;
+      left       : 28px;
+      right      : 0;
+      bottom     : 0;
+      display    : grid;
+      align-items: center;
+      z-index    : 0;
+    }
+
+    input {
+      background-color  : transparent;
+      border            : none;
+      color             : white;
+      width             : 100%;
+      font-family       : Montserrat;
+      font-size         : 14px;
+      position          : relative;
+      -webkit-appearance: none;
+      -moz-appearance   : none;
+      appearance        : none;
+
+      &:focus {
+        outline: none;
+      }
+
+      &::placeholder {
+        color: #EBEBF599;
+      }
+    }
+
+    &.has-value {
+      &>.label {
+        font-size  : 12px;
+        line-height: 12px;
+        position   : unset;
+      }
+    }
+
+    &.error {
+      &>.label {
+        color: $field-error;
+      }
+
+      border-color: $field-error;
+    }
+  }
+
+  &>.helper {
+    font-size  : 12px;
+    color      : $field-label;
+    line-height: 12px;
+    height     : 12px;
+    padding    : 0 28px;
+
+    &.error {
+      color: $field-error;
+    }
+  }
+}

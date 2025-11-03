@@ -1,0 +1,15 @@
+<div class="icon">
+  <i
+    class="fa fa-chevron-left text-light mr-1"
+    (click)="previousPage.emit()"
+    *ngIf="page !== 1"
+  ></i>
+</div>
+<div class="content">{{ page }}/{{ totalPages }}</div>
+<div class="icon">
+  <i
+    class="fa fa-chevron-right text-light ml-1"
+    (click)="nextPage.emit()"
+    *ngIf="page !== totalPages && totalPages > 0"
+  ></i>
+</div>

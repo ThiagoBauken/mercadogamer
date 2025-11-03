@@ -1,0 +1,55 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav-content>
+    <mat-toolbar class="menubar">
+      <div class="logo-container">
+        <img
+          class="logo"
+          src="assets/imgs/logo.svg"
+          [routerLink]="['/tickets']"
+        />
+      </div>
+
+      <div class="login">
+        <ng-container *ngIf="user">
+          <button
+            mat-button
+            [matMenuTriggerFor]="notificationsMenu"
+            [disabled]="!notifications?.length"
+          >
+            <i
+              class="fa fa-bell"
+              style="font-size: 1.3rem"
+              aria-hidden="true"
+            ></i>
+            <div class="badge" *ngIf="notifications?.length">
+              <span>{{ notifications?.length }}</span>
+            </div>
+          </button>
+          <mat-menu #notificationsMenu="matMenu" class="customize">
+            <a
+              mat-menu-item
+              *ngFor="let notification of notifications"
+              (click)="handleNotification(notification)"
+              >{{ notification.title }}</a
+            >
+          </mat-menu>
+          <button mat-button [matMenuTriggerFor]="menu">
+            <img src="assets/imgs/garantia-mg-logo.png" class="avatar" />
+          </button>
+          <mat-menu #menu="matMenu" class="customize">
+            <a mat-menu-item class="user"
+              >{{ user.username }}
+              <img src="assets/imgs/garantia-mg-logo.png" class="avatar"
+            /></a>
+            <a mat-menu-item (click)="logout()" class="logout"
+              >Cerrar Sesión
+              <img src="assets/imgs/logout.svg" class="icon" alt=""
+            /></a>
+          </mat-menu>
+        </ng-container>
+      </div>
+    </mat-toolbar>
+    <!--The content below is only a placeholder and can be replaced.-->
+    <!-- <router-outlet></router-outlet> -->
+  </mat-sidenav-content>
+</mat-sidenav-container>

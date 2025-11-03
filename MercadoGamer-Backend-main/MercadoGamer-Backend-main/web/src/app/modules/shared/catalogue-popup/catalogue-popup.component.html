@@ -1,0 +1,57 @@
+<div class="catalog-popup">
+	<div class="popup-body">
+		<div class="parent-cateory">
+			<ul>
+				<li *ngFor="let category of categories">
+					<div [ngClass]="{'active': category.id == categoryId}"
+						(mouseover)="changeParentCat(category.id)">
+						<span class="mr-2">
+							<mat-icon [svgIcon]="category.icon"></mat-icon>
+						</span>
+						{{category.cateory_name}}
+						<span class="arrow-right">></span>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<ng-container *ngIf="sub_categories.length > 0; else elseTemplate">
+			<div class="sub-cateory" >
+				<ul>
+					<li *ngFor="let sub_category of sub_categories">
+						<div [ngClass]="{'active': sub_category.id == subCategoryId}"
+							(mouseover)="changeSubCat(sub_category.id)">
+							{{sub_category.name}}
+							<span class="arrow-right">></span>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<ng-container *ngIf="products.length > 0; else elseTemplate">
+				<div class="product-name">
+					<ul>
+						<li *ngFor="let product of products">
+							<div [ngClass]="{'active': product.id == productId}"
+								(mouseover)="changeProduct(product.id)">
+								{{product.name}}
+							</div>
+						</li>
+					</ul>
+				</div>
+				<ng-container *ngIf="productImg.length > 0; else elseTemplate">
+					<div class="product-img">
+						<img [src]="productImg">
+					</div>	
+				</ng-container>
+				<ng-template #elseTemplate>
+					<p class="col"></p>
+				</ng-template>
+			</ng-container>
+		<ng-template #elseTemplate>
+			<p class="col" ></p>
+		</ng-template>
+		</ng-container>
+		<ng-template #elseTemplate>
+			<p class="col"></p>
+		</ng-template>
+	</div>
+</div>

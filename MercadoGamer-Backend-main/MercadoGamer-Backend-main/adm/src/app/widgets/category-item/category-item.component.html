@@ -1,0 +1,20 @@
+<div class="image-container" [style]="getUrl()"></div>
+<div class="subject" style="color: white">{{ label }}</div>
+<div class="line"></div>
+<div class="price" style="color: white">
+  {{ price }}
+</div>
+<div class="delivery">
+  <mat-icon
+    [svgIcon]="
+      delivery === 'automatic' ? 'delivery-automatic' : 'delivery-coordinate'
+    "
+  ></mat-icon>
+  <div class="label">
+    {{ delivery === 'automatic' ? 'Entrega automática' : 'Entrega coordinada' }}
+  </div>
+</div>
+<div class="type">
+  <mat-icon svgIcon="game"></mat-icon>
+  <div class="label">{{ type }}</div>
+</div>

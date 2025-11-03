@@ -1,0 +1,205 @@
+<div class="mt-6 mb-6 contenedor">
+  <div class="d-flex flex-column">
+    <span class="title">Número de Orden: #123456</span>
+    <div class="row mt-4">
+      <div class="col-md-6">
+        <div class="card p-0 pr-3">
+          <div class="row">
+            <div class="col-md-4">
+              <img
+                src="assets/imgs/play5.jpg"
+                class="image-game"
+                width="218px"
+                height="307px"
+                alt=""
+              />
+            </div>
+            <div class="col-md-8 mt-4">
+              <p class="image-name">Nombre del Producto</p>
+              <p class="description">
+                Amet minim mollit non deserunt ullamco est sit aliqua dolor do
+                amet sint. Velit officia consequat duis enim velit mollit.
+                Exercitation veniam consequat sunt nostrud amet.
+              </p>
+              <p class="price">$8.000</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-4">
+          <div class="col-md-4 pr-0">
+            <div class="selected-chat">
+              <span>Mensaje con el Vendedor</span>
+            </div>
+          </div>
+          <div class="col-md-4 p-0">
+            <div class="not-selected-chat">
+              <img src="assets/imgs/support.png" alt="" />
+              <span>Soporte</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-chat">
+          <div class="message-other">
+            <div class="avatar">
+              <img src="assets/imgs/avatar.png" alt="" />
+            </div>
+            <div class="bubble">
+              <span
+                >Lorem Ipsum is simply dummy text of the printing and
+                typesetting industry. Lorem Ipsum has been the industry's
+                standard ...</span
+              >
+            </div>
+          </div>
+          <div class="message-me">
+            <div class="avatar">
+              <img src="assets/imgs/avatar.png" alt="" />
+            </div>
+            <div class="bubble">
+              <span
+                >Lorem Ipsum is simply dummy text of the printing and
+                typesetting industry. Lorem Ipsum has been the industry's
+                standard ...</span
+              >
+            </div>
+          </div>
+          <div class="send-footer">
+            <div class="row align-items-center">
+              <div class="col-md-10">
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Escribe tu mensaje"
+                  />
+                </div>
+              </div>
+              <div class="col-md-2">
+                <img src="assets/imgs/clip.png" class="icon clip" alt="" />
+                <img src="assets/imgs/send.png" class="icon send" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card">
+          <span class="subtitle">Comprador</span>
+          <div class="row align-items-center mt-4 ml-2">
+            <div class="col-md-2">
+              <img src="assets/imgs/avatar.png" class="avatar" alt="" />
+            </div>
+            <div class="col-md-10 pl-3">
+              <p class="name">Gladys</p>
+              <i class="fa fa-star text-primary init"></i>
+              <i class="fa fa-star text-primary"></i>
+              <i class="fa fa-star text-primary"></i>
+              <i class="fa fa-star text-primary"></i>
+              <i class="fa fa-star disabled"></i>
+              <span class="qualification">4.6/5.0</span>
+              <span class="votes">15 votos</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card mt-4">
+          <span class="subtitle">Producto</span>
+          <div class="row">
+            <div class="col-md-11">
+              <p class="text">
+                Porfavor, verifica que el código/producto es valido y funciona
+                correctamente antes de completar la compra.
+              </p>
+            </div>
+          </div>
+          <div class="code">
+            <span>SDFF-A5D4-ASE5-ASD5</span>
+          </div>
+        </div>
+
+        <div class="card mt-4">
+          <span class="subtitle-white">Cancelar la venta</span>
+          <p class="text">
+            Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
+            sint. Velit officia consequat duis enim velit mollit. Exercitation
+            veniam consequat sunt nostrud amet.
+          </p>
+
+          <button
+            class="btn mt-3 mb-4 btn-block claim"
+            (click)="openModal(claim)"
+          >
+            Cancelar la venta
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #finish let-modal>
+  <div
+    class="modal-body text-center"
+    style="height: 500px; width: 654px; background-color: #141414"
+  >
+    <div class="row">
+      <div class="col text-right">
+        <button class="btn btn-clear" (click)="close()">
+          <i class="fa fa-close text-primary"></i>
+        </button>
+      </div>
+    </div>
+    <div class="mt-4 pt-4">
+      <span class="text-modal">Felicidades por concretar tu</span> <br />
+      <span class="text-modal">primera compra en el sitio!</span>
+    </div>
+    <div class="mt-4 pt-4">
+      <div class="form-group comment">
+        <textarea
+          cols="70"
+          rows="5"
+          placeholder="¿Tenes algun comentario o sugerencia sobre el sitio?"
+        ></textarea>
+      </div>
+    </div>
+
+    <div class="btn-container pt-4 pl-4 pr-4">
+      <button class="btn mt-4 mb-4 btn-block finish">Enviar Comentario</button>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #claim let-modal>
+  <div
+    class="modal-body text-center"
+    style="height: 500px; width: 654px; background-color: #141414"
+  >
+    <div class="row">
+      <div class="col text-right">
+        <button class="btn btn-clear" (click)="close()">
+          <i class="fa fa-close text-primary"></i>
+        </button>
+      </div>
+    </div>
+    <div class="pt-2">
+      <span class="text-modal">Abrir reclamo</span>
+    </div>
+    <div class="pl-4 pr-4">
+      <mat-select [(value)]="selected" class="mt-4" [ngClass]="selected">
+        <mat-option value="select" disabled>Motivo del Reclamo</mat-option>
+        <mat-option value="1">Reclamo 1</mat-option>
+        <mat-option value="2">Reclamo 2</mat-option>
+      </mat-select>
+      <div class="pt-4">
+        <div class="form-group comment">
+          <textarea cols="70" rows="8" placeholder="Descripción"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="btn-container pt-1 pl-4 pr-4">
+      <button class="btn mt-3 mb-4 btn-block claim">Abrir Reclamo</button>
+    </div>
+  </div>
+</ng-template>

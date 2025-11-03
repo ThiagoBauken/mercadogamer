@@ -1,0 +1,116 @@
+@import "../../../assets/styles/_variables";
+
+:host {
+
+	display: grid;
+	gap    : 38px;
+	height : min-content;
+
+	&>.header {
+		display              : grid;
+		grid-template-columns: max-content 1fr max-content;
+		gap                  : 58px;
+		align-items          : center;
+
+		&>.title {
+			font-size  : 20px;
+			font-weight: 700;
+			color      : $primary;
+			margin-left: 19px;
+		}
+
+		&>.search {
+			&>app-search {
+				max-width: 318px;
+			}
+		}
+	}
+
+	&>.content {
+		display: grid;
+
+		color: white;
+
+		table {
+			thead {
+				th {
+					font-size  : 16px;
+					font-weight: 700;
+					text-align : center;
+				}
+			}
+
+			tbody {
+				tr {
+					height: 62px;
+
+					td {
+						text-align: center;
+
+						&>.product-info {
+							width                : 100%;
+							display              : grid;
+							grid-template-columns: max-content 1fr;
+							align-items          : center;
+							gap                  : 12px;
+
+							&>.image-container {
+								background: no-repeat center/cover;
+								width     : 32px;
+								height    : 44px;
+							}
+
+							&>.label {
+								text-align   : left;
+								overflow     : hidden;
+								text-overflow: ellipsis;
+							}
+						}
+
+						&>.country-info {
+							width                : 100%;
+							display              : grid;
+							gap                  : 9px;
+							grid-template-columns: max-content max-content;
+							align-items          : center;
+							justify-content      : center;
+						}
+
+						&.capitalize {
+							text-transform: capitalize;
+						}
+					}
+
+					&:hover {
+						cursor: pointer;
+
+						td {
+							background-color: #4E4D4D;
+
+							&:first-child {
+								border-radius: 5px 0 0 5px;
+							}
+
+							&:last-child {
+								border-radius: 0 5px 5px 0;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.pagined {
+		color          : $light;
+		font-family    : 'Montserrat';
+		font-style     : normal;
+		font-weight    : normal;
+		font-size      : 16px;
+		line-height    : 20px;
+		display        : grid;
+		grid-auto-flow : column;
+		justify-content: flex-end;
+		gap            : 13px;
+	}
+}

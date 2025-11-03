@@ -1,0 +1,192 @@
+<div class="container-fluid p-0">
+  <div class="row justify-content-center pt-4 pr-4 pb-4">
+    <div class="col">
+      <div class="row mt-4 mb-4 align-items-center">
+        <div class="col-md-6"></div>
+        <div class="col-md-3"></div>
+        <div class="col-md-3">
+          <button
+            class="btn btn-primary btn-block btn-save"
+            (click)="openModal(filter)"
+          >
+            Agregar Filtro
+          </button>
+        </div>
+      </div>
+
+      <div class="row justify-content-center mt-4">
+        <div class="col-md-4 text-center">
+          <img src="assets/imgs/pacman.svg" width="25px" height="25px" alt="" />
+          <span class="title quest ml-3">Juegos</span>
+          <div class="card mt-3">
+            <div class="row mt-2 align-items-center" *ngFor="let game of games">
+              <!-- <div class="col-md-2">
+                <img src="assets/imgs/play1.jpg" width="40px" height="55px" alt="">
+              </div> -->
+              <div class="col-md-12 text-left">
+                <span
+                  style="
+                    font-family: 'Montserrat';
+                    color: white;
+                    font-weight: 400;
+                    font-size: 18px;
+                  "
+                  >{{ game.name }}</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="col-md-3 text-center">
+          <img src="assets/imgs/product-filter-active.svg" width="25px" height="25px" alt="">
+          <span class="title quest ml-3">Tipo de Producto</span>
+          <div class="card mt-3">
+            <div class="row mt-2">
+              <div class="col text-left">
+                <span style="font-family: 'Montserrat'; color: white; font-weight: 400; font-size: 18px;">Gift Card</span>
+              </div>
+            </div>
+            <div class="row mt-2">
+              <div class="col text-left">
+                <span style="font-family: 'Montserrat'; color: white; font-weight: 400; font-size: 18px;">Items</span>
+              </div>
+            </div>
+            <div class="row mt-2">
+              <div class="col text-left">
+                <span style="font-family: 'Montserrat'; color: white; font-weight: 400; font-size: 18px;">Juegos</span>
+              </div>
+            </div>
+            <div class="row mt-2">
+              <div class="col text-left">
+                <span style="font-family: 'Montserrat'; color: white; font-weight: 400; font-size: 18px;">Monedas</span>
+              </div>
+            </div>
+            <div class="row mt-2">
+              <div class="col text-left">
+                <span style="font-family: 'Montserrat'; color: white; font-weight: 400; font-size: 18px;">Packs</span>
+              </div>
+            </div>
+          </div>
+        </div> -->
+        <div class="col-md-4 text-center">
+          <img
+            src="assets/imgs/category-filter-active.svg"
+            width="25px"
+            height="25px"
+            alt=""
+          />
+          <span class="title quest ml-3">Categorias</span>
+          <div class="card mt-3">
+            <div class="row mt-2" *ngFor="let category of categories">
+              <div class="col text-left">
+                <span
+                  style="
+                    font-family: 'Montserrat';
+                    color: white;
+                    font-weight: 400;
+                    font-size: 18px;
+                  "
+                  >{{ category.name }}</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 text-center">
+          <img
+            src="assets/imgs/platforms-filter-active.svg"
+            width="25px"
+            height="25px"
+          />
+          <span class="title quest ml-3">Plataformas</span>
+          <div class="card mt-3">
+            <div class="row mt-2" *ngFor="let platform of platforms">
+              <div class="col text-left">
+                <span
+                  style="
+                    font-family: 'Montserrat';
+                    color: white;
+                    font-weight: 400;
+                    font-size: 18px;
+                  "
+                  >{{ platform.name }}</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #filter let-modal>
+  <div
+    class="modal-body text-center"
+    style="height: 500px; width: 500px; background-color: #141414"
+  >
+    <div class="row mt-4 justify-content-center">
+      <p class="text-center title-modal text-primary">Nuevo Filtro</p>
+    </div>
+    <div class="row mt-4 justify-content-center">
+      <div class="col-md-10">
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Nombre"
+            [(ngModel)]="newFilterName"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-2 mb-2 justify-content-center">
+      <div class="col-md-10">
+        <mat-select [(value)]="newFilterType" class="country-select mb-2">
+          <mat-option value="categories">Categoria</mat-option>
+          <mat-option value="games">Juego</mat-option>
+          <mat-option value="platforms">Plataforma</mat-option>
+        </mat-select>
+      </div>
+    </div>
+
+    <div
+      class="row mt-2 mb-2 justify-content-center"
+      *ngIf="newFilterType === 'platforms'"
+    >
+      <div class="col-md-10 text-left">
+        <p
+          style="
+            font-family: Montserrat;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 15px;
+            line-height: 18px;
+            color: #c5c5c5;
+          "
+        >
+          Cargar imagen
+        </p>
+        <div class="card-add" (click)="selectImage()" *ngIf="!newFilterPicture">
+          <i class="fa fa-plus"></i>
+        </div>
+        <div class="card-add" (click)="selectImage()" *ngIf="newFilterPicture">
+          <img class="img-fluid" [src]="filesUrl + newFilterPicture" />
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-2 justify-content-center">
+      <div class="col-md-10">
+        <button
+          class="btn btn-primary btn-block btn-save"
+          (click)="saveFilter()"
+          [disabled]="!newFilterType || !newFilterName"
+        >
+          Agregar
+        </button>
+      </div>
+    </div>
+  </div>
+</ng-template>

@@ -1,0 +1,35 @@
+{
+  "name": "mercadogamer",
+  "version": "1.0.0",
+  "description": "Marketplace de jogos e itens digitais",
+  "private": true,
+  "scripts": {
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:logs": "docker-compose logs -f",
+    "docker:logs:backend": "docker-compose logs -f backend",
+    "docker:logs:web": "docker-compose logs -f frontend-web",
+    "docker:logs:admin": "docker-compose logs -f frontend-admin",
+    "docker:restart": "docker-compose restart",
+    "docker:rebuild": "docker-compose up -d --build",
+    "docker:clean": "docker-compose down -v && docker system prune -f",
+    "docker:ps": "docker-compose ps",
+    "docker:shell:backend": "docker-compose exec backend sh",
+    "docker:shell:mongo": "docker-compose exec mongodb mongosh mercadogamer",
+    "setup": "cp .env.example .env && echo 'Agora edite o arquivo .env com suas credenciais'",
+    "start": "npm run docker:up",
+    "stop": "npm run docker:down",
+    "logs": "npm run docker:logs",
+    "restart": "npm run docker:restart"
+  },
+  "keywords": [
+    "marketplace",
+    "gaming",
+    "ecommerce",
+    "nextjs",
+    "express",
+    "mongodb"
+  ],
+  "author": "MercadoGamer Team",
+  "license": "MIT"
+}

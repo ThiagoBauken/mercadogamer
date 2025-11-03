@@ -1,0 +1,254 @@
+@import '../../../../assets/styles/_variables';
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url('../../../../assets/fonts/OpenSans-Regular.ttf');
+}
+
+//$sidemenu_background: $primary;
+
+.sidenav-container {
+  height: 100%;
+}
+
+.badge {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  top: 0;
+  right: 12px;
+  background-color: $danger;
+  padding: 2px;
+
+  span {
+    color: white;
+    opacity: 1 !important;
+  }
+}
+
+.sidenav {
+  width: 250px;
+  box-shadow: 6px 0px 10px 0px rgba(0, 0, 0, 0.2);
+
+  .logo-container {
+    text-align: center;
+    margin: 1rem auto;
+
+    img {
+      max-width: 150px;
+    }
+  }
+}
+
+.login-text {
+  color: $light !important;
+  text-decoration: none !important;
+}
+
+::ng-deep .customize {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  background: #333333 !important;
+
+  a {
+    text-align: right !important;
+    color: $light;
+    font-family: 'Montserrat';
+  }
+
+  .user {
+    color: $primary;
+    font-weight: 600;
+  }
+
+  .logout {
+    color: #e05555;
+    font-weight: 600;
+  }
+
+  .avatar {
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+    margin-left: 10px;
+  }
+
+  .icon {
+    margin-left: 10px;
+  }
+}
+
+.mat-toolbar {
+  background: $primary !important;
+
+  &.menubar {
+    color: $dark;
+    background: #141414 !important;
+    font-weight: 500;
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    display: flex;
+    // .example-spacer {
+    //   margin-left: 5vh;
+    // }
+
+    .example-spacer-menu {
+      margin-left: 13vh;
+    }
+
+    .logo-container {
+      width: 10%;
+      display: flex;
+      justify-content: center;
+      // position: absolute;
+      // left: 5%;
+      z-index: 2;
+
+      img {
+        cursor: pointer;
+      }
+    }
+
+    .menu-container {
+      display: flex;
+      position: absolute;
+      width: 60%;
+      justify-content: center;
+    }
+
+    .search-container {
+      position: absolute;
+      width: 15%;
+      right: 22%;
+
+      .search {
+        width: 300px;
+
+        .icon {
+          margin-left: 10px;
+          color: $light;
+          opacity: 0.6;
+        }
+
+        input {
+          background: #2f2f2f;
+          border: 0;
+          color: $light;
+          width: 100px;
+          font-family: 'Open Sans';
+          outline: none !important;
+          outline-style: none !important;
+          box-shadow: none !important;
+          border-color: transparent !important;
+        }
+
+        background: #2f2f2f;
+        border-radius: 24px;
+        border: 0;
+      }
+    }
+
+    .login {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      width: 15%;
+      right: 0%;
+
+      .fa-bell {
+        color: rgba(235, 235, 245, 0.6);
+      }
+
+      .avatar {
+        width: 32px;
+        height: 32px;
+        object-fit: cover;
+      }
+
+      span {
+        font-size: 14px;
+        color: #ebebf5;
+        opacity: 0.6;
+        font-family: 'Open Sans';
+      }
+    }
+
+    .menu-btns {
+      font-family: 'Open Sans';
+      font-weight: 400;
+      margin-right: 16px;
+      font-size: 14px;
+      opacity: 0.6;
+      color: #ebebf5;
+
+      &.active {
+        opacity: 1;
+        font-weight: 600;
+        background: $orange;
+        color: $light;
+        border-radius: 143px;
+      }
+    }
+  }
+
+  .logout {
+    font-size: 0.9em;
+  }
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.mat-drawer {
+  background-color: $dark !important;
+}
+
+.mat-nav-list {
+  background-color: $dark;
+
+  &.global-mat-nav {
+    //margin-top: 150px;
+  }
+
+  .mat-list-item {
+    font-family: 'Source Sans Pro';
+    font-size: 1.1rem;
+    height: 3rem;
+    color: $light;
+
+    &.sidenav-submenu-toogle {
+      .expand-icon {
+        margin-left: 1rem;
+      }
+    }
+
+    h3 {
+      font-size: 0.9em;
+    }
+
+    &.router-link-active {
+      // width: 95%;
+      // margin: auto;
+      // border-radius: 10px;
+      background: #333333;
+      color: $primary;
+
+      h3 {
+        font-weight: bold;
+      }
+    }
+  }
+
+  &.sidenav-submenu {
+    margin-left: 2.5rem;
+
+    a {
+      font-size: 1em;
+    }
+  }
+}

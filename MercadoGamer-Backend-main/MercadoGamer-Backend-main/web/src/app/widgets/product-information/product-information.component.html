@@ -1,0 +1,49 @@
+<div class="sub-page-title">Productos</div>
+
+<div class="image-container" [style]="getImageStyle(imageUrl)"></div>
+
+<div class="information">
+  <div class="version">X2</div>
+  <div class="content">
+    <div class="label">{{ name }}</div>
+    <div class="price">
+      {{ price }}
+    </div>
+  </div>
+  <div *ngIf="showAction" class="action">
+    <app-button (btnClick)="action.emit()" padding="4px 11px"
+      >Ver detalle</app-button
+    >
+  </div>
+</div>
+<div class="date">
+  <p>Orden abierta el {{ date | date: 'dd/MM/YYYY' }}</p>
+</div>
+<div class="more-details">
+  <div
+    *ngFor="let detail of content"
+    class="detail"
+    [ngStyle]="{ color: detail.color || white }"
+  >
+    <div class="label">{{ detail?.label }}</div>
+    <div class="value">{{ detail?.value }}</div>
+  </div>
+</div>
+
+<div class="user-info">
+  <div class="title">{{ userInfo?.label }}</div>
+  <div class="content" (click)="gotoProfilePage()">
+    <div
+      class="image-container"
+      [style]="getImageStyle(userInfo?.image, 'assets/imgs/avatar.png')"
+    ></div>
+    <div class="description">
+      <div class="user-name">{{ userInfo?.userName }}</div>
+      <div class="action">
+        <app-button *ngIf="userInfo.showAction" padding="2px 6px" radius="50px">
+          Calificar
+        </app-button>
+      </div>
+    </div>
+  </div>
+</div>

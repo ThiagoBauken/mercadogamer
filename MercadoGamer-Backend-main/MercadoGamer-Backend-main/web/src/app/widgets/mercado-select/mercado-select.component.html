@@ -1,0 +1,27 @@
+<div
+  [ngClass]="{
+    'mercado-select': true,
+    'has-value': !!value,
+    error: error
+  }"
+>
+  <div *ngIf="label" class="label">{{ label }}</div>
+  <mat-select
+    [value]="value"
+    class="select-container"
+    [placeholder]="label ? '' : placeholder"
+    (selectionChange)="onChange($event)"
+  >
+    <ng-content></ng-content>
+    <mat-option
+      *ngFor="let item of items"
+      class="mecado-list-item"
+      [value]="item.value"
+    >
+      {{ item.text }}
+    </mat-option>
+  </mat-select>
+</div>
+<div *ngIf="!hideHelper || helper" [ngClass]="{ helper: true, error: error }">
+  {{ helper }}
+</div>

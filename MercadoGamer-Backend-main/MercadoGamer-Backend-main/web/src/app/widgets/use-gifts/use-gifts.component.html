@@ -1,0 +1,28 @@
+<div class="sub-page-title">Regalos</div>
+<div class="content">
+  <div class="balance">
+    <div class="label">Balance de regalo</div>
+    <div class="value">
+      {{
+        user.gift | currency: country.currency:'symbol-narrow':'1.0-2':'es-US'
+      }}
+    </div>
+  </div>
+  <div class="edit-gift-code">
+    <div class="title">Canjea un código para obtener recompensas:</div>
+    <div class="edit-content">
+      <div class="input-container">
+        <app-mercado-input
+          [value]="discountCode"
+          (valueChange)="discountCode = $event"
+          hideHelper="true"
+        ></app-mercado-input>
+      </div>
+      <div class="action">
+        <app-button (btnClick)="checkDiscountCode()" width="114px">
+          Canjear
+        </app-button>
+      </div>
+    </div>
+  </div>
+</div>

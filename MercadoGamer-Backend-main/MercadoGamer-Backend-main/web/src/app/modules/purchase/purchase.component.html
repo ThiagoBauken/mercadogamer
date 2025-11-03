@@ -1,0 +1,580 @@
+<div class="header">
+  <div class="title">Número de Orden: #{{ order?.number }}</div>
+  <div class="detail">
+    Orden abierta en:
+    <span type="date">{{ order?.createdAt | date: 'MM/dd/YYYY' }}</span>
+    a las {{ order?.createdAt | date: 'HH:mm' }}
+  </div>
+</div>
+<div [ngClass]="{ content: true, 'not-edit': notEdit }">
+  <div class="detail-chat">
+    <div class="product-detail">
+      <div
+        class="image-container"
+        [style]="
+          global.getBackgroundUrl(
+            order?.product.picture,
+            'assets/imgs/placeholder.png'
+          )
+        "
+      ></div>
+      <div *ngIf="order" class="detail">
+        <div class="title">{{ order.product?.name }}</div>
+        <div class="description">{{ order.product?.description }}</div>
+        <div class="price">
+          {{
+            (order.product.discount
+              ? order.product.priceWithDiscount
+              : order.product?.price
+            )
+              | toUSD
+              | currency: country.currency:'symbol-narrow':'1.0-2':'es-US'
+          }}
+        </div>
+        <div class="date">
+          Orden abierta en:<br />
+          <span type="date">{{ order?.createdAt | date: 'MM/dd/YYYY' }}</span>
+          a las {{ order?.createdAt | date: 'HH:MM' }}
+        </div>
+      </div>
+    </div>
+
+    <div class="automatic-product-code">
+      <div class="title">Producto</div>
+      <div class="code">
+        {{
+          order?.stockProduct.retirementType === 'automatic'
+            ? order?.stockProduct.code
+            : 'Entrega Coordinada por chat'
+        }}
+      </div>
+    </div>
+
+    <div class="chat-container">
+      <ul class="user-tab">
+        <li
+          (click)="currentChat = 'users'"
+          [ngClass]="{ active: currentChat === 'users' }"
+        >
+          Mensaje con el
+          {{ user.id === order?.seller?.id ? 'Comprador' : 'Vendedor' }}
+        </li>
+        <li
+          *ngIf="order?.status === 'complaint'"
+          (click)="currentChat = 'admin'"
+          [ngClass]="{ active: currentChat === 'admin', support: true }"
+        >
+          Soporte
+        </li>
+      </ul>
+      <div class="chat-content">
+        <div class="card-chat" #divMessages>
+          <ng-container *ngIf="currentChat === 'users'">
+            <div
+              *ngFor="let message of usersConversationMessages"
+              class="cont-bubble"
+              [ngClass]="
+                message.author?.id === user?.id || message.author === user?.id
+                  ? 'message-me'
+                  : 'message-other'
+              "
+            >
+              <div
+                class="avatar"
+                (click)="
+                  pageService.navigateRoute('profile/user/' + message.author.id)
+                "
+              >
+                <img
+                  [src]="
+                    message.authorName === 'Administrador'
+                      ? 'assets/imgs/garantia-mg-logo.png'
+                      : filesUrl + message.author?.picture
+                  "
+                  onerror="this.src = 'assets/imgs/avatar.png'"
+                />
+              </div>
+
+              <div
+                [ngClass]="
+                  message.authorName === 'Administrador'
+                    ? 'user-bubble'
+                    : 'bubble'
+                "
+              >
+                <span
+                  *ngIf="checkBody(message.body) === 'string'; else elseBlock"
+                  [innerHTML]="message.body"
+                ></span>
+                <ng-template #elseBlock>
+                  <div
+                    class="preview-image"
+                    (click)="openPreviewImage(getImageUrl(message.body))"
+                    [style]="getImageUrl(message.body)"
+                  ></div>
+                </ng-template>
+                <div class="message-date">
+                  <p>
+                    {{ message.createdAt | date: 'dd/MM/YYYY HH:mm'
+                    }}<span><i class="fa fa-clock-o"></i></span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+          <ng-container *ngIf="currentChat === 'admin'">
+            <div
+              *ngFor="let message of adminConversationMessages"
+              class="cont-bubble"
+              [ngClass]="message.author ? 'message-me' : 'message-other'"
+            >
+              <div class="avatar">
+                <img
+                  [src]="
+                    message.authorName === 'Administrador'
+                      ? 'assets/imgs/garantia-mg-logo.png'
+                      : message.author?.picture
+                      ? filesUrl + message.author?.picture
+                      : 'assets/imgs/avatar.png'
+                  "
+                />
+              </div>
+              <div class="bubble">
+                <span
+                  *ngIf="checkBody(message.body) === 'string'; else elseBlock"
+                  >{{ message.body }}</span
+                >
+                <ng-template #elseBlock>
+                  <div
+                    class="preview-image"
+                    [style]="getImageUrl(message.body)"
+                  ></div>
+                </ng-template>
+                <div class="message-date">
+                  <p>
+                    {{ message.createdAt | date: 'dd/MM/YYYY HH:mm:ss'
+                    }}<span><i class="fa fa-clock-o"></i></span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+        <div class="send-footer">
+          <div class="row align-items-center justify-content-between m-0">
+            <div class="col">
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Escribe tu mensaje"
+                  [(ngModel)]="newMessage"
+                  (keyup.enter)="sendMessage()"
+                />
+              </div>
+            </div>
+            <div class="col-auto">
+              <img
+                src="assets/imgs/clip.png"
+                class="icon clip"
+                (click)="sendImage()"
+              />
+              <img
+                src="assets/imgs/send.png"
+                class="icon send"
+                (click)="sendMessage()"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <app-button
+      *ngIf="user.id === order?.buyer.id"
+      (btnClick)="showModal = 'finalize-modal'"
+      width="100%"
+      bgColor="#11BA18"
+      radius="0"
+    >
+      Recibi mi producto, cerrar compra
+    </app-button>
+
+    <app-button
+      *ngIf="order?.status !== 'complaint'"
+      (btnClick)="openModal(claim)"
+      width="100%"
+      radius="0"
+      bgColor="#FF0000"
+    >
+      Abrir Reclamo
+    </app-button>
+
+    <app-button
+      *ngIf="user.id === order?.seller?.id"
+      (btnClick)="openModal(cancel)"
+      width="100%"
+      radius="0"
+      bgColor="#FF0000"
+    >
+      Cancelar la venta
+    </app-button>
+  </div>
+
+  <div class="control-order">
+    <div class="card" *ngIf="user.id === order?.seller?.id">
+      <span class="subtitle">Comprador</span>
+      <div class="row align-items-center mt-4 ml-2">
+        <div class="col-md-2">
+          <img
+            [src]="filesUrl + order.buyer?.picture"
+            onerror="this.src = 'assets/imgs/avatar.png'"
+            class="avatar-buyer"
+          />
+        </div>
+        <div class="col-md-10 pl-3">
+          <p class="name">
+            {{ order.buyer.firstName + ' ' + order.buyer.lastName }}
+          </p>
+          <i
+            class="fa fa-star"
+            *ngFor="let item of [].constructor(5); index as i"
+            [ngClass]="{
+              'text-primary': i + 0.5 <= order.buyer.userQualification,
+              init: i === 0
+            }"
+          ></i>
+          <span class="qualification"
+            >{{ order.buyer.userQualification | number: '1.2-2' }}/5,0</span
+          >
+          <span class="votes"
+            >{{ order.buyer.userTotalQualifications }} votos</span
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Producto</div>
+      <div class="description">
+        Porfavor, verifica que el código/producto es valido y funciona
+        correctamente antes de completar la compra.
+      </div>
+      <div class="code">
+        {{
+          order?.stockProduct.retirementType === 'automatic'
+            ? order?.stockProduct.code
+            : 'Entrega Coordinada por chat'
+        }}
+      </div>
+    </div>
+
+    <ng-container *ngIf="user.id === order?.buyer.id">
+      <div class="card" [hidden]="order?.status === 'finished'">
+        <span class="card-subtitle">Revisa y completa la Compra</span>
+        <div class="description">
+          He recibido y verificado el buen funcionamiento del producto
+        </div>
+        <mat-checkbox class="example-margin" color="warn" [(ngModel)]="agree">
+          Estoy de acuerdo en completar la compra, el vendedor recibira el
+          dinero correspondiente a la compra
+        </mat-checkbox>
+
+        <app-button
+          *ngIf="user.id === order?.buyer.id"
+          (btnClick)="showModal = 'finalize-modal'"
+          width="100%"
+          bgColor="#11BA18"
+          radius="0"
+          [disabled]="!agree"
+        >
+          Recibi mi producto, cerrar compra
+        </app-button>
+
+        <div class="remain-time">
+          <div class="icon">
+            <mat-icon>access_time</mat-icon>
+          </div>
+          <div class="content">
+            {{ remainTime }}
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="card"
+        *ngIf="order?.status !== 'complaint'"
+        [hidden]="order?.status === 'finished'"
+      >
+        <span class="card-subtitle">Abrir un reclamo</span>
+        <div class="description">
+          No he recibido el producto / el producto recibido no funciona
+          correctamente
+        </div>
+        <app-button
+          *ngIf="order?.status !== 'complaint'"
+          (btnClick)="openModal(claim)"
+          width="100%"
+          radius="0"
+          bgColor="#FF0000"
+        >
+          Abrir Reclamo
+        </app-button>
+      </div>
+    </ng-container>
+
+    <div class="card" *ngIf="user.id === order?.seller?.id">
+      <span class="card-subtitle">Cancelar la venta</span>
+      <!-- <p class="text">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.</p> -->
+
+      <app-button
+        *ngIf="user.id === order?.seller?.id"
+        (btnClick)="openModal(cancel)"
+        width="100%"
+        radius="0"
+        bgColor="#FF0000"
+      >
+        Cancelar la venta
+      </app-button>
+    </div>
+  </div>
+</div>
+
+<ng-template #finish let-modal>
+  <div
+    class="modal-body text-center"
+    style="height: 500px; width: 654px; background-color: #141414"
+  >
+    <div *ngIf="!orderFinished || order?.seller?.id === user.id">
+      <div class="row justify-content-center mt-4">
+        <span class="quest"
+          >¿Cómo Calificas a
+          {{
+            orderFinished ? order?.buyer.username : order?.seller?.username
+          }}?</span
+        >
+      </div>
+      <div class="row justify-content-center mt-4">
+        <img
+          [src]="
+            filesUrl +
+            (orderFinished ? order?.buyer.picture : order?.seller?.picture)
+          "
+          onerror="this.src = 'assets/imgs/avatar.png'"
+          class="avatar-user"
+        />
+      </div>
+      <div class="row justify-content-center mt-4">
+        <i
+          class="fa fa-star"
+          *ngFor="let item of [].constructor(5); index as i"
+          [ngClass]="i < qualification ? 'text-primary' : 'disabled'"
+          (click)="qualification = i + 1"
+        ></i>
+      </div>
+      <div class="row justify-content-center mt-4">
+        <textarea
+          class="input-custom"
+          cols="50"
+          rows="5"
+          [(ngModel)]="qualificationBody"
+        ></textarea>
+      </div>
+      <div class="row justify-content-center mt-4 ml-4 mr-4">
+        <button
+          class="btn btn-primary btn-block btn-calificate"
+          (click)="sendQualification()"
+          [disabled]="!qualification || !qualificationBody || qualificationSent"
+        >
+          Calificar
+        </button>
+      </div>
+    </div>
+    <div *ngIf="orderFinished && order?.seller?.id !== user.id">
+      <div class="row">
+        <div class="col text-right">
+          <button class="btn btn-clear" (click)="close()">
+            <i class="fa fa-close text-primary"></i>
+          </button>
+        </div>
+      </div>
+      <div class="mt-4 pt-4">
+        <span class="text-modal">Felicidades por concretar tu</span> <br />
+        <span class="text-modal">primera compra en el sitio!</span>
+      </div>
+      <div class="mt-4 pt-4">
+        <div class="form-group comment">
+          <textarea
+            cols="70"
+            rows="5"
+            placeholder="¿Tenes algun comentario o sugerencia sobre el sitio?"
+            [(ngModel)]="feedbackBody"
+          ></textarea>
+        </div>
+      </div>
+
+      <div class="btn-container pt-4 pl-4 pr-4">
+        <button
+          class="btn mt-4 mb-4 btn-block finish"
+          (click)="sendFeedback()"
+          [disabled]="sending"
+        >
+          Enviar Comentario
+        </button>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #claim let-modal>
+  <div
+    class="modal-body text-center"
+    style="height: 500px; width: 654px; background-color: #141414"
+  >
+    <div class="row">
+      <div class="col text-right">
+        <button class="btn btn-clear" (click)="close()">
+          <i class="fa fa-close text-primary"></i>
+        </button>
+      </div>
+    </div>
+    <div class="pt-2">
+      <span class="text-modal">Abrir reclamo</span>
+    </div>
+    <div class="pl-4 pr-4 claimOption">
+      <mat-select [(value)]="claimMotive" class="mt-4" [ngClass]="claimMotive">
+        <mat-option value="select" disabled>Motivo del Reclamo</mat-option>
+        <mat-option value="notWorking">No funciona/está vencido</mat-option>
+        <mat-option value="undelivered">No lo entregó</mat-option>
+        <mat-option value="mistake">Me equivoqué con la compra</mat-option>
+      </mat-select>
+      <div class="pt-4">
+        <div class="form-group comment">
+          <textarea
+            cols="70"
+            rows="8"
+            placeholder="Descripción"
+            [(ngModel)]="claimDescription"
+          ></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="btn-container pt-1 pl-4 pr-4">
+      <button
+        class="btn mt-3 mb-4 btn-block claim"
+        [disabled]="!claimDescription || claimMotive === 'select'"
+        (click)="claimOrder()"
+      >
+        Abrir Reclamo
+      </button>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #cancel let-modal>
+  <div
+    class="modal-body text-center"
+    style="height: 500px; width: 654px; background-color: #141414"
+  >
+    <div class="row">
+      <div class="col text-right">
+        <button class="btn btn-clear" (click)="close()">
+          <i class="fa fa-close text-primary"></i>
+        </button>
+      </div>
+    </div>
+    <div class="pt-2">
+      <span class="text-modal">Cancelar Venta</span>
+    </div>
+    <div class="pt-5">
+      <span class="text-modal">¿Está seguro que desea cancelar la venta?</span>
+    </div>
+
+    <div class="btn-container pt-5 pl-4 pr-4">
+      <button class="btn mt-3 mb-4 btn-block claim" (click)="cancelOrder()">
+        Si, estoy seguro
+      </button>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #buySuccess let-modal>
+  <div
+    class="modal-body text-center"
+    style="height: 500px; width: 500px; background-color: #141414"
+  >
+    <ng-container *ngIf="!orderFinished">
+      <img
+        src="assets/imgs/arrow.png"
+        width="97px"
+        height="97px"
+        class="image"
+      />
+    </ng-container>
+    <ng-container *ngIf="orderFinished">
+      <div class="row justify-content-center align-items-center mt-5">
+        <img src="assets/imgs/success.png" width="97px" height="97px" alt="" />
+      </div>
+      <div class="row justify-content-center align-items-center mt-4">
+        <p class="text-center text">Felicidades!</p>
+      </div>
+      <div class="row justify-content-center align-items-center">
+        <p class="text-center text">
+          {{
+            qualificationSent
+              ? 'Tu calificación fue enviada con éxito'
+              : 'El usuario ha finalizado la compra!'
+          }}
+        </p>
+      </div>
+    </ng-container>
+    <div
+      class="row justify-content-center mt-4 ml-4 mr-4"
+      *ngIf="qualificationSent"
+    >
+      <button
+        class="btn btn-primary btn-block btn-calificate"
+        (click)="goToHome()"
+      >
+        Volver
+      </button>
+    </div>
+  </div>
+</ng-template>
+
+<app-mercado-dialog
+  [open]="showModal === 'finalize-modal'"
+  (onCloseDialog)="showModal = ''"
+>
+  <div class="finalize-modal">
+    <div class="title">¡ATENCIÓN!</div>
+    <div class="description">
+      NO cierres la compra sin haber recibido el producto, ya que al cerrar la
+      compra estas indicando que recibiste el producto correctamente, por lo
+      cual la orden se finalizará y no podrás volver a acceder a la página de
+      orden.
+    </div>
+    <div class="attention">
+      Si el vendedor te dice que el pago no llego o que necesita que completes
+      la compra para entregarte el producto, no le hagas caso y abri un reclamo.
+    </div>
+    <app-button
+      (btnClick)="openModal(finish)"
+      width="100%"
+      bgColor="#11BA18"
+      radius="0"
+      >Finalizar compra</app-button
+    >
+  </div>
+</app-mercado-dialog>
+
+<app-mercado-dialog
+  [open]="openPreviewImageStatus.open"
+  (onCloseDialog)="openPreviewImageStatus = { open: false, image: '' }"
+>
+  <div
+    class="preview-image-dialog"
+    [style]="openPreviewImageStatus.image"
+  ></div>
+</app-mercado-dialog>

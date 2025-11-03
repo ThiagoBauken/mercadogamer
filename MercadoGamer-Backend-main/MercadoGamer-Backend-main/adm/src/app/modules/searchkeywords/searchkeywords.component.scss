@@ -1,0 +1,61 @@
+@import 'src/assets/styles/_variables';
+
+:host {
+  display: grid;
+  gap    : 24px;
+
+  .container-fluid {
+    background-color: #141414;
+  }
+
+  .row {
+    overflow-x: hidden !important;
+
+    .col {
+      overflow-x: hidden !important;
+    }
+
+    .title {
+      color      : $primary;
+      font-family: 'Montserrat';
+      font-style : normal;
+      font-weight: 600;
+      font-size  : 16px;
+      line-height: 20px;
+
+      &.quest {
+        font-size: 22px !important;
+      }
+    }
+  }
+
+  th {
+    border: 0;
+  }
+
+  th {
+    span {
+      font-weight: 600;
+      font-size  : 1.2rem;
+    }
+  }
+
+  tr:hover {
+    background-color: #4E4D4D;
+    cursor          : pointer;
+  }
+
+  td {
+    font-family: 'Montserrat';
+    font-style : normal;
+    font-weight: 400;
+    font-size  : 16px;
+    border     : 0;
+    line-height: 15px;
+    color      : #FAFAFA;
+
+    &.capitalize {
+      text-transform: capitalize;
+    }
+  }
+}

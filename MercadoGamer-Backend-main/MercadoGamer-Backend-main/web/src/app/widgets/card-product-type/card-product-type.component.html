@@ -1,0 +1,16 @@
+<div class="card-product-type" [ngStyle]="{ 'border-color': borderColor }">
+  <div class="header">
+    <div
+      class="image-container"
+      [ngStyle]="{ 'background-image': getUrl() }"
+    ></div>
+    <div class="title">{{ title }}</div>
+    <div class="sub-title">{{ subTitle }}</div>
+  </div>
+  <div class="content">
+    <div *ngIf="descriptions.length" class="benefit label">{{ descLabel }}</div>
+    <ul class="descriptions">
+      <li *ngFor="let item of descriptions">{{ item }}</li>
+    </ul>
+  </div>
+</div>

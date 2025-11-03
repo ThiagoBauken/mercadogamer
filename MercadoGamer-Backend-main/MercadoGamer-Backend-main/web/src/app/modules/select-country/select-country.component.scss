@@ -1,0 +1,108 @@
+@import "../../../assets/styles/_globals";
+
+:host {
+	display        : flex;
+	justify-content: center;
+	align-items    : center;
+	min-height     : 100vh;
+
+	.container {
+		display        : grid;
+		grid-auto-flow : column;
+		justify-content: center;
+		align-items    : center;
+		gap            : 32px;
+
+		&>.logo-container {
+			display: grid;
+
+			&>.title {
+				font-size  : 16px;
+				font-weight: 700;
+				padding    : 0 13px;
+			}
+
+			&>.image-container {
+				background: center/contain no-repeat;
+				width     : 257px;
+				height    : 154px;
+			}
+		}
+
+		&>.content {
+			display        : grid;
+			align-items    : center;
+			justify-content: center;
+
+			&>.country-select {
+				border       : 1px solid $primary;
+				border-radius: 10px;
+				padding      : 18px 24px;
+				width        : 248px;
+				display      : grid;
+
+				::ng-deep {
+					.mat-select-trigger {
+						margin-top: 0;
+
+						mat-select-trigger {
+							display              : grid;
+							grid-template-columns: min-content 1fr;
+							align-items          : center;
+							gap                  : 19px;
+
+							&>.icon {
+								background: center/contain no-repeat;
+								width     : 38px;
+								height    : 24px;
+							}
+						}
+					}
+				}
+			}
+
+			button {
+				width        : 100%;
+				height       : 56px;
+				background   : linear-gradient(90deg, #1D1D1A 0%, rgba(57, 48, 80, 0) 100%);
+				border-radius: 10px;
+				color        : $light;
+				font-family  : 'Montserrat';
+				font-weight  : 500;
+				cursor       : pointer;
+
+				&.enabled-btn {
+					background: $primary !important;
+				}
+			}
+		}
+
+		@include brackpoint-md {
+			grid-template-rows: min-content min-content;
+
+		}
+	}
+}
+
+.country-select-item {
+	padding: 16px 19px;
+
+	::ng-deep {
+		.mat-option-text {
+			display              : grid;
+			grid-template-columns: min-content 1fr;
+			align-items          : center;
+			gap                  : 19px;
+
+			&>.icon {
+				background: center/contain no-repeat;
+				width     : 38px;
+				height    : 24px;
+			}
+		}
+	}
+
+	&:hover {
+		background-color: $primary;
+	}
+}

@@ -1,0 +1,67 @@
+@import "../../../../assets/styles/_variables";
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("../../../../assets/fonts/Montserrat-Regular.ttf");
+}
+
+::ng-deep {
+  .footer {
+    background-color: black;
+    width: 100vw;
+    padding-top: 27px;
+    padding-bottom: 40px;
+    overflow-x: hidden;
+    font-family: "Montserrat";
+    .footer-column {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 20px;
+      padding-right: 164px;
+      padding-top: 50px;
+      .footer-column-title {
+        font-weight: 600;
+        color: $primary;
+      }
+      .footer-column-item {
+        padding-top: 14px;
+        color: $light;
+        cursor: pointer;
+  
+        i {
+          font-size: 20px;
+        }
+      }
+  
+      @media (max-width: 787px) {
+        padding-right: 0px;
+        font-size: 13px;
+        line-height: 14px;
+        min-width: 150px
+      }
+      @media (min-width: 788px) and (max-width: 1325px) {
+        padding-right: 0px;
+        min-width: none;
+      }
+      
+    }
+    .copy {
+      font-size: 14px;
+      line-height: 17px;
+      color: #ebebf5;
+      opacity: 0.6;
+    }
+  }
+}
+
+.container {
+  @media (min-width: 1326px) {
+    max-width: 1326px;
+  }
+  @media (min-width: 600px) and (max-width: 1325px) {
+    max-width: 90%;
+  }
+  @media (max-width: 599px) {
+    max-width: unset;
+  }
+}

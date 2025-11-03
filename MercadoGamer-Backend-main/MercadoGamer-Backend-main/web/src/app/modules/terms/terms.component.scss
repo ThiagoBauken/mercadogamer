@@ -1,0 +1,109 @@
+@import "../../../assets/styles/_variables";
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url("../../../assets/fonts/Montserrat-Regular.ttf");
+}
+
+.container-fluid {
+    height: 100%;
+}
+
+.row {
+    background-color: #141414;
+    overflow-x: hidden !important;
+    .col {
+        overflow-x: hidden !important;
+        p {
+            color: white;
+            line-height: 22px;
+        }
+        .terms-title {
+          line-height: 1.2;
+          text-align: justify;
+          margin-top: 28pt;
+          margin-bottom: 8pt;
+          span {
+            font-size: 11pt;
+            color: rgb(255, 255, 255);
+            background-color: rgb(20, 20, 20);
+            font-weight: 700;
+            font-style: normal;
+            font-variant: normal;
+            text-decoration: none;
+            vertical-align: baseline;
+          }
+          .terms-content {
+            text-align: justify;
+            margin-top: 12pt;
+            margin-bottom: 12pt;
+            span {
+                font-size: 11pt;
+                color: rgb(255, 255, 255);
+                background-color: rgb(20, 20, 20);
+                font-weight: 400;
+                font-style: normal;
+                font-variant: normal;
+                text-decoration: none;
+                vertical-align: baseline;
+                span {
+                    font-weight: 600;
+                }
+                a {
+                    span {
+                        font-size: 11pt;
+                        font-weight: 400;
+                        font-style: normal;
+                        font-variant: normal;
+                        text-decoration: none;
+                        vertical-align: baseline;
+                        white-space: pre-wrap;
+                        color: rgb(255, 255, 255);
+                        background-color: rgb(20, 20, 20);
+                    }
+                }
+            }
+          }
+        }
+        .terms-list {
+            margin-top: 0;
+            margin-bottom: 15px;
+            padding-inline-start: 48px;
+            line-height: 30px;
+            margin-left: 25px;
+            li {
+                list-style-type: unset;
+                font-size: 11pt;
+                color: rgb(255, 255, 255);
+                background-color: transparent;
+                font-weight: 400;
+                font-style: normal;
+                font-variant: normal;
+                text-decoration: none;
+                vertical-align: baseline;
+            }
+        }
+        .terms-sm-list {
+            margin-top: 0;
+            margin-bottom: 15px;
+            padding-inline-start: 150px;
+            line-height: 30px;
+            li {
+                list-style-type: unset;
+                font-size: 11pt;
+                color: rgb(255, 255, 255);
+                background-color: transparent;
+                font-weight: 400;
+                font-style: normal;
+                font-variant: normal;
+                text-decoration: none;
+                vertical-align: baseline;
+            }
+        }
+    }
+}
+
+
+
+
+    

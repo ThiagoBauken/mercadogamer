@@ -1,0 +1,382 @@
+@import '../../../assets/styles/_variables';
+
+.contenedor {
+  overflow-x: hidden !important;
+  width     : 100%;
+
+  .header-container {
+    display : flex;
+    position: relative;
+    width   : 100%;
+
+    .header {
+      border-radius: 12px;
+      width        : 100%;
+      object-fit   : cover;
+      height       : 215px;
+
+      &.seller {
+        height: 300px;
+      }
+    }
+
+    .user-info {
+      position   : absolute;
+      display    : flex;
+      align-items: center;
+      bottom     : 20px;
+      left       : 8%;
+
+      .avatar {
+        width        : 102px;
+        height       : 102px;
+        object-fit   : cover;
+        border-radius: 50%;
+      }
+
+      span {
+        font-family: 'Montserrat';
+        font-style : normal;
+      }
+
+      .name {
+        font-weight: 600;
+        font-size  : 24px;
+        line-height: 34px;
+        color      : $light;
+        margin-left: 16px;
+      }
+
+      i {
+        margin-top  : 2px;
+        margin-right: 5px;
+        font-size   : 18px;
+      }
+
+      .init {
+        margin-left: 16px;
+      }
+
+      .disabled {
+        color: rgba(235, 235, 245, 0.6);
+      }
+
+      .qualification {
+        font-size  : 16px;
+        line-height: 20px;
+        color      : $light;
+        margin-left: 10px;
+      }
+
+      .votes {
+        font-weight: normal;
+        margin-left: 10px;
+        font-size  : 16px;
+        line-height: 20px;
+        color      : rgba(235, 235, 245, 0.6);
+      }
+    }
+
+    .select-profile {
+      position     : absolute;
+      top          : 8%;
+      right        : 4%;
+      background   : rgba(20, 20, 20, 0.8);
+      border-radius: 5px;
+      padding      : 10px;
+
+      span {
+        font-family: 'Montserrat';
+        font-style : normal;
+        font-weight: normal;
+        font-size  : 16px;
+        line-height: 20px;
+        color      : $light;
+      }
+
+      i {
+        margin-left: 16px;
+      }
+
+      p {
+        margin-top   : 12px;
+        margin-bottom: 0;
+        font-family  : 'Montserrat';
+        font-style   : normal;
+        font-weight  : normal;
+        font-size    : 16px;
+        line-height  : 20px;
+        color        : $light;
+      }
+    }
+  }
+
+  .product-container {
+    display              : grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content      : space-evenly;
+    gap                  : 18px;
+    margin               : 45px 0;
+  }
+
+  .game-name {
+    font-family: 'Montserrat';
+    color      : $light;
+    font-size  : 16px;
+    font-weight: 600;
+    margin-left: 16px;
+
+    &.discount {
+      opacity        : 0.6;
+      text-decoration: line-through;
+      font-weight    : 400;
+    }
+  }
+
+  .line-game {
+    background-color: $primary;
+    width           : 83px;
+    height          : 1px;
+    margin-top      : 10px;
+    margin-left     : 16px;
+  }
+
+  .pagined {
+    color      : $light;
+    font-family: 'Montserrat';
+    font-style : normal;
+    font-weight: normal;
+    font-size  : 16px;
+    line-height: 20px;
+
+    i {
+      margin-left: 10px;
+    }
+  }
+
+  .title {
+    font-family: 'Montserrat';
+    font-style : normal;
+    font-weight: 600;
+    font-size  : 16px;
+    line-height: 20px;
+    color      : $primary;
+  }
+
+  .fa-plus-circle {
+    font-size: 1.5rem;
+  }
+
+
+  .card {
+    background   : #333333;
+    border-radius: 10px;
+    padding      : 10px;
+    width        : 100%;
+
+    .icon-check {
+      display         : flex;
+      align-items     : center;
+      justify-content : center;
+      border-radius   : 50%;
+      height          : 60px;
+      width           : 60px;
+      background-color: rgba(177, 221, 139, 0.1);
+    }
+
+    .icon-process {
+      display         : flex;
+      align-items     : center;
+      justify-content : center;
+      border-radius   : 50%;
+      height          : 60px;
+      width           : 60px;
+      background-color: rgba(91, 147, 255, 0.1);
+    }
+
+    .icon-claim {
+      display         : flex;
+      align-items     : center;
+      justify-content : center;
+      border-radius   : 50%;
+      height          : 60px;
+      width           : 60px;
+      background-color: rgba(255, 214, 107, 0.1);
+    }
+
+    .icon-reject {
+      display         : flex;
+      align-items     : center;
+      justify-content : center;
+      border-radius   : 50%;
+      height          : 60px;
+      width           : 60px;
+      background-color: rgba(255, 143, 107, 0.1);
+    }
+
+    .mount {
+      font-style : normal;
+      font-weight: 600;
+      font-size  : 24px;
+      line-height: 33px;
+      color      : $light;
+      margin-left: 16px;
+    }
+
+    .description {
+      font-family: 'Montserrat';
+      font-style : normal;
+      font-weight: 400;
+      font-size  : 18px;
+      line-height: 25px;
+      color      : $light;
+      margin-left: 20px;
+    }
+  }
+
+  hr {
+    background: #95959b;
+    height    : 1px;
+    width     : 100%;
+  }
+
+  .options {
+    min-width: 100px;
+
+    button {
+      border-radius: 20px;
+      width        : 129px;
+      height       : 27px;
+      padding      : 0;
+      color        : rgba(235, 235, 245, 0.6);
+
+      &.active {
+        color      : #141414;
+        font-weight: 600;
+        font-family: 'Montserrat';
+      }
+    }
+  }
+
+  .filters {
+    max-width: 180px;
+    width    : 100%;
+
+    button {
+      width      : 129px;
+      height     : 27px;
+      padding    : 0;
+      font-family: 'Montserrat';
+      font-weight: 500;
+      color      : rgba(235, 235, 245, 0.6);
+
+      i {
+        margin-left: 3px;
+      }
+    }
+  }
+
+  .card-qualification {
+    border       : 1px solid rgba(235, 235, 245, 0.6);
+    background   : rgba(255, 255, 255, 0.1);
+    box-sizing   : border-box;
+    border-radius: 5px;
+
+    .avatar {
+      border-radius: 50%;
+      width        : 31px;
+      height       : 31px;
+      object-fit   : cover;
+    }
+
+    .title-qualification {
+      margin-left: 16px;
+      color      : $light;
+      font-family: 'Montserrat';
+      font-style : normal;
+      font-weight: 600;
+      font-size  : 16px;
+      line-height: 20px;
+    }
+
+    .stars {
+      margin-left: 33px;
+
+      .fa-star {
+        margin-right: 5px;
+        color       : rgba(235, 235, 245, 0.6);
+      }
+    }
+
+    .comments {
+      margin-left: 33px;
+      margin-top : 10px;
+
+      .comment {
+        font-family: 'Montserrat';
+        font-style : 400;
+        font-weight: normal;
+        font-size  : 16px;
+        line-height: 20px;
+        color      : $light;
+      }
+    }
+  }
+}
+
+@media (max-width: 375px) {
+  .user-info {
+    .name {
+      font-size: 16px !important;
+    }
+  }
+
+  .select-profile {
+    font-size: 13px !important;
+
+    span {
+      font-size: 13px !important;
+    }
+
+    p {
+      font-size: 13px !important;
+    }
+  }
+
+  .card {
+    .mount {
+      font-size: 20px !important;
+    }
+
+    .description {
+      font-size: 16px !important;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .filters {
+    max-width: 140px !important;
+
+    button {
+      font-size: 13px !important;
+      width    : 110px !important;
+    }
+  }
+}
+
+@media (max-width: 1160px) {
+  .filter-group {
+    justify-content: space-between;
+
+    .filters {
+      max-width: 180px !important;
+      width    : unset;
+
+      button {
+        font-size: 13px !important;
+        width    : 110px !important;
+      }
+    }
+  }
+}

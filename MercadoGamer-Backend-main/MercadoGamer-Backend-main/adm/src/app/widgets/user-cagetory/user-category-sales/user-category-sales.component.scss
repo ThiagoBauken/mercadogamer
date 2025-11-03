@@ -1,0 +1,69 @@
+@import 'src/assets/styles/_variables';
+
+:host {
+  display: grid;
+  gap    : 18px;
+
+  table {
+    width: 100%;
+
+    thead {
+      th {
+        font-size     : 14px;
+        text-align    : center;
+        vertical-align: bottom;
+      }
+    }
+
+    tbody {
+      tr {
+        background-color: #242424;
+        margin-bottom   : 18px;
+        height          : 60px;
+
+        &.spacing {
+          height          : 18px;
+          background-color: transparent;
+        }
+
+        td {
+          text-align    : center;
+          vertical-align: middle;
+
+          &:first-of-type {
+            border-radius: 4px 0 0 4px;
+            padding-left : 24px;
+          }
+
+          &:last-of-type {
+            border-radius: 0 4px 4px 0;
+            padding-left : 24px;
+          }
+
+          &.commission {
+            color: #50C33D;
+          }
+
+          &.discount {
+            color: red;
+          }
+
+          .product-info {
+            text-align           : left;
+            display              : grid;
+            grid-template-columns: min-content 1fr;
+            align-items          : center;
+            gap                  : 24px;
+            font-weight          : 600;
+
+            &>.product-picture {
+              background: no-repeat center/cover;
+              width     : 32px;
+              height    : 44px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

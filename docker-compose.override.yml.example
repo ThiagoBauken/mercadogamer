@@ -1,0 +1,36 @@
+# ============================================
+# Docker Compose Override - EXEMPLO
+# ============================================
+# Copie este arquivo para docker-compose.override.yml
+# para customizar configurações locais sem alterar
+# o docker-compose.yml principal
+#
+# cp docker-compose.override.yml.example docker-compose.override.yml
+
+version: '3.8'
+
+services:
+  # Exemplo: Mudar porta do frontend web
+  # frontend-web:
+  #   ports:
+  #     - "3002:3000"  # Muda porta local para 3002
+
+  # Exemplo: Adicionar variável de ambiente
+  # backend:
+  #   environment:
+  #     DEBUG: "api:*"
+  #     LOG_LEVEL: "debug"
+
+  # Exemplo: Expor porta do MongoDB
+  # mongodb:
+  #   ports:
+  #     - "27017:27017"
+
+  # Exemplo: Usar build local ao invés de imagem
+  # backend:
+  #   build:
+  #     context: ./MercadoGamer-Backend-main/MercadoGamer-Backend-main/api
+  #     dockerfile: Dockerfile
+  #   volumes:
+  #     - ./MercadoGamer-Backend-main/MercadoGamer-Backend-main/api:/app
+  #     - /app/node_modules

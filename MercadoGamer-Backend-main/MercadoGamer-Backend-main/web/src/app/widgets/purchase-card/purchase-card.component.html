@@ -1,0 +1,30 @@
+<div class="purchase-card">
+  <div
+    class="image-container"
+    [style]="global.getBackgroundUrl(imageUrl, 'assets/imgs/placeholder.png')"
+  ></div>
+  <div class="info">
+    <div class="label">{{ title }}</div>
+    <div class="stock">Cantidad: {{ quantity }}</div>
+    <div class="price">
+      {{ price }}
+    </div>
+  </div>
+  <div class="status">
+    <div class="label">
+      <p *ngIf="status === 'paid' || status === 'complaint'">Orden abierta</p>
+      <p *ngIf="status === 'finished' || status === 'cancelled'">
+        Orden cerrada
+      </p>
+    </div>
+    <div [class]="'icon' + ' ' + status">
+      <p *ngIf="status === 'finished'">Compra finalizada</p>
+      <p *ngIf="status === 'paid'">Compra en proceso</p>
+      <p *ngIf="status === 'complaint'">Compra con reclamo</p>
+      <p *ngIf="status === 'cancelled'">Compra reembolsada</p>
+    </div>
+    <div class="date">
+      <p>{{ date | date: 'dd/MM/YYYY' }}</p>
+    </div>
+  </div>
+</div>

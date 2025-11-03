@@ -1,0 +1,20 @@
+<div class="page-title">Ingresa tu nuevo número celular</div>
+<div *ngIf="currentStep !== 'verification'" class="content">
+  <app-mercado-phone-input
+    label="Nueva contraseña"
+    [value]="phoneNumber"
+    [error]="error"
+    [helper]="error"
+    (valueChange)="changePhoneNumber($event)"
+  ></app-mercado-phone-input>
+  <div class="action">
+    <app-button width="200px" (btnClick)="changePhone()">Guardar</app-button>
+  </div>
+</div>
+
+<app-verification-code
+  *ngIf="currentStep === 'verification'"
+  title="Verifica que es tu número"
+  description="Esta verificación es para confirmar que el numero te pertenece y vincularlo con tu cuenta."
+  (confirmAction)="verificationSms()"
+></app-verification-code>

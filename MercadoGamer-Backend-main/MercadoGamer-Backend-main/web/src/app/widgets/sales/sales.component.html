@@ -1,0 +1,81 @@
+<section class="sales-list">
+  <!-- <div class="sub-page-title">Ventas</div> -->
+  <div class="content">
+    <div class="list">
+      <app-sale-card
+        *ngFor="let order of data"
+        (click)="onCardClick(order, false)"
+        [title]="order?.product?.name"
+        [imageUrl]="order?.product?.picture"
+        [status]="order?.status"
+        [quantity]="order?.product?.stock"
+        [commission]="
+          (caculateProductPrice(order)
+            | toUSD
+            | currency: country.currency:'symbol-narrow':'1.0-2':'es-US') +
+          ' - ' +
+          (caculateProductPrice(order) / order.toUSD - selected.sellerProfit
+            | currency: country.currency:'symbol-narrow':'1.0-2':'es-US') +
+          ' (Comisión)'
+        "
+        [price]="
+          order.sellerProfit
+            | currency: country.currency:'symbol-narrow':'1.0-2':'es-US'
+        "
+        [date]="order?.createdAt"
+      ></app-sale-card>
+    </div>
+    <div class="information">
+      <app-product-information
+        *ngIf="selected"
+        [imageUrl]="global.getFullUrl(selected?.product?.picture)"
+        [name]="selected?.product?.name"
+        [showAction]="
+          selected.status !== 'cancelled' && selected.status !== 'returned'
+        "
+        (action)="goToPurchase(selected, false)"
+        [price]="
+          (selected?.product?.discount
+            ? selected?.product?.priceWithDiscount
+            : selected?.product?.price
+          )
+            | toUSD
+            | currency: country.currency:'symbol-narrow':'1.0-2':'es-US'
+        "
+        [date]="selected?.updatedAt"
+        [content]="[
+          {
+            label: 'Ganancia',
+            color: '#50C33D',
+            value:
+              selected.sellerProfit
+              | currency: country.currency:'symbol-narrow':'1.0-2':'es-US'
+          },
+          {
+            label: 'Comisión',
+            color: '#FF5935',
+            value:
+              (caculateProductPrice(selected) | toUSD) - selected.sellerProfit
+              | currency: country.currency:'symbol-narrow':'1.0-2':'es-US'
+          },
+          {
+            label: 'Total',
+            value:
+              caculateProductPrice(selected)
+              | toUSD
+              | currency: country.currency:'symbol-narrow':'1.0-2':'es-US'
+          }
+        ]"
+        [userInfo]="{
+          id: selected?.buyer?.id,
+          label: 'Comprador',
+          type: 'user',
+          userName:
+            selected?.buyer?.firstName + ' ' + selected?.buyer?.username,
+          image: global.getFullUrl(selected?.buyer?.picture),
+          showAction: selected.status === 'pending'
+        }"
+      ></app-product-information>
+    </div>
+  </div>
+</section>

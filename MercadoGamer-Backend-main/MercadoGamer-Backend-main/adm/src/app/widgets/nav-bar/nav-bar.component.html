@@ -1,0 +1,12 @@
+<ul>
+  <li
+    *ngFor="let item of navBarContents"
+    [routerLink]="[item.path]"
+    [ngClass]="{ active: isActive(item.path) }"
+  >
+    <div class="icon">
+      <mat-icon [svgIcon]="item.icon"></mat-icon>
+    </div>
+    <div class="label">{{ item.name }}</div>
+  </li>
+</ul>

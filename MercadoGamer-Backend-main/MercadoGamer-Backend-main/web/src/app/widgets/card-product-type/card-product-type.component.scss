@@ -1,0 +1,65 @@
+:host {
+  display: block;
+  width: 300px;
+  cursor: pointer;
+
+  .card-product-type {
+    display: grid;
+    border: 1px solid;
+    border-radius: 10px;
+    padding: 23px;
+    height: 392px;
+    align-items: flex-start;
+
+    &>.header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+
+      &>.image-container {
+        background: center/contain no-repeat;
+        width: 75px;
+        height: 75px;
+        margin-top: 41px;
+      }
+
+      &>.title {
+        font-size: 16px;
+        font-weight: 700;
+        margin-top: 8px;
+        font-style: normal;
+      }
+
+      &>.sub-title {
+        font-weight: 500;
+        margin-top: 8px;
+        font-style: normal;
+        font-size: 14px;
+        line-height: 17px;
+      }
+    }
+
+    &>.content {
+      &>.benefit {
+        font-weight: 700;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 15px;
+      }
+
+      &>.descriptions {
+        margin-top: 10px;
+        padding-left: 25px;
+
+        li {
+          font-style: normal;
+          font-weight: 500;
+          font-size: 12px;
+          line-height: 15px;
+        }
+      }
+    }
+  }
+}

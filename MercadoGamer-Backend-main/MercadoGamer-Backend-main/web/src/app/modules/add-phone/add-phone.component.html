@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="title">Ingresa tu nuevo número celular</div>
+  <div class="content">
+    <app-mercado-phone-input
+      label="Nueva contraseña"
+      [value]="phoneNumber"
+      (valueChange)="changePhoneNumber($event)"
+    ></app-mercado-phone-input>
+  </div>
+  <div class="action">
+    <app-button width="200px" (btnClick)="changePhone()">Guardar</app-button>
+  </div>
+</div>

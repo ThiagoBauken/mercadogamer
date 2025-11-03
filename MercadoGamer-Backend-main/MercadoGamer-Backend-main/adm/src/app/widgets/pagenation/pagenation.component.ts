@@ -1,0 +1,16 @@
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+
+@Component({
+  selector: 'app-pagenation',
+  templateUrl: './pagenation.component.html',
+  styleUrls: ['./pagenation.component.scss'],
+})
+export class PagenationComponent implements OnInit {
+  @Input() page: number;
+  @Input() totalPages: number;
+  @Output() previousPage = new EventEmitter();
+  @Output() nextPage = new EventEmitter();
+  constructor() {}
+
+  ngOnInit(): void {}
+}

@@ -1,0 +1,229 @@
+@import '../assets/styles/_variables';
+
+:host {
+  display           : grid;
+  grid-template-rows: min-content 1fr min-content;
+  min-height        : 100vh;
+  background-color  : #141414;
+  color             : white;
+
+  &>.app-container {
+    display              : grid;
+    grid-template-columns: min-content 1fr;
+
+    &>.nav-container {
+      border-right: 1px solid #38383A;
+    }
+
+    &>.main-container {
+      padding: 8px;
+    }
+  }
+}
+
+//$sidemenu_background: $primary;
+
+.sidenav-container {
+  height: 100%;
+}
+
+.texts {
+  font-size: 1rem;
+  cursor   : pointer;
+  color    : $light;
+}
+
+.sidenav {
+  width        : 250px;
+  border-right : 1px solid $secondary;
+  // box-shadow: 6px 0px 10px 0px rgba(243, 31, 31, 0.2);
+
+  .logo-container {
+    text-align: center;
+    margin    : 1rem auto;
+
+    img {
+      max-width: 120px;
+    }
+  }
+}
+
+// .mat-toolbar-row, .mat-toolbar-single-row
+
+.size-toolbar {
+
+  &.mat-toolbar-row,
+  &.mat-toolbar-single-row {
+    height: 120px !important;
+  }
+}
+
+.mat-toolbar {
+  background: $primary !important;
+
+  &.menubar {
+    color        : $light;
+    background   : $black !important;
+    font-family  : 'Source Sans Pro';
+    font-weight  : 500;
+    border-bottom: 1px solid $secondary;
+    // box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.20);
+  }
+
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+
+  .logout {
+    font-size: 0.9em;
+  }
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top     : 0;
+  z-index : 1;
+}
+
+.mat-drawer {
+  background-color: $primary !important;
+}
+
+.mat-drawer-container {
+  background-color: $black !important;
+  color           : $light;
+}
+
+.mat-nav-list {
+  &.global-mat-nav {
+    //margin-top: 150px;
+  }
+
+  .mat-list-item {
+    font-family: 'Source Sans Pro';
+    font-size  : 1.1rem;
+    height     : 3rem;
+    color      : $light;
+
+    &.sidenav-submenu-toogle {
+      .expand-icon {
+        margin-left: 1rem;
+      }
+    }
+
+    h3 {
+      font-size: 0.9em;
+    }
+
+    &.router-link-active {
+      // width: 95%;
+      // margin: auto;
+      // border-radius: 10px;
+      // background: #333333;
+      color           : $secondary;
+      // h3 {
+      //   font-weight: bold;
+      // }
+    }
+  }
+
+  &.sidenav-submenu {
+    margin-left: 2.5rem;
+
+    a {
+      font-size: 1em;
+    }
+  }
+}
+
+.gradientNav {
+  background: -moz-linear-gradient(top,
+      rgba(125, 185, 232, 0) 0%,
+      rgba(64, 182, 231, 0) 49%,
+      rgba(0, 179, 229, 0.15) 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top,
+      rgba(125, 185, 232, 0) 0%,
+      rgba(64, 182, 231, 0) 49%,
+      rgba(0, 179, 229, 0.15) 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom,
+      rgba(125, 185, 232, 0) 0%,
+      rgba(64, 182, 231, 0) 49%,
+      rgba(0, 179, 229, 0.15) 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#007db9e8', endColorstr='#2600b3e5', GradientType=0);
+  /* IE6-9 */
+}
+
+.opacityNav {
+  opacity: 0.2;
+}
+
+.backgroundLogin {
+  &.mat-drawer-container {
+    width                : 100%;
+    height               : 100%;
+    background-position  : center;
+    background-size      : cover;
+    background-repeat    : no-repeat;
+    background-attachment: fixed;
+
+    color: $light;
+  }
+}
+
+.containerGradient {
+  position: fixed;
+  top     : 0;
+  right   : 0;
+  width   : 600px;
+  height  : 800px;
+  z-index : -999;
+}
+
+.gradienteRadial {
+  position: absolute;
+  width   : 100%;
+  height  : 100%;
+  background: radial-gradient(ellipse farthest-corner at 110% 60%,
+      rgba(0, 179, 229, 0.3) 5%,
+      #2c2c2c00 25%);
+  z-index: -999;
+}
+
+.f-family {
+  margin     : 0 6px;
+  font-family: 'BalooBhaiRegular' !important;
+}
+
+popover-container {
+  border          : 1px solid $secondary !important;
+  background-color: $primary !important;
+}
+
+.headerPop {
+  padding      : 4px !important;
+  margin-bottom: 0.5rem !important;
+  border-bottom: 1px solid $secondary !important;
+  text-align   : center;
+
+  .titlePop {
+    margin: 0;
+    color : $primary;
+  }
+}
+
+.bodyPop {
+  padding   : 4px !important;
+  text-align: center;
+
+  .titleRS {
+    margin   : 0;
+    font-size: 8.5pt;
+  }
+
+  .btn-RS {
+    margin: 2px;
+  }
+}

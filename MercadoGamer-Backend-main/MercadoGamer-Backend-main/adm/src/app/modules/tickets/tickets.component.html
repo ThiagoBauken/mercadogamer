@@ -1,0 +1,128 @@
+<div class="container-fluid p-0">
+  <div class="row justify-content-center pt-4 pr-4 pb-4">
+    <div class="col-md-8">
+      <span class="title quest ml-4">Tickets</span>
+
+      <div class="card mt-4 ml-4" *ngIf="!tickets || !tickets?.length">
+        <div class="row">
+          <div class="col-md-12 p-0 text-center">
+            <span class="title text-primary">{{
+              loading ? 'Cargando...' : 'No se encontró ningún ticket.'
+            }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="card mt-4 ml-4"
+        *ngFor="let ticket of tickets"
+        (click)="openChat(ticket)"
+      >
+        <div class="row">
+          <div class="col mb-2">
+            <span>{{ getDate(ticket) }}</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-1">
+            <img
+              [src]="filesUrl + ticket?.user?.picture"
+              onerror="this.src = 'assets/imgs/avatar.png'"
+              class="avatar"
+            />
+          </div>
+          <div class="col-md-10 p-0">
+            <span class="title">{{ ticket?.title }}</span>
+            <p class="text">{{ ticket?.body }}</p>
+          </div>
+          <div
+            class="col-md-1 align-items-center"
+            *ngIf="ticket.status === 'pending'"
+          >
+            <button class="btn btn-clear">
+              <i class="fa fa-bell notif"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="row pt-4 pb-4 pr-4">
+        <div class="col-10"></div>
+        <div class="col-2 text-right">
+          <span class="pagined"
+            ><i
+              class="fa fa-chevron-left text-light"
+              (click)="previousPage()"
+              *ngIf="page !== 1"
+              style="cursor: pointer"
+            ></i>
+            {{ page }}/{{ totalPages }}
+            <i
+              class="fa fa-chevron-right text-light"
+              (click)="nextPage()"
+              *ngIf="page !== totalPages && totalPages > 0"
+              style="cursor: pointer"
+            ></i
+          ></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <span class="invisible">.</span>
+      <div class="card-chat mt-4" *ngIf="itemSelected && chat">
+        <div class="row">
+          <div class="col-md-2" (click)="goToProfile(itemSelected.user.id)">
+            <img
+              [src]="filesUrl + itemSelected.user.picture"
+              onerror="this.src = 'assets/imgs/avatar.png'"
+              class="avatar"
+            />
+          </div>
+          <div class="col-md-10">
+            <span class="title">{{ itemSelected.title }}</span>
+            <p class="text">{{ itemSelected.body }}</p>
+          </div>
+        </div>
+
+        <div class="row mt-3" *ngIf="itemSelected.answer">
+          <div class="col-md-10 text-right">
+            <p class="text send">{{ itemSelected.answer }}</p>
+          </div>
+          <div class="col-md-2 text-center">
+            <img src="assets/imgs/support.png" class="admin-avatar" />
+          </div>
+        </div>
+
+        <div class="footer" *ngIf="!itemSelected.answer">
+          <div class="row align-items-center">
+            <div class="col-md-9">
+              <div class="form-group mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Responder"
+                  [(ngModel)]="answer"
+                />
+              </div>
+            </div>
+            <!-- <div class="col-md-1">
+              <button class="btn btn-clear">
+                <img src="assets/imgs/clip.png" alt="">
+              </button>
+            </div> -->
+            <div class="col-md-3">
+              <button
+                class="btn btn-clear"
+                (click)="answerTicket()"
+                [disabled]="!answer"
+              >
+                <img src="assets/imgs/send.png" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

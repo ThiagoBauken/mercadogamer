@@ -1,0 +1,258 @@
+<div [ngClass]="{ loading: true, active: loading }"></div>
+<div class="container-fluid p-0">
+  <div class="row justify-content-center pr-4 pb-4">
+    <div class="col">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <span class="title quest ml-4">Ventas</span>
+        </div>
+        <div class="col-md-2">
+          <span class="title quest ml-4">Ganancias</span>
+        </div>
+        <div class="col-md-2 text-right">
+          <button mat-button [matMenuTriggerFor]="menu">
+            <span
+              class="text-primary ml-2"
+              style="
+                font-family: 'Montserrat';
+                font-weight: 600;
+                font-size: 1rem;
+              "
+            >
+              {{ getFilterLabel() }}
+            </span>
+            <i class="fa fa-chevron-down text-primary ml-2"></i>
+            <mat-menu #menu="matMenu" class="filter-date">
+              <div
+                *ngFor="let item of filterDates"
+                mat-menu-item
+                (click)="onChangeFilter(item.value)"
+              >
+                {{ item.label }}
+              </div>
+            </mat-menu>
+          </button>
+        </div>
+        <div class="col-md-2">
+          <mat-select
+            [(value)]="selectedCountry"
+            class="country-select"
+            (selectionChange)="getItems()"
+          >
+            <mat-option [value]="country.id" *ngFor="let country of countries">
+              <img
+                with="38"
+                height="24"
+                [src]="filesUrl + country.picture"
+                onerror="this.src = 'assets/imgs/placeholder.png'"
+              />
+              <span class="ml-3">{{ country?.name }}</span>
+            </mat-option>
+            <mat-option value="">
+              <img with="45" height="32" src="assets/imgs/global.png" />
+              <span class="ml-3">Global</span>
+            </mat-option>
+          </mat-select>
+        </div>
+      </div>
+
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <div class="card ml-4 mt-3">
+            <div class="card-content">
+              <apx-chart
+                [series]="SalesChartOptions.series"
+                [title]="SalesChartOptions.title"
+                [xaxis]="SalesChartOptions.xaxis"
+                [chart]="AreaChartOptions.chart"
+                [yaxis]="SalesChartOptions.yaxis"
+                [dataLabels]="AreaChartOptions.dataLabels"
+                [fill]="AreaChartOptions.fill"
+                [stroke]="AreaChartOptions.stroke"
+                [markers]="AreaChartOptions.markers"
+                [tooltip]="AreaChartOptions.tooltip"
+                [grid]="AreaChartOptions.grid"
+              ></apx-chart>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card ml-4 mt-3">
+            <div class="card-content">
+              <apx-chart
+                [series]="ProfitsChartOptions.series"
+                [title]="ProfitsChartOptions.title"
+                [xaxis]="ProfitsChartOptions.xaxis"
+                [chart]="AreaChartOptions.chart"
+                [yaxis]="ProfitsChartOptions.yaxis"
+                [dataLabels]="AreaChartOptions.dataLabels"
+                [fill]="AreaChartOptions.fill"
+                [stroke]="AreaChartOptions.stroke"
+                [markers]="AreaChartOptions.markers"
+                [tooltip]="AreaChartOptions.tooltip"
+                [grid]="AreaChartOptions.grid"
+              ></apx-chart>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="table-responsive mt-4">
+        <table class="table">
+          <thead>
+            <tr>
+              <th></th>
+              <th class="text-center">
+                <button type="button" class="btn btn-clear">
+                  <span class="text-light">Producto</span>
+                  <i class="fa" aria-hidden="true"></i>
+                </button>
+              </th>
+              <th class="text-center">
+                <button type="button" class="btn btn-clear">
+                  <span class="text-light"> Orden</span>
+                  <i class="fa" aria-hidden="true"></i>
+                </button>
+              </th>
+              <th class="text-center">
+                <button type="button" class="btn btn-clear">
+                  <span class="text-light">TOTAL</span>
+                  <i class="fa" aria-hidden="true"></i>
+                </button>
+              </th>
+              <th class="text-center">
+                <button type="button" class="btn btn-clear">
+                  <span class="text-light">Cant</span>
+                  <i class="fa" aria-hidden="true"></i>
+                </button>
+              </th>
+              <th class="text-center">
+                <button type="button" class="btn btn-clear">
+                  <span class="text-light">Comisión C</span>
+                  <i class="fa" aria-hidden="true"></i>
+                </button>
+              </th>
+              <th class="text-center">
+                <button type="button" class="btn btn-clear">
+                  <span class="text-light">Comisión V</span>
+                  <i class="fa" aria-hidden="true"></i>
+                </button>
+              </th>
+              <th class="text-center">
+                <button type="button" class="btn btn-clear">
+                  <span class="text-light">Descuento</span>
+                  <i class="fa" aria-hidden="true"></i>
+                </button>
+              </th>
+              <th class="text-center">
+                <button type="button" class="btn btn-clear">
+                  <span class="text-light">Ganancia</span>
+                  <i class="fa" aria-hidden="true"></i>
+                </button>
+              </th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <!-- Cargador -->
+            <tr *ngIf="loading" class="text-center">
+              <td colspan="10">
+                <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
+                Cargando...
+              </td>
+            </tr>
+            <!-- Texto cuando no hay resultados  -->
+            <tr *ngIf="!loading && orders?.length == 0" class="text-center">
+              <td colspan="10">
+                <span class="text-muted">
+                  <i class="fa fa-close" aria-hidden="true"></i>
+                  No hay resultados para mostrar
+                </span>
+              </td>
+            </tr>
+            <ng-container *ngIf="orders">
+              <tr
+                *ngFor="
+                  let order of orders?.slice(
+                    perPage * (page - 1),
+                    perPage * page
+                  )
+                "
+              >
+                <td class="pt-0 text-center">
+                  <img
+                    [src]="filesUrl + order.product?.picture"
+                    onerror="this.src = 'assets/imgs/placeholder.png'"
+                    width="50px"
+                    height="50px"
+                    style="object-fit: cover"
+                  />
+                </td>
+                <td class="px-4 text-center">
+                  {{ order.product.name }}
+                </td>
+                <td class="px-4 text-center">#{{ order.number }}</td>
+                <td class="px-4 text-center">
+                  {{
+                    order.pricePaid
+                      | currency: order.country.currency:'code':'1.0-2':'es-US'
+                  }}
+                </td>
+                <td class="px-4 text-center">
+                  {{ order.product?.sold }}
+                </td>
+                <td class="px-4 text-center">
+                  {{
+                    order.commissionC
+                      | toUSD: null:order.toUSD
+                      | currency: order.country.currency:'code':'1.0-2':'es-US'
+                  }}
+                </td>
+                <td class="px-4 text-center">
+                  {{
+                    order.commissionV
+                      | toUSD: null:order.toUSD
+                      | currency: order.country.currency:'code':'1.0-2':'es-US'
+                  }}
+                </td>
+                <td class="px-4 text-center">
+                  {{
+                    order.discount
+                      | currency: order.country.currency:'code':'1.0-2':'es-US'
+                  }}
+                </td>
+                <td class="text-center" [ngClass]="order.className">
+                  {{
+                    order.adminIncome
+                      | currency: order.country.currency:'code':'1.0-2':'es-US'
+                  }}
+                </td>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="row pt-4 pb-4 pr-4">
+        <div class="col-10"></div>
+        <div class="col-2 text-right">
+          <span class="pagined"
+            ><i
+              class="fa fa-chevron-left text-light"
+              (click)="previousPage()"
+              *ngIf="page !== 1"
+              style="cursor: pointer"
+            ></i>
+            {{ page }}/{{ totalPages }}
+            <i
+              class="fa fa-chevron-right text-light"
+              (click)="nextPage()"
+              *ngIf="page !== totalPages && totalPages > 0"
+              style="cursor: pointer"
+            ></i
+          ></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

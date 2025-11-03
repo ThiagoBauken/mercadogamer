@@ -1,0 +1,96 @@
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../../../../assets/fonts/Montserrat-Regular.ttf');
+}
+::ng-deep {
+  .catalog-popup {
+    font-family: "Montserrat";
+    position: absolute;
+    right: 30px;
+    &::before {
+      content: "";
+      width: 29px;
+      height: 10px;
+      background: #F78A0E;
+      position: absolute;
+      right: 145px;
+      clip-path: polygon(50% 0, 100% 100%, 0 100%);
+    }
+  
+    .popup-body {
+      top: 10px;
+      position: relative;
+      background: rgba(0, 0, 0, 0.9);
+      border: 1px solid #F78A0E;
+      box-sizing: border-box;
+      border-radius: 26px 19px 19px 19px;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      padding-right: 49px;
+      padding-left: 29px;
+      min-width: 564.39px;
+      min-height: 248px;
+      div {
+        border-left: 1px solid rgba(188, 188, 188, 0.3);
+        position: relative;
+        ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          li {
+            vertical-align: middle;
+            font-size: 14px;
+            cursor: pointer;
+            div {
+              border: unset;
+              position: unset;
+              .arrow-right {
+                position: absolute;
+                right: 15px;
+              }
+              .mat-icon{
+                transform: scale(0.7);
+              }
+              // &:hover {
+              //   color: #F78A0E;
+              // }
+            }
+          }
+        }
+      }
+  
+      .parent-cateory {
+        min-width: 100px;
+        padding: 30px 38px 4px 0px;
+        border: unset !important;
+        ul {
+          li {
+            margin-bottom: 20px;
+          }
+        }
+      }
+  
+      .sub-cateory {
+        padding: 30px 38px 24px 13px;
+      }
+  
+      .product-name {
+        padding: 30px 45px 24px 13px;
+      }
+  
+      .product-img {
+        padding: 39px 0px 24px 13px;
+        border: unset !important;
+        img {
+          border-radius: 15px;
+          max-width: 105px;
+        }
+      }
+  
+      .active {
+        color: #F78A0E;
+      }
+    }
+  }
+}

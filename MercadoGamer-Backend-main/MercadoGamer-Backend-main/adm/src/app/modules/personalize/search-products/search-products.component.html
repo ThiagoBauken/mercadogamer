@@ -1,0 +1,57 @@
+<div>
+  <div class="d-flex justify-content-center mt-2">
+    <div class="form-group mt-2 w-100">
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="search"
+        (ngModelChange)="searchProducts()"
+      />
+    </div>
+  </div>
+  <div
+    class="d-flex justify-content-center mt-1 position-absolute search-body"
+    *ngIf="search"
+  >
+    <div class="card-search">
+      <div class="max-height-500 mce-scrollbar-h">
+        <div class="row text-center" *ngIf="!productsFound">
+          <div class="col-md-12">
+            <span class="game-name">Cargando...</span>
+          </div>
+        </div>
+        <div class="row text-center" *ngIf="productsFound?.length === 0">
+          <div class="col-md-12">
+            <span class="game-name">No se encontró ningún producto.</span>
+          </div>
+        </div>
+        <div
+          class="row mt-3 align-items-center"
+          style="cursor: pointer"
+          *ngFor="let product of productsFound"
+          (click)="handleItem(product.id)"
+        >
+          <div class="col-md-1">
+            <img
+              [src]="filesUrl + product.picture"
+              onerror="this.src = 'assets/imgs/placeholder.png'"
+            />
+          </div>
+          <div class="col-md-1"></div>
+          <div class="col-md-3">
+            <span class="game-name">{{ product.name }}</span>
+          </div>
+          <div class="col-md-1"></div>
+          <div class="col-md-3">
+            <span class="game-price">{{
+              product.price | currency: "USD":"code":"1.0-2":"es-US"
+            }}</span>
+          </div>
+          <div class="col-md-3">
+            <span class="game-price">{{ product.user.username }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

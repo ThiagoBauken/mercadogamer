@@ -1,0 +1,37 @@
+<app-loading *ngIf="loading"></app-loading>
+
+<div class="header">
+  <div class="title">Usuarios totales:</div>
+  <div class="user-count">{{ userCount }}</div>
+</div>
+
+<div class="search">
+  <app-search
+    [value]="search"
+    (valueChange)="changeSearch($event)"
+  ></app-search>
+</div>
+
+<div class="content">
+  <ul class="user-list">
+    <li *ngFor="let user of userList" [routerLink]="[getUserLink(user)]">
+      <div
+        class="avatar"
+        [style]="
+          pageService.global.getBackgroundUrl(
+            user.picture,
+            '/assets/imgs/avatar.png'
+          )
+        "
+      ></div>
+      <div class="user-name">{{ getUserName(user) }}</div>
+    </li>
+  </ul>
+
+  <app-pagenation
+    [page]="currentPage"
+    [totalPages]="totalPage"
+    (nextPage)="nextPage()"
+    (previousPage)="previousPage()"
+  ></app-pagenation>
+</div>

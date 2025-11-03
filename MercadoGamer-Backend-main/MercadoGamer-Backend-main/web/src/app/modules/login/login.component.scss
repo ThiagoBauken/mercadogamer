@@ -1,0 +1,47 @@
+@import 'src/assets/styles/_globals';
+
+:host {
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+  padding        : 180px 0;
+
+  .container {
+    background-color: #202020;
+    width           : 364px;
+    padding         : 50px 40px;
+    border-radius   : 15px;
+    display         : grid;
+    gap             : 20px;
+
+    &>.title {
+      font-weight  : 600;
+      font-size    : 24px;
+      text-align   : center;
+      margin-bottom: 13px;
+    }
+
+    &>.input-container {
+      display: grid;
+      gap    : 15px;
+    }
+
+    &>.forgot-password {
+      text-align: center;
+      cursor    : pointer;
+      color     : $primary;
+    }
+
+    &>.register {
+      text-align: center;
+
+      &>a {
+        color: #EBEBF599;
+      }
+    }
+
+    &>.submit-error {
+      color: $field-error;
+    }
+  }
+}

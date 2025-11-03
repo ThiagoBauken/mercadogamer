@@ -1,0 +1,31 @@
+<div class="product-card">
+  <div [class]="'card-title ' + product?.status">
+    {{ getProductCadeStatus(product?.status) }}
+  </div>
+  <div class="content">
+    <div
+      class="image-container"
+      [style]="
+        global.getBackgroundUrl(product.picture, 'assets/imgs/placeholder.png')
+      "
+    ></div>
+    <div class="info">
+      <div class="label">{{ product?.name }}</div>
+      <div class="stock">Stock: {{ product?.stock }}</div>
+      <div class="price">
+        {{
+          product?.price
+            | toUSD
+            | currency: country?.currency:'symbol-narrow':'1.0-2':'es-US'
+        }}
+      </div>
+    </div>
+    <div class="action">
+      <mat-icon svgIcon="trash" (click)="disableProduct(product.id)"></mat-icon>
+      <mat-icon
+        svgIcon="pencil"
+        (click)="goToProductEdit(product.id)"
+      ></mat-icon>
+    </div>
+  </div>
+</div>

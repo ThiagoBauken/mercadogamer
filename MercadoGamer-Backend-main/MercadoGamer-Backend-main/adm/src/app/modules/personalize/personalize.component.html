@@ -1,0 +1,259 @@
+<div class="container-fluid p-0">
+  <div class="row justify-content-center pr-4 pb-4">
+    <div class="col-md-10">
+      <span class="title quest ml-4"
+        >Personalización de la pagina principal</span
+      >
+      <!-- BEGIN DESKTOP BANNER -->
+      <div class="d-flex align-items-center pl-4 pt-4 mt-4">
+        <div class="text-left mr-4">
+          <span class="label">Banners for:</span>
+        </div>
+        <div class="banner-select">
+          <mat-select class="form-group mb-0" [(ngModel)]="bannerType">
+            <mat-option value="desktop">
+              <span class="ml-3">Desktop</span>
+            </mat-option>
+            <mat-option value="mobile">
+              <span class="ml-3">Mobile</span>
+            </mat-option>
+          </mat-select>
+        </div>
+      </div>
+
+      <div class="row mt-4 align-items-center">
+        <div class="col-md-3">
+          <div
+            class="card-add ml-4"
+            (click)="addBanner(bannerType === 'desktop' ? 'desktop' : 'mobile')"
+            style="cursor: pointer"
+          >
+            <i class="fa fa-plus"></i>
+          </div>
+          <div class="row justify-content-center mt-2">
+            <span>.</span>
+          </div>
+        </div>
+        <div
+          class="col-md-3"
+          *ngFor="
+            let banner of bannerType === 'desktop'
+              ? desktopBanners
+              : mobileBanners
+          "
+        >
+          <div class="card-img">
+            <img
+              [src]="filesUrl + banner.picture"
+              onerror="this.src = 'assets/imgs/placeholder.png'"
+            />
+          </div>
+          <div
+            class="row justify-content-center mt-2"
+            style="cursor: pointer"
+            (click)="deleteBanner(banner.id)"
+          >
+            <i class="fa fa-trash text-danger mr-2"></i>
+            <span class="text-danger">Eliminar</span>
+          </div>
+        </div>
+      </div>
+      <!-- END DESKTOP BANNER -->
+      <!-- BEGIN DESKTOP BANNER -->
+      <!-- <div class="row align-items-center pl-4 pt-4 pr-4 mt-4">
+        <div class="col text-left">
+          <span class="label">Mobile Banners</span>
+        </div>
+      </div>
+
+      <div class="row mt-4 align-items-center">
+        <div class="col-md-3">
+          <div class="card-add ml-4" (click)="addBanner('mobile')" style="cursor: pointer;">
+            <i class="fa fa-plus"></i>
+          </div>
+          <div class="row justify-content-center mt-2">
+            <span>.</span>
+          </div>
+        </div>
+        <div class="col-md-3" *ngFor="let banner of mobileBanners">
+          <div class="card-img">
+            <img [src]="filesUrl + banner.picture" onerror="this.src = 'assets/imgs/placeholder.png'">
+          </div>
+          <div class="row justify-content-center mt-2" style="cursor: pointer;" (click)="deleteBanner(banner.id)">
+            <i class="fa fa-trash text-danger mr-2"></i>
+            <span class="text-danger">Eliminar</span>
+          </div>
+        </div>
+      </div> -->
+      <!-- END DESKTOP BANNER -->
+      <!-- BEGIN TENDENCIAS -->
+      <div>
+        <div class="row align-items-center pl-4 pt-4 pr-4 mt-4">
+          <div class="col-12 text-left">
+            <span class="label">Productos tendencias</span>
+          </div>
+        </div>
+        <div class="row mt-4 pl-4 align-items-center">
+          <div
+            class="col-md-2 position-unset"
+            *ngFor="let item of tendencias; let i = index"
+          >
+            <div class="card-img">
+              <img
+                [src]="filesUrl + item.product?.picture"
+                onerror="this.src = 'assets/imgs/placeholder.png'"
+              />
+            </div>
+            <app-search-products
+              [order]="i"
+              type="tendencia"
+              (onClickItem)="addHomepageProduct($event)"
+            ></app-search-products>
+          </div>
+        </div>
+      </div>
+      <!-- END TENDENCIAS -->
+      <!-- BEGIN JUEGOS -->
+      <div>
+        <div class="row align-items-center pl-4 pt-4 pr-4 mt-4">
+          <div class="col-12 text-left">
+            <span class="label">Productos Juegos</span>
+          </div>
+        </div>
+        <div class="row mt-4 pl-4 align-items-center">
+          <div
+            class="col-md-2 position-unset"
+            *ngFor="let item of juegos; let i = index"
+          >
+            <div class="card-img">
+              <img
+                [src]="filesUrl + item.product?.picture"
+                onerror="this.src = 'assets/imgs/placeholder.png'"
+              />
+            </div>
+            <app-search-products
+              [order]="i"
+              type="juego"
+              (onClickItem)="addHomepageProduct($event)"
+            ></app-search-products>
+          </div>
+        </div>
+      </div>
+      <!-- END JUEGOS -->
+      <!-- BEGIN SKINS -->
+      <div>
+        <div class="row align-items-center pl-4 pt-4 pr-4 mt-4">
+          <div class="col-12 text-left">
+            <span class="label">Productos Skins</span>
+          </div>
+        </div>
+        <div class="row mt-4 pl-4 align-items-center">
+          <div
+            class="col-md-2 position-unset"
+            *ngFor="let item of skins; let i = index"
+          >
+            <div class="card-img">
+              <img
+                [src]="filesUrl + item.product?.picture"
+                onerror="this.src = 'assets/imgs/placeholder.png'"
+              />
+            </div>
+            <app-search-products
+              [order]="i"
+              type="skin"
+              (onClickItem)="addHomepageProduct($event)"
+            ></app-search-products>
+          </div>
+        </div>
+      </div>
+      <!-- END SKINS -->
+      <!-- BEGIN FEATURED PRODUCT -->
+      <div class="position-relative featured-products">
+        <div class="row align-items-center mt-4">
+          <div class="col-md-4 mt-2">
+            <div class="form-group ml-4 mt-2">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Escribe el nombre del juego"
+                [(ngModel)]="search"
+                (ngModelChange)="searchProducts()"
+              />
+            </div>
+          </div>
+          <div class="col-md-8"></div>
+          <div class="col-md-3"></div>
+        </div>
+
+        <div class="row mt-1 ml-2" *ngIf="search">
+          <div class="col-md-4">
+            <div class="card-search">
+              <div class="row text-center" *ngIf="!productsFound">
+                <div class="col-md-12">
+                  <span class="game-name">Cargando...</span>
+                </div>
+              </div>
+              <div class="row text-center" *ngIf="productsFound?.length === 0">
+                <div class="col-md-12">
+                  <span class="game-name">No se encontró ningún producto.</span>
+                </div>
+              </div>
+              <div
+                class="row mt-3 align-items-center"
+                style="cursor: pointer"
+                *ngFor="let product of productsFound"
+                (click)="addFeatured(product.id)"
+              >
+                <div class="col-md-1">
+                  <img
+                    [src]="filesUrl + product.picture"
+                    onerror="this.src = 'assets/imgs/placeholder.png'"
+                  />
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-3">
+                  <span class="game-name">{{ product.name }}</span>
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-3">
+                  <span class="game-price">{{
+                    product.price | currency: 'USD':'code':'1.0-2':'es-US'
+                  }}</span>
+                </div>
+                <div class="col-md-3">
+                  <span class="game-price">{{ product.user.username }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="position-absolute w-100 r-70-reverse">
+          <div class="games-cont justify-content-between pl-4">
+            <div class="game" *ngFor="let featuredProduct of featuredProducts">
+              <img
+                [src]="filesUrl + featuredProduct.picture"
+                onerror="this.src = 'assets/imgs/placeholder.png'"
+              />
+              <div class="name">
+                <span>{{ featuredProduct.game?.name }}</span>
+              </div>
+              <div class="delete" (click)="deleteFeatured(featuredProduct.id)">
+                <i class="fa fa-trash"></i>
+                <span>Eliminar</span>
+              </div>
+            </div>
+          </div>
+          <div class="position-relative">
+            <button
+              class="position-absolute btn btn-primary btn-block btn-save"
+            >
+              Guardar
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- END FEATURED PRODUCT -->
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+</div>

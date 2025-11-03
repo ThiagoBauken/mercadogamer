@@ -1,0 +1,81 @@
+# ==================================
+# MercadoGamer - .gitignore
+# ==================================
+
+# Environment variables (NUNCA COMMITAR!)
+.env
+.env.local
+.env.*.local
+.env.production
+.env.development
+
+# Node modules
+node_modules/
+npm-debug.log
+yarn-error.log
+yarn-debug.log
+package-lock.json
+yarn.lock
+
+# Build outputs
+dist/
+build/
+.next/
+out/
+*.tsbuildinfo
+
+# Logs
+logs/
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Certificates e keys (SEGURANÇA!)
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+ca_bundle.crt
+certificate.crt
+private.key
+
+# Uploads e arquivos temporários
+uploads/
+files/
+tmp/
+temp/
+*.tmp
+
+# Docker
+docker-compose.override.yml
+
+# Coverage e testes
+coverage/
+.nyc_output/
+*.lcov
+
+# Pastas legadas Angular (para limpar depois)
+MercadoGamer-Backend-main/adm/
+MercadoGamer-Backend-main/web/
+
+# AWS credentials (se ainda existirem)
+.aws/
+aws-credentials.json
+
+# Database dumps
+*.sql
+*.dump
+*.bak
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini

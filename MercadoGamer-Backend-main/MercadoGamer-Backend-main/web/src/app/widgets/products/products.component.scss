@@ -1,0 +1,43 @@
+@import 'src/assets/styles/_variables';
+
+:host {
+  width    : 100%;
+  max-width: 895px;
+  display  : block;
+
+  section.products-list {
+    display           : grid;
+    gap               : 8px;
+    grid-template-rows: min-content 1fr;
+
+    &>.header {
+      display        : flex;
+      justify-content: space-between;
+
+      &>.label {
+        font-size  : 18px;
+        font-weight: 600;
+        color      : #F78A0E;
+      }
+    }
+
+    &>.content {
+      display: grid;
+      gap    : 29px;
+    }
+  }
+
+  @include brackpoint-md {
+    section.products-list {
+      &>.header {
+        &>.label {
+          font-size: 14px;
+        }
+
+        &>.action {
+          display: none
+        }
+      }
+    }
+  }
+}

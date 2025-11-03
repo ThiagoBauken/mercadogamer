@@ -1,0 +1,209 @@
+<div
+  [ngClass]="{ 'controller-container': true, active: showFilterOption }"
+  (mouseover)="isIn = true"
+  (mouseleave)="isIn = false"
+  (focusout)="hideFilterOption()"
+>
+  <div class="title">
+    <mat-icon svgIcon="dolar"></mat-icon>
+    <div class="label">Precio</div>
+  </div>
+
+  <div class="custom-range-slider">
+    <ngx-slider
+      [(value)]="value"
+      [(highValue)]="highValue"
+      [options]="options"
+      (userChangeEnd)="handleSlider($event)"
+    ></ngx-slider>
+    <div class="value-item">
+      <div class="label">min:</div>
+      <div class="value">
+        {{
+          value
+            | toUSD
+            | currency: country.currency:'symbol-narrow':'1.0-2':'es-US'
+        }}
+      </div>
+    </div>
+    <div class="value-item">
+      <div class="label">max:</div>
+      <div class="value">
+        {{
+          highValue
+            | toUSD
+            | currency: country.currency:'symbol-narrow':'1.0-2':'es-US'
+        }}
+      </div>
+    </div>
+  </div>
+
+  <div [ngClass]="{ 'filter-container': true, active: showFilterOption }">
+    <div
+      [ngClass]="{ 'filter-category': true, active: showFilters.platform }"
+      (click)="showFilters.platform = !showFilters.platform"
+    >
+      <mat-icon svgIcon="game"></mat-icon>
+      <div class="label">Plataformas</div>
+      <i
+        class="fa"
+        aria-hidden="true"
+        [ngClass]="showFilters.platform ? 'fa-chevron-up' : 'fa-chevron-down'"
+      ></i>
+    </div>
+
+    <div *ngIf="showFilters.platform" class="filter-content">
+      <mat-checkbox
+        *ngFor="let platform of platforms; index as i"
+        color="warn"
+        [checked]="selectedPlatforms.includes(platform.id)"
+        (change)="handleFilters($event, 'Platforms')"
+        [value]="platform.id"
+        >{{ platform.name }}</mat-checkbox
+      >
+    </div>
+
+    <div
+      [ngClass]="{ 'filter-category': true, active: showFilters.type }"
+      (click)="showFilters.type = !showFilters.type"
+    >
+      <mat-icon svgIcon="product-type"></mat-icon>
+      <div class="label">Tipo de producto</div>
+      <i
+        class="fa"
+        aria-hidden="true"
+        [ngClass]="showFilters.type ? 'fa-chevron-up' : 'fa-chevron-down'"
+      ></i>
+    </div>
+
+    <div *ngIf="showFilters.type" class="filter-content">
+      <mat-checkbox
+        *ngFor="let type of settings.products.types"
+        color="warn"
+        [checked]="selectedTypes.includes(type.code)"
+        (change)="handleFilters($event, 'Types')"
+        [value]="type.code"
+        >{{ type.label }}</mat-checkbox
+      >
+    </div>
+
+    <div
+      [ngClass]="{ 'filter-category': true, active: showFilters.category }"
+      (click)="showFilters.category = !showFilters.category"
+    >
+      <mat-icon svgIcon="windows"></mat-icon>
+      <div class="label">Categoría</div>
+      <i
+        class="fa"
+        aria-hidden="true"
+        [ngClass]="showFilters.category ? 'fa-chevron-up' : 'fa-chevron-down'"
+      ></i>
+    </div>
+
+    <div *ngIf="showFilters.category" class="filter-content">
+      <mat-checkbox
+        *ngFor="let category of categories"
+        color="warn"
+        [checked]="selectedCategories.includes(category.id)"
+        (change)="handleFilters($event, 'Categories')"
+        [value]="category.id"
+      >
+        {{ category.name }}
+      </mat-checkbox>
+    </div>
+
+    <div
+      [ngClass]="{ 'filter-category': true, active: showFilters.search }"
+      (click)="showFilters.search = !showFilters.search"
+    >
+      <mat-icon svgIcon="juegos"></mat-icon>
+      <div class="label">Juegos</div>
+      <i
+        class="fa"
+        aria-hidden="true"
+        [ngClass]="showFilters.search ? 'fa-chevron-up' : 'fa-chevron-down'"
+      ></i>
+    </div>
+
+    <div *ngIf="showFilters.search" class="filter-content">
+      <div class="search">
+        <input
+          class="form-control form-control-sm"
+          type="text"
+          placeholder="Ver productos del juego"
+          aria-label="Search"
+          mdbInput
+          (keyup.enter)="filterName()"
+          [(ngModel)]="searchGame"
+          [ngModelOptions]="{ standalone: true }"
+        />
+        <i class="fa fa-search icon text-right" aria-hidden="true"></i>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="main-container">
+  <div class="header">
+    <div class="pagetitle">
+      Catálogo<span *ngIf="showFilterCount">
+        ( Resultados para: {{ filteredCount }} )</span
+      >
+    </div>
+    <div
+      (click)="onClickFilterButton()"
+      (focusout)="hideFilterOption()"
+      [ngClass]="{
+        'filter-mobile': true,
+        active: showFilterOption
+      }"
+    >
+      <div class="label">Filtros</div>
+      <mat-icon aria-hidden="false" aria-label="Example home icon">
+        keyboard_arrow_down
+      </mat-icon>
+    </div>
+  </div>
+  <div
+    class="row px-4 my-5 d-flex justify-content-center text-primary"
+    *ngIf="!products || products?.length === 0"
+  >
+    <h2 *ngIf="!products">Cargando...</h2>
+    <h2 *ngIf="products?.length === 0">No hay productos disponibles.</h2>
+  </div>
+
+  <div class="category-item-container">
+    <app-category-item
+      *ngFor="let product of products"
+      [imageUrl]="product?.picture"
+      [label]="product?.name"
+      [price]="
+        product.price
+          | toUSD
+          | currency: country.currency:'symbol-narrow':'1.0-2':'es-US'
+      "
+      [delivery]="product.stockProduct?.retirementType"
+      [type]="product?.platform?.name"
+      (click)="goToProductDetail(product.id)"
+      (middleClick)="goToProductDetail(product.id, true)"
+    ></app-category-item>
+  </div>
+  <div class="row pt-4 pb-4 pr-4">
+    <div class="col text-right">
+      <span class="pagined"
+        ><i
+          class="fa fa-chevron-left text-light mr-1"
+          (click)="previousPage()"
+          *ngIf="page !== 1"
+        ></i>
+        {{ page }}/{{ totalPages }}
+        <i
+          class="fa fa-chevron-right text-light ml-1"
+          (click)="nextPage()"
+          *ngIf="page !== totalPages && totalPages > 0"
+        ></i
+      ></span>
+    </div>
+  </div>
+</div>
+<div class="container-fluid"></div>

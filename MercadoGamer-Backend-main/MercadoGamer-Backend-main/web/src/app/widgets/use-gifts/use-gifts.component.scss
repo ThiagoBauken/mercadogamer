@@ -1,0 +1,105 @@
+@import 'src/assets/styles/_variables';
+
+:host {
+  display: grid;
+  gap    : 39px;
+
+  &>.content {
+    display  : grid;
+    gap      : 35px;
+    max-width: 705px;
+
+    &>.balance {
+      border         : 1px solid $primary;
+      border-radius  : 6px;
+      padding        : 15px 50px;
+      font-weight    : 600;
+      display        : flex;
+      align-items    : center;
+      justify-content: space-between;
+
+      &>.label {
+        font-size: 24px;
+      }
+
+      &>.value {
+        font-size: 25px;
+        color    : #05FF00;
+      }
+    }
+
+    &>.edit-gift-code {
+      display      : grid;
+      border       : 1px solid #515151;
+      border-radius: 6px;
+      padding      : 15px 50px;
+      gap          : 27px;
+
+      &>.title {
+        font-size  : 20px;
+        font-weight: 600;
+      }
+
+      &>.edit-content {
+        display       : grid;
+        align-items   : center;
+        width         : 520px;
+        gap           : 43px;
+        grid-auto-flow: column;
+
+        &>.input-container {
+          max-width: 318px;
+
+          app-mercado-input {
+            ::ng-deep {
+              .mercado-input {
+                border-radius: 100px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @include brackpoint-md {
+    &>.content {
+      &>.balance {
+        padding: 5px;
+
+        &>.label {
+          font-size: 12px;
+        }
+
+        &>.value {
+          font-size: 13px;
+        }
+      }
+
+      &>.edit-gift-code {
+        padding: 5px;
+
+        &>.title {
+          font-size: 12px;
+        }
+
+        &>.edit-content {
+          gap           : 10px;
+          grid-auto-flow: unset;
+          max-width     : unset;
+          width         : 100%;
+
+          &>.input-container {
+            width    : 100%;
+            max-width: unset;
+          }
+
+          &>.action {
+            display        : flex;
+            justify-content: center;
+          }
+        }
+      }
+    }
+  }
+}

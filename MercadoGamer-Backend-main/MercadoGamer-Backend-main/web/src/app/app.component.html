@@ -1,0 +1,13 @@
+<app-topmenu *ngIf="topMenu" (openSidebar)="snav.toggle()"></app-topmenu>
+<mat-sidenav-container>
+  <mat-sidenav #snav mode="over" class="menu-bar">
+    <mat-nav-list>
+      <app-side-nav-item [collapsed]="false"></app-side-nav-item>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content id="moveTop">
+    <router-outlet *ngIf="country"></router-outlet>
+    <app-footer *ngIf="footer"></app-footer>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+<video id="temp-video"></video>

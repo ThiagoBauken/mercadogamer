@@ -1,0 +1,32 @@
+<div class="card p-3">
+
+  
+      <div class="row"> 
+        <div class="input-group col-12 mb-2">
+          <input class="form-control" placeholder="Ingrese direccion aqui..." aria-describedby="button-addon2" [(ngModel)]="addressUser" (keyup.enter)="findAddressUser()" [disabled]="isWatching">  
+          <div class="input-group-append">
+            <button  type="button" name="button" id="button-addon2" class="btn btn-outline-primary"  (click)="findAddressUser()" [disabled]="isWatching"><i class="fa fa-search" aria-hidden="true"></i></button>
+          </div>
+          <!-- 
+            <input class="form-control mb-3 d-inline col-6 mr-3" placeholder="Ingrese direccion aqui..." [(ngModel)]="addressUser" (keyup.enter)="findAddressUser()" [disabled]="isWatching">  
+          <button type="button" name="button" class="btn btn-outline-primary col-1 offset-7 d-inline ml-1 mr-1" (click)="findAddressUser()" [disabled]="isWatching"><i class="fa fa-search" aria-hidden="true" ></i></button>
+           -->
+        </div>
+
+      </div>
+  
+
+  <div #map id="map" [ngClass]="small == 'true' ? 'mapSmall' : 'map'"></div>
+
+  <br>
+
+  <table>
+    <tr>
+      <!-- <td *ngIf="!edit" disabled>{{address}}</td> -->
+      <td *ngIf="edit"><label>Direccion:</label><input class="form-control disabled" *ngIf="edit" disabled [(ngModel)]="address" (change)="changeAddress($event)"></td>
+<!--       <td>{{latitude}}</td>
+      <td>{{longitude}}</td> -->
+    </tr>
+  </table>
+
+</div>

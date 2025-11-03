@@ -1,0 +1,106 @@
+@import "../../../assets/styles/_variables";
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url("../../../assets/fonts/Montserrat-Regular.ttf");
+}
+
+.container-fluid {
+    height: 100%;
+}
+
+.row {
+    background-color: #141414;
+    overflow-x: hidden !important;
+    .col {
+        overflow-x: hidden !important;
+        padding-left: 20px;
+        padding-right: 20px;
+        p {
+            color: white;
+        }
+        .privacy-title {
+          line-height: 1.2;
+          text-align: justify;
+          margin-top: 8pt;
+          margin-bottom: 8pt;
+          span {
+            font-size: 11pt;
+            font-family: Arial;
+            color: rgb(255, 255, 255);
+            background-color: rgb(20, 20, 20);
+            font-weight: 700;
+            font-style: normal;
+            font-variant: normal;
+            text-decoration: none;
+            vertical-align: baseline;
+            white-space: pre-wrap;
+          }
+        }
+        .privacy-normal-content {
+          line-height: 1.2;
+          text-align: justify;
+          margin-top: 12pt;
+          margin-bottom: 12pt;
+          span{
+            font-size: 11pt;
+            color: rgb(255, 255, 255);
+            background-color: rgb(20, 20, 20);
+            font-weight: 400;
+            font-style: normal;
+            font-variant: normal;
+            text-decoration: none;
+            vertical-align: baseline;
+            line-height: 23px;
+          }
+          .special-content {
+            font-size: 11pt;
+            color: rgb(255, 255, 255);
+            background-color: rgb(20, 20, 20);
+            font-weight: 700;
+            font-style: normal;
+            font-variant: normal;
+            text-decoration: none;
+            vertical-align: baseline;
+          }
+          .content-link {
+              font-weight: 600;
+          }
+         
+        }
+        .rules-list {
+            margin-top: 0;
+            margin-bottom: 0;
+            li {
+                list-style-position: inside;
+                font-size: 11pt;
+                color: rgb(255, 255, 255);
+                background-color: transparent;
+                font-weight: 400;
+                font-style: normal;
+                font-variant: normal;
+                text-decoration: none;
+                vertical-align: baseline;
+                line-height: 30px;
+            }
+        }
+        .rules-link {
+            margin-top: 0; 
+            margin-bottom: 0; 
+            font-size: 11pt;
+            color: white;
+            background-color: #141414;
+            font-weight: 600;
+            font-style: normal;
+            font-feature-settings: normal;
+            font-variant: normal;
+            text-decoration: none;
+            line-height: 30px;
+        }
+    }
+}
+
+
+
+
+    

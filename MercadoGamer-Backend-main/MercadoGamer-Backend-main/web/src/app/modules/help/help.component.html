@@ -1,0 +1,61 @@
+<div class="container-fluid min-h-vh p-0 spacer-1">
+  <div class="row justify-content-center pt-4 pr-4 pb-4">
+    <div class="col-md-3 col-lg-3 col-xl-2 mt-4" style="border-right: 0.5px solid #38383A;">
+      <!-- <hr class="vertical"> -->
+      <div class="row justify-content-center mt-4 mr-3 ml-3">
+        <button class="btn btn-clear disabled btn-block" [ngClass]="sell ? 'enabled': ''" (click)="sell = !sell">
+          <i class="fa fa-tag" aria-hidden="true" [ngClass]="sell ? 'icon-enabled': ''"></i>
+          Ventas
+        </button>
+        <div class="list-sell mt-3" *ngIf="sell">
+          <p><a (click)="option = 1" [ngClass]="option == '1' ? 'active': ''">¿Cómo vender?</a></p>
+          <p><a (click)="option = 2" [ngClass]="option == '2' ? 'active': ''">Método de entrega</a></p>
+          <p><a (click)="option = 3" [ngClass]="option == '3' ? 'active': ''">Garantía MG</a></p>
+          <!-- <p><a (click)="option = 4" [ngClass]="option == '4' ? 'active': ''">Chat</a></p> -->
+          <p><a (click)="option = 5" [ngClass]="option == '5' ? 'active': ''">Comisiones</a></p>
+          <!-- <p><a (click)="option = 6" [ngClass]="option == '6' ? 'active': ''">Preguntas</a></p> -->
+          <p><a (click)="option = 7" [ngClass]="option == '7' ? 'active': ''">Códigos de descuento y afiliados</a></p>
+          <!-- <p><a (click)="option = 8" [ngClass]="option == '8' ? 'active': ''">Calificaciones</a></p> -->
+          <p><a (click)="option = 9" [ngClass]="option == '9' ? 'active': ''">Cancelaciones</a></p>
+          <p><a (click)="option = 10" [ngClass]="option == '10' ? 'active': ''">Ganancias</a></p>
+          <p><a (click)="option = 17" [ngClass]="option == '17' ? 'active': ''">Reputación</a></p>
+        </div>
+      </div>
+  
+      <div class="row justify-content-center mt-3 mr-3 ml-3">
+        <button class="btn btn-clear disabled btn-block" [ngClass]="buy ? 'enabled': ''" (click)="buy = !buy">
+          <i class="fa fa-credit-card" aria-hidden="true" [ngClass]="buy ? 'icon-enabled': ''"></i>
+          Compras
+        </button>
+        <div class="list-sell mt-3" *ngIf="buy">
+          <p><a (click)="option = 11" [ngClass]="option == '11' ? 'active': ''">¿Cómo comprar?</a></p>
+          <p><a (click)="option = 12" [ngClass]="option == '12'? 'active': ''">Reclamos</a></p>
+          <!-- <p><a (click)="option = 13" [ngClass]="option == '13' ? 'active': ''">Garantía MG</a></p> -->
+          <!-- <p><a (click)="option = 14" [ngClass]="option == '14' ? 'active': ''">Método de Pago</a></p> -->
+          <p><a (click)="option = 15" [ngClass]="option == '15' ? 'active': ''">Cuota de procesamiento</a></p>
+          <p><a (click)="option = 16" [ngClass]="option == '16' ? 'active': ''">Cancelaciones</a></p>
+          <p><a (click)="option = 18" [ngClass]="option == '18' ? 'active': ''">Cancelaciones</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-9 col-lg-9 col-xl-8 mt-4">
+      <span class="title quest ml-4">{{ QAs['option' + option].question }}</span>
+      <p class="text ml-4 mt-4 mr-4" *ngFor="let item of [].constructor(15); index as i">
+        {{ QAs['option' + option]['answer' + i] }}
+      </p>
+    </div>
+    <!-- <div class="col-md-3 col-lg-3 col-xl-2" style="border-left: 0.5px solid #38383A;">
+      <span class="title pl-4">Ofertas</span>
+      <div class="row mt-4">
+        <div class="col-md-6 mb-3" style="cursor: pointer;" *ngFor="let product of products" (click)="goToProductDetail(product.id)">
+          <div class="img-container">
+            <img [src]="filesUrl + product.picture" onerror="this.src = 'assets/imgs/placeholder.png'" class="img-game">
+            <span class="name">{{ product.name }}</span> <br>
+            <span class="category">{{ product.category.name }}</span> <br>
+            <span class="name">{{ (product.priceWithDiscount | toUSD) | currency: country.currency : 'symbol-narrow' : '1.0-2' : 'es-US' }}</span>
+          </div>
+        </div>
+      </div>
+    </div> -->
+  </div>
+</div>  

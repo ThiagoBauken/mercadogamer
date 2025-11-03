@@ -1,0 +1,49 @@
+<div [ngClass]="{ 'meracdo-phone-select': true, error: error }">
+  <mat-select
+    [value]="value?.countryCode || countryCode"
+    class="country-select"
+    (selectionChange)="onChange('countryCode', $event?.value)"
+  >
+    <mat-select-trigger>
+      <div
+        class="icon"
+        [style]="
+          global.getBackgroundUrl(
+            getSelectedCountry(value?.countryCode || countryCode)?.picture,
+            getSelectedCountry(value?.countryCode || countryCode)?.url
+          )
+        "
+      ></div>
+      <div class="name">
+        {{ getSelectedCountry(value?.countryCode)?.phoneCode }}
+      </div>
+    </mat-select-trigger>
+    <mat-option
+      *ngFor="let country of countries"
+      class="country-select-item"
+      [value]="country.phoneCode"
+    >
+      <div class="country-information">
+        <div
+          class="icon"
+          [style]="global.getBackgroundUrl(country?.picture, country.url)"
+        ></div>
+        <div class="name">{{ country?.name }}</div>
+        <div class="phone-code">{{ country?.phoneCode }}</div>
+      </div>
+    </mat-option>
+  </mat-select>
+
+  <app-mercado-input
+    [label]="label"
+    maxLength="10"
+    [value]="value?.number || ''"
+    [error]="error"
+    [hideHelper]="true"
+    (valueChange)="onChange('number', $event)"
+  ></app-mercado-input>
+</div>
+
+<div *ngIf="!hideHelper || helper" [ngClass]="{ helper: true, error: error }">
+  {{ helper }}
+</div>

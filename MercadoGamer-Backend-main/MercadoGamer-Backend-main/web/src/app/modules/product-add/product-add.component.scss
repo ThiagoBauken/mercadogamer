@@ -1,0 +1,360 @@
+@import 'src/assets/styles/_globals';
+
+:host {
+  display  : block;
+  max-width: 1080px;
+  margin   : 0 auto;
+  padding  : 50px;
+
+  &>.description {
+    font-weight    : 600;
+    display        : grid;
+    gap            : 12px;
+    grid-auto-flow : column;
+    justify-content: flex-start;
+    align-items    : center;
+    margin-top     : 10px;
+    cursor         : pointer;
+  }
+
+  .contenedor {
+    .success {
+      border: 1px solid greenyellow !important;
+    }
+
+    .error {
+      border: 1px solid red !important;
+    }
+
+    max-width: 1080px;
+
+    .back-button {
+      font-family: 'Montserrat';
+      font-weight: 500;
+    }
+
+    padding   : 25px;
+    overflow-x: hidden !important;
+    width     : 100%;
+
+    .mt-6 {
+      margin-top: 5rem;
+    }
+
+    .mb-6 {
+      margin-bottom: 5rem;
+    }
+
+    .title {
+      color      : $primary;
+      font-family: 'Montserrat';
+      font-style : normal;
+      font-weight: bold;
+      font-size  : 24px;
+      line-height: 20px;
+    }
+
+    .upload {
+      width           : 120px;
+      height          : 164px;
+      border          : 1px dashed rgba(235, 235, 245, 0.6);
+      border-radius   : 10px;
+      display         : flex;
+      justify-content : center;
+      background-color: #242424;
+      align-items     : center;
+
+      .fa {
+        color      : #9B9BA1;
+        font-size  : 48px;
+        line-height: 59px;
+      }
+    }
+
+    mat-select {
+      border       : 1px solid rgba(235, 235, 245, 0.6) !important;
+      height       : 45px;
+      align-items  : center;
+      border-radius: 10px;
+      color        : rgba(197, 197, 197, 0.5) !important;
+      width        : 100% !important;
+
+      ::ng-deep {
+
+        .mat-select-arrow,
+        .mat-select-trigger span {
+          color: rgba(197, 197, 197, 0.5) !important;
+        }
+
+        .mat-select-trigger {
+          margin-top: 12px;
+        }
+      }
+    }
+
+    .btn-send {
+      color        : #ffffff !important;
+      border-radius: 10px;
+      padding      : 10px;
+      font-family  : 'Montserrat';
+      font-weight  : 600;
+    }
+
+    .form-group {
+      border       : 1px solid rgba(235, 235, 245, 0.6);
+      border-radius: 10px;
+      margin-bottom: 0;
+
+      input {
+        height       : 45px;
+        color        : #c5c5c5;
+        opacity      : 0.6;
+        border       : 0;
+        color        : $light;
+        width        : 100px;
+        font-family  : 'Montserrat';
+        outline      : none !important;
+        outline-style: none !important;
+        box-shadow   : none !important;
+        border-color : transparent !important;
+      }
+
+      .form-control {
+        background-color: transparent !important;
+        border          : 1px solid rgba(235, 235, 245, 0.6);
+        color           : $light !important;
+        width           : 100% !important;
+
+        &.selectoBackground {
+          background-color: $primary !important;
+        }
+
+        &.form-control::placeholder {
+          color: rgba(197, 197, 197, 0.5) !important;
+        }
+      }
+    }
+
+    .card {
+      border          : 1px solid;
+      background-color: transparent !important;
+      border-radius   : 6px;
+      padding         : 25px;
+
+      span {
+        color      : #ffffff;
+        font-weight: 600;
+        font-family: 'Montserrat';
+        font-size  : 18px;
+      }
+
+      p {
+        color      : #ffffff;
+        font-weight: 400;
+        font-size  : 16px;
+        font-family: 'Montserrat';
+      }
+
+      hr {
+        background: #ffffff;
+        height    : 1px;
+        width     : 100%;
+      }
+
+      .total {
+        color      : $primary;
+        font-size  : 24px;
+        text-align : left;
+        font-weight: 600;
+      }
+
+      .garantia-mg {
+        font-weight: 500;
+        font-size  : 14px;
+        line-height: 17px;
+        text-align : center;
+        color      : #9A9A9A;
+      }
+    }
+  }
+
+  .step-form {
+    background-color: #1E1E21;
+    border-radius   : 6px;
+
+    .stepbar {
+      gap: 10px;
+
+      div {
+        padding      : 5px;
+        width        : 138px;
+        height       : 12px;
+        background   : #515151;
+        border-radius: 6px;
+      }
+    }
+
+    .each-step {
+      font-family   : 'Montserrat';
+      font-size     : 14px;
+      font-style    : normal;
+      font-weight   : 500;
+      line-height   : 17px;
+      letter-spacing: 0em;
+      text-align    : left;
+      color         : #FFFFFFCC;
+
+
+    }
+
+    .each-step-title {
+      font-family   : 'Montserrat';
+      font-size     : 18px;
+      font-style    : normal;
+      font-weight   : 500;
+      line-height   : 22px;
+      letter-spacing: 0em;
+      text-align    : left;
+
+    }
+
+    .counted-value {
+      color: #FFFFFF;
+
+      img {
+        width: 20px;
+      }
+
+      .prefix-value {
+        font-size: 15px;
+      }
+
+      .value {
+        font-size  : 15px;
+        font-weight: bold;
+      }
+    }
+
+    .info-stepone {
+      font-size  : 12px;
+      line-height: 15px;
+      color      : rgba(235, 235, 245, 0.6);
+    }
+
+    .step-two {
+      color      : #C5C5C5;
+      font-size  : 15px;
+      line-height: 18px;
+
+      .upload-image-area {
+        display    : flex;
+        align-items: center;
+      }
+
+      .limit-upload-size {
+        margin-left: 15px;
+
+        p {
+          color      : #A7A8AF;
+          font-size  : 12px;
+          font-weight: 400;
+          font-family: 'Roboto';
+          line-height: 14px;
+          text-align : center;
+        }
+      }
+    }
+
+    .step-three {
+      .delivery-type {
+        border       : 1px solid #F78A0E;
+        border-radius: 6px;
+        font-size    : 15px;
+        height       : 40px;
+        line-height  : 18px;
+
+        span {
+          border-radius: 3px;
+        }
+      }
+
+      .stock {
+        width: 90px;
+      }
+    }
+
+    .step-footer {
+      button {
+        color          : #9999A0;
+        height         : 32px;
+        height         : 32px;
+        width          : 127px;
+        line-height    : 32px;
+        display        : inline-flex;
+        align-items    : center;
+        justify-content: center;
+        border-radius  : 16px;
+      }
+
+      .btn-warning-round {
+        background-color: #F78A0E;
+        box-shadow      : 0px 4px 20px rgba(247, 138, 14, 0.6);
+        border          : 1px solid #F78A0E;
+      }
+    }
+  }
+
+
+  .min-w-200 {
+    min-width: 200px;
+  }
+
+  .min-w-xxs {
+    min-width: 292px;
+  }
+}
+
+::ng-deep {
+  mat-form-field {
+    width: 100%;
+
+    .mat-form-field-wrapper {
+      padding-bottom: 0px !important;
+    }
+
+    .mat-form-field-flex {
+      padding: 0 1em 0 1em !important;
+
+      .mat-form-field-infix {
+        padding: unset !important;
+        margin : unset !important;
+        border : unset !important;
+      }
+    }
+
+    .mat-form-field-underline {
+      display: none !important;
+    }
+  }
+
+  .search-game-list {
+    .mat-form-field-flex {
+      padding: unset !important;
+    }
+
+    input {
+      padding-left: 11px;
+      font-size   : 16px;
+    }
+  }
+
+  .cdk-overlay-pane {
+    .mat-autocomplete-panel {
+      background-color: #333333;
+
+      .mat-selected {
+        background: #80808047 !important
+      }
+    }
+  }
+}
