@@ -106,7 +106,12 @@ export class TopmenuComponent extends BaseComponent {
   }
 
   handleNotification(notification: { [k: string]: any }): void {
-    this[notification.action](notification);
+    // Validação: verificar se o método existe antes de chamá-lo
+    if (notification.action && typeof this[notification.action] === 'function') {
+      this[notification.action](notification);
+    } else {
+      console.warn('Notification action not found or not a function:', notification.action);
+    }
 
     const endPoint =
       this.settings.endPoints.notifications + '/' + notification.id;

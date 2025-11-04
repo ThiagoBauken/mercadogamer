@@ -471,6 +471,10 @@ export class CataloguePopupComponent implements OnInit {
   public changeProduct(id): void {
     this.productId = id;
     const index = this.products.findIndex((el) => el.id === id);
-    this.productImg = this.products[index].img;
+    if (index !== -1 && this.products[index]) {
+      this.productImg = this.products[index].img;
+    } else {
+      console.warn('Product not found with id:', id);
+    }
   }
 }

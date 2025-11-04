@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { Params } from '@angular/router';
 import * as moment from 'moment';
 import { BaseComponent } from 'src/app/core/base.component';
@@ -8,7 +8,7 @@ import { BaseComponent } from 'src/app/core/base.component';
   templateUrl: './purchase.component.html',
   styleUrls: ['./purchase.component.scss'],
 })
-export class PurchaseComponent extends BaseComponent implements OnInit {
+export class PurchaseComponent extends BaseComponent implements OnInit, OnDestroy {
   @ViewChild('buySuccess') successModal: ElementRef;
   @ViewChild('finish') finishModal: ElementRef;
   @ViewChild('divMessages', { static: false }) content: any;
@@ -312,5 +312,12 @@ export class PurchaseComponent extends BaseComponent implements OnInit {
       open: true,
       image,
     };
+  }
+
+  ngOnDestroy(): void {
+    // Limpar interval para prevenir memory leaks
+    if (this.time) {
+      clearInterval(this.time);
+    }
   }
 }

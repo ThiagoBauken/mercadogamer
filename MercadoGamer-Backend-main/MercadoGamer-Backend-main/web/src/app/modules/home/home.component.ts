@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { PageService } from '../../core/page.service';
 import { BaseComponent } from 'src/app/core/base.component';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
@@ -15,7 +15,7 @@ import { MatIconRegistry } from '@angular/material/icon';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent extends BaseComponent implements OnInit {
+export class HomeComponent extends BaseComponent implements OnInit, OnDestroy {
   @ViewChild('finish') finishModal: ElementRef;
 
   desktopBanners: { [k: string]: any }[];
@@ -297,5 +297,12 @@ export class HomeComponent extends BaseComponent implements OnInit {
         });
       })
       .catch((e) => this.pageService.showError(e));
+  }
+
+  ngOnDestroy(): void {
+    // Limpar subscription para prevenir memory leaks
+    if (this.resizeSubscription$) {
+      this.resizeSubscription$.unsubscribe();
+    }
   }
 }

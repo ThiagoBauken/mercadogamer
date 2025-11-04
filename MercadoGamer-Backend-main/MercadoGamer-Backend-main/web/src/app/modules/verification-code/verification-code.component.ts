@@ -39,10 +39,10 @@ export class VerificationCodeComponent implements OnInit {
     this.resend = true;
   }
 
-  sendSms(): void {
+  async sendSms(): Promise<void> {
     try {
       this.resend = false;
-      const response = this.pageService.httpGet(
+      await this.pageService.httpGet(
         `${this.pageService.global.settings.endPoints.users}/sendSms`
       );
       setTimeout(() => {
@@ -50,6 +50,7 @@ export class VerificationCodeComponent implements OnInit {
       }, 60000);
     } catch (error) {
       this.pageService.showError(error);
+      this.resend = true; // Reabilitar em caso de erro
     }
   }
 
@@ -107,7 +108,7 @@ export class VerificationCodeComponent implements OnInit {
     const phoneNumber = localStorage.getItem(
       this.pageService.global.settings.storage.phoneNumber
     );
-    if (phoneNumber.length > 10) {
+    if (phoneNumber && phoneNumber.length > 10) {
       const countryCode = phoneNumber.substring(0, phoneNumber.length - 10);
       const phone = phoneNumber.substring(phoneNumber.length - 10);
       return `(${countryCode}) ${phone.substring(
