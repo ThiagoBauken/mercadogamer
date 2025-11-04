@@ -187,22 +187,30 @@ app.use(function (req, res, next) {
 // cache control error 304
 app.disable('etag');
 
-// CORS
-var cors_origin = {
-  origin: [
-    'http://localhost:4200',
-    'http://localhost:4300',
-    'http://localhost:5001',
-  ],
-};
-app.use(cors(cors_origin));
-// app.use(cors());
+// CORS - Permitir todas as origens em produção (necessário para Docker/Easypanel)
+if (process.env.NODE_ENV === 'production') {
+  app.use(cors());
+} else {
+  var cors_origin = {
+    origin: [
+      'http://localhost:4200',
+      'http://localhost:4300',
+      'http://localhost:5001',
+    ],
+  };
+  app.use(cors(cors_origin));
+}
+
 app.use(function (req, res, next) {
-  res.header(
-    'Access-Control-Allow-Origin',
-    'http://localhost:4200',
-    'http://localhost:4300'
-  );
+  if (process.env.NODE_ENV === 'production') {
+    res.header('Access-Control-Allow-Origin', '*');
+  } else {
+    res.header(
+      'Access-Control-Allow-Origin',
+      'http://localhost:4200',
+      'http://localhost:4300'
+    );
+  }
   res.header('Access-Control-Allow-Credentials', true);
   res.header(
     'Access-Control-Allow-Headers',

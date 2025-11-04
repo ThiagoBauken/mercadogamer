@@ -45,9 +45,10 @@ async function start() {
   } finally {
     // HTTP + Socket.IO rodando juntos na porta 3000
     const PORT = process.env.PORT || 3000;
+    const HOST = '0.0.0.0'; // Escutar em todas as interfaces (necessário para Docker)
 
-    server.listen(PORT, async () => {
-      console.log(`🚀 Server (HTTP + Socket.IO) listening on port ${PORT}`);
+    server.listen(PORT, HOST, async () => {
+      console.log(`🚀 Server (HTTP + Socket.IO) listening on ${HOST}:${PORT}`);
       console.log(`📡 API: http://localhost:${PORT}/api`);
       console.log(`🔌 WebSocket: ws://localhost:${PORT}`);
 
