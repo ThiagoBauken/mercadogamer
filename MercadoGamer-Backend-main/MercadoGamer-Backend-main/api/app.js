@@ -240,10 +240,10 @@ global.database.mongodb = lib.mongodb;
 // (+) UTILS
 global.utils = {};
 global.utils.eventEmitter = em;
-global.utils.twoFactor = require('../api/utils/twoFactor');
-global.utils.emailTemplate = require('../api/utils/emailTemplate');
-global.utils.mongooseFunctions = require('../api/utils/mongooseFunctions');
-// global.utils.mathFunctions = require('../api/utils/mathFunctions')
+global.utils.twoFactor = require('./utils/twoFactor');
+global.utils.emailTemplate = require('./utils/emailTemplate');
+global.utils.mongooseFunctions = require('./utils/mongooseFunctions');
+// global.utils.mathFunctions = require('./utils/mathFunctions')
 // (-) UTILS
 
 // (+) CRONS
