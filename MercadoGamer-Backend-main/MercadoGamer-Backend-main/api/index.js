@@ -43,19 +43,13 @@ async function start() {
     console.error('❌ MongoDB connection error:', e.message);
     debug(e);
   } finally {
-    http.createServer(app).listen('3000');
-    /*
-    app.listen(settings.port, () => {
-      debug(`servidor corriendo en puerto ${settings.port}`)
-    });*/
+    // HTTP + Socket.IO rodando juntos na porta 3000
+    const PORT = process.env.PORT || 3000;
 
-    server.listen(process.env.SOCKET_PORT_SOI || settings.portSIO, async () => {
-      debug(
-        'server listening at env: ' +
-          process.env.SOCKET_PORT_SOI +
-          ' or settings ' +
-          settings.portSIO
-      );
+    server.listen(PORT, async () => {
+      console.log(`🚀 Server (HTTP + Socket.IO) listening on port ${PORT}`);
+      console.log(`📡 API: http://localhost:${PORT}/api`);
+      console.log(`🔌 WebSocket: ws://localhost:${PORT}`);
 
       // await resetSellerProfit();
       // await resetUserBalance();
@@ -67,10 +61,6 @@ async function start() {
       // await changeRandomAvatars();
       // await resetUserhasVisitPage();
     });
-    /*server.listen('3000');
-    io.listen(server);
-
-    console.log('HTTP and SocketIO listening to port 3000');*/
   }
 }
 
