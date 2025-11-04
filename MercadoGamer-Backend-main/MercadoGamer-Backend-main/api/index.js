@@ -18,11 +18,29 @@ mongoose.plugin(require('@meanie/mongoose-to-json'));
 
 async function start() {
   try {
+    // Construir connection string com ou sem autenticação
+    let mongoUri;
+    const mongoUser = process.env.MONGO_USER;
+    const mongoPass = process.env.MONGO_PASSWORD;
+
+    if (mongoUser && mongoPass) {
+      // Com autenticação
+      mongoUri = `mongodb://${mongoUser}:${mongoPass}@${settings.database.host}/${settings.database.name}?authSource=admin`;
+      console.log(`📡 Connecting to MongoDB with authentication: ${mongoUser}@${settings.database.host}`);
+    } else {
+      // Sem autenticação
+      mongoUri = `mongodb://${settings.database.host}/${settings.database.name}`;
+      console.log(`📡 Connecting to MongoDB without authentication: ${settings.database.host}`);
+    }
+
     await mongoose.connect(
-      'mongodb://' + settings.database.host + '/' + settings.database.name,
+      mongoUri,
       { useCreateIndex: true, useUnifiedTopology: true, useNewUrlParser: true }
     );
+
+    console.log('✅ MongoDB connected successfully!');
   } catch (e) {
+    console.error('❌ MongoDB connection error:', e.message);
     debug(e);
   } finally {
     http.createServer(app).listen('3000');

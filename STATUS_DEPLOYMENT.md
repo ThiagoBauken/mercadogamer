@@ -14,11 +14,12 @@
 
 ### 2. MongoDB ✅
 - Serviço criado no Easypanel
-- Nome: `mercadogamer`
+- Nome: `private_mercadogamer-mongodb`
 - Versão: 8.x
 - User: admin
 - Password: MercadoGamer2024!
 - Porta: 27017
+- Connection String: `mongodb://admin:MercadoGamer2024!@private_mercadogamer-mongodb:27017/?tls=false`
 - Status: ✅ Rodando
 
 ### 3. Backend API ✅ (Parcialmente)
@@ -44,14 +45,10 @@ O backend está rodando mas **não consegue conectar ao MongoDB** porque as vari
 3. **Adicione as seguintes variáveis:**
 
 ```env
-DATABASE_HOST=mercadogamer:27017
+DATABASE_HOST=private_mercadogamer-mongodb:27017
 DATABASE_NAME=mercadogamer
 NODE_ENV=production
 SOCKET_PORT_SOI=10111
-```
-
-**Com autenticação MongoDB:**
-```env
 MONGO_USER=admin
 MONGO_PASSWORD=MercadoGamer2024!
 ```
@@ -142,7 +139,7 @@ NEXT_PUBLIC_FILE_URL=https://private-mercadogamer.pbzgje.easypanel.host/files
 ```
 Easypanel VPS
 │
-├── 🗄️  mercadogamer:27017 (MongoDB 8.x)
+├── 🗄️  private_mercadogamer-mongodb:27017 (MongoDB 8.x)
 │   └── Status: ✅ Rodando
 │
 ├── 🔧 mercadogamer-api (Backend)
