@@ -1,10 +1,13 @@
 const express = require('express');
-const router = express.Router();
 const { stringify } = require('csv-stringify');
 const fs = require('fs/promises');
 const moment = require('moment');
 
-function getEarningsPipeline(date) {
+// Wrap in function to delay execution until globals are ready
+module.exports = function() {
+  const router = express.Router();
+
+  function getEarningsPipeline(date) {
   return [
     [
       {
@@ -462,4 +465,5 @@ router.get(
   }
 );
 
-module.exports = router;
+  return router;
+};

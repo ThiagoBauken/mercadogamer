@@ -1,9 +1,11 @@
 'use strict';
-const admDashboard = require('./admDashboardInfo');
+const admDashboardFactory = require('./admDashboardInfo');
 const ObjectId = require('mongoose').Types.ObjectId;
 
 // Define module
 module.exports = (module) => {
+  // Call the factory function to get the router (now globals are ready)
+  const admDashboard = admDashboardFactory();
   module.router.use('/adminDashboard', admDashboard);
   /**
    * Find
