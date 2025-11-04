@@ -193,7 +193,7 @@ export class ProfitsComponent extends BaseComponent implements OnInit {
         return moment(date).format('HH:00');
       case 'week':
         const day = moment(date).get('day');
-        return day ? this.weeks[day - 1] : this.weeks[this.weeks.length];
+        return day ? this.weeks[day - 1] : this.weeks[this.weeks.length - 1];
       case 'month':
         return moment(date).format('DD');
       case 'total':

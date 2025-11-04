@@ -1,5 +1,5 @@
 import { Time } from '@angular/common';
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
 import { Params } from '@angular/router';
 import * as moment from 'moment';
 import { Timestamp } from 'rxjs/internal/operators/timestamp';
@@ -11,7 +11,7 @@ import { BaseComponent } from 'src/app/core/base.component';
   templateUrl: './purchase.component.html',
   styleUrls: ['./purchase.component.scss'],
 })
-export class PurchaseComponent extends BaseComponent {
+export class PurchaseComponent extends BaseComponent implements OnDestroy {
   @ViewChild('buySuccess') successModal: ElementRef;
   @ViewChild('finish') finishModal: ElementRef;
   @ViewChild('divMessages', { static: false }) content: any;
@@ -234,5 +234,11 @@ export class PurchaseComponent extends BaseComponent {
       open: true,
       image,
     };
+  }
+
+  ngOnDestroy(): void {
+    if (this.time) {
+      clearInterval(this.time);
+    }
   }
 }
