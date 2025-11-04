@@ -33,8 +33,8 @@ COPY MercadoGamer-Backend-main/MercadoGamer-Backend-main/api/ ./
 RUN mkdir -p /app/files /app/uploads && \
     chmod -R 777 /app/files /app/uploads
 
-# Expor portas
-EXPOSE 3000 10111
+# Expor porta (HTTP + Socket.IO na mesma porta)
+EXPOSE 3000
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=3s --start-period=40s \
