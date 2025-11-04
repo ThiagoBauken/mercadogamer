@@ -21,8 +21,8 @@ WORKDIR /app
 # Copiar package.json do backend
 COPY MercadoGamer-Backend-main/MercadoGamer-Backend-main/api/package*.json ./
 
-# Instalar dependências (sem package-lock.json, usar npm install)
-RUN npm install && npm cache clean --force
+# Instalar dependências (otimizado para baixo uso de memória)
+RUN NODE_OPTIONS="--max-old-space-size=512" npm install --no-audit --no-optional
 
 # Copiar código do backend
 COPY MercadoGamer-Backend-main/MercadoGamer-Backend-main/api/ ./
