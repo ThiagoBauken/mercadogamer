@@ -42,6 +42,7 @@
     "mongoose-unique-validator": "^2.0.2",
     "node-2fa": "^2.0.3",
     "node-cron": "^3.0.0",
+    "node-fetch": "^2.6.7",
     "node-gyp": "^9.1.0",
     "node-pushnotifications": "^1.1.7",
     "nodemailer": "^6.6.3",
