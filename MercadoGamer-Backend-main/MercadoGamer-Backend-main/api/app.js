@@ -28,9 +28,20 @@ const fs = require('fs');
 
 const app = express();
 
-const cert = fs.readFileSync('./certificate.crt');
-const ca = fs.readFileSync('./ca_bundle.crt');
-const key = fs.readFileSync('./private.key');
+// Carregar certificados SSL apenas se existirem (não necessário no Docker/Easypanel)
+let cert, ca, key;
+try {
+  if (fs.existsSync('./certificate.crt') && fs.existsSync('./ca_bundle.crt') && fs.existsSync('./private.key')) {
+    cert = fs.readFileSync('./certificate.crt');
+    ca = fs.readFileSync('./ca_bundle.crt');
+    key = fs.readFileSync('./private.key');
+    console.log('✅ Certificados SSL carregados');
+  } else {
+    console.log('⚠️  Certificados SSL não encontrados - rodando sem HTTPS direto (OK para Docker/VPS)');
+  }
+} catch (error) {
+  console.log('⚠️  Erro ao carregar certificados SSL:', error.message);
+}
 
 // Define garbage collector
 if (global.gc) {
