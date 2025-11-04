@@ -15,8 +15,8 @@ Os Dockerfiles foram movidos para a **raiz do projeto** para facilitar o deploy 
 - Branch: `main`
 
 **Build:**
-- **Build Path:** `.` (raiz)
-- **Dockerfile:** `Dockerfile.backend`
+- **Build Path:** `/` (raiz)
+- **Dockerfile:** `Dockerfile` (padrão - é o backend)
 
 **Ports:**
 - 3000 (HTTP API)
@@ -50,8 +50,10 @@ https://private-mercadogamer.pbzgje.easypanel.host
 - Branch: `main`
 
 **Build:**
-- **Build Path:** `.` (raiz)
+- **Build Path:** `/` (raiz)
 - **Dockerfile:** `Dockerfile.web`
+
+**⚠️ IMPORTANTE:** O Easypanel pode não suportar Dockerfiles customizados. Se não funcionar, crie apps separados ou use outra estratégia.
 
 **Ports:**
 - 3000
@@ -76,8 +78,10 @@ NEXT_PUBLIC_DOMAIN=https://SEU-DOMINIO-WEB.easypanel.host
 - Branch: `main`
 
 **Build:**
-- **Build Path:** `.` (raiz)
+- **Build Path:** `/` (raiz)
 - **Dockerfile:** `Dockerfile.admin`
+
+**⚠️ IMPORTANTE:** O Easypanel pode não suportar Dockerfiles customizados. Se não funcionar, crie apps separados ou use outra estratégia.
 
 **Ports:**
 - 4300
@@ -95,9 +99,9 @@ NEXT_PUBLIC_FILE_URL=https://private-mercadogamer.pbzgje.easypanel.host/files
 ## 📋 Ordem de Deploy
 
 1. **MongoDB** (já criado ✅)
-2. **Backend API** (use Dockerfile.backend)
-3. **Frontend Web** (use Dockerfile.web)
-4. **Frontend Admin** (use Dockerfile.admin)
+2. **Backend API** (use `Dockerfile` - padrão na raiz)
+3. **Frontend Web** (use `Dockerfile.web` - se Easypanel suportar)
+4. **Frontend Admin** (use `Dockerfile.admin` - se Easypanel suportar)
 
 ---
 
@@ -111,19 +115,20 @@ NEXT_PUBLIC_FILE_URL=https://private-mercadogamer.pbzgje.easypanel.host/files
 
 ---
 
-## 🔄 Diferença dos Dockerfiles Antigos
+## 🔄 Arquivos Dockerfile
 
-**Antigo (NÃO USAR):**
+**Raiz do Projeto:**
+- `Dockerfile` → Backend API (padrão do Easypanel)
+- `Dockerfile.backend` → Backend API (cópia)
+- `Dockerfile.web` → Frontend Web (pode não funcionar no Easypanel)
+- `Dockerfile.admin` → Frontend Admin (pode não funcionar no Easypanel)
+
+**Antigos (nas subpastas - não usar):**
 - `MercadoGamer-Backend-main/MercadoGamer-Backend-main/api/Dockerfile`
 - `MercadoGamer/Dockerfile.web`
 - `MercadoGamer/Dockerfile.admin`
 
-**Novo (USAR):**
-- `Dockerfile.backend` (raiz)
-- `Dockerfile.web` (raiz)
-- `Dockerfile.admin` (raiz)
-
-Os novos Dockerfiles copiam os arquivos das subpastas automaticamente!
+**Nota:** O Easypanel procura sempre por "Dockerfile" (sem sufixo) na raiz. Os arquivos com sufixo (`.web`, `.admin`) podem não funcionar no Easypanel.
 
 ---
 
