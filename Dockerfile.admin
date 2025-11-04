@@ -1,0 +1,32 @@
+# Frontend Admin Dockerfile - MercadoGamer Admin Panel
+# Path: Raiz do projeto
+# Build context: .
+# Target: MercadoGamer/apps/admin
+
+FROM node:18-alpine
+
+# Instalar dependências do sistema
+RUN apk add --no-cache libc6-compat
+
+# Definir diretório de trabalho
+WORKDIR /app
+
+# Copiar arquivos de configuração do monorepo
+COPY MercadoGamer/package*.json ./
+COPY MercadoGamer/nx.json ./
+COPY MercadoGamer/tsconfig.base.json ./
+COPY MercadoGamer/babel.config.json ./
+COPY MercadoGamer/jest.config.ts ./
+COPY MercadoGamer/jest.preset.js ./
+
+# Instalar dependências
+RUN npm ci && npm cache clean --force
+
+# Copiar código fonte completo (Nx precisa do workspace todo)
+COPY MercadoGamer/ ./
+
+# Expor porta
+EXPOSE 4300
+
+# Comando padrão
+CMD ["npx", "nx", "serve", "admin", "--host", "0.0.0.0", "--port", "4300"]
