@@ -2,10 +2,19 @@ import * as icons from '@icons';
 import { ThemeColor } from '@theme/color';
 import { setting } from '../setting';
 
-export const getDefaultCountry = (): CountryModelType =>
-  (typeof window !== 'undefined' &&
-    JSON.parse(localStorage.getItem(setting.storage.defaultCountry)!)) ||
-  {};
+export const getDefaultCountry = (): CountryModelType => {
+  if (typeof window === 'undefined') return {};
+
+  const storedCountry = localStorage.getItem(setting.storage.defaultCountry);
+  if (!storedCountry || storedCountry === 'undefined' || storedCountry === 'null') return {};
+
+  try {
+    return JSON.parse(storedCountry);
+  } catch (error) {
+    console.error('Error parsing default country:', error);
+    return {};
+  }
+};
 
 export const toUSD = (value: number | string, toFixed = 2): string => {
   const defaultCountry: CountryModelType = getDefaultCountry();

@@ -18,7 +18,7 @@ import {
   httpGetAll,
 } from '@utils';
 import { getCategories, getPlatforms, useAppDispatch, useTypedSelector } from '@store';
-import { getGames } from 'apps/web/src/store/actions/game';
+import { getGames } from '@actions/game';
 import { useRouter } from 'next/router';
 import { OtherSelectGame } from '../add-product/widgets';
 import { Button } from '@widgets/button';

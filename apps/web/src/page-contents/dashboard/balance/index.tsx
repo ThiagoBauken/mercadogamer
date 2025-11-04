@@ -11,7 +11,7 @@ import {
   post,
   toCurrency,
 } from '@utils';
-import { RouletteKind } from 'apps/web/src/page-contents/gift/constanst';
+import { RouletteKind } from '../../gift/constanst';
 import { Input } from '@widgets/input';
 import { Icon } from '@widgets/icon';
 import Image from 'next/image';

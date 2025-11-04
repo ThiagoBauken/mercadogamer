@@ -5,7 +5,7 @@ import { Modal } from '@widgets/modal';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { getGames } from 'apps/web/src/store/actions/game';
+import { getGames } from '@actions/game';
 import {
   EditPrice,
   ProductDetail,
