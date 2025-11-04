@@ -225,6 +225,19 @@ app.use(function (req, res, next) {
   next();
 });
 
+// 📊 Logging de requisições HTTP
+app.use((req, res, next) => {
+  const timestamp = new Date().toISOString();
+  console.log(`📥 [${timestamp}] ${req.method} ${req.path} - IP: ${req.ip}`);
+
+  // Log quando a resposta for enviada
+  res.on('finish', () => {
+    console.log(`📤 [${timestamp}] ${req.method} ${req.path} - Status: ${res.statusCode}`);
+  });
+
+  next();
+});
+
 app.use(
   multipart({
     uploadDir: '/tmp/',
