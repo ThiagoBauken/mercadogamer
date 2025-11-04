@@ -93,7 +93,7 @@ export const httpGetAll = <T = any>(
 
 const detectError = (error: AxiosError<any>): Promise<AxiosResponse> => {
   if (error.response?.status === 401) {
-    localStorage.removeItem('token');
+    localStorage.removeItem(setting.storage.token);
   }
 
   let str = 'Se produjo un error inesperado. Intenta mas tarde o contacta con soporte';
