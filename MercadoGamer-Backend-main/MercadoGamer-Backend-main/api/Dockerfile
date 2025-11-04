@@ -16,8 +16,8 @@ WORKDIR /app
 # Copiar package.json e package-lock.json
 COPY package*.json ./
 
-# Instalar dependências
-RUN npm ci --only=production && npm cache clean --force
+# Instalar dependências (incluindo devDependencies para babel-node)
+RUN npm ci && npm cache clean --force
 
 # Copiar código fonte
 COPY . .
@@ -26,8 +26,8 @@ COPY . .
 RUN mkdir -p /app/files /app/uploads && \
     chmod -R 777 /app/files /app/uploads
 
-# Expor portas
-EXPOSE 3000 10111
+# Expor porta (HTTP API + Socket.IO)
+EXPOSE 3000
 
 # Healthcheck
 HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \

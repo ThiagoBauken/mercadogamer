@@ -1,7 +1,9 @@
 const io = require('socket.io-client');
-// https://mercadogamer.com
-// http://localhost:10111
-var socket = io('https://mercadogamer.com', {
+
+// Usar variável de ambiente ou fallback para localhost
+const SOCKET_URL = process.env.SOCKET_SERVER_URL || 'http://localhost:3000';
+
+var socket = io(SOCKET_URL, {
   autoConnect: false,
   reconnection: true,
   reconnectionAttempts: 5,

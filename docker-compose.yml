@@ -28,14 +28,14 @@ services:
     container_name: mercadogamer-backend
     restart: unless-stopped
     ports:
-      - "3000:3000"      # HTTP API
-      - "10111:10111"    # Socket.IO
+      - "3000:3000"      # HTTP API + Socket.IO
     environment:
       NODE_ENV: development
       DATABASE_HOST: mongodb:27017
       DATABASE_NAME: mercadogamer
-      SOCKET_PORT_SOI: 10111
+      SOCKET_SERVER_URL: http://localhost:3000
       BASE_URL: http://localhost:3000
+      FRONTEND_URL: http://localhost:3001
       UPLOAD_DIR: /app/uploads
       IMAGES_DIR: /app/files
       # Email (MailHog for development)
@@ -75,7 +75,7 @@ services:
     environment:
       NODE_ENV: development
       NEXT_PUBLIC_SERVER_URL: http://localhost:3000/api
-      NEXT_PUBLIC_SOCKET_URL: http://localhost:10111
+      NEXT_PUBLIC_SOCKET_URL: http://localhost:3000
       NEXT_PUBLIC_FILE_URL: http://localhost:3000/files
       NEXT_PUBLIC_DOMAIN: http://localhost:3001
     volumes:
@@ -102,7 +102,7 @@ services:
     environment:
       NODE_ENV: development
       NEXT_PUBLIC_SERVER_URL: http://localhost:3000/api
-      NEXT_PUBLIC_SOCKET_URL: http://localhost:10111
+      NEXT_PUBLIC_SOCKET_URL: http://localhost:3000
       NEXT_PUBLIC_FILE_URL: http://localhost:3000/files
     volumes:
       - ./MercadoGamer:/app

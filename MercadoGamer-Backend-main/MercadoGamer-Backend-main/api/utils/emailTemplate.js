@@ -67,7 +67,9 @@ export const twoFactorHtml = (key) => `
 
 </html>`;
 
-export const notificationEmailTemplate = (title, content, router, action) => `
+export const notificationEmailTemplate = (title, content, router, action) => {
+  const frontendUrl = process.env.FRONTEND_URL || process.env.BASE_URL || 'https://www.mercadogamer.com';
+  return `
 <!DOCTYPE html>
 
 <html lang="en">
@@ -115,7 +117,7 @@ export const notificationEmailTemplate = (title, content, router, action) => `
         text-align:center;
         margin-top:20px;
         font-family:'Montserrat', sans-serif;">
-        <a href='https://www.mercadogamer.com/${router}' 
+        <a href='${frontendUrl}/${router}' 
         style="background: #F78A0E;
         border-radius:25px;
         font-size:14px;
@@ -150,6 +152,7 @@ export const notificationEmailTemplate = (title, content, router, action) => `
 </body>
 
 </html>`;
+};
 
 export const recoveryPasswordEmailTemplate = (text) => `
 <!DOCTYPE html>

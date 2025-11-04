@@ -23,12 +23,15 @@ module.exports = (helper) => {
               data,
               helper.settings.token.secret
             );
+            // Usar variável de ambiente para URL do frontend
+            const frontendUrl = process.env.FRONTEND_URL || process.env.BASE_URL || 'https://www.mercadogamer.com';
+
             let mailOptions = {
               from: global.helpers.database.settings.nodemailer.mailOptions
                 .from,
               to: result.emailAddress,
               html: global.utils.emailTemplate.recoveryPasswordEmailTemplate(
-                `<a href='https://www.mercadogamer.com/reset-password/${token}' style="background: #F78A0E;border-radius: 25px; font-size: 14px; padding: 14px 40px; color:#111217; font-style: normal; font-weight: 600; text-decoration: none; font-family:'Montserrat', sans-serif;" target='_blank'>Restablecer contraseña</a>`
+                `<a href='${frontendUrl}/reset-password/${token}' style="background: #F78A0E;border-radius: 25px; font-size: 14px; padding: 14px 40px; color:#111217; font-style: normal; font-weight: 600; text-decoration: none; font-family:'Montserrat', sans-serif;" target='_blank'>Restablecer contraseña</a>`
               ),
               subject:
                 global.helpers.database.settings.nodemailer.mailOptions.subject,

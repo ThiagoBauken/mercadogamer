@@ -9,7 +9,6 @@ import mongoose from 'mongoose';
 
 // get the reference of EventEmitter class of events module
 require('dotenv').config();
-const AWS = require('aws-sdk');
 
 var events = require('events');
 
