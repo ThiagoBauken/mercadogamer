@@ -4,7 +4,8 @@
   "description": "MercadoGamer - Produccion - Proyecto base",
   "main": "app.js",
   "scripts": {
-    "start": "NODE_ENV=production DEBUG=api* nodemon index.js --exec babel-node",
+    "start": "NODE_ENV=production babel-node index.js",
+    "start:watch": "NODE_ENV=production DEBUG=api* nodemon index.js --exec babel-node",
     "startwin": "set NODE_ENV=production & DEBUG=api* & nodemon index.js --exec babel-node",
     "startold": "NODE_ENV=production nodemon ./bin/www",
     "local": "NODE_ENV=development DEBUG=api* nodemon index.js --exec babel-node",

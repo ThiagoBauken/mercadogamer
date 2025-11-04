@@ -41,7 +41,18 @@ async function start() {
     console.log('✅ MongoDB connected successfully!');
   } catch (e) {
     console.error('❌ MongoDB connection error:', e.message);
+    console.error('Stack trace:', e.stack);
+    console.error('Environment vars:', {
+      DATABASE_HOST: process.env.DATABASE_HOST || settings.database.host,
+      DATABASE_NAME: process.env.DATABASE_NAME || settings.database.name,
+      MONGO_USER: process.env.MONGO_USER ? '***set***' : 'not set',
+      NODE_ENV: process.env.NODE_ENV
+    });
     debug(e);
+    // Em produção, tente iniciar o servidor mesmo sem MongoDB (para ver logs)
+    if (process.env.NODE_ENV !== 'production') {
+      process.exit(1);
+    }
   } finally {
     // HTTP + Socket.IO rodando juntos na porta 3000
     const PORT = process.env.PORT || 3000;

@@ -41,4 +41,5 @@ HEALTHCHECK --interval=30s --timeout=3s --start-period=40s \
   CMD node -e "require('http').get('http://localhost:3000/api/health', (r) => {if (r.statusCode !== 200) throw new Error(r.statusCode)})"
 
 # Comando de inicialização
-CMD ["npm", "run", "local"]
+# Use NODE_ENV para controlar qual script rodar
+CMD ["sh", "-c", "if [ \"$NODE_ENV\" = 'production' ]; then npm run start; else npm run local; fi"]

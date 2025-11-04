@@ -10,6 +10,12 @@ import mongoose from 'mongoose';
 // get the reference of EventEmitter class of events module
 require('dotenv').config();
 
+// Log environment info
+console.log('🔧 Starting MercadoGamer Backend...');
+console.log('📦 Node version:', process.version);
+console.log('🌍 NODE_ENV:', process.env.NODE_ENV || 'development');
+console.log('📂 Working directory:', process.cwd());
+
 var events = require('events');
 
 //create an object of EventEmitter class by using above reference
