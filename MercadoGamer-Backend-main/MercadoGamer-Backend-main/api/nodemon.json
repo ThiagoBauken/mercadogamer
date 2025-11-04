@@ -1,7 +1,13 @@
 {
   "verbose": false,
   "watch": [
-    "**/*.js"
+    "index.js",
+    "app.js",
+    "routes/**/*.js",
+    "modules/**/*.js",
+    "helpers/**/*.js",
+    "config/**/*.js",
+    "utils/**/*.js"
   ],
   "ignore": [
     "node_modules/**",
@@ -12,14 +18,15 @@
     ".git/**",
     "test/**",
     "tests/**",
-    "*.csv",
-    "*.json",
+    "**/*.csv",
+    "**/*.json",
     ".env",
-    ".env.*"
+    ".env.*",
+    "scripts/**"
   ],
   "env": {
     "NODE_ENV": "development"
   },
   "ext": "js",
-  "delay": "1000"
+  "delay": "2000"
 }

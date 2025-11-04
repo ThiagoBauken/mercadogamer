@@ -48,8 +48,10 @@ services:
       # Stripe
       STRIPE_KEY: ${STRIPE_KEY:-}
     volumes:
-      - ./MercadoGamer-Backend-main/MercadoGamer-Backend-main/api:/app
-      - /app/node_modules
+      # ⚠️ ATENÇÃO: Volume mount DESABILITADO para evitar loop do nodemon
+      # Descomente apenas se precisar de hot-reload durante desenvolvimento
+      # - ./MercadoGamer-Backend-main/MercadoGamer-Backend-main/api:/app
+      # - /app/node_modules
       - uploads:/app/files
       - uploads:/app/uploads
     depends_on:
@@ -59,7 +61,7 @@ services:
         condition: service_started
     networks:
       - mercadogamer-network
-    command: npm run local
+    # CMD do Dockerfile será usado (condicional baseado em NODE_ENV)
 
   # Frontend - Web (Marketplace público)
   frontend-web:
