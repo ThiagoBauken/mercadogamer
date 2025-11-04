@@ -998,22 +998,33 @@ app.enable('trust proxy');
 // })
 app.use('/api', routes);
 
-// app.use('/adm', express.static(path.join(__dirname, '../adm/dist/adm/')))
+// Servir arquivos estáticos (uploads, etc)
+app.use('/files', express.static(path.join(__dirname, '/files/')));
+app.use('/uploads', express.static(path.join(__dirname, '/uploads/')));
 
-app.use('/files', express.static(path.join(__dirname, '../adm/files/')));
+// Rota raiz - apenas para indicar que a API está funcionando
+app.get('/', function (req, res) {
+  res.json({
+    status: 'ok',
+    message: 'MercadoGamer API is running',
+    version: '1.0.0',
+    endpoints: {
+      api: '/api',
+      health: '/api/health',
+      categories: '/api/categories',
+      products: '/api/products',
+      users: '/api/users'
+    }
+  });
+});
 
-// app.use('/', express.static(path.join(__dirname, '../web/dist/adm/')))
-
+// Catch-all para rotas não encontradas
 app.get('/*', function (req, res) {
-  const splitUrl = req.path.split('/');
-
-  if (splitUrl[1] && splitUrl[1] == 'adm') {
-    res.sendFile('index.html', { root: '../adm/dist/adm/' });
-  } else {
-    res.sendFile('index.html', { root: '../web/dist/adm/' });
-  }
-
-  // res.sendFile('index.html', { root: '../web/dist/adm/' })
+  res.status(404).json({
+    error: 'Not Found',
+    message: 'This is an API server. Please use /api/* endpoints.',
+    path: req.path
+  });
 });
 
 app.use(function (error, req, res, next) {
