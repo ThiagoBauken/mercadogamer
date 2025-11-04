@@ -66,55 +66,42 @@ services:
   # Frontend - Web (Marketplace público)
   frontend-web:
     build:
-      context: ./MercadoGamer
-      dockerfile: Dockerfile.web
-      args:
-        APP_NAME: web
+      context: ./MercadoGamer-Backend-main/MercadoGamer-Backend-main/web
+      dockerfile: Dockerfile
     container_name: mercadogamer-frontend-web
     restart: unless-stopped
     ports:
-      - "3001:3000"
+      - "3001:4200"
     environment:
       NODE_ENV: development
-      NEXT_PUBLIC_SERVER_URL: http://localhost:3000/api
-      NEXT_PUBLIC_SOCKET_URL: http://localhost:3000
-      NEXT_PUBLIC_FILE_URL: http://localhost:3000/files
-      NEXT_PUBLIC_DOMAIN: http://localhost:3001
     volumes:
-      - ./MercadoGamer:/app
+      - ./MercadoGamer-Backend-main/MercadoGamer-Backend-main/web:/app
       - /app/node_modules
-      - /app/.next
     depends_on:
       - backend
     networks:
       - mercadogamer-network
-    command: npx nx serve web --host 0.0.0.0 --port 3000
+    command: npm start -- --host 0.0.0.0 --port 4200 --disable-host-check
 
   # Frontend - Admin (Painel administrativo)
   frontend-admin:
     build:
-      context: ./MercadoGamer
-      dockerfile: Dockerfile.admin
-      args:
-        APP_NAME: admin
+      context: ./MercadoGamer-Backend-main/MercadoGamer-Backend-main/adm
+      dockerfile: Dockerfile
     container_name: mercadogamer-frontend-admin
     restart: unless-stopped
     ports:
-      - "4300:4300"
+      - "4300:5001"
     environment:
       NODE_ENV: development
-      NEXT_PUBLIC_SERVER_URL: http://localhost:3000/api
-      NEXT_PUBLIC_SOCKET_URL: http://localhost:3000
-      NEXT_PUBLIC_FILE_URL: http://localhost:3000/files
     volumes:
-      - ./MercadoGamer:/app
+      - ./MercadoGamer-Backend-main/MercadoGamer-Backend-main/adm:/app
       - /app/node_modules
-      - /app/.next
     depends_on:
       - backend
     networks:
       - mercadogamer-network
-    command: npx nx serve admin --host 0.0.0.0 --port 4300
+    command: npm start -- --host 0.0.0.0 --port 5001 --disable-host-check
 
   # MailHog (SMTP server para desenvolvimento)
   mailhog:
