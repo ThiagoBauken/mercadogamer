@@ -19,8 +19,8 @@ COPY MercadoGamer/babel.config.json ./
 COPY MercadoGamer/jest.config.ts ./
 COPY MercadoGamer/jest.preset.js ./
 
-# Instalar dependências
-RUN npm ci && npm cache clean --force
+# Instalar dependências (sem package-lock.json, usar npm install)
+RUN npm install && npm cache clean --force
 
 # Copiar código fonte completo (Nx precisa do workspace todo)
 COPY MercadoGamer/ ./
