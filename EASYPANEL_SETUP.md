@@ -25,7 +25,7 @@ Os Dockerfiles foram movidos para a **raiz do projeto** para facilitar o deploy 
 **Environment Variables:**
 ```env
 NODE_ENV=production
-DATABASE_HOST=mercadogamer-mongodb:27017
+DATABASE_HOST=mercadogamer:27017
 DATABASE_NAME=mercadogamer
 MONGO_USER=admin
 MONGO_PASSWORD=MercadoGamer2024!
