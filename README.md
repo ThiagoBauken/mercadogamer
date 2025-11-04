@@ -6,7 +6,7 @@ Plataforma completa de marketplace para compra e venda de jogos, contas e itens 
 
 ```
 ┌─────────────────────────────────────────────┐
-│         Frontend (Next.js + React)          │
+│           Frontend (Angular 13)             │
 │  ├─ Web (Marketplace)    → :3001           │
 │  └─ Admin (Painel)       → :4300           │
 └───────────────┬─────────────────────────────┘
@@ -14,7 +14,7 @@ Plataforma completa de marketplace para compra e venda de jogos, contas e itens 
 ┌───────────────▼─────────────────────────────┐
 │      Backend (Express.js + Socket.IO)       │
 │  ├─ API REST             → :3000           │
-│  └─ WebSocket            → :10111          │
+│  └─ WebSocket            → :3000           │
 └───────────────┬─────────────────────────────┘
                 │
 ┌───────────────▼─────────────────────────────┐
@@ -25,7 +25,7 @@ Plataforma completa de marketplace para compra e venda de jogos, contas e itens 
 ## 📦 Tecnologias
 
 ### Backend
-- **Node.js 18** com Express.js
+- **Node.js 14** com Express.js
 - **MongoDB 7.0** (Mongoose ODM)
 - **Socket.IO 2.3** (real-time)
 - **JWT** (autenticação)
@@ -33,10 +33,10 @@ Plataforma completa de marketplace para compra e venda de jogos, contas e itens 
 - **Nodemailer** (emails)
 
 ### Frontend
-- **Next.js 13** + React 18
-- **TypeScript**
-- **Nx Monorepo** (workspace management)
+- **Angular 13** + TypeScript
+- **Bootstrap 4.5** + Angular Material
 - **Socket.IO Client** (chat real-time)
+- **RxJS** (programação reativa)
 
 ## 🚀 Início Rápido com Docker
 
@@ -69,10 +69,9 @@ docker-compose up -d
 
 Isso irá iniciar:
 - ✅ MongoDB (porta 27017)
-- ✅ Backend API (porta 3000)
-- ✅ Socket.IO Server (porta 10111)
-- ✅ Frontend Web (porta 3001)
-- ✅ Frontend Admin (porta 4300)
+- ✅ Backend API + Socket.IO (porta 3000)
+- ✅ Frontend Web - Angular (porta 3001)
+- ✅ Frontend Admin - Angular (porta 4300)
 - ✅ MailHog - Email Test Server (porta 8025)
 
 ### 4. Acesse as aplicações
@@ -138,45 +137,73 @@ npm run local
 ### Frontend Web
 
 ```bash
-cd MercadoGamer
+cd MercadoGamer-Backend-main/MercadoGamer-Backend-main/web
 npm install
-npx nx serve web
+
+# Criar environment.ts para desenvolvimento
+cat > src/environments/environment.ts << 'EOF'
+export const environment = {
+  production: false,
+  serverUrl: 'http://localhost:3000/api',
+  filesUrl: 'http://localhost:3000/files',
+  chatUrl: 'http://localhost:3000',
+};
+EOF
+
+ng serve --port 4200
 ```
 
 ### Frontend Admin
 
 ```bash
-cd MercadoGamer
-npx nx serve admin
+cd MercadoGamer-Backend-main/MercadoGamer-Backend-main/adm
+npm install
+ng serve --port 5001
 ```
 
 ## 📁 Estrutura do Projeto
 
 ```
-marketplace/
+mercadogamer/
 ├── docker-compose.yml              # Orquestração Docker
 ├── .env.example                    # Template de variáveis
 ├── .gitignore                      # Arquivos ignorados
 │
-├── MercadoGamer/                   # Frontend (Nx Monorepo)
-│   ├── apps/
-│   │   ├── web/                    # Marketplace público (Next.js)
-│   │   └── admin/                  # Painel admin (Next.js)
-│   ├── libs/
-│   │   └── ui-shared/              # Componentes compartilhados
-│   ├── Dockerfile.web              # Build Web
-│   └── Dockerfile.admin            # Build Admin
-│
 └── MercadoGamer-Backend-main/
     └── MercadoGamer-Backend-main/
-        └── api/                    # Backend Express.js
-            ├── config/             # Configurações
-            ├── models/             # Models Mongoose
-            ├── modules/            # Módulos de negócio (30+)
-            ├── routes/             # Rotas API
-            ├── helpers/            # Funções auxiliares
-            ├── utils/              # Utilitários
-            └── Dockerfile          # Build Backend
+        ├── api/                    # Backend Express.js
+        │   ├── config/             # Configurações
+        │   ├── modules/            # Módulos de negócio (32 módulos)
+        │   │   ├── users/          # Autenticação e perfis
+        │   │   ├── products/       # CRUD de produtos
+        │   │   ├── orders/         # Pedidos
+        │   │   ├── mp/             # MercadoPago
+        │   │   ├── tickets/        # Suporte
+        │   │   └── ...             # Outros 27 módulos
+        │   ├── routes/             # Rotas API
+        │   ├── helpers/            # Funções auxiliares
+        │   ├── utils/              # Utilitários
+        │   └── Dockerfile          # Build Backend
+        │
+        ├── web/                    # Frontend Web (Angular 13)
+        │   ├── src/
+        │   │   ├── app/
+        │   │   │   ├── modules/    # Páginas/componentes
+        │   │   │   ├── core/       # Serviços principais
+        │   │   │   └── shared/     # Componentes compartilhados
+        │   │   └── environments/   # Configurações de ambiente
+        │   ├── package.json
+        │   └── Dockerfile
+        │
+        └── adm/                    # Frontend Admin (Angular 13)
+            ├── src/
+            │   ├── app/
+            │   │   ├── modules/    # Páginas administrativas
+            │   │   ├── core/       # Serviços principais
+            │   │   └── shared/     # Componentes compartilhados
+            │   └── environments/   # Configurações de ambiente
+            ├── package.json
+            └── Dockerfile
 ```
 
 ## 🔐 Segurança
@@ -268,14 +295,14 @@ docker-compose up -d --build
 
 ## 📝 TODO
 
-- [ ] Remover pastas Angular legadas (adm/ e web/)
+- [ ] Atualizar Angular 13 → 17
 - [ ] Atualizar Mongoose para 7.x
 - [ ] Atualizar Socket.IO para 4.x
 - [ ] Migrar backend para TypeScript
-- [ ] Consolidar em monorepo único
 - [ ] Adicionar testes automatizados
 - [ ] Configurar CI/CD
 - [ ] Documentar API REST (Swagger)
+- [ ] Migrar para Nx Monorepo (opcional)
 
 ## 👥 Contribuindo
 
