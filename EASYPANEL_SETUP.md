@@ -109,9 +109,14 @@ NEXT_PUBLIC_FILE_URL=https://private-mercadogamer.pbzgje.easypanel.host/files
 
 - [x] Dockerfiles na raiz
 - [x] MongoDB criado no Easypanel
-- [ ] Backend API deployado
+- [x] Backend API build concluído
+- [x] Backend API container rodando
+- [ ] **Backend environment variables configuradas** ← PRÓXIMO PASSO
+- [ ] Backend conectado ao MongoDB
 - [ ] Frontend Web deployado
 - [ ] Frontend Admin deployado
+
+**Status Detalhado:** Ver [STATUS_DEPLOYMENT.md](STATUS_DEPLOYMENT.md)
 
 ---
 
