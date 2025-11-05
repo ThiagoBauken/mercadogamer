@@ -10,11 +10,12 @@ FROM node:14-alpine AS build-web
 
 WORKDIR /app/web
 
-# Copiar package.json do frontend web
-COPY MercadoGamer-Backend-main/MercadoGamer-Backend-main/web/package*.json ./
+# Copiar package files do frontend web
+COPY MercadoGamer-Backend-main/MercadoGamer-Backend-main/web/package.json ./
+COPY MercadoGamer-Backend-main/MercadoGamer-Backend-main/web/package-lock.json ./
 
 # Instalar dependências
-RUN npm ci --legacy-peer-deps
+RUN npm install --legacy-peer-deps
 
 # Copiar código fonte do frontend web
 COPY MercadoGamer-Backend-main/MercadoGamer-Backend-main/web/ ./
@@ -29,11 +30,12 @@ FROM node:14-alpine AS build-admin
 
 WORKDIR /app/admin
 
-# Copiar package.json do frontend admin
-COPY MercadoGamer-Backend-main/MercadoGamer-Backend-main/adm/package*.json ./
+# Copiar package files do frontend admin
+COPY MercadoGamer-Backend-main/MercadoGamer-Backend-main/adm/package.json ./
+COPY MercadoGamer-Backend-main/MercadoGamer-Backend-main/adm/package-lock.json ./
 
 # Instalar dependências
-RUN npm ci --legacy-peer-deps
+RUN npm install --legacy-peer-deps
 
 # Copiar código fonte do frontend admin
 COPY MercadoGamer-Backend-main/MercadoGamer-Backend-main/adm/ ./
@@ -58,11 +60,12 @@ RUN apk add --no-cache \
 
 WORKDIR /app
 
-# Copiar package.json do backend
-COPY MercadoGamer-Backend-main/MercadoGamer-Backend-main/api/package*.json ./
+# Copiar package files do backend
+COPY MercadoGamer-Backend-main/MercadoGamer-Backend-main/api/package.json ./
+COPY MercadoGamer-Backend-main/MercadoGamer-Backend-main/api/package-lock.json ./
 
 # Instalar dependências do backend
-RUN npm ci && npm cache clean --force
+RUN npm install && npm cache clean --force
 
 # Copiar código do backend
 COPY MercadoGamer-Backend-main/MercadoGamer-Backend-main/api/ ./
