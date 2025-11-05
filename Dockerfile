@@ -10,9 +10,8 @@ FROM node:14-alpine AS build-web
 
 WORKDIR /app/web
 
-# Copiar package files do frontend web
+# Copiar package.json do frontend web
 COPY MercadoGamer-Backend-main/MercadoGamer-Backend-main/web/package.json ./
-COPY MercadoGamer-Backend-main/MercadoGamer-Backend-main/web/package-lock.json ./
 
 # Instalar dependências
 RUN npm install --legacy-peer-deps
@@ -30,9 +29,8 @@ FROM node:14-alpine AS build-admin
 
 WORKDIR /app/admin
 
-# Copiar package files do frontend admin
+# Copiar package.json do frontend admin
 COPY MercadoGamer-Backend-main/MercadoGamer-Backend-main/adm/package.json ./
-COPY MercadoGamer-Backend-main/MercadoGamer-Backend-main/adm/package-lock.json ./
 
 # Instalar dependências
 RUN npm install --legacy-peer-deps
@@ -60,9 +58,8 @@ RUN apk add --no-cache \
 
 WORKDIR /app
 
-# Copiar package files do backend
+# Copiar package.json do backend
 COPY MercadoGamer-Backend-main/MercadoGamer-Backend-main/api/package.json ./
-COPY MercadoGamer-Backend-main/MercadoGamer-Backend-main/api/package-lock.json ./
 
 # Instalar dependências do backend
 RUN npm install && npm cache clean --force
