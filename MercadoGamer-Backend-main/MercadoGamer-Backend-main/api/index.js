@@ -55,7 +55,8 @@ async function start() {
     }
   } finally {
     // HTTP + Socket.IO rodando juntos na porta 3000
-    const PORT = process.env.PORT || 3000;
+    // IMPORTANTE: Força porta 3000 sempre (não usar process.env.PORT do Easypanel)
+    const PORT = 3000;
     const HOST = '0.0.0.0'; // Escutar em todas as interfaces (necessário para Docker)
 
     server.listen(PORT, HOST, async () => {
