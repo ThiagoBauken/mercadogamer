@@ -6,7 +6,7 @@ import {
 } from '@angular/core';
 
 import { ErrorHandler, LOCALE_ID } from '@angular/core';
-import { registerLocaleData } from '@angular/common';
+import { CommonModule, registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
 
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
@@ -177,6 +177,7 @@ const config: SocketIoConfig = { url: environment.chatUrl, options: {} };
   imports: [
     PipesModule,
     BrowserModule,
+    CommonModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     HttpClientModule,
@@ -207,7 +208,7 @@ const config: SocketIoConfig = { url: environment.chatUrl, options: {} };
     MatAutocompleteModule,
     MDBBootstrapModule.forRoot(),
     IconsModule,
-    NgxMaterialTimepickerModule.setLocale('es-AR'),
+    NgxMaterialTimepickerModule,
     SocketIoModule.forRoot(config),
 
     DpDatePickerModule,
