@@ -1027,29 +1027,25 @@ app.use('/api', routes);
 app.use('/files', express.static(path.join(__dirname, '/files/')));
 app.use('/uploads', express.static(path.join(__dirname, '/uploads/')));
 
-// Rota raiz - apenas para indicar que a API está funcionando
-app.get('/', function (req, res) {
-  res.json({
-    status: 'ok',
-    message: 'MercadoGamer API is running',
-    version: '1.0.0',
-    endpoints: {
-      api: '/api',
-      health: '/api/health',
-      categories: '/api/categories',
-      products: '/api/products',
-      users: '/api/users'
-    }
-  });
+// Servir Frontend Admin em /admin
+app.use('/admin', express.static(path.join(__dirname, '/public/admin')));
+app.get('/admin/*', function (req, res) {
+  res.sendFile(path.join(__dirname, '/public/admin/index.html'));
 });
 
-// Catch-all para rotas não encontradas
+// Servir Frontend Web (Marketplace) na raiz
+app.use(express.static(path.join(__dirname, '/public/web')));
 app.get('/*', function (req, res) {
-  res.status(404).json({
-    error: 'Not Found',
-    message: 'This is an API server. Please use /api/* endpoints.',
-    path: req.path
-  });
+  // Se não for rota de API, servir index.html do frontend web
+  if (!req.path.startsWith('/api') && !req.path.startsWith('/files') && !req.path.startsWith('/uploads') && !req.path.startsWith('/admin')) {
+    res.sendFile(path.join(__dirname, '/public/web/index.html'));
+  } else {
+    res.status(404).json({
+      error: 'Not Found',
+      message: 'Endpoint not found',
+      path: req.path
+    });
+  }
 });
 
 app.use(function (error, req, res, next) {

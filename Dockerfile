@@ -1,10 +1,52 @@
-# Backend API Dockerfile - MercadoGamer
-# Este é o Dockerfile padrão para o Backend API
-# Para frontends, use: Dockerfile.web ou Dockerfile.admin
+# ========================================
+# DOCKERFILE UNIFICADO - MercadoGamer
+# Backend + Frontend Web + Frontend Admin
+# ========================================
 
+# ========================================
+# STAGE 1: Build Frontend Web (Marketplace)
+# ========================================
+FROM node:14-alpine AS build-web
+
+WORKDIR /app/web
+
+# Copiar package.json do frontend web
+COPY MercadoGamer-Backend-main/MercadoGamer-Backend-main/web/package*.json ./
+
+# Instalar dependências
+RUN npm ci --legacy-peer-deps
+
+# Copiar código fonte do frontend web
+COPY MercadoGamer-Backend-main/MercadoGamer-Backend-main/web/ ./
+
+# Build de produção
+RUN npm run build -- --configuration production
+
+# ========================================
+# STAGE 2: Build Frontend Admin
+# ========================================
+FROM node:14-alpine AS build-admin
+
+WORKDIR /app/admin
+
+# Copiar package.json do frontend admin
+COPY MercadoGamer-Backend-main/MercadoGamer-Backend-main/adm/package*.json ./
+
+# Instalar dependências
+RUN npm ci --legacy-peer-deps
+
+# Copiar código fonte do frontend admin
+COPY MercadoGamer-Backend-main/MercadoGamer-Backend-main/adm/ ./
+
+# Build de produção
+RUN npm run build -- --configuration production
+
+# ========================================
+# STAGE 3: Backend + Servir Frontends
+# ========================================
 FROM node:18-alpine
 
-# Instalar dependências do sistema necessárias para sharp, bcrypt, etc
+# Instalar dependências do sistema para backend
 RUN apk add --no-cache \
     python3 \
     make \
@@ -14,32 +56,31 @@ RUN apk add --no-cache \
     build-base \
     libc6-compat
 
-# Definir diretório de trabalho
 WORKDIR /app
 
 # Copiar package.json do backend
 COPY MercadoGamer-Backend-main/MercadoGamer-Backend-main/api/package*.json ./
 
-# Instalar dependências (otimizado para baixo uso de memória)
-# NODE_OPTIONS: limita memória do Node.js durante npm install
-# --no-audit: pula auditoria (mais rápido)
-# --no-optional: pula dependências opcionais (economiza tempo/memória)
-RUN NODE_OPTIONS="--max-old-space-size=512" npm install --no-audit --no-optional
+# Instalar dependências do backend
+RUN npm ci && npm cache clean --force
 
 # Copiar código do backend
 COPY MercadoGamer-Backend-main/MercadoGamer-Backend-main/api/ ./
 
-# Criar diretórios necessários
-RUN mkdir -p /app/files /app/uploads && \
-    chmod -R 777 /app/files /app/uploads
+# Copiar builds dos frontends
+COPY --from=build-web /app/web/dist/adm /app/public/web
+COPY --from=build-admin /app/admin/dist/adm /app/public/admin
 
-# Expor porta (HTTP + Socket.IO na mesma porta)
+# Criar diretórios necessários
+RUN mkdir -p /app/files /app/uploads /app/public && \
+    chmod -R 777 /app/files /app/uploads /app/public
+
+# Expor porta
 EXPOSE 3000
 
 # Health check
-HEALTHCHECK --interval=30s --timeout=3s --start-period=40s \
-  CMD node -e "require('http').get('http://localhost:3000/api/health', (r) => {if (r.statusCode !== 200) throw new Error(r.statusCode)})"
+HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
+  CMD node -e "require('http').get('http://localhost:3000/api/health', (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})"
 
 # Comando de inicialização
-# Use NODE_ENV para controlar qual script rodar
-CMD ["sh", "-c", "if [ \"$NODE_ENV\" = 'production' ]; then npm run start; else npm run local; fi"]
+CMD ["npm", "run", "start"]
