@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 import { ErrorHandler, LOCALE_ID } from '@angular/core';
@@ -58,6 +59,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { QRCodeModule } from 'angularx-qrcode';
 import { TicketsComponent } from './modules/tickets/tickets.component';
 import { ProductsComponent } from './modules/products/products.component';
@@ -145,6 +147,7 @@ const config: SocketIoConfig = { url: environment.chatUrl, options: {} };
   imports: [
     PipesModule,
     BrowserModule,
+    CommonModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     SocketIoModule.forRoot(config),
@@ -173,9 +176,10 @@ const config: SocketIoConfig = { url: environment.chatUrl, options: {} };
     MatSlideToggleModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatAutocompleteModule,
     MDBBootstrapModule.forRoot(),
     IconsModule,
-    NgxMaterialTimepickerModule.setLocale('es-AR'),
+    NgxMaterialTimepickerModule,
 
     DpDatePickerModule,
     ReactiveFormsModule,

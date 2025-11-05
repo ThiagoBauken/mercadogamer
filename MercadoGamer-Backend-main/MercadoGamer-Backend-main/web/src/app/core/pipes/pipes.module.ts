@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { CurrencyPipe } from './currency/currency.pipe';
 import { TimeagoPipe } from './timeago/timeago.pipe';
 
@@ -7,8 +8,11 @@ import { TimeagoPipe } from './timeago/timeago.pipe';
         CurrencyPipe,
         TimeagoPipe
     ],
-    imports: [],
+    imports: [
+        CommonModule
+    ],
     exports: [
+        CommonModule,
         CurrencyPipe,
         TimeagoPipe
     ],

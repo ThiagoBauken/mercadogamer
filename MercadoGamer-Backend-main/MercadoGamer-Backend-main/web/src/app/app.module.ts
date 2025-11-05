@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import {
   CUSTOM_ELEMENTS_SCHEMA,
   NgModule,
@@ -177,6 +178,7 @@ const config: SocketIoConfig = { url: environment.chatUrl, options: {} };
   imports: [
     PipesModule,
     BrowserModule,
+    CommonModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     HttpClientModule,
@@ -207,7 +209,7 @@ const config: SocketIoConfig = { url: environment.chatUrl, options: {} };
     MatAutocompleteModule,
     MDBBootstrapModule.forRoot(),
     IconsModule,
-    NgxMaterialTimepickerModule.setLocale('es-AR'),
+    NgxMaterialTimepickerModule,
     SocketIoModule.forRoot(config),
 
     DpDatePickerModule,
