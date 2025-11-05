@@ -198,8 +198,10 @@ if (process.env.NODE_ENV === 'production') {
 } else {
   var cors_origin = {
     origin: [
-      'http://localhost:3001',  // Web Next.js
-      'http://localhost:4300',  // Admin Next.js
+      'http://localhost:4200',  // Web Angular (porta interna do container)
+      'http://localhost:5001',  // Admin Angular (porta interna do container)
+      'http://localhost:3001',  // Web (porta externa mapeada)
+      'http://localhost:4300',  // Admin (porta externa mapeada)
     ],
   };
   app.use(cors(cors_origin));
@@ -210,7 +212,12 @@ app.use(function (req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
   } else {
     // Permitir origin do request se estiver na whitelist
-    const allowedOrigins = ['http://localhost:3001', 'http://localhost:4300'];
+    const allowedOrigins = [
+      'http://localhost:4200',  // Web Angular (porta interna)
+      'http://localhost:5001',  // Admin Angular (porta interna)
+      'http://localhost:3001',  // Web (porta externa)
+      'http://localhost:4300',  // Admin (porta externa)
+    ];
     const origin = req.headers.origin;
     if (allowedOrigins.includes(origin)) {
       res.header('Access-Control-Allow-Origin', origin);

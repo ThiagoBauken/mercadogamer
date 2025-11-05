@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   serverUrl: 'http://localhost:3000/api',
   filesUrl: 'http://localhost:3000/files',
-  chatUrl: 'http://localhost:10111',
+  chatUrl: 'http://localhost:3000',  // Socket.IO na porta 3000 do backend
   // serverUrl: 'https://adm.mercadogamer.com/api',
   // filesUrl: 'https://adm.mercadogamer.com/files',
   // chatUrl: 'https://adm.mercadogamer.com',
