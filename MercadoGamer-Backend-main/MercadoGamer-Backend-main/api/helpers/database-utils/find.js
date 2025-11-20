@@ -31,7 +31,7 @@ module.exports = (helper) => {
           .limit(itemsPerPage)
           .skip(itemsPerPage * page)
           .then(async (data) => {
-            const count = await model.count(params.query);
+            const count = await model.countDocuments(params.query);
             const collectionName = model.collection.collectionName;
             if (collectionName == 'products') {
               const Total = await model.find(params.query);

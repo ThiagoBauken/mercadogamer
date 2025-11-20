@@ -129,7 +129,7 @@ module.exports = async (module) => {
    * @return {void}
    */
   module.router.get('/', async (req, res, next) => {
-    const filters = JSON.parse(req.query._filters);
+    const filters = req.query._filters ? JSON.parse(req.query._filters) : {};
     const deliveryFilter = req.query._delivery
       ? JSON.parse(req.query._delivery)
       : undefined;
@@ -282,7 +282,7 @@ module.exports = async (module) => {
         price: -1,
       });
 
-    res.send({ price: product.price });
+    res.send({ price: product ? product.price : 0 });
   });
 
   /**

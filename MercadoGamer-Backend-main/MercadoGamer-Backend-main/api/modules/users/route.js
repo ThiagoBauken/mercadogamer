@@ -169,7 +169,7 @@ module.exports = (module) => {
       .populate(['platform'])
       .catch(next);
 
-    const productsCount = await global.modules.products.model.count({
+    const productsCount = await global.modules.products.model.countDocuments({
       status: 'approved',
       user: req.params.id,
       ...filters.extraProductsFilter,

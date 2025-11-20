@@ -38,6 +38,7 @@ module.exports = (helper) => {
           res
             .status(500)
             .send('Ocurrio un error. Vuelva a intentar o intente mas tarde.');
+          return reject(helper.lib.httpError(500, 'País no encontrado'));
         }
 
         userInfo.country = countryObj._id;

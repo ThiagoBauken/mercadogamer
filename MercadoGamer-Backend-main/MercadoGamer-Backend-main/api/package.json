@@ -9,6 +9,7 @@
     "startwin": "set NODE_ENV=production & DEBUG=api* & nodemon index.js --exec babel-node",
     "startold": "NODE_ENV=production nodemon ./bin/www",
     "local": "NODE_ENV=development DEBUG=api* nodemon index.js --exec babel-node",
+    "dev": "set NODE_ENV=development&& npx nodemon --exec npx babel-node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Guido - Misael - Ignacio",

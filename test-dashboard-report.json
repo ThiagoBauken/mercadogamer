@@ -1,0 +1,157 @@
+{
+  "timestamp": "2025-11-20T03:35:22.476Z",
+  "authMethod": "api",
+  "summary": {
+    "total": 9,
+    "passed": 9,
+    "failed": 0,
+    "warnings": 0
+  },
+  "pages": [
+    {
+      "name": "Balance",
+      "path": "/dashboard/balance",
+      "category": "BALANCE",
+      "status": "passed",
+      "screenshot": "01-balance.png",
+      "errors": [],
+      "warnings": [],
+      "elements": {
+        "forms": 1,
+        "buttons": 7,
+        "links": 0,
+        "inputs": 5,
+        "tables": 0
+      }
+    },
+    {
+      "name": "Compras",
+      "path": "/dashboard/order",
+      "category": "COMPRAS",
+      "status": "passed",
+      "screenshot": "02-compras.png",
+      "errors": [],
+      "warnings": [],
+      "elements": {
+        "forms": 1,
+        "buttons": 7,
+        "links": 0,
+        "inputs": 5,
+        "tables": 0
+      }
+    },
+    {
+      "name": "Mis preguntas",
+      "path": "/dashboard/qas",
+      "category": "COMPRAS",
+      "status": "passed",
+      "screenshot": "03-mis-preguntas.png",
+      "errors": [],
+      "warnings": [],
+      "elements": {
+        "forms": 1,
+        "buttons": 7,
+        "links": 0,
+        "inputs": 5,
+        "tables": 0
+      }
+    },
+    {
+      "name": "Ventas",
+      "path": "/dashboard/sale",
+      "category": "VENTAS",
+      "status": "passed",
+      "screenshot": "04-ventas.png",
+      "errors": [],
+      "warnings": [],
+      "elements": {
+        "forms": 1,
+        "buttons": 7,
+        "links": 0,
+        "inputs": 5,
+        "tables": 0
+      }
+    },
+    {
+      "name": "Productos",
+      "path": "/dashboard/inventory",
+      "category": "VENTAS",
+      "status": "passed",
+      "screenshot": "05-productos.png",
+      "errors": [],
+      "warnings": [],
+      "elements": {
+        "forms": 1,
+        "buttons": 7,
+        "links": 0,
+        "inputs": 5,
+        "tables": 0
+      }
+    },
+    {
+      "name": "Consultas",
+      "path": "/dashboard/question",
+      "category": "VENTAS",
+      "status": "passed",
+      "screenshot": "06-consultas.png",
+      "errors": [],
+      "warnings": [],
+      "elements": {
+        "forms": 1,
+        "buttons": 7,
+        "links": 0,
+        "inputs": 5,
+        "tables": 0
+      }
+    },
+    {
+      "name": "Tienda",
+      "path": "/dashboard/store",
+      "category": "VENTAS",
+      "status": "passed",
+      "screenshot": "07-tienda.png",
+      "errors": [],
+      "warnings": [],
+      "elements": {
+        "forms": 1,
+        "buttons": 7,
+        "links": 0,
+        "inputs": 5,
+        "tables": 0
+      }
+    },
+    {
+      "name": "Mi perfil",
+      "path": "/dashboard/profile",
+      "category": "CONFIGURACIÓN",
+      "status": "passed",
+      "screenshot": "08-mi-perfil.png",
+      "errors": [],
+      "warnings": [],
+      "elements": {
+        "forms": 1,
+        "buttons": 7,
+        "links": 0,
+        "inputs": 5,
+        "tables": 0
+      }
+    },
+    {
+      "name": "Soporte",
+      "path": "/dashboard/support",
+      "category": "CONFIGURACIÓN",
+      "status": "passed",
+      "screenshot": "09-soporte.png",
+      "errors": [],
+      "warnings": [],
+      "elements": {
+        "forms": 1,
+        "buttons": 7,
+        "links": 0,
+        "inputs": 5,
+        "tables": 0
+      }
+    }
+  ],
+  "errors": []
+}

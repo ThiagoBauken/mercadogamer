@@ -1,0 +1,690 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard Test Report - 2025-11-20T03:35:22.476Z</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #f5f7fa;
+      color: #2c3e50;
+    }
+    .container { max-width: 1400px; margin: 0 auto; }
+    h1 { margin-bottom: 5px; color: #2c3e50; }
+    .timestamp { color: #7f8c8d; font-size: 14px; margin-bottom: 30px; }
+
+    .summary {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+    }
+    .summary-item { text-align: center; padding: 15px; border-radius: 8px; background: #f8f9fa; }
+    .summary-item .label {
+      font-weight: 600;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #7f8c8d;
+      margin-bottom: 8px;
+    }
+    .summary-item .value { font-size: 36px; font-weight: 700; }
+    .summary-item.total .value { color: #3498db; }
+    .summary-item.passed .value { color: #27ae60; }
+    .summary-item.failed .value { color: #e74c3c; }
+    .summary-item.warnings .value { color: #f39c12; }
+
+    .category-section { margin-bottom: 40px; }
+    .category-title {
+      font-size: 22px;
+      font-weight: 600;
+      color: #2c3e50;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 3px solid #3498db;
+    }
+
+    .page-card {
+      background: white;
+      padding: 25px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      border-left: 5px solid #bdc3c7;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .page-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .page-card.passed { border-left-color: #27ae60; }
+    .page-card.failed { border-left-color: #e74c3c; }
+    .page-card.error { border-left-color: #f39c12; }
+
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+    .page-title { font-size: 20px; font-weight: 600; margin: 0; }
+    .page-path { font-size: 13px; color: #7f8c8d; font-family: monospace; }
+
+    .status-badge {
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .status-badge.passed { background: #d4edda; color: #155724; }
+    .status-badge.failed { background: #f8d7da; color: #721c24; }
+    .status-badge.error { background: #fff3cd; color: #856404; }
+
+    .elements-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 10px;
+      margin: 15px 0;
+      padding: 15px;
+      background: #f8f9fa;
+      border-radius: 6px;
+    }
+    .element-count {
+      text-align: center;
+      padding: 10px;
+      background: white;
+      border-radius: 4px;
+    }
+    .element-count .num { font-size: 24px; font-weight: 700; color: #3498db; display: block; }
+    .element-count .label { font-size: 11px; color: #7f8c8d; text-transform: uppercase; }
+
+    .warnings, .errors {
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 6px;
+    }
+    .warnings {
+      background: #fff3cd;
+      border-left: 4px solid #f39c12;
+    }
+    .errors {
+      background: #f8d7da;
+      border-left: 4px solid #e74c3c;
+    }
+    .warnings strong, .errors strong { display: block; margin-bottom: 8px; }
+    .warnings li, .errors li { margin: 5px 0; }
+
+    .screenshot {
+      max-width: 100%;
+      margin: 20px 0;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .screenshot:hover { transform: scale(1.02); }
+
+    pre {
+      background: #2c3e50;
+      color: #ecf0f1;
+      padding: 15px;
+      border-radius: 6px;
+      overflow-x: auto;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎮 MercadoGamer - Dashboard Test Report</h1>
+    <div class="timestamp">Generated: 20/11/2025, 00:35:22</div>
+
+    <div class="summary">
+      <div class="summary-item total">
+        <div class="label">Total Tests</div>
+        <div class="value">9</div>
+      </div>
+      <div class="summary-item passed">
+        <div class="label">Passed</div>
+        <div class="value">9</div>
+      </div>
+      <div class="summary-item failed">
+        <div class="label">Failed</div>
+        <div class="value">0</div>
+      </div>
+      <div class="summary-item warnings">
+        <div class="label">Warnings</div>
+        <div class="value">0</div>
+      </div>
+    </div>
+
+    
+      <div class="category-section">
+        <div class="category-title">BALANCE</div>
+        
+          <div class="page-card passed">
+            <div class="page-header">
+              <div>
+                <div class="page-title">Balance</div>
+                <div class="page-path">/dashboard/balance</div>
+              </div>
+              <div class="status-badge passed">passed</div>
+            </div>
+
+            
+              <div class="elements-grid">
+                
+                  <div class="element-count">
+                    <span class="num">1</span>
+                    <span class="label">forms</span>
+                  </div>
+                
+                  <div class="element-count">
+                    <span class="num">7</span>
+                    <span class="label">buttons</span>
+                  </div>
+                
+                  <div class="element-count">
+                    <span class="num">0</span>
+                    <span class="label">links</span>
+                  </div>
+                
+                  <div class="element-count">
+                    <span class="num">5</span>
+                    <span class="label">inputs</span>
+                  </div>
+                
+                  <div class="element-count">
+                    <span class="num">0</span>
+                    <span class="label">tables</span>
+                  </div>
+                
+              </div>
+            
+
+            
+
+            
+
+            
+              <div>
+                <strong>Screenshot:</strong><br>
+                <img src="test-screenshots-dashboard\01-balance.png"
+                     class="screenshot"
+                     onclick="window.open(this.src, '_blank')"
+                     title="Click to open in new tab">
+              </div>
+            
+          </div>
+        
+      </div>
+    
+      <div class="category-section">
+        <div class="category-title">COMPRAS</div>
+        
+          <div class="page-card passed">
+            <div class="page-header">
+              <div>
+                <div class="page-title">Compras</div>
+                <div class="page-path">/dashboard/order</div>
+              </div>
+              <div class="status-badge passed">passed</div>
+            </div>
+
+            
+              <div class="elements-grid">
+                
+                  <div class="element-count">
+                    <span class="num">1</span>
+                    <span class="label">forms</span>
+                  </div>
+                
+                  <div class="element-count">
+                    <span class="num">7</span>
+                    <span class="label">buttons</span>
+                  </div>
+                
+                  <div class="element-count">
+                    <span class="num">0</span>
+                    <span class="label">links</span>
+                  </div>
+                
+                  <div class="element-count">
+                    <span class="num">5</span>
+                    <span class="label">inputs</span>
+                  </div>
+                
+                  <div class="element-count">
+                    <span class="num">0</span>
+                    <span class="label">tables</span>
+                  </div>
+                
+              </div>
+            
+
+            
+
+            
+
+            
+              <div>
+                <strong>Screenshot:</strong><br>
+                <img src="test-screenshots-dashboard\02-compras.png"
+                     class="screenshot"
+                     onclick="window.open(this.src, '_blank')"
+                     title="Click to open in new tab">
+              </div>
+            
+          </div>
+        
+          <div class="page-card passed">
+            <div class="page-header">
+              <div>
+                <div class="page-title">Mis preguntas</div>
+                <div class="page-path">/dashboard/qas</div>
+              </div>
+              <div class="status-badge passed">passed</div>
+            </div>
+
+            
+              <div class="elements-grid">
+                
+                  <div class="element-count">
+                    <span class="num">1</span>
+                    <span class="label">forms</span>
+                  </div>
+                
+                  <div class="element-count">
+                    <span class="num">7</span>
+                    <span class="label">buttons</span>
+                  </div>
+                
+                  <div class="element-count">
+                    <span class="num">0</span>
+                    <span class="label">links</span>
+                  </div>
+                
+                  <div class="element-count">
+                    <span class="num">5</span>
+                    <span class="label">inputs</span>
+                  </div>
+                
+                  <div class="element-count">
+                    <span class="num">0</span>
+                    <span class="label">tables</span>
+                  </div>
+                
+              </div>
+            
+
+            
+
+            
+
+            
+              <div>
+                <strong>Screenshot:</strong><br>
+                <img src="test-screenshots-dashboard\03-mis-preguntas.png"
+                     class="screenshot"
+                     onclick="window.open(this.src, '_blank')"
+                     title="Click to open in new tab">
+              </div>
+            
+          </div>
+        
+      </div>
+    
+      <div class="category-section">
+        <div class="category-title">VENTAS</div>
+        
+          <div class="page-card passed">
+            <div class="page-header">
+              <div>
+                <div class="page-title">Ventas</div>
+                <div class="page-path">/dashboard/sale</div>
+              </div>
+              <div class="status-badge passed">passed</div>
+            </div>
+
+            
+              <div class="elements-grid">
+                
+                  <div class="element-count">
+                    <span class="num">1</span>
+                    <span class="label">forms</span>
+                  </div>
+                
+                  <div class="element-count">
+                    <span class="num">7</span>
+                    <span class="label">buttons</span>
+                  </div>
+                
+                  <div class="element-count">
+                    <span class="num">0</span>
+                    <span class="label">links</span>
+                  </div>
+                
+                  <div class="element-count">
+                    <span class="num">5</span>
+                    <span class="label">inputs</span>
+                  </div>
+                
+                  <div class="element-count">
+                    <span class="num">0</span>
+                    <span class="label">tables</span>
+                  </div>
+                
+              </div>
+            
+
+            
+
+            
+
+            
+              <div>
+                <strong>Screenshot:</strong><br>
+                <img src="test-screenshots-dashboard\04-ventas.png"
+                     class="screenshot"
+                     onclick="window.open(this.src, '_blank')"
+                     title="Click to open in new tab">
+              </div>
+            
+          </div>
+        
+          <div class="page-card passed">
+            <div class="page-header">
+              <div>
+                <div class="page-title">Productos</div>
+                <div class="page-path">/dashboard/inventory</div>
+              </div>
+              <div class="status-badge passed">passed</div>
+            </div>
+
+            
+              <div class="elements-grid">
+                
+                  <div class="element-count">
+                    <span class="num">1</span>
+                    <span class="label">forms</span>
+                  </div>
+                
+                  <div class="element-count">
+                    <span class="num">7</span>
+                    <span class="label">buttons</span>
+                  </div>
+                
+                  <div class="element-count">
+                    <span class="num">0</span>
+                    <span class="label">links</span>
+                  </div>
+                
+                  <div class="element-count">
+                    <span class="num">5</span>
+                    <span class="label">inputs</span>
+                  </div>
+                
+                  <div class="element-count">
+                    <span class="num">0</span>
+                    <span class="label">tables</span>
+                  </div>
+                
+              </div>
+            
+
+            
+
+            
+
+            
+              <div>
+                <strong>Screenshot:</strong><br>
+                <img src="test-screenshots-dashboard\05-productos.png"
+                     class="screenshot"
+                     onclick="window.open(this.src, '_blank')"
+                     title="Click to open in new tab">
+              </div>
+            
+          </div>
+        
+          <div class="page-card passed">
+            <div class="page-header">
+              <div>
+                <div class="page-title">Consultas</div>
+                <div class="page-path">/dashboard/question</div>
+              </div>
+              <div class="status-badge passed">passed</div>
+            </div>
+
+            
+              <div class="elements-grid">
+                
+                  <div class="element-count">
+                    <span class="num">1</span>
+                    <span class="label">forms</span>
+                  </div>
+                
+                  <div class="element-count">
+                    <span class="num">7</span>
+                    <span class="label">buttons</span>
+                  </div>
+                
+                  <div class="element-count">
+                    <span class="num">0</span>
+                    <span class="label">links</span>
+                  </div>
+                
+                  <div class="element-count">
+                    <span class="num">5</span>
+                    <span class="label">inputs</span>
+                  </div>
+                
+                  <div class="element-count">
+                    <span class="num">0</span>
+                    <span class="label">tables</span>
+                  </div>
+                
+              </div>
+            
+
+            
+
+            
+
+            
+              <div>
+                <strong>Screenshot:</strong><br>
+                <img src="test-screenshots-dashboard\06-consultas.png"
+                     class="screenshot"
+                     onclick="window.open(this.src, '_blank')"
+                     title="Click to open in new tab">
+              </div>
+            
+          </div>
+        
+          <div class="page-card passed">
+            <div class="page-header">
+              <div>
+                <div class="page-title">Tienda</div>
+                <div class="page-path">/dashboard/store</div>
+              </div>
+              <div class="status-badge passed">passed</div>
+            </div>
+
+            
+              <div class="elements-grid">
+                
+                  <div class="element-count">
+                    <span class="num">1</span>
+                    <span class="label">forms</span>
+                  </div>
+                
+                  <div class="element-count">
+                    <span class="num">7</span>
+                    <span class="label">buttons</span>
+                  </div>
+                
+                  <div class="element-count">
+                    <span class="num">0</span>
+                    <span class="label">links</span>
+                  </div>
+                
+                  <div class="element-count">
+                    <span class="num">5</span>
+                    <span class="label">inputs</span>
+                  </div>
+                
+                  <div class="element-count">
+                    <span class="num">0</span>
+                    <span class="label">tables</span>
+                  </div>
+                
+              </div>
+            
+
+            
+
+            
+
+            
+              <div>
+                <strong>Screenshot:</strong><br>
+                <img src="test-screenshots-dashboard\07-tienda.png"
+                     class="screenshot"
+                     onclick="window.open(this.src, '_blank')"
+                     title="Click to open in new tab">
+              </div>
+            
+          </div>
+        
+      </div>
+    
+      <div class="category-section">
+        <div class="category-title">CONFIGURACIÓN</div>
+        
+          <div class="page-card passed">
+            <div class="page-header">
+              <div>
+                <div class="page-title">Mi perfil</div>
+                <div class="page-path">/dashboard/profile</div>
+              </div>
+              <div class="status-badge passed">passed</div>
+            </div>
+
+            
+              <div class="elements-grid">
+                
+                  <div class="element-count">
+                    <span class="num">1</span>
+                    <span class="label">forms</span>
+                  </div>
+                
+                  <div class="element-count">
+                    <span class="num">7</span>
+                    <span class="label">buttons</span>
+                  </div>
+                
+                  <div class="element-count">
+                    <span class="num">0</span>
+                    <span class="label">links</span>
+                  </div>
+                
+                  <div class="element-count">
+                    <span class="num">5</span>
+                    <span class="label">inputs</span>
+                  </div>
+                
+                  <div class="element-count">
+                    <span class="num">0</span>
+                    <span class="label">tables</span>
+                  </div>
+                
+              </div>
+            
+
+            
+
+            
+
+            
+              <div>
+                <strong>Screenshot:</strong><br>
+                <img src="test-screenshots-dashboard\08-mi-perfil.png"
+                     class="screenshot"
+                     onclick="window.open(this.src, '_blank')"
+                     title="Click to open in new tab">
+              </div>
+            
+          </div>
+        
+          <div class="page-card passed">
+            <div class="page-header">
+              <div>
+                <div class="page-title">Soporte</div>
+                <div class="page-path">/dashboard/support</div>
+              </div>
+              <div class="status-badge passed">passed</div>
+            </div>
+
+            
+              <div class="elements-grid">
+                
+                  <div class="element-count">
+                    <span class="num">1</span>
+                    <span class="label">forms</span>
+                  </div>
+                
+                  <div class="element-count">
+                    <span class="num">7</span>
+                    <span class="label">buttons</span>
+                  </div>
+                
+                  <div class="element-count">
+                    <span class="num">0</span>
+                    <span class="label">links</span>
+                  </div>
+                
+                  <div class="element-count">
+                    <span class="num">5</span>
+                    <span class="label">inputs</span>
+                  </div>
+                
+                  <div class="element-count">
+                    <span class="num">0</span>
+                    <span class="label">tables</span>
+                  </div>
+                
+              </div>
+            
+
+            
+
+            
+
+            
+              <div>
+                <strong>Screenshot:</strong><br>
+                <img src="test-screenshots-dashboard\09-soporte.png"
+                     class="screenshot"
+                     onclick="window.open(this.src, '_blank')"
+                     title="Click to open in new tab">
+              </div>
+            
+          </div>
+        
+      </div>
+    
+  </div>
+</body>
+</html>
+  
