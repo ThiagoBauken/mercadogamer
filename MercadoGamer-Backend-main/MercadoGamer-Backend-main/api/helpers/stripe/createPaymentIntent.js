@@ -13,8 +13,10 @@ module.exports = (helper) => {
   return (params) => {
     return new Promise(async (resolve, reject) => {
       try {
+        // apiVersion is required in stripe v18
         const stripeClient = stripe(
-          helper.settings.stripe[helper.settings.stripe.env].secretKey
+          helper.settings.stripe[helper.settings.stripe.env].secretKey,
+          { apiVersion: '2024-12-18.acacia' }
         );
 
         const paymentIntentParams = {

@@ -1,6 +1,25 @@
 const mongoose = require('mongoose');
 const Debug = require('debug');
+const fs = require('fs');
+const path = require('path');
 const settings = require('./config/settings');
+
+// Garantir que diretórios de upload/arquivos existem antes do app iniciar.
+// Sem isso, sharp.toFile() falha com ENOENT no upload de imagens.
+for (const dir of [
+  process.env.UPLOAD_DIR || './uploads',
+  process.env.IMAGES_DIR || './files',
+  settings.files && settings.files.path,
+]) {
+  if (dir) {
+    try {
+      fs.mkdirSync(path.resolve(dir), { recursive: true });
+    } catch (e) {
+      console.warn(`⚠️  Não foi possível criar diretório ${dir}:`, e.message);
+    }
+  }
+}
+
 const { app, server, io } = require('./app');
 // const { updateProductsRatings } = require('./scripts/updateProductRatings');
 // const { imgTransform } = require('./scripts/img-transform');

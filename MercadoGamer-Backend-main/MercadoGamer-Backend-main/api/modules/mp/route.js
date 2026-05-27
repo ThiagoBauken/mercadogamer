@@ -7,17 +7,27 @@ module.exports = (module) => {
   /**
    * Create init point
    *
+   * Migrated from mercadopago v1 to v2.
+   *   Before: module.lib.mercadopago.configure({...}); module.lib.mercadopago.preferences.create(payload)
+   *   After:  new MercadoPagoConfig({...}); new Preference(client).create({ body: payload })
+   *
+   * Response format preserved: res.json({ data: response.init_point })
+   *
    * @param {Object} req - Request
    * @param {Object} res - Response
    * @param {Object} next - Next
    * @return {void}
    */
   module.router.post('/initPoint', (req, res, next) => {
-    module.lib.mercadopago.configure({
-      access_token: module.settings.mp[module.settings.mp.env].accessToken,
+    const { MercadoPagoConfig, Preference } = module.lib.mercadopago;
+
+    const client = new MercadoPagoConfig({
+      accessToken: module.settings.mp[module.settings.mp.env].accessToken,
     });
 
-    let preference = {
+    const preferenceClient = new Preference(client);
+
+    const preferenceBody = {
       external_reference: req.body.externalReference.toString(),
       notification_url: module.settings.mp.urlIpn,
       items: [
@@ -30,10 +40,11 @@ module.exports = (module) => {
       ],
     };
 
-    module.lib.mercadopago.preferences
-      .create(preference)
+    preferenceClient
+      .create({ body: preferenceBody })
       .then(function (response) {
-        res.status(200).json({ data: response.body.init_point });
+        // v2 returns the object directly (no .body wrapper)
+        res.status(200).json({ data: response.init_point });
       })
       .catch(function (error) {
         res.status(400).json({
@@ -53,10 +64,15 @@ module.exports = (module) => {
   module.router.post('/testemitter', (req, res, next) => {
     global.utils.eventEmitter.emit('checkPayment', { somedata: '123123213' });
   });
+
   /**
    * ipn
    *
    * WARNING: THIS ROUTE IS DEPRECATED
+   *
+   * Migrated from mercadopago v1 to v2.
+   *   Before: module.lib.mercadopago.payment.get(id) -> payment.body.status / payment.body.external_reference
+   *   After:  new Payment(client).get({ id }) -> response object directly (no .body wrapper)
    *
    * @param {Object} req - Request
    * @param {Object} res - Response
@@ -64,9 +80,13 @@ module.exports = (module) => {
    * @return {void}
    */
   module.router.post('/ipn', async (req, res, next) => {
-    module.lib.mercadopago.configure({
-      access_token: module.settings.mp[module.settings.mp.env].accessToken,
+    const { MercadoPagoConfig, Payment } = module.lib.mercadopago;
+
+    const client = new MercadoPagoConfig({
+      accessToken: module.settings.mp[module.settings.mp.env].accessToken,
     });
+
+    const paymentClient = new Payment(client);
 
     if (!req.body.type) {
       res.sendStatus(200);
@@ -75,24 +95,16 @@ module.exports = (module) => {
 
     try {
       if (req.body.type === 'payment') {
-        const payment = await module.lib.mercadopago.payment
-          .get(req.body.data.id)
+        // v2: get({ id }) — response is direct object, no .body wrapper
+        const paymentData = await paymentClient
+          .get({ id: req.body.data.id })
           .catch(next);
-        if (payment.body.status == 'approved') {
-          // wtf
-          //await module.model.deleteOne(cart);
+
+        if (paymentData.status == 'approved') {
           let buyer,
             ids = [];
-          const orders = JSON.parse(payment.body.external_reference).split(',');
+          const orders = JSON.parse(paymentData.external_reference).split(',');
           for (const orderId of orders) {
-            /*const order = await global.modules.orders.model
-              .findByIdAndUpdate(
-                orderId,
-                { status: 'paid', paidDate: Date.now() },
-                { new: true }
-              )
-              .populate('product')
-              .catch(next);*/
             console.log(orderId);
             const order = await global.modules.orders.model
               .findById(orderId)
@@ -170,9 +182,9 @@ module.exports = (module) => {
               .createMessage({
                 conversation: addedConversations._id,
                 body: `Tu pago ha sido aceptado, gracias por comprar en Mercado Gamer, ahora estamos acá para ayudarte.
-              
+
               No cierres la compra hasta haber recibido el producto. Si el vendedor solicita cerrar la compra para entregar el producto, abrí un reclamo.
-  
+
               <span class="important">¡IMPORTANTE!</span> No se pueden compartir datos de contacto de ninguna red social, en caso de hacerlo ambos usuarios corren riesgo de ser vetados permanentemente del sitio web.`,
                 author: null,
                 authorName: 'Administrador',
@@ -200,7 +212,7 @@ module.exports = (module) => {
         } else {
           // this is wrong
           const order = await global.modules.orders.model
-            .findById(JSON.parse(payment.body.external_reference))
+            .findById(JSON.parse(paymentData.external_reference))
             .populate(['product', 'buyer'])
             .catch(next);
 
@@ -233,14 +245,23 @@ module.exports = (module) => {
       (req.body.action === 'payment.created' ||
         req.body.action === 'payment.updated')
     ) {
-      const payment = await module.lib.mercadopago.payment
-        .get(req.body.data.id)
+      const { MercadoPagoConfig, Payment } = module.lib.mercadopago;
+
+      const client = new MercadoPagoConfig({
+        accessToken: module.settings.mp[module.settings.mp.env].accessToken,
+      });
+
+      const paymentClient = new Payment(client);
+
+      // v2: get({ id }) — response is direct object, no .body / .response wrappers
+      const paymentData = await paymentClient
+        .get({ id: req.body.data.id })
         .catch((e) => console.error(e));
 
-      if (payment.response.status === 'approved') {
+      if (paymentData && paymentData.status === 'approved') {
         const pendingOrders = await global.modules.pendingOrders.model
           .findOne({
-            _id: payment.body.external_reference,
+            _id: paymentData.external_reference,
             orders: [],
           })
           .populate('user')
@@ -251,7 +272,7 @@ module.exports = (module) => {
             pendingOrders,
             false,
             module.lib.eventEmitter,
-            payment.body.id
+            paymentData.id
           );
         }
       }

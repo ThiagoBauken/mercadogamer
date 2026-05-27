@@ -44,11 +44,8 @@ async function initializeDatabase() {
     console.log(`   Host: 185.215.165.19:3031`);
     console.log(`   Database: mercadogamer\n`);
 
-    await mongoose.connect(MONGODB_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useCreateIndex: true,
-    });
+    // Mongoose 8+ — todas essas opções são default ou foram removidas
+    await mongoose.connect(MONGODB_URI);
 
     console.log('✅ Conectado ao MongoDB com sucesso!\n');
 

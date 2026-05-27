@@ -5,7 +5,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const routes = require('./routes');
-const multipart = require('connect-multiparty');
+// connect-multiparty removed (broken on Node 22) — upload is handled by multer in modules/files/route.js
 const moment = require('moment');
 const mongoose = require('mongoose');
 
@@ -142,8 +142,9 @@ lib.cron = require('node-cron');
 // Define lib trae
 lib.trae = require('trae');
 
-// Define lib mercado pago
-lib.mercadopago = require('mercadopago');
+// Define lib mercado pago (v2 — instance-based API)
+const { MercadoPagoConfig, Preference, Payment } = require('mercadopago');
+lib.mercadopago = { MercadoPagoConfig, Preference, Payment };
 
 // Define events
 lib.events = require('events');
@@ -226,11 +227,7 @@ app.use(security.ipFilter());
 
 console.log('✅ Security middlewares loaded successfully');
 
-app.use(
-  multipart({
-    uploadDir: '/tmp/',
-  })
-);
+// multipart global middleware removed — multer is applied per-route in modules/files/route.js
 
 app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({ extended: false }))
@@ -1003,7 +1000,9 @@ lib.eventEmitter.on('checkPayment', async (orderId) => {
  * app.use('/speechToText', express.static(path.join(__dirname, './static/speechToText.html')));
  * app.use('/files', express.static(path.join(__dirname, './static/files/')));
  */
-app.enable('trust proxy');
+// Trust proxy específico: 1 = só o primeiro hop (Easypanel/Nginx). Aceito por express-rate-limit v8.
+// Antes era `app.enable('trust proxy')` (= true), bloqueado por vuln ERR_ERL_PERMISSIVE_TRUST_PROXY.
+app.set('trust proxy', 1);
 // app.use((req, res, next) => {
 //   var host = req.headers.host
 //   let validator = true

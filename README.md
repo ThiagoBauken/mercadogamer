@@ -1,42 +1,52 @@
 # 🎮 MercadoGamer - Marketplace de Jogos
 
-Plataforma completa de marketplace para compra e venda de jogos, contas e itens digitais.
+Plataforma de marketplace para compra e venda de contas, itens e serviços de jogos digitais.
+
+> 📚 **Documentação principal**:
+> - **[`docs/STATE.md`](docs/STATE.md)** — estado real atual (versões, endpoints validados, bugs conhecidos)
+> - **[`docs/ROADMAP.md`](docs/ROADMAP.md)** — plano pós-migração (KYC, escrow, planos, deploy)
+> - **[`docs/TESTING.md`](docs/TESTING.md)** — como testar localmente, smoke tests, troubleshooting
 
 ## 🏗️ Arquitetura
 
 ```
 ┌─────────────────────────────────────────────┐
-│         Frontend (Next.js + React)          │
-│  ├─ Web (Marketplace)    → :3001           │
-│  └─ Admin (Painel)       → :4300           │
+│         Frontend (Next.js 14 + React 18)    │
+│  ├─ Web (Marketplace)    → :4200            │
+│  └─ Admin (Painel)       → :4300            │
+└───────────────┬─────────────────────────────┘
+                │ HTTP + WebSocket
+┌───────────────▼─────────────────────────────┐
+│   Backend (Express 4 + Socket.IO 4)         │
+│   API REST + WebSocket    → :3000           │
 └───────────────┬─────────────────────────────┘
                 │
 ┌───────────────▼─────────────────────────────┐
-│      Backend (Express.js + Socket.IO)       │
-│  ├─ API REST             → :3000           │
-│  └─ WebSocket            → :10111          │
-└───────────────┬─────────────────────────────┘
-                │
-┌───────────────▼─────────────────────────────┐
-│          MongoDB Database → :27017          │
+│         MongoDB (Mongoose 8)    → :27017    │
 └─────────────────────────────────────────────┘
 ```
 
-## 📦 Tecnologias
+## 📦 Stack (Maio 2026, após modernização)
 
 ### Backend
-- **Node.js 18** com Express.js
-- **MongoDB 7.0** (Mongoose ODM)
-- **Socket.IO 2.3** (real-time)
-- **JWT** (autenticação)
-- **Stripe + MercadoPago** (pagamentos)
-- **Nodemailer** (emails)
+- **Node.js 22** com Express 4
+- **Mongoose 8** (driver MongoDB 6.x)
+- **Socket.IO 4** (real-time)
+- **JWT** via `jsonwebtoken` (header `x-access-token`)
+- **bcryptjs** (hash de senhas, sem build nativo)
+- **Stripe SDK 18** + **MercadoPago SDK 2** (pagamentos)
+- **multer** + **sharp** (upload de imagens, converte tudo pra .webp)
+- **Nodemailer** + Mailhog/SMTP (emails)
+- **Helmet + express-rate-limit + CORS whitelist** (middleware de segurança)
+- CommonJS puro — **sem Babel**
 
 ### Frontend
-- **Next.js 13** + React 18
-- **TypeScript**
-- **Nx Monorepo** (workspace management)
-- **Socket.IO Client** (chat real-time)
+- **Next.js 14.2** + React 18 (compilador nativo SWC, sem Babel)
+- **TypeScript 5**
+- **Nx 19** (monorepo)
+- **socket.io-client 4** (chat em tempo real)
+- **MUI 5** + **styled-components 6** (UI)
+- **next-i18next** (3 idiomas: pt-BR, en, es — ⚠️ ainda não plugado no `_app.tsx`)
 
 ## 🚀 Início Rápido com Docker
 

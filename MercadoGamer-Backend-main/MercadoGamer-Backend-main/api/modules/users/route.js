@@ -156,14 +156,23 @@ module.exports = (module) => {
    * @return {void}
    */
   module.router.get('/profile/:id', async (req, res, next) => {
-    const filters = JSON.parse(req.query._filters);
+    // Robusto contra _filters ausente ou JSON inválido (antes crashava o processo)
+    let filters = {};
+    if (req.query._filters) {
+      try {
+        filters = JSON.parse(req.query._filters);
+      } catch (e) {
+        return next(module.lib.httpError(400, 'Query param _filters inválido (JSON malformado)'));
+      }
+    }
+    const extraProductsFilter = filters.extraProductsFilter || {};
 
     const products = await global.modules.products.model
       .find({
         status: 'approved',
         enabled: true,
         user: req.params.id,
-        ...filters.extraProductsFilter,
+        ...extraProductsFilter,
       })
       .sort({ priority: 1 })
       .populate(['platform'])
@@ -172,7 +181,7 @@ module.exports = (module) => {
     const productsCount = await global.modules.products.model.countDocuments({
       status: 'approved',
       user: req.params.id,
-      ...filters.extraProductsFilter,
+      ...extraProductsFilter,
     });
 
     // const productsPages = Math.ceil(productsCount / productsPerPage);

@@ -14,8 +14,10 @@ module.exports = (module) => {
    */
   module.router.post('/create-payment-intent', async (req, res, next) => {
     try {
+      // apiVersion is required in stripe v18
       const stripeClient = stripe(
-        module.settings.stripe[module.settings.stripe.env].secretKey
+        module.settings.stripe[module.settings.stripe.env].secretKey,
+        { apiVersion: '2024-12-18.acacia' }
       );
 
       const { amount, currency, externalReference, description, customerEmail } = req.body;
@@ -112,8 +114,10 @@ module.exports = (module) => {
     let event;
 
     try {
+      // apiVersion is required in stripe v18
       const stripeClient = stripe(
-        module.settings.stripe[module.settings.stripe.env].secretKey
+        module.settings.stripe[module.settings.stripe.env].secretKey,
+        { apiVersion: '2024-12-18.acacia' }
       );
 
       // Verify webhook signature

@@ -3,18 +3,30 @@
 // Define module
 module.exports = (helper) => {
   /**
-   * Create opentok session
+   * Create MercadoPago preference
    *
-   * @param {Object} model - Model
+   * Migrated from mercadopago v1 (global config) to v2 (instance-based).
+   *   Before: mercadopago.configure({ access_token }); mercadopago.preferences.create(payload)
+   *   After:  new MercadoPagoConfig({ accessToken }); new Preference(client).create({ body: payload })
+   *
+   * Return format is unchanged: resolves with the response body object so callers
+   * can access response.init_point / response.id as before.
+   *
+   * @param {Object} params - Parameters
    * @return {Promise}
    */
   return (params) => {
     return new Promise((resolve, reject) => {
       try {
-        helper.lib.mercadopago.configure({
-          access_token: helper.settings.mp[helper.settings.mp.env].accessToken,
+        const { MercadoPagoConfig, Preference } = helper.lib.mercadopago;
+
+        const client = new MercadoPagoConfig({
+          accessToken: helper.settings.mp[helper.settings.mp.env].accessToken,
         });
-        let preference = {
+
+        const preferenceClient = new Preference(client);
+
+        const preferenceBody = {
           external_reference: params.externalReference.toString(),
           notification_url: helper.settings.mp.urlIpn,
           back_urls: {
@@ -31,10 +43,11 @@ module.exports = (helper) => {
           ],
         };
 
-        helper.lib.mercadopago.preferences
-          .create(preference)
+        preferenceClient
+          .create({ body: preferenceBody })
           .then((response) => {
-            resolve(response.body);
+            // v2 returns the object directly (no .body wrapper)
+            resolve(response);
           })
           .catch((error) => {
             reject(
