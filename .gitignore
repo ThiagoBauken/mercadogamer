@@ -40,5 +40,17 @@ testem.log
 .DS_Store
 Thumbs.db
 
+# Windows reserved-name junk (created by accidental "> nul" in PowerShell)
+nul
+**/nul
+
+# Editor/working backups
+*.bak
+*.bak.tsx
+.cache-backups/
+
+# package-lock variants
+package.json.bak
+
 # Next.js
 .next

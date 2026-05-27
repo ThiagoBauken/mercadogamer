@@ -1,11 +1,18 @@
 import { useState } from 'react';
+import dynamic from 'next/dynamic';
 import { useForm } from 'react-hook-form';
+import { useTranslation } from 'next-i18next';
 import { closeAuthModal, openLoginModal, signup, useAppDispatch, useTypedSelector } from '@store';
 import { useRouter } from 'next/router';
 import { addMessageToToast, EmailValidationRegex } from '@utils';
-import { Modal } from '@widgets/modal';
-import { FormInput } from '@widgets/form';
-import { Button } from '@widgets/button';
+
+const Modal = dynamic(() => import('@widgets/modal').then(mod => mod.Modal), { ssr: false });
+const FormInput = dynamic(() => import('@widgets/form').then(mod => mod.FormInput), { ssr: false });
+const Button = dynamic(() => import('@widgets/button').then(mod => mod.Button), { ssr: false });
+
+interface ModalProps {
+  open: boolean;
+}
 
 type FormData = {
   username: string;
@@ -15,6 +22,7 @@ type FormData = {
 };
 
 export const SignupPage: React.FC<ModalProps> = (modalProps) => {
+  const { t } = useTranslation('auth');
   const { referredby } = useTypedSelector((store) => store.referredby);
 
   const dispatch = useAppDispatch();
@@ -40,7 +48,7 @@ export const SignupPage: React.FC<ModalProps> = (modalProps) => {
   const onSubmit = async (data: FormData): Promise<void> => {
     try {
       if (data.password !== data.confirm_password) {
-        setError('password', { message: 'Introduce una contraseña.' });
+        setError('password', { message: t('validation.password_invalid') });
         return;
       }
 
@@ -50,7 +58,7 @@ export const SignupPage: React.FC<ModalProps> = (modalProps) => {
         dispatch(signup(data, router));
       }
     } catch (error) {
-      console.log(error);
+      console.error('Signup error:', error);
     }
   };
 
@@ -63,60 +71,60 @@ export const SignupPage: React.FC<ModalProps> = (modalProps) => {
     >
       <div className="content">
         <div className="header">
-          <div className="title">Registrate</div>
+          <div className="title">{t('signup.register_title')}</div>
           <div className="description">
-            ¿Ya tenés una cuenta?{' '}
-            <span onClick={() => dispatch(openLoginModal())}>Iniciar sesión</span>
+            {t('signup.already_have_account')}{' '}
+            <span onClick={() => dispatch(openLoginModal())}>{t('signup.login_link_action')}</span>
           </div>
-          <div className="form-title">O registrate con tu email</div>
+          <div className="form-title">{t('signup.or_register_email')}</div>
         </div>
         <form onSubmit={handleSubmit(onSubmit)}>
           <FormInput
             control={control}
             name="username"
-            label="Nombre de usuario"
+            label={t('signup.username')}
             width="100%"
             rules={{
-              required: 'Introduce un nombre valido. Debe tener entre 0 y 20 caracteres.',
+              required: t('validation.username_required'),
               pattern: {
                 value: /^.{0,20}$/,
-                message: 'El nombre de usuario tiene que tener entre 0 y 20 caracteres.',
+                message: t('validation.username_length'),
               },
             }}
           />
           <FormInput
             control={control}
             name="emailAddress"
-            label="E-mail"
+            label={t('signup.email')}
             width="100%"
             rules={{
-              required: 'Introduce un e-mail válido.',
+              required: t('validation.email_invalid'),
               pattern: {
                 value: EmailValidationRegex,
-                message: 'Introduce un e-mail válido.',
+                message: t('validation.email_invalid'),
               },
             }}
           />
           <FormInput
             control={control}
             name="password"
-            label="Contraseña"
+            label={t('signup.password')}
             type={state.showPassword ? 'text' : 'password'}
             width="100%"
             endfix={state.showPassword ? 'eye-off' : 'eye'}
             rules={{
-              required: 'Introduce una contraseña.',
+              required: t('validation.password_invalid'),
             }}
             onEndFixClick={() => setState({ ...state, showPassword: !state.showPassword })}
           />
           <FormInput
             control={control}
             name="confirm_password"
-            label="Repetir contraseña"
+            label={t('signup.repeat_password')}
             type="password"
             width="100%"
             rules={{
-              required: 'Introduce una contraseña.',
+              required: t('validation.password_invalid'),
             }}
           />
           <Button
@@ -125,11 +133,10 @@ export const SignupPage: React.FC<ModalProps> = (modalProps) => {
             loading={auth.loading}
             width="100%"
           >
-            Registrate
+            {t('signup.submit_register')}
           </Button>
           <div className="description">
-            Al registrarte aceptás las Condiciones de uso y la Política de privacidad de Mercado
-            Gamer.
+            {t('signup.terms_accept')}
           </div>
         </form>
       </div>

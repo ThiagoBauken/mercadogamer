@@ -1,0 +1,119 @@
+{
+  "catalog": {
+    "title": "Catálogo",
+    "subtitle": "Explora nuestra colección de juegos y productos",
+    "search_placeholder": "Buscar productos, juegos...",
+    "no_results": "No se encontraron productos",
+    "showing": "Mostrando {{count}} productos"
+  },
+  "filters": {
+    "title": "Filtros",
+    "clear_all": "Limpiar filtros",
+    "apply": "Aplicar",
+    "category": "Categoría",
+    "price_range": "Rango de precio",
+    "min_price": "Precio mínimo",
+    "max_price": "Precio máximo",
+    "platform": "Plataforma",
+    "genre": "Género",
+    "rating": "Valoración",
+    "availability": "Disponibilidad",
+    "in_stock": "En stock",
+    "out_of_stock": "Agotado",
+    "condition": "Condición",
+    "new": "Nuevo",
+    "used": "Usado"
+  },
+  "sort": {
+    "title": "Ordenar por",
+    "relevance": "Relevancia",
+    "price_asc": "Menor precio",
+    "price_desc": "Mayor precio",
+    "newest": "Más nuevos",
+    "popular": "Más populares",
+    "best_rated": "Mejor valorados"
+  },
+  "card": {
+    "out_of_stock": "Agotado",
+    "discount": "{{percent}}% OFF",
+    "free_shipping": "Envío gratis",
+    "add_to_cart": "Añadir al carrito",
+    "add_button": "Agregar",
+    "buy_now": "Comprar ahora",
+    "view_details": "Ver detalles",
+    "quick_view": "Vista rápida",
+    "compare": "Comparar",
+    "wishlist": "Lista de deseos",
+    "share": "Compartir",
+    "delivery_automatic": "Entrega automática",
+    "delivery_coordinated": "Entrega coordinada"
+  },
+  "detail": {
+    "description": "Descripción",
+    "specifications": "Especificaciones",
+    "reviews": "Reseñas",
+    "questions": "Preguntas",
+    "seller": "Vendedor",
+    "quantity": "Cantidad",
+    "stock": "{{count}} en stock",
+    "limited_stock": "Stock limitado",
+    "price": "Precio",
+    "original_price": "Precio original",
+    "you_save": "Ahorras",
+    "shipping": "Envío",
+    "shipping_free": "Envío gratis",
+    "shipping_calculated": "Calculado al pagar",
+    "delivery_time": "Tiempo de entrega",
+    "delivery_days": "{{count}} días hábiles",
+    "add_to_cart": "Añadir al carrito",
+    "buy_now": "Comprar ahora",
+    "report": "Denunciar producto",
+    "share": "Compartir"
+  },
+  "reviews": {
+    "title": "Reseñas de Clientes",
+    "average": "{{rating}} de 5",
+    "total": "{{count}} reseña",
+    "total_plural": "{{count}} reseñas",
+    "write_review": "Escribir reseña",
+    "helpful": "Útil",
+    "not_helpful": "No útil",
+    "verified_purchase": "Compra verificada",
+    "sort_by": "Ordenar por",
+    "most_recent": "Más recientes",
+    "most_helpful": "Más útiles",
+    "highest_rating": "Mayor valoración",
+    "lowest_rating": "Menor valoración",
+    "no_reviews": "Aún no hay reseñas"
+  },
+  "questions": {
+    "title": "Preguntas sobre el producto",
+    "ask_question": "Hacer una pregunta",
+    "answer": "Responder",
+    "answered_by_seller": "Respondido por el vendedor",
+    "no_questions": "Aún no hay preguntas"
+  },
+  "categories": {
+    "all": "Todos",
+    "games": "Juegos",
+    "consoles": "Consolas",
+    "accessories": "Accesorios",
+    "collectibles": "Coleccionables",
+    "gift_cards": "Tarjetas regalo",
+    "merchandise": "Mercancía"
+  },
+  "platforms": {
+    "pc": "PC",
+    "playstation": "PlayStation",
+    "xbox": "Xbox",
+    "nintendo": "Nintendo",
+    "mobile": "Móvil"
+  },
+  "messages": {
+    "added_to_cart": "¡Producto añadido al carrito!",
+    "added_to_wishlist": "¡Producto añadido a la lista de deseos!",
+    "removed_from_wishlist": "¡Producto eliminado de la lista de deseos!",
+    "error_loading": "Error al cargar producto",
+    "out_of_stock_error": "Producto agotado"
+  }
+}

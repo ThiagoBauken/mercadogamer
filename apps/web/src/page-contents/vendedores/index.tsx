@@ -1,14 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
-
 import { useRouter } from 'next/router';
-import { Loading } from '@widgets/loading';
+import dynamic from 'next/dynamic';
+import { useTranslation } from 'next-i18next';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
 
-import { Button } from '@widgets/button';
-import dynamic from 'next/dynamic';
-import { Icon } from '@widgets/icon';
 import { VendorSlide } from './@widgets/slide';
 
 import { useAppDispatch, useTypedSelector, openLoginModal } from '@web/store';
@@ -17,29 +14,41 @@ import { endpoints, put, setting } from '@utils';
 const VenderSellCard = dynamic(() => import('../../components/vendor-under-banner/index'));
 const ItemCard = dynamic(() => import('../../components/vendor-item/index'));
 
+
+const Loading = dynamic(() => import('@widgets/loading').then(mod => mod.Loading), { ssr: false });
+
+const Button = dynamic(() => import('@widgets/button').then(mod => mod.Button), { ssr: false });
+
+const Icon = dynamic(() => import('@widgets/icon').then(mod => mod.Icon), { ssr: false });
+
 export const VendorLandingPage: React.FC = () => {
+  const { t } = useTranslation('vendors');
   const [loading, setLoading] = useState<boolean>(false);
   const router = useRouter();
-  const titleRef = useRef<HTMLInputElement>();
+  const titleRef = useRef<HTMLDivElement>(null);
   const dispatch = useAppDispatch();
 
   const { user } = useTypedSelector((store) => store.auth);
 
   useEffect(() => {
     init();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const init = async () => {
     setLoading(true);
     try {
       if (typeof window !== 'undefined') {
-        const local_item = JSON.parse(localStorage.getItem(setting.storage.user));
-        if (user && local_item && user?.id === local_item?.id) {
-          await ConfirmVendorPageVisit();
+        const localItem = localStorage.getItem(setting.storage.user);
+        if (localItem) {
+          const local_item = JSON.parse(localItem);
+          if (user && local_item && user?.id === local_item?.id) {
+            await ConfirmVendorPageVisit();
+          }
         }
       }
     } catch (error) {
-      console.log(error);
+      console.error('Failed to initialize vendor page:', error);
     } finally {
       setLoading(false);
     }
@@ -48,12 +57,12 @@ export const VendorLandingPage: React.FC = () => {
   const ConfirmVendorPageVisit = async (): Promise<void> => {
     try {
       if (!user?.hasFirstVisitVendor) {
-        const userResponse = await put(endpoints.userUrl, {
+        await put(endpoints.userUrl, {
           hasFirstVisitVendor: true,
         });
       }
     } catch (error) {
-      console.log(error);
+      console.error('Failed to confirm vendor page visit:', error);
     }
   };
 
@@ -61,29 +70,27 @@ export const VendorLandingPage: React.FC = () => {
     {
       item: '/assets/imgs/vendor/Group_1417.webp',
       title: 'Cobros seguros',
-      content: 'Vendé tus productos sin preocupaciones y cobrá seguro por MercadoPago.',
+      content: t('hero.subtitle'),
       width: 90,
       height: 62.22,
     },
     {
       item: '/assets/imgs/vendor/MG_img.webp',
-      title: 'Garantía MG',
-      content: 'Aseguramos tus ventas y te protegemos de posibles fraudes.',
+      title: t('features.guarantee.title'),
+      content: t('features.guarantee.description'),
       width: 100,
       height: 100,
     },
     {
       item: '/assets/imgs/vendor/support_img.webp',
-      title: 'Soporte técnico',
+      title: t('features.support.title'),
       content: '¿Tenés preguntas? Nuestro equipo de soporte está disponible para ayudarte.',
       width: 100,
       height: 100,
     },
   ];
-  {
-  }
   const MoveToSection = () => {
-    titleRef.current.scrollIntoView({ behavior: 'smooth' });
+    titleRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -113,18 +120,17 @@ export const VendorLandingPage: React.FC = () => {
                 La manera más fácil de ganar dinero real <span>vendiendo tus items digitales</span>
               </div>
               <div className="small">
-                Publicá tus productos en la tienda y obtené alcance inmediato a miles de compradores
-                en américa latina.
+                {t('how_it_works.publish.description')}
               </div>
               <div className="action">
                 <Button
                   onClick={() =>
                     user === null
-                      ? dispatch(openLoginModal())
+                      ? dispatch(openLoginModal(''))
                       : router.push('/dashboard/inventory/add')
                   }
                 >
-                  Vendé ahora
+                  {t('cta.sell_now')}
                 </Button>
                 <Button onClick={() => MoveToSection()} kind="secondary">
                   Conocer más
@@ -214,9 +220,9 @@ export const VendorLandingPage: React.FC = () => {
             <VenderSellCard
               fileUrl="/assets/imgs/vendor/vendor-banner-background.webp"
               image="/assets/imgs/vendor/vendor-banner-image.webp"
-              button="Vendé ahora"
+              button={t('cta.sell_now')}
               onAction={() =>
-                user !== null ? router.push(`/dashboard/inventory/add`) : dispatch(openLoginModal())
+                user !== null ? router.push(`/dashboard/inventory/add`) : dispatch(openLoginModal(''))
               }
             ></VenderSellCard>
           </div>

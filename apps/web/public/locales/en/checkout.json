@@ -1,0 +1,139 @@
+{
+  "title": "Checkout",
+  "subtitle": "Complete your order in a few steps",
+
+  "steps": {
+    "cart": "Cart",
+    "shipping": "Shipping",
+    "payment": "Payment",
+    "review": "Review"
+  },
+
+  "cart": {
+    "title": "Your Cart",
+    "empty": "Your cart is empty",
+    "continue_shopping": "Continue shopping",
+    "item": "{{count}} item",
+    "item_plural": "{{count}} items",
+    "subtotal": "Subtotal",
+    "remove": "Remove",
+    "update_quantity": "Update quantity",
+    "proceed": "Proceed to shipping"
+  },
+
+  "shipping": {
+    "title": "Shipping Information",
+    "address": {
+      "title": "Shipping Address",
+      "street": "Street",
+      "number": "Number",
+      "complement": "Complement",
+      "neighborhood": "Neighborhood",
+      "city": "City",
+      "state": "State",
+      "zip_code": "ZIP Code",
+      "country": "Country",
+      "save_address": "Save this address",
+      "use_saved": "Use saved address"
+    },
+    "method": {
+      "title": "Shipping Method",
+      "express": "Express Delivery",
+      "express_desc": "Receive in {{days}} business days - {{price}}",
+      "standard": "Standard Delivery",
+      "standard_desc": "Receive in {{days}} business days - {{price}}",
+      "free": "Free Shipping",
+      "free_desc": "Receive in {{days}} business days",
+      "pickup": "Store Pickup",
+      "pickup_desc": "Pick up for free at our store"
+    },
+    "continue": "Proceed to payment"
+  },
+
+  "payment": {
+    "title": "Payment",
+    "method": {
+      "title": "Payment Method",
+      "credit_card": "Credit Card",
+      "debit_card": "Debit Card",
+      "pix": "PIX",
+      "boleto": "Bank Slip",
+      "wallet": "Digital Wallet"
+    },
+    "credit_card": {
+      "number": "Card Number",
+      "name": "Name on Card",
+      "expiry": "Expiry Date",
+      "cvv": "CVV",
+      "installments": "Installments",
+      "installment_option": "{{count}}x of {{value}} interest-free",
+      "save_card": "Save card for future purchases"
+    },
+    "pix": {
+      "title": "Pay with PIX",
+      "description": "Scan the QR Code or copy the code",
+      "copy_code": "Copy PIX code",
+      "expires_in": "Expires in {{time}}",
+      "waiting": "Waiting for payment..."
+    },
+    "boleto": {
+      "title": "Pay with Bank Slip",
+      "description": "Due in {{days}} days",
+      "print": "Print bank slip",
+      "copy_code": "Copy barcode"
+    },
+    "continue": "Review order"
+  },
+
+  "review": {
+    "title": "Review Order",
+    "items": "Order Items",
+    "shipping_address": "Shipping Address",
+    "shipping_method": "Shipping Method",
+    "payment_method": "Payment Method",
+    "edit": "Edit",
+    "summary": {
+      "title": "Order Summary",
+      "subtotal": "Subtotal",
+      "shipping": "Shipping",
+      "discount": "Discount",
+      "tax": "Tax",
+      "total": "Total",
+      "discount_code": "Discount code",
+      "apply": "Apply",
+      "remove": "Remove"
+    },
+    "terms": {
+      "agree": "I agree to the",
+      "terms_link": "Terms and Conditions",
+      "and": "and",
+      "privacy_link": "Privacy Policy"
+    },
+    "place_order": "Place Order",
+    "processing": "Processing order..."
+  },
+
+  "success": {
+    "title": "Order Placed Successfully!",
+    "order_number": "Order Number",
+    "thank_you": "Thank you for your purchase!",
+    "confirmation_email": "We sent a confirmation email to {{email}}",
+    "track_order": "Track order",
+    "continue_shopping": "Continue shopping",
+    "estimated_delivery": "Estimated delivery: {{date}}"
+  },
+
+  "errors": {
+    "invalid_address": "Invalid address",
+    "invalid_card": "Invalid card",
+    "payment_failed": "Payment failed",
+    "out_of_stock": "Product out of stock",
+    "generic": "Error processing order"
+  },
+
+  "messages": {
+    "discount_applied": "Discount applied successfully!",
+    "invalid_discount": "Invalid discount code",
+    "item_removed": "Item removed from cart"
+  }
+}

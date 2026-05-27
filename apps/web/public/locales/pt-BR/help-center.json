@@ -1,0 +1,271 @@
+{
+  "title": "Central de Ajuda",
+  "categories": {
+    "buy": "Comprar",
+    "sell": "Vender",
+    "my_account": "Minha conta",
+    "frequent": "PERGUNTAS FREQUENTES",
+    "gifts": "Presentes"
+  },
+  "topics": {
+    "buy": {
+      "how_to_buy": {
+        "title": "Como comprar?",
+        "content": [
+          "<strong>Comprar</strong> no <strong>Mercado Gamer</strong> qualquer <strong>produto digital</strong> é <strong>simples, seguro e rápido</strong>. Consiga qualquer <strong>produto digital no Brasil</strong>, como <strong>itens, skins, moedas, pacotes</strong> e muito mais. Escolha a publicação que se adeque ao que você quer e pague com Mercado Pago.",
+          "<strong>Mercado Gamer</strong> é o site <strong>mais seguro</strong> para <strong>comprar seus produtos digitais</strong>, já que você conta com a <strong>Garantia MG</strong>.",
+          "Todas as <strong>compras</strong> realizadas na plataforma <strong>Mercado Gamer</strong> estão <strong>protegidas</strong> pela <strong>Garantia MG</strong>, garantimos que você receba o item solicitado, caso contrário, seu dinheiro será devolvido.",
+          "<strong>ATENÇÃO!</strong> É importante <strong>NÃO</strong> clicar em \"<strong>Finalizar Transação</strong>\" sem ter recebido o produto, porque isso marca o pedido como concluído e fecha os chats com o vendedor, não dando tempo para entregar o produto."
+        ]
+      },
+      "claims": {
+        "title": "Reclamações",
+        "content": [
+          "Todas as compras do <strong>Mercado Gamer</strong> são concretizadas exceto se o item não funcionar ou não for como descrito.",
+          "Como <strong>abrir uma reclamação</strong> no <strong>Mercado Gamer</strong>? <br>Se você precisa <strong>Abrir uma Reclamação</strong>, pode fazer isso a partir do pedido do produto, clicando em \"<strong>Tive um problema</strong>\" e graças à <strong>Garantia MG</strong> ajudaremos você a resolver a situação.",
+          "A equipe de suporte do Mercado Gamer está aqui para ajudá-lo!"
+        ]
+      },
+      "processing_fee": {
+        "title": "Taxa de processamento",
+        "content": [
+          "No <strong>Mercado Gamer</strong> temos as <strong>comissões mais baixas do mercado</strong>. Devido às comissões das plataformas de pagamento, cobramos 4% do valor total e R$ 25 por transação. Este dinheiro será adicionado ao valor antes de pagar. É obrigatório e <strong>garante</strong> que você obtenha a <strong>Garantia MG.</strong>"
+        ]
+      },
+      "cancellations": {
+        "title": "Cancelamentos",
+        "content": [
+          "No caso de uma <strong>compra ser cancelada</strong>, o usuário receberá um <strong>reembolso completo</strong> e poderá avaliar o vendedor. Os vendedores podem cancelar uma venda a qualquer momento, seja por falta de estoque, solicitação do comprador ou qualquer outra situação."
+        ]
+      },
+      "ratings": {
+        "title": "Avaliações",
+        "content": [
+          "Você pode <strong>avaliar</strong> os <strong>vendedores no Mercado Gamer</strong> após finalizar o pedido. Isso ajuda muito os próximos usuários, para ter referências do vendedor antes de realizar a compra.",
+          "Atenção! O vendedor também pode avaliá-lo ao finalizar o pedido. Escolha suas palavras com os vendedores para obter uma boa reputação e ser um cliente agradável em suas próximas compras."
+        ]
+      },
+      "warranty": {
+        "title": "Garantia MG",
+        "content": [
+          "A <strong>Garantia MG</strong> se aplica aos seguintes casos:<br>- Não recebi o item comprado.<br>- O item não funciona ou não é como descrito.",
+          "Procedimento para <strong>solicitar Garantia MG</strong>:",
+          "&emsp;1. Entre em contato com o Vendedor através do chat e comente a situação. Geralmente, os vendedores tentam resolver o problema.",
+          "&emsp;2. Caso o Vendedor não tenha resolvido o problema, vá em \"Compras\" e encontre a compra em que você teve o problema. Uma vez identificada, clique em \"Tive um problema\" e descreva-o para nossa equipe de suporte.",
+          "&emsp;3. Isso pausará o contador automático de finalização da compra e enviará seu caso ao suporte do Mercado Gamer para revisar o problema e ajudá-lo. É provável que peçamos informações adicionais para comprovar sua reclamação. Uma vez verificado, enviaremos a resolução para ambos. Se não pudermos resolver a situação, reembolsaremos seu dinheiro."
+        ]
+      },
+      "use_code": {
+        "title": "Usar código",
+        "content": []
+      }
+    },
+    "sell": {
+      "how_to_sell": {
+        "title": "Como vender?",
+        "content": [
+          "<strong>Publicar</strong> um produto no <strong>Mercado Gamer</strong> é <strong>gratuito e muito fácil</strong>.",
+          "Como publicar um produto no Mercado Gamer?\n      <ul style=\"\n    list-style: decimal;\n    margin-left: 2em;\n\">\n      <li>Vá em \"Minha Conta\" e na seção de \"Vendas\", clique em \"Produtos\".</li>\n      <li>Selecione o tipo de publicação que deseja fazer e siga os passos para criá-la.</li>\n      <li>Por último, tenha em mente que o preço do produto digital é colocado em dólares. E pronto! Uma vez que tenha carregado todas as informações, clique em \"Publicar\" e seu produto já estará no mercado.</li>\n      </ul>\n      ",
+          "(Todos os produtos publicados passam por revisão do nosso suporte)",
+          "Uma vez entregue o produto, resta esperar que o cliente verifique e finalize o pedido. Caso contrário, após 72 horas desde a criação, será finalizado automaticamente e seu dinheiro será depositado instantaneamente em seu saldo, onde você pode usá-lo como desconto em compras futuras ou retirá-lo pelo meio que desejar."
+        ]
+      },
+      "delivery_method": {
+        "title": "Método de entrega",
+        "content": [
+          "Como <strong>vendedor</strong> você tem 2 formas de <strong>entregar seu produto</strong>:",
+          "<strong>Entrega Automática</strong>:<br> Escolha esta forma de entrega se seu <strong>produto é resgatável</strong> com um <strong>código</strong>. Ao fazer a publicação, coloque o <strong>código resgatável</strong> e quando for vendido, o comprador o receberá instantaneamente.",
+          "<strong>Entrega Coordenada</strong>:<br> Escolha esta forma de entrega se você precisa <strong>coordenar</strong> com seu comprador para a <strong>entrega do produto</strong>. O chat será aberto no momento em que a compra for realizada."
+        ]
+      },
+      "warranty": {
+        "title": "Garantia MG",
+        "content": [
+          "Todas as compras no <strong>Mercado Gamer</strong> são respaldadas pela <strong>Garantia MG</strong>. Se você não receber o produto conforme detalhado na publicação, devolveremos seu dinheiro.",
+          "Como isso <strong>afeta</strong> os <strong>vendedores</strong>?<br>Este sistema não é apenas para proteger o comprador. Quando um usuário abre uma reclamação, o vendedor também pode se defender. Nosso suporte analisa cada solicitação de reclamação de forma imparcial. Ou seja, se como vendedor você puder provar que entregou o produto solicitado e a reclamação for mal-intencionada, cancelaremos a reclamação e a compra será concretizada."
+        ]
+      },
+      "commissions": {
+        "title": "Comissões",
+        "content": [
+          "As <strong>comissões</strong> para os vendedores são baseadas no <strong>tipo de publicação</strong> que você está criando, que são as seguintes:",
+          "<strong>Publicação Gratuita</strong>: <br>A <strong>publicação gratuita do Mercado Gamer</strong> é de uso único para que você possa testar o sistema <strong>grátis</strong>, 0% de comissão na venda.",
+          "<strong>Publicação Normal</strong>: <br>Esta é a <strong>publicação padrão</strong> do <strong>Mercado Gamer</strong>, que tem a <strong>comissão mais baixa</strong>, de 7% + IVA = 8,47%",
+          "<strong>Publicação PRO</strong>:<br> \n      Sem dúvida, esta é <strong>a melhor publicação para os vendedores</strong>, pois a comissão não é muito mais alta que a normal e tem benefícios muito úteis para concretizar mais vendas. A comissão é de 10% + IVA = 12,1%.<br>\n      Os <strong>benefícios da publicação PRO</strong> são: \n      <ul style=\"\n    margin-left: 2em;\n    list-style: decimal;\n\">\n      <li>A possibilidade de sua publicação <strong>aparecer na página inicial</strong>.<br>\n       (todas as publicações da home são PRO)</li>\n       <li>Seu produto <strong>será recomendado muito mais</strong> que um normal.</li>\n       <li>Aparecerá nas <strong>primeiras opções das buscas</strong>.\n       (para isso também importa sua reputação como vendedor)</li>\n       </ul>\n      "
+        ]
+      },
+      "discount_codes": {
+        "title": "Códigos de desconto e afiliados",
+        "content": [
+          "<strong>Mercado Gamer</strong> se encarrega dos <strong>descontos que oferece aos usuários</strong>, os vendedores recebem o que lhes corresponde pela venda."
+        ]
+      },
+      "cancellations": {
+        "title": "Cancelamentos",
+        "content": [
+          "Como vendedor você pode <strong>cancelar</strong> uma venda a <strong>qualquer momento</strong>. Mas tenha cuidado! <br><strong>Cancelar uma venda pode prejudicar sua reputação</strong> e fazer você perder mais vendas."
+        ]
+      },
+      "earnings": {
+        "title": "Ganhos",
+        "content": [
+          "Como vendedor você vai <strong>acumulando seus ganhos</strong> e poderá <strong>retirá-los quando quiser</strong>. <br>Os saques de dinheiro são realizados às terças e sextas-feiras.<br>\n      (Caso retire o dinheiro no mesmo dia em que efetuamos os saques, pode ser que tenha que esperar até o próximo dia de saque, para nos dar tempo de validar os ganhos.)\n      "
+        ]
+      },
+      "reputation": {
+        "title": "Reputação",
+        "content": [
+          "As <strong>avaliações no Mercado Gamer</strong> são de suma importância. Como vendedor, quanto <strong>melhor</strong> for sua <strong>avaliação média</strong>, muito <strong>maior</strong> será seu <strong>alcance aos usuários</strong>, pois você aparecerá nos primeiros lugares de busca e seus produtos serão recomendados com maior frequência."
+        ]
+      }
+    },
+    "frequent": {
+      "how_to_buy_mg": {
+        "title": "Como comprar no Mercado Gamer?",
+        "content": [
+          "\n        <strong>Comprar</strong> no <strong>Mercado Gamer</strong> qualquer <strong>produto digital</strong> é <strong>simples</strong>, <strong>seguro e rápido</strong>. Consiga qualquer <strong>produto digital no Brasil</strong>, como <strong>itens, skins, moedas, pacotes</strong> e muito mais. Escolha a publicação que se adeque ao que você quer e pague com Mercado Pago.\n        <br><br>\n        <strong>Mercado Gamer</strong> é o site <strong>mais seguro</strong> para <strong>comprar seus produtos digitais</strong>, já que você conta com a <strong>Garantia MG</strong>.\n        <br><br>\n        Todas as <strong>compras</strong> realizadas na plataforma <strong>Mercado Gamer</strong> estão <strong>protegidas</strong> pela <strong>Garantia MG</strong>, garantimos que você receba o item solicitado, caso contrário, seu dinheiro será devolvido.\n        <br><br>\n        <strong>ATENÇÃO!</strong> É importante <strong>NÃO</strong> clicar em \"<strong>Finalizar Transação</strong>\" sem ter recebido o produto, porque isso marca o pedido como concluído e fecha os chats com o vendedor, não dando tempo para entregar o produto.\n      "
+        ]
+      },
+      "how_to_sell_mg": {
+        "title": "Como vender no Mercado Gamer?",
+        "content": [
+          "\n            <strong>Publicar</strong> um produto no <strong>Mercado Gamer</strong> é <strong>gratuito e muito fácil</strong>.\n      ",
+          "\n      Como <strong>publicar um produto</strong> no <strong>Mercado Gamer</strong>?\n      <ul style=\"list-style: decimal; margin-left: 2em;\">\n          <li style=\"padding-left: 1em;\">\n            Vá em \"<strong>Minha Conta</strong>\" e na seção de \"<strong>Vendas</strong>\", clique em \"<strong>Produtos</strong>\".\n          </li>\n          <li style=\"padding-left: 1em;\">\n            Selecione o <strong>tipo de publicação</strong> que deseja fazer e siga os passos para criá-la.\n          </li>\n          <li style=\"padding-left: 1em;\">\n            Por último, tenha em mente que o <strong>preço do produto digital</strong> é colocado em dólares. E pronto! Uma vez que tenha carregado todas as informações, clique em \"<strong>Publicar</strong>\" e seu produto já estará no mercado.\n          </li>\n      </ul>\n      <div style=\"margin-left: 1em;\">(Todos os produtos publicados passam por revisão do nosso suporte)</div>\n      "
+        ]
+      },
+      "what_is_warranty": {
+        "title": "O que é a Garantia MG?",
+        "content": [
+          "\n        Todas as compras no <strong>Mercado Gamer</strong> são respaldadas pela <strong>Garantia MG</strong>. Se você não receber o produto conforme detalhado na publicação, devolveremos seu dinheiro.<br>\n        Este sistema não é apenas para proteger o comprador. Quando um usuário abre uma reclamação, o vendedor também pode se defender. Nosso suporte analisa cada solicitação de reclamação de forma imparcial. Ou seja, se como vendedor você puder provar que entregou o produto solicitado e a reclamação for mal-intencionada, cancelaremos a reclamação e a compra será concretizada. \n      "
+        ]
+      },
+      "delivery_methods": {
+        "title": "Quais são os métodos de entrega no Mercado Gamer?",
+        "content": [
+          "\n        Existem 2 formas de <strong>entregar os produtos</strong>:\n        <br><br>\n        <div style=\"margin-left: 1em;\">\n        <strong>Entrega Automática:</strong> <br>\n        Escolha esta forma de entrega se seu <strong>produto é resgatável</strong> com um <strong>código</strong>. Ao fazer a publicação, coloque o <strong>código resgatável</strong> e quando for vendido, o comprador o receberá instantaneamente.\n        <br><br>\n        <strong>Entrega Coordenada:</strong> \n        Escolha esta forma de entrega se você precisa <strong>coordenar</strong> com seu comprador para a <strong>entrega do produto</strong>. O chat será aberto no momento em que a compra for realizada.\n        </div>\n      "
+        ]
+      },
+      "what_is_gift_wheel": {
+        "title": "O que é a Roleta de Presentes do Mercado Gamer?",
+        "content": [
+          "\n      <strong>A Roleta de Presentes</strong> do <strong>Mercado Gamer</strong> é a melhor forma de conseguir <strong>prêmios grátis todos os dias</strong>. Estando no <strong>Brasil</strong> ou em qualquer parte do mundo, você poderá tentar a sorte e ganhar muito dinheiro para comprar ou usar como desconto na compra de Jogos, Moedas, Skins, Gift Cards e muito mais.\n      ",
+          "Não perca mais tempo e venha girar a <strong>Roleta de Presentes todos os dias!</strong>"
+        ]
+      },
+      "how_to_use_prizes": {
+        "title": "Como uso os prêmios da Roleta de Presentes?",
+        "content": [
+          "A Roleta de Presentes do Mercado Gamer oferece uma grande quantidade de prêmios. Estes vão se acumulando em seu saldo e você poderá utilizá-los para a compra de qualquer produto digital que encontrar em nosso marketplace.",
+          "Para utilizar seu saldo, você tem que tocar em \"Usar desconto\" dentro do seu carrinho de compras, na parte inferior, ao lado esquerdo do botão laranja de \"Iniciar compra\". E se abrirá uma janela na qual você colocará a quantidade de saldo que quiser utilizar e ao tocar em \"Aplicar desconto\" será descontado do valor total a pagar."
+        ]
+      },
+      "what_prizes": {
+        "title": "Que prêmios tem a Roleta de Presentes do Mercado Gamer?",
+        "content": [
+          "Com a Roleta de Presentes do Mercado Gamer você poderá conseguir muito dinheiro. Até R$ 2500 em uma rodada! Tente a sorte e gire a Roleta de Presentes para conseguir dinheiro grátis todos os dias. No Mercado Gamer você sempre ganha!",
+          "Você poderá conseguir produtos digitais grátis ou com grandes descontos por girar nossa Roleta de Presentes todos os dias."
+        ]
+      },
+      "what_can_sell": {
+        "title": "O que posso vender no Mercado Gamer?",
+        "content": [
+          "\n      No <strong>Mercado Gamer</strong> você pode publicar qualquer tipo de <strong>produto digital resgatável</strong> ou transferível, foi pensado para que possam publicar seus <strong>itens digitais</strong> e obter <strong>benefícios econômicos</strong> por eles, sejam <strong>skins, pacotes, gift cards, moedas</strong> e muito mais.\n      <br>O que não serve para você, sempre serve para outro!\n      "
+        ]
+      },
+      "why_buy_mg": {
+        "title": "Por que comprar no Mercado Gamer é vantajoso?",
+        "content": [
+          "\n      Quer saber onde comprar jogos baratos de PS4, PS5, Xbox e mais? Ou onde comprar V-Bucks, Diamantes, Skins, Pacotes, etc.? <strong>Mercado Gamer é a melhor opção para você!</strong>\n      ",
+          "\n      Por quê? <br/>\n      Porque você pode comprar Jogos, Skins, Itens, Gift Cards e mais pelo melhor preço. <strong>Em reais e sem imposto extra no Brasil!</strong> Oferecemos entrega instantânea 24 horas. <strong>Todos os meios de pagamento!</strong>\n      E por se fosse pouco! Você tem a Garantia MG que te protege enquanto está comprando.\n      ",
+          "<strong>Queremos o melhor para todos os Players!</strong>",
+          "\n      Além disso, permitimos que você publique suas skins, itens e demais produtos digitais que sobrem e assim possa convertê-los em dinheiro real. Tanto para usar dentro da plataforma comprando algo que goste ou retirando o dinheiro por transferência bancária. <strong>Nos conhecer é vantajoso, viemos para ajudá-lo!</strong>\n      "
+        ]
+      },
+      "where_buy_fortnite": {
+        "title": "Onde comprar V-Bucks para Fortnite barato?",
+        "content": [
+          "<strong>A melhor opção para comprar V-Bucks no Brasil é o Mercado Gamer.</strong>",
+          "Porque você não paga o imposto sobre compras estrangeiras, então sai <strong>mais barato</strong> e ainda paga em reais e por <strong>Mercado Pago</strong>.",
+          "Além disso, por se fosse pouco, você tem a <strong>Garantia MG</strong> que te acompanha em todo o processo da compra, desde que compra até que receba seu produto e se você se arrepender ou ocorrer algum problema no meio, reembolsamos o total do seu dinheiro e como se não tivesse acontecido nada."
+        ]
+      },
+      "where_buy_freefire": {
+        "title": "Onde comprar Diamantes para Free Fire barato?",
+        "content": [
+          "<strong>A melhor opção para comprar Diamantes de Free Fire no Brasil é o Mercado Gamer.</strong>",
+          "\n      Você pode pagar em reais e por Mercado Pago! Sai mais barato! <strong>Por quê?</strong><br />\n      Porque como somos do Brasil, você não paga 75% de imposto extra. E além disso, graças à Garantia MG você estará seguro em todo momento da sua compra, ajudamos você a receber seu produto corretamente ou se você se arrepender ou ocorrer algum problema no meio, reembolsamos o total do seu dinheiro e como se não tivesse acontecido nada.\n      "
+        ]
+      },
+      "where_buy_roblox": {
+        "title": "Onde comprar Robux baratos para Roblox?",
+        "content": [
+          "Quer saber onde comprar Robux baratos? Ou onde conseguir Robux grátis? <strong>Você precisa conhecer o Mercado Gamer!</strong>",
+          "Jogando nossa Roleta de Presentes você vai conseguir prêmios todos os dias e poderá obter descontos incríveis e até poder <strong>conseguir grátis seus códigos de Robux</strong> para Roblox.",
+          "Além disso, somos do Brasil, então você não paga 75% extra de imposto. Pague em reais e por Mercado Pago. E por se tudo isso fosse pouco! Com a Garantia MG você estará seguro em todo o processo da sua compra até receber seu produto corretamente e se não for assim, devolvemos o total do seu dinheiro."
+        ]
+      },
+      "where_buy_csgo": {
+        "title": "Onde comprar skins de Counter Strike baratas e em reais?",
+        "content": [
+          "O melhor site para comprar suas <strong>skins de CSGO</strong> no Brasil é o Mercado Gamer. Por quê?",
+          "Porque você pode pagá-las em reais e por Mercado Pago, e como somos do Brasil, você não paga 75% extra de imposto.<br />Além disso, permitimos que você publique suas skins, stickers, caixas, chaves e demais itens que sobrem e assim possa convertê-los em dinheiro real. Tanto para usar dentro da plataforma comprando algo que goste ou retirando o dinheiro por transferência bancária.",
+          "E por se tudo isso fosse pouco! Com a Garantia MG você estará seguro em todo o processo da sua compra até receber seu produto corretamente e se não for assim, devolvemos o total do seu dinheiro."
+        ]
+      },
+      "where_buy_mobile_legends": {
+        "title": "Onde comprar Diamantes de Mobile Legends barato?",
+        "content": [
+          "Quer saber onde comprar Diamantes de Mobile Legends? Ou onde recarregar Diamantes de Mobile Legends?",
+          "A melhor opção para comprar e recarregar seus <strong>Diamantes de Mobile Legends</strong> é o Mercado Gamer.",
+          "Você pode pagar em reais e por Mercado Pago! Sai mais barato! Por quê?<br />Porque como somos do Brasil, você não paga 75% de imposto extra.",
+          "E por se tudo isso fosse pouco! Com a Garantia MG você estará seguro em todo o processo da sua compra até receber seu produto corretamente e se não for assim, devolvemos o total do seu dinheiro."
+        ]
+      },
+      "where_buy_digital_games": {
+        "title": "Onde comprar Jogos digitais seguro e rápido?",
+        "content": [
+          "Se você está se perguntando: Onde comprar jogos digitais baratos? Ou Onde comprar jogos digitais de PS3, PS4, PS5, Xbox, Nintendo e mais? <strong>Você precisa conhecer o Mercado Gamer!</strong>",
+          "Por que o Mercado Gamer é o melhor lugar para comprar seus jogos?",
+          "Você pode pagá-los em reais e por Mercado Pago, e sai mais barato porque você não paga 75% de imposto extra no Brasil!<br /> E por se tudo isso fosse pouco! Oferecemos a Garantia MG para que você esteja seguro em todo o processo da sua compra, cuidamos para que você receba seu produto corretamente e se não for assim, devolvemos o total do seu dinheiro."
+        ]
+      },
+      "where_buy_playstation": {
+        "title": "Onde comprar Jogos para PlayStation barato?",
+        "content": [
+          "Se você está se perguntando: Onde comprar jogos de PlayStation? Ou Onde comprar jogos de PS3, PS4, PS5? <strong>Você precisa conhecer o Mercado Gamer!</strong>",
+          "Porque você pode pagar em reais e por Mercado Pago, e como somos do Brasil, você não paga 75% extra de imposto.",
+          "Além disso, jogando nossa Roleta de Presentes você vai conseguir prêmios todos os dias e poderá obter descontos incríveis em seus jogos de PlayStation.",
+          "E por se tudo isso fosse pouco! Oferecemos a Garantia MG para que você esteja seguro em todo o processo da sua compra, cuidamos para que você receba seu produto corretamente e se não for assim, devolvemos o total do seu dinheiro."
+        ]
+      },
+      "where_buy_xbox": {
+        "title": "Onde comprar Jogos para Xbox barato?",
+        "content": [
+          "Se você está se perguntando: Onde comprar jogos de Xbox 360 ou Xbox One? Ou Onde comprar o Xbox Game Pass pelo melhor preço no Brasil? <strong>Você precisa conhecer o Mercado Gamer!</strong>",
+          "Porque você pode pagar em reais e por Mercado Pago, e como somos do Brasil, você não paga 75% extra de imposto.",
+          "Além disso, jogando nossa Roleta de Presentes você vai conseguir prêmios todos os dias e poderá obter descontos incríveis em seus jogos, itens, gift cards e mais do Xbox.",
+          "E por se tudo isso fosse pouco! Oferecemos a Garantia MG para que você esteja seguro em todo o processo da sua compra, cuidamos para que você receba seu produto corretamente e se não for assim, devolvemos o total do seu dinheiro."
+        ]
+      },
+      "how_invite_friends": {
+        "title": "Como convidar amigos e receber seu drop extra na Roleta de Presentes?",
+        "content": [
+          "Muito obrigado pelo seu interesse em compartilhar nossa plataforma com seus amigos!",
+          "\n      Para conseguir um drop extra em nossa Roleta de Presentes você deve seguir os seguintes passos:\n      <ol>\n        <li>Na página de \"Presentes\", já tendo usado sua rodada diária, você verá um botão que diz \"Convidar um amigo\". Ao clicar nele, se abrirá um menu onde você poderá ver seu link de indicação.</li>\n        <li>Envie seu link de indicação para um amigo ou para todos que você quiser.</li>\n        <li>Seu amigo convidado deverá se registrar através do link que você enviou.</li>\n      </ol>\n      ",
+          "Uma vez que seu amigo já se registrou, aparecerá no menu de \"Convidar um amigo\", na seção de \"Seus convites\".",
+          "\n      Estados do convite:\n\n      <ol>\n        <li>Seu amigo <span style=\"color: #F78A0E\">se registrou</span>, mas ainda não jogou na Roleta de Presentes.</li>\n        <li>Seu amigo já <span style=\"color: #3BD42B\">verificou seu telefone</span>, <strong>VOCÊ JÁ TEM SEU DROP EXTRA</strong>.</li>\n        <li>Você já <span style=\"color: #4B4E5B\">utilizou seu drop extra</span>, finalizou o ciclo.</li>\n      </ol>\n      ",
+          "<strong>AVISO</strong>: Para ganhar seu Drop Extra, os amigos convidados devem ser usuários que nunca se registraram no Mercado Gamer"
+        ]
+      },
+      "account_risks": {
+        "title": "É perigoso comprar contas primárias ou secundárias?",
+        "content": [
+          "Do Mercado Gamer queremos avisá-los antecipadamente que comprar contas primárias ou secundárias pode trazer problemas depois.",
+          "Nós temos os dados para contatar ambas as partes, mas não temos como validar que o produto não tenha algum problema com o tempo.",
+          "Recomendamos comprar este tipo de jogos de vendedores grandes e com boas avaliações dentro da plataforma, que podem ser mais confiáveis na hora de resolver algum problema.",
+          "Se você teve algum problema com este tipo de produto, entre em contato conosco e faremos o possível para ajudá-lo (soporte@mercadogamer.com)."
+        ]
+      }
+    }
+  }
+}

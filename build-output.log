@@ -1,0 +1,45 @@
+
+> mercadogamer-monorepo@0.0.0 build:web
+> nx build web
+
+
+> nx run web:build:production
+
+   Skipping linting
+   Checking validity of types ...
+   Creating an optimized production build ...
+   Disabled SWC as replacement for Babel because of custom Babel configuration ".babelrc" https://nextjs.org/docs/messages/swc-disabled
+   Using external babel configuration from C:\Users\Thiago\Desktop\marketplace\MercadoGamer\apps\web\.babelrc
+ ⚠ It looks like there is a custom Babel configuration can be removed :
+ ⚠ Next.js supports the following features natively: 
+ ⚠ 	- 'styled-components' can be enabled via 'compiler.styledComponents' in 'next.config.js'
+ ⚠ For more details configuration options, please refer https://nextjs.org/docs/architecture/nextjs-compiler#supported-features
+ ✓ Compiled successfully
+   Collecting page data ...
+TypeError: Cannot read properties of null (reading 'useContext')
+    at exports.useContext (C:\Users\Thiago\Desktop\marketplace\MercadoGamer\node_modules\react\cjs\react.production.min.js:24:118)
+    at useTranslation (C:\Users\Thiago\Desktop\marketplace\MercadoGamer\node_modules\react-i18next\dist\commonjs\useTranslation.js:27:29)
+    at C:\Users\Thiago\Desktop\marketplace\MercadoGamer\apps\web\.next\server\chunks\1382.js:1:309
+    at __webpack_require__.a (C:\Users\Thiago\Desktop\marketplace\MercadoGamer\apps\web\.next\server\webpack-runtime.js:1:976)
+    at 7972 (C:\Users\Thiago\Desktop\marketplace\MercadoGamer\apps\web\.next\server\chunks\1382.js:1:83)
+    at __webpack_require__ (C:\Users\Thiago\Desktop\marketplace\MercadoGamer\apps\web\.next\server\webpack-runtime.js:1:145)
+    at C:\Users\Thiago\Desktop\marketplace\MercadoGamer\apps\web\.next\server\chunks\1382.js:1:2405
+    at __webpack_require__.a (C:\Users\Thiago\Desktop\marketplace\MercadoGamer\apps\web\.next\server\webpack-runtime.js:1:976)
+    at 6792 (C:\Users\Thiago\Desktop\marketplace\MercadoGamer\apps\web\.next\server\chunks\1382.js:1:2209)
+    at __webpack_require__ (C:\Users\Thiago\Desktop\marketplace\MercadoGamer\apps\web\.next\server\webpack-runtime.js:1:145)
+
+ >  NX   Failed to collect page data for /404
+
+   Pass --verbose to see the stacktrace.
+
+
+ 
+
+ >  NX   Running target build for project web failed
+
+   Failed tasks:
+   
+   - web:build:production
+   
+   Hint: run the command with --verbose for more details.
+

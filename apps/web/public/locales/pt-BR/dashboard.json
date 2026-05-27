@@ -1,0 +1,283 @@
+{
+  "inventory": {
+    "title": "Produtos",
+    "publications_count": "{{count}} publicação",
+    "publications_count_plural": "{{count}} publicações",
+    "add_product": "Adicionar produto",
+    "delete": "Excluir",
+    "filters": "Filtros",
+    "table": {
+      "product": "PRODUTO",
+      "status": "ESTADO",
+      "stock": "ESTOQUE",
+      "price": "PREÇO",
+      "type": "Tipo"
+    },
+    "actions": {
+      "view_publication": "Ver publicação",
+      "edit": "Editar",
+      "delete": "Excluir",
+      "pause": "Pausar"
+    },
+    "filters_menu": {
+      "status": "Estado",
+      "type": "Tipo",
+      "date": "Data",
+      "order_by": "Ordenar por"
+    },
+    "order_options": {
+      "best_seller": "Mais vendidos",
+      "recent": "Mais recente",
+      "oldest": "Mais antigo",
+      "lower_price": "Menor preço",
+      "higher_price": "Maior preço"
+    },
+    "all": "Todos",
+    "no_products": "Nenhum produto encontrado"
+  },
+  "shopping": {
+    "title": "Compras",
+    "purchases_count": "{{count}} compra",
+    "purchases_count_plural": "{{count}} compras",
+    "cards": {
+      "purchases_made": "Compras realizadas",
+      "buyer_rating": "Avaliação de comprador",
+      "buyer_rating_short": "Aval. comprador",
+      "in_process": "Em processo"
+    },
+    "table": {
+      "product": "PRODUTO",
+      "status": "ESTADO",
+      "date": "DATA",
+      "price": "PREÇO"
+    },
+    "actions": {
+      "detail": "Detalhe",
+      "view_code": "Ver código",
+      "finish_transaction": "Finalizar transação",
+      "had_problem": "Tive um problema"
+    },
+    "filters_menu": {
+      "status": "Estado",
+      "type": "Tipo",
+      "date": "Data"
+    },
+    "status_options": {
+      "all": "Todos",
+      "finished": "Finalizado",
+      "pending": "Pendentes",
+      "paid": "Pagas",
+      "complaint": "Reclamação",
+      "cancelled": "Cancelado"
+    },
+    "type_options": {
+      "all": "Todos",
+      "game": "Jogo",
+      "gift_card": "Gift card",
+      "item": "Item",
+      "coins": "Moedas",
+      "pack": "Pacotes"
+    },
+    "date_options": {
+      "all": "Todas",
+      "this_month": "Este mês",
+      "last_month": "Mês passado",
+      "this_year": "Este ano"
+    },
+    "search_placeholder": "Buscar",
+    "filters": "Filtros"
+  },
+  "sales": {
+    "title": "Vendas",
+    "sales_count": "{{count}} venda",
+    "sales_count_plural": "{{count}} vendas",
+    "cards": {
+      "earnings": "Ganhos",
+      "sales_in_process": "Vendas em processo",
+      "complaints": "Reclamações"
+    },
+    "table": {
+      "order_number": "Nº PEDIDO",
+      "product": "PRODUTO",
+      "status": "ESTADO",
+      "date": "DATA",
+      "price": "PREÇO",
+      "profit": "LUCRO"
+    },
+    "actions": {
+      "view_detail": "Ver detalhe",
+      "download": "Baixar",
+      "cancel_sale": "Cancelar venda"
+    },
+    "filters_menu": {
+      "status": "Estado",
+      "date": "Data"
+    },
+    "status_options": {
+      "all": "Todos",
+      "finished": "Finalizado",
+      "in_process": "Em processo",
+      "complaint": "Reclamação",
+      "cancelled": "Cancelado"
+    },
+    "date_options": {
+      "all": "Todas",
+      "this_month": "Este mês",
+      "last_month": "Mês passado",
+      "this_year": "Este ano"
+    },
+    "load_more": "Carregar mais",
+    "search_placeholder": "Buscar",
+    "filters": "Filtros",
+    "cancel_message": "A venda foi cancelada."
+  },
+  "profile": {
+    "title": "Meu perfil",
+    "upload_photo": {
+      "message": "Você ainda não carregou uma foto de perfil",
+      "description": "Clique para subir uma imagem."
+    },
+    "fields": {
+      "first_name": "Nome",
+      "last_name": "Sobrenome",
+      "username": "Nome de usuário",
+      "address": "Endereço",
+      "city": "Cidade",
+      "province": "Província",
+      "postal_code": "Código postal",
+      "country": "País",
+      "phone": "Telefone",
+      "email": "E-mail"
+    },
+    "placeholders": {
+      "first_name": "Nome",
+      "last_name": "Sobrenome",
+      "username": "Nome de usuário",
+      "address": "Endereço",
+      "city": "Cidade",
+      "province": "Selecionar",
+      "postal_code": "Código postal",
+      "country": "Selecionar",
+      "phone": "Telefone",
+      "email": "E-mail"
+    },
+    "validations": {
+      "required": "Este campo é obrigatório",
+      "username_length": "O nome de usuário deve ter entre 0 e 20 caracteres.",
+      "invalid_email": "Introduza um e-mail válido."
+    },
+    "save_button": "Salvar",
+    "save_success": "As alterações foram salvas."
+  },
+  "support": {
+    "title": "Suporte",
+    "description": "Se precisar de ajuda, gere uma consulta e responderemos brevemente.",
+    "generate_ticket": "Gerar ticket",
+    "your_tickets": "Seus tickets",
+    "ticket": "Ticket",
+    "topic": "Tema: {{topic}}",
+    "company_name": "Mercado Gamer",
+    "no_tickets": "Nenhum ticket encontrado"
+  },
+  "balance": {
+    "title": "Saldo",
+    "total_balance": "Saldo total",
+    "total_balance_description": "Inclui o dinheiro gerado das suas vendas, saldo de presente e vouchers.",
+    "withdraw_title": "Retirar",
+    "withdraw_helper": "Dinheiro gerado a partir das suas vendas",
+    "withdraw_available": "Disponível para retirar",
+    "withdraw_button": "Retirar",
+    "redeem_voucher": "Canjear voucher",
+    "redeem_description": "Se você tem um voucher pode canjeá-lo aqui e o valor será adicionado ao seu saldo.",
+    "coupons": "Cupons",
+    "coupon_use_next_purchase": "Você pode usar este cupom na sua próxima compra.",
+    "no_coupons": "Você ainda não tem cupons disponíveis. Pode conseguir cupons jogando na roleta.",
+    "expires_in_days": "Expira em {{count}} dia.",
+    "expires_in_days_plural": "Expira em {{count}} dias.",
+    "next_button": "Seguinte",
+    "confirm_button": "Confirmar",
+    "done_button": "Pronto",
+    "empty_code_error": "Por favor, introduza o código corretamente. Não é possível enviar valores vazios.",
+    "gift_success": "O saldo do presente foi recebido com sucesso."
+  },
+  "add_product": {
+    "title": "Adicionar produto",
+    "edit_title": "Editar produto",
+    "basic_info": "Informação básica",
+    "product_details": "Detalhes do produto",
+    "pricing": "Preços",
+    "images": "Imagens",
+    "publish": "Publicar",
+    "save_draft": "Guardar rascunho",
+    "cancel": "Cancelar",
+    "decimal_separator_hint": "Utilize o ponto como separador decimal",
+    "product_added": "Produto adicionado",
+    "pending_approval": "Seu produto está pendente de aprovação e avisaremos quando for publicado.",
+    "done": "Pronto",
+    "select_game": {
+      "title": "A que jogo pertence seu item?",
+      "other_game": "Outro jogo",
+      "no_game": "Nenhum jogo"
+    },
+    "product_detail": {
+      "required_field": "Este campo é obrigatório",
+      "title": "Complete a informação do produto",
+      "publication_title": "Título da publicação",
+      "name": "Nome",
+      "description": "Descrição",
+      "add_image": "Adicionar imagem",
+      "platform": "Plataforma",
+      "category": "Categoria",
+      "geographic_availability": "Disponibilidade geográfica",
+      "countries": "Países",
+      "continue": "Continuar"
+    },
+    "delivery_type": {
+      "automatic": "Entrega automática",
+      "coordinated": "Entrega coordenada",
+      "title": "Selecione o tipo de entrega",
+      "product_key": "Chave do produto",
+      "add": "Adicionar",
+      "stock": "Estoque",
+      "continue": "Continuar"
+    },
+    "pricing": {
+      "title": "Selecione o preço",
+      "hint": "O preço em dólares é unicamente para vendas internacionais...",
+      "price_usd": "Preço em USD",
+      "you_receive": "Você receberá (ARS)",
+      "conversion": "Conversão",
+      "normal_commission": "Comissão normal",
+      "profit": "Ganho",
+      "mg_guarantee": "Venda protegida por Garantia MG",
+      "secure_payment": "Pagamento seguro com MercadoPago",
+      "publish": "Publicar"
+    },
+    "publication_type": {
+      "title": "Selecione um tipo de publicação"
+    },
+    "product_type": {
+      "title": "Selecione o tipo de produto"
+    }
+  },
+  "order_detail": {
+    "title": "Detalhe do pedido",
+    "order_number": "Pedido #{{number}}",
+    "status": "Estado",
+    "date": "Data",
+    "buyer": "Comprador",
+    "seller": "Vendedor",
+    "product": "Produto",
+    "price": "Preço",
+    "delivery_method": "Método de entrega",
+    "automatic": "Automático",
+    "coordinated": "Coordenado",
+    "messages": "Mensagens",
+    "send_message": "Enviar mensagem",
+    "copy_success": "Copiado com sucesso!"
+  },
+  "store": {
+    "changes_saved": "As alterações foram salvas.",
+    "info_visible": "Esta informação é visível para outros usuários."
+  }
+}

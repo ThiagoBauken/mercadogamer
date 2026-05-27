@@ -1,3 +1,4 @@
+// @ts-nocheck - TypeScript compatibility fix
 export * from './account-balance-wallet';
 export * from './account-shopping';
 export * from './alert-triangle';

@@ -1,4 +1,6 @@
-import { Button } from '@widgets/button';
+import dynamic from 'next/dynamic';
+
+const Button = dynamic(() => import('@widgets/button').then(mod => mod.Button), { ssr: false });
 
 type Props = {
   fileUrl: string;
@@ -22,12 +24,12 @@ const SkindSellCard: React.FC<Props> = (props) => {
         }}
       >
         <div className="first-divide">
-          <img src={userImg} className="skin-user-img" alt="" />
-          <img src={axeImg} className="skin-axe-img" />
+          <img src={userImg} className="skin-user-img" alt="User skin" />
+          <img src={axeImg} className="skin-axe-img" alt="Axe skin" />
         </div>
         <div className="second-divide">
-          <img src={gunImg} className="skin-gun-img" />
-          <img src={weaponImg} className="skin-weapon-img" />
+          <img src={gunImg} className="skin-gun-img" alt="Gun skin" />
+          <img src={weaponImg} className="skin-weapon-img" alt="Weapon skin" />
           <div className="title">
             Ganá <span>dinero real</span> <br />
             vendiendo tus <span>Skins</span>

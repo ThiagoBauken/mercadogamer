@@ -1,9 +1,10 @@
 import { NextPage } from 'next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { DefaultLayout } from '@layout/default-layout';
 import { VendorLandingPage } from '@web/page-contents/vendedores';
 import Head from 'next/head';
 
-const VendorLanding: NextPage = () => {
+const InfoVentaPage: NextPage = () => {
   return (
     <DefaultLayout full>
       <Head>
@@ -18,4 +19,13 @@ const VendorLanding: NextPage = () => {
   );
 };
 
-export default VendorLanding;
+export async function getStaticProps({ locale }: { locale?: string }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale || 'pt-BR', ["common"])),
+    },
+    revalidate: 60, // ISR: Revalidate every 60 seconds
+  };
+}
+
+export default InfoVentaPage;

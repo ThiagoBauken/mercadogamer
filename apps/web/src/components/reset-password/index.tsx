@@ -1,14 +1,21 @@
 import { useForm } from 'react-hook-form';
-import { Modal } from '@widgets/modal';
-import { FormInput } from '@widgets/form';
-import { Button } from '@widgets/button';
+import { useTranslation } from 'next-i18next';
+import dynamic from 'next/dynamic';
+
 import { closeAuthModal, useAppDispatch } from '@store';
 import { EmailValidationRegex, endpoints, post } from '@utils';
 import React, { useState } from 'react';
 
+const Modal = dynamic(() => import('@widgets/modal').then(mod => mod.Modal), { ssr: false });
+
+const FormInput = dynamic(() => import('@widgets/form').then(mod => mod.FormInput), { ssr: false });
+
+const Button = dynamic(() => import('@widgets/button').then(mod => mod.Button), { ssr: false });
+
 type Props = ModalProps;
 
 export const ResetPassword: React.FC<Props> = ({ open }) => {
+  const { t } = useTranslation('common');
   const [state, setState] = useState<{ success: boolean; loading: boolean }>({
     success: false,
     loading: false,
@@ -25,11 +32,11 @@ export const ResetPassword: React.FC<Props> = ({ open }) => {
   const onSubmit = async ({ username }: { username: string }): Promise<void> => {
     try {
       setState({ ...state, loading: true });
-      const result = await post(endpoints.resetPassword(username), {});
+      await post(endpoints.resetPassword(username), {});
       setState({ ...state, loading: false, success: true });
     } catch (error) {
       setState({ ...state, loading: false, success: false });
-      console.log(error);
+      console.error('Failed to reset password:', error);
     }
   };
 
@@ -42,45 +49,44 @@ export const ResetPassword: React.FC<Props> = ({ open }) => {
       {!state.success ? (
         <React.Fragment>
           <div className="header">
-            <div className="title">Recupero de contraseña</div>
+            <div className="title">{t('reset_password.title')}</div>
             <div className="description">
-              Te enviaremos un enlace que te permite establecer una nueva contraseña.
+              {t('reset_password.description')}
             </div>
           </div>
           <form className="content" onSubmit={handleSubmit(onSubmit)}>
             <FormInput
               full
-              label="E-mail"
+              label={t('reset_password.email_label')}
               control={control}
               name="username"
               rules={{
-                required: 'Este campo es obligatorio',
+                required: t('reset_password.required_field'),
                 pattern: {
                   value: EmailValidationRegex,
-                  message: 'Introduce una contraseña.',
+                  message: t('reset_password.invalid_email'),
                 },
               }}
             />
 
             <Button type="submit" full disabled={!watch('username')} loading={state.loading}>
-              Iniciar sesión
+              {t('reset_password.submit_button')}
             </Button>
           </form>
 
           <div className="return" onClick={onClose}>
-            Volver
+            {t('back')}
           </div>
         </React.Fragment>
       ) : (
         <React.Fragment>
           <div className="image-container"></div>
-          <div className="title">Email enviado</div>
+          <div className="title">{t('reset_password.email_sent_title')}</div>
           <div className="description">
-            Te enviamos un correo electrónico con un enlace que te permite establecer una nueva
-            contraseña.
+            {t('reset_password.email_sent_description')}
           </div>
           <Button full onClick={onClose}>
-            Listo
+            {t('reset_password.done_button')}
           </Button>
         </React.Fragment>
       )}

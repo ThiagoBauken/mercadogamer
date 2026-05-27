@@ -1,0 +1,37 @@
+{
+  "title": "Carrinho",
+  "table": {
+    "item": "Artigo",
+    "price": "Preço",
+    "quantity": "Qtd",
+    "total": "Total"
+  },
+  "messages": {
+    "product_removed": "Produto eliminado do carrinho.",
+    "undo": "DESFAZER",
+    "out_of_stock": "Produto atualmente sem estoque.",
+    "empty_cart": "Você ainda não tem produtos no seu carrinho, comece buscando produtos"
+  },
+  "summary": {
+    "subtotal": "Subtotal",
+    "processing_fee": "Taxa de processamento",
+    "processing_fee_tooltip": "A comissão de processamento é de 10% nas vendas entre usuários, e 5% + USD 0,50 nas vendas de lojas. No caso de Gift Cards não se aplicam comissões.",
+    "discount": "Desconto",
+    "total": "Total"
+  },
+  "actions": {
+    "empty_cart": "Esvaziar carrinho",
+    "use_discount": "Usar desconto",
+    "start_purchase": "Iniciar compra",
+    "search_products": "Buscar produtos"
+  },
+  "discount": {
+    "title": "Usar desconto",
+    "how_much": "Quanto deseja usar?",
+    "error_exceeds_value": "O desconto aplicado não pode ser maior que o valor do produto, pois não é possível reembolsar a diferença."
+  },
+  "confirm_empty": {
+    "title": "Deseja esvaziar o carrinho?"
+  },
+  "no_products": "Por enquanto não há produtos."
+}

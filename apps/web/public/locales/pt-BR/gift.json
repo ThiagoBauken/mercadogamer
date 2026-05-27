@@ -1,0 +1,43 @@
+{
+  "requirements": {
+    "register": {
+      "title": "Registre-se no Mercado Gamer",
+      "message": "Consiga seus produtos digitais favoritos."
+    },
+    "add_phone": {
+      "title": "Adicione seu número",
+      "message": "Fique por dentro das últimas novidades e ofertas."
+    },
+    "follow_instagram": {
+      "title": "Siga-nos no Instagram",
+      "message": "Fique por dentro das últimas novidades e ofertas."
+    }
+  },
+  "verification": {
+    "phone": {
+      "title": "Verifique seu telefone",
+      "label": "Número de telefone",
+      "button": "Continuar",
+      "invalid_code": "Código inválido"
+    },
+    "code": {
+      "title": "Verifique seu telefone",
+      "label": "Código de verificação",
+      "button": "Verificar"
+    }
+  },
+  "roulette": {
+    "title": "Roleta de Presentes",
+    "spin_button": "Girar",
+    "results": {
+      "nothing": "Nada por aqui :(",
+      "won": "Você ganhou!",
+      "amazing": "Incrível!"
+    },
+    "prizes": {
+      "discount": "{{percent}}% de desconto",
+      "balance": "R$ {{amount}} de saldo",
+      "free_product": "Produto grátis"
+    }
+  }
+}

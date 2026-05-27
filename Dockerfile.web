@@ -1,0 +1,26 @@
+# Frontend Web Dockerfile - MercadoGamer Marketplace
+FROM node:18-alpine
+
+# Instalar dependências do sistema
+RUN apk add --no-cache libc6-compat
+
+# Definir diretório de trabalho
+WORKDIR /app
+
+# Copiar package.json
+COPY package*.json ./
+COPY babel.config.json ./
+COPY jest.config.ts ./
+COPY jest.preset.js ./
+
+# Instalar dependências
+RUN npm ci && npm cache clean --force
+
+# Copiar código fonte
+COPY . .
+
+# Expor porta
+EXPOSE 3000
+
+# Comando padrão (será sobrescrito no docker-compose)
+CMD ["npx", "nx", "serve", "web", "--host", "0.0.0.0", "--port", "3000"]

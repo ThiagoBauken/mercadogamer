@@ -1,13 +1,27 @@
 import { NextPage } from 'next';
-import { CheckoutPage } from '@page-contents/checkout';
+import dynamic from 'next/dynamic';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+
 import { CheckoutLayout } from '@layout/checkout-layout';
 
-const NotFind: NextPage = () => {
+
+const CheckoutPageContent = dynamic(() => import('@page-contents/checkout').then(mod => mod.CheckoutPage), { ssr: false });
+
+const CheckoutPage: NextPage = () => {
   return (
     <CheckoutLayout authorise>
-      <CheckoutPage />
+      <CheckoutPageContent />
     </CheckoutLayout>
   );
 };
 
-export default NotFind;
+export async function getStaticProps({ locale }: { locale?: string }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale || 'pt-BR', ["common"])),
+    },
+    revalidate: 60, // ISR: Revalidate every 60 seconds
+  };
+}
+
+export default CheckoutPage;

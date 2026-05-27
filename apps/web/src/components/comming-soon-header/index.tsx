@@ -1,8 +1,10 @@
 import React, { useMemo, useState } from 'react';
 import { useRouter } from 'next/router';
-import { Icon } from '@widgets/icon';
+import dynamic from 'next/dynamic';
 
-export const CommingSoonHeader: React.FC = () => {
+const Icon = dynamic(() => import('@widgets/icon').then(mod => mod.Icon), { ssr: false });
+
+const CommingSoonHeader: React.FC = () => {
   const router = useRouter();
 
   const [icon, setIcon] = useState<string>('');
@@ -33,3 +35,5 @@ export const CommingSoonHeader: React.FC = () => {
     </header>
   );
 };
+
+export { CommingSoonHeader };

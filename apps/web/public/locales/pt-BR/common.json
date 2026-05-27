@@ -1,0 +1,248 @@
+{
+  "site_name": "MercadoGamer",
+  "welcome": "Bem-vindo",
+  "loading": "Carregando...",
+  "error": "Erro",
+  "success": "Sucesso",
+  "save": "Salvar",
+  "cancel": "Cancelar",
+  "delete": "Excluir",
+  "edit": "Editar",
+  "confirm": "Confirmar",
+  "back": "Voltar",
+  "next": "Próximo",
+  "previous": "Anterior",
+  "search": "Buscar",
+  "filter": "Filtrar",
+  "sort": "Ordenar",
+  "view_all": "Ver Todos",
+  "close": "Fechar",
+  "open": "Abrir",
+  "menu": "Menu",
+  "home": "Início",
+  "about": "Sobre",
+  "contact": "Contato",
+  "help": "Ajuda",
+  "settings": "Configurações",
+  "logout": "Sair",
+  "nav": {
+    "home": "Início",
+    "catalog": "Catálogo",
+    "gifts": "Presentes",
+    "sell": "Vender",
+    "cart": "Carrinho",
+    "profile": "Perfil",
+    "dashboard": "Painel",
+    "orders": "Pedidos",
+    "purchases": "Compras",
+    "balance": "Saldo",
+    "my_questions": "Minhas perguntas",
+    "sales": "Vendas",
+    "products": "Produtos",
+    "questions": "Consultas",
+    "store": "Loja",
+    "my_profile": "Meu perfil",
+    "support": "Suporte",
+    "logout": "Sair",
+    "favorites": "Favoritos",
+    "notifications": "Notificações",
+    "balance_section": "SALDO",
+    "purchases_section": "COMPRAS",
+    "sales_section": "VENDAS",
+    "settings_section": "CONFIGURAÇÃO",
+    "coupons": "Cupons",
+    "security": "Segurança"
+  },
+  "header": {
+    "search_placeholder": "Buscar no Mercado Gamer",
+    "login": "Entrar",
+    "enter": "Entrar",
+    "purchases": "Compras",
+    "sales": "Vendas",
+    "my_profile": "Meu perfil",
+    "logout": "Sair"
+  },
+  "footer": {
+    "about_us": "Sobre Nós",
+    "terms": "Termos de Uso",
+    "privacy": "Política de Privacidade",
+    "contact": "Contato",
+    "help_center": "Central de Ajuda",
+    "follow_us": "Siga-nos",
+    "copyright": "© {{year}} MercadoGamer. Todos os direitos reservados.",
+    "site": "Site",
+    "information": "Informação",
+    "community": "Comunidade",
+    "home": "Início",
+    "catalog": "Catálogo",
+    "gifts": "Presentes",
+    "support": "Suporte",
+    "terms_conditions": "Termos e condições",
+    "security_privacy": "Segurança e privacidade",
+    "sell_on_mg": "Vender no MG"
+  },
+  "cart": {
+    "title": "Carrinho",
+    "total": "Total",
+    "go_to_cart": "Ir ao carrinho",
+    "empty_message": "Ainda não adicionou produtos ao carrinho",
+    "no_products": "Você ainda não adicionou produtos ao carrinho",
+    "no_products_menu": "Por enquanto não há produtos."
+  },
+  "mobile_nav": {
+    "help_center": "Centro de ajuda",
+    "send_feedback": "Enviar feedback",
+    "send_query": "Enviar consulta"
+  },
+  "notifications": {
+    "no_notifications": "Por enquanto não há notificações.",
+    "mark_all_read": "Marcar todas como lidas"
+  },
+  "currency": {
+    "symbol": "R$",
+    "code": "BRL",
+    "name": "Real brasileiro",
+    "full": "BRL - Real brasileiro"
+  },
+  "time": {
+    "now": "Agora",
+    "today": "Hoje",
+    "yesterday": "Ontem",
+    "days_ago": "{{count}} dia atrás",
+    "days_ago_plural": "{{count}} dias atrás",
+    "hours_ago": "{{count}} hora atrás",
+    "hours_ago_plural": "{{count}} horas atrás",
+    "minutes_ago": "{{count}} minuto atrás",
+    "minutes_ago_plural": "{{count}} minutos atrás"
+  },
+  "pagination": {
+    "showing": "Mostrando",
+    "of": "de",
+    "results": "resultados",
+    "per_page": "por página",
+    "page": "Página",
+    "first": "Primeira",
+    "last": "Última"
+  },
+  "status": {
+    "active": "Ativo",
+    "inactive": "Inativo",
+    "pending": "Pendente",
+    "approved": "Aprovado",
+    "rejected": "Rejeitado",
+    "completed": "Concluído",
+    "cancelled": "Cancelado",
+    "processing": "Processando"
+  },
+  "actions": {
+    "add": "Adicionar",
+    "remove": "Remover",
+    "update": "Atualizar",
+    "view": "Ver",
+    "download": "Baixar",
+    "upload": "Enviar",
+    "share": "Compartilhar",
+    "copy": "Copiar",
+    "print": "Imprimir"
+  },
+  "messages": {
+    "no_results": "Nenhum resultado encontrado",
+    "loading_error": "Erro ao carregar dados",
+    "save_success": "Salvo com sucesso",
+    "delete_success": "Excluído com sucesso",
+    "update_success": "Atualizado com sucesso",
+    "operation_cancelled": "Operação cancelada",
+    "confirm_delete": "Tem certeza que deseja excluir?"
+  },
+  "feedback": {
+    "required_field": "Este campo é obrigatório.",
+    "write_message": "Escreva sua mensagem",
+    "select_topic": "Selecione um tema",
+    "attach_file": "Anexar um arquivo",
+    "report_error": "Reportar erro",
+    "send_comment": "Enviar comentário",
+    "success_message": "Seu novo comentário foi enviado."
+  },
+  "reset_password": {
+    "required_field": "Este campo é obrigatório",
+    "title": "Recuperação de senha",
+    "description": "Enviaremos um link que permite estabelecer uma nova senha.",
+    "email_label": "E-mail",
+    "invalid_email": "Introduza um e-mail válido.",
+    "submit_button": "Iniciar sessão",
+    "email_sent_title": "Email enviado",
+    "email_sent_description": "Enviamos um e-mail com um link que permite estabelecer uma nova senha.",
+    "done_button": "Pronto"
+  },
+  "modals": {
+    "confirm_transaction": {
+      "title": "Finalizar transação",
+      "description": "Uma vez que você tenha verificado a validade do produto, por favor finalize a transação. O vendedor receberá o dinheiro pela venda.",
+      "checkbox_label": "Verifiquei a validade do produto e concordo que o vendedor receba o dinheiro.",
+      "button": "Finalizar transação"
+    },
+    "cancel_order": {
+      "title": "Cancelar venda",
+      "message": "Se você cancelar a venda, o dinheiro será reembolsado ao comprador.",
+      "button": "Cancelar venda",
+      "success_message": "A venda foi cancelada."
+    },
+    "report": {
+      "title": "Tive um problema",
+      "problem_label": "Qual foi o problema?",
+      "problem_placeholder": "Motivo da reclamação",
+      "description_label": "Descreva o problema",
+      "attach_file_label": "Anexar um arquivo",
+      "submit_button": "Enviar relatório",
+      "success_message": "Seu relatório foi enviado, entraremos em contato em breve.",
+      "required_field": "Este campo é obrigatório",
+      "problems": {
+        "not_working": "Não funciona/está vencido",
+        "undelivered": "Não entregou",
+        "mistake": "Me equivoquei com a compra"
+      }
+    },
+    "invite": {
+      "title": "Convidar um amigo",
+      "description": "Quando seu amigo se registrar e jogar na roleta você ganhará um drop extra.",
+      "how_it_works": "Como funcionam os convites?",
+      "your_invites": "Seus convites",
+      "no_invites": "Você ainda não tem convidados",
+      "copy_success": "Copiado com sucesso!",
+      "share_message": "JOGUE NA ROLETA E GANHE DINHEIRO GRÁTIS NO MERCADO GAMER! Use para comprar ou ter desconto em suas compras de Jogos, Moedas, Skins, Gift Cards e muito mais. JOGUE AGORA:",
+      "status": {
+        "registered": "Registrado, ainda não jogou na roleta",
+        "available": "Drop disponível",
+        "used": "Você usou este drop"
+      }
+    },
+    "ticket": {
+      "create_title": "Gerar ticket",
+      "select_topic": "Selecione um tema",
+      "write_query": "Escreva sua consulta",
+      "attach_file": "Anexar um arquivo",
+      "send_button": "Enviar ticket",
+      "success_message": "Seu ticket foi enviado, entraremos em contato em breve.",
+      "required_field": "Este campo é obrigatório",
+      "topics": {
+        "purchases": "Compras",
+        "payments": "Pagamentos",
+        "code_activation": "Ativação de código",
+        "products": "Produtos",
+        "other": "Outro assunto"
+      }
+    },
+    "delete_product": {
+      "title": "Excluir produto",
+      "message": "Deseja esvaziar o carrinho?",
+      "confirm_button": "Excluir",
+      "cancel_button": "Cancelar"
+    },
+    "other_game": {
+      "title": "Outro jogo",
+      "select_label": "Selecione um jogo",
+      "select_placeholder": "Selecionar",
+      "send_button": "Enviar código"
+    }
+  }
+}

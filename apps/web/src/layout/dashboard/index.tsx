@@ -1,12 +1,26 @@
+import { useTranslation } from 'next-i18next';
 import { DefaultLayout } from '@layout/default-layout';
 import { useRouter } from 'next/router';
-import { navigations } from './nav-items';
+import { getNavigations } from './nav-items';
 import { logout, useAppDispatch } from '@store';
 import { Icon } from '@widgets/icon';
 
+interface ChildrenProps {
+  children: React.ReactNode;
+}
+
+interface NavItem {
+  url: string;
+  label: string;
+  icon: string | React.ReactNode;
+}
+
 export const DashboardLayout: React.FC<ChildrenProps> = (props) => {
+  const { t } = useTranslation('common');
   const dispatch = useAppDispatch();
   const router = useRouter();
+  const navigations = getNavigations(t);
+
   const getMenuItemClass = (item: NavItem): string => {
     const classes = ['menu-item'];
     new RegExp(`${item.url}`, 'i').test(router.asPath) && classes.push('active');
@@ -39,7 +53,7 @@ export const DashboardLayout: React.FC<ChildrenProps> = (props) => {
               <div className="icon">
                 <Icon name="logout" />
               </div>
-              <div className="label">Cerrar sesión</div>
+              <div className="label">{t('nav.logout')}</div>
             </li>
           </ul>
         </div>

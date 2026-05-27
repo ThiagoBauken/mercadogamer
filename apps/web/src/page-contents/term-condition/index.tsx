@@ -1,9 +1,11 @@
 import React, { useMemo, useState } from 'react';
+import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import { TermConditionTopics } from '@page-contents/term-condition/config';
 import { BreakPoints } from '@theme/breakpoints';
 import { useWindowSize } from '@hooks';
-import { Expansion } from '@widgets/expansion';
+
+const Expansion = dynamic(() => import('@widgets/expansion').then(mod => mod.Expansion), { ssr: false });
 
 export const TermConditionPageContent: React.FC = () => {
   const router = useRouter();

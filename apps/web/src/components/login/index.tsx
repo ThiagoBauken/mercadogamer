@@ -1,5 +1,7 @@
 import { useState } from 'react';
+import dynamic from 'next/dynamic';
 import { useForm } from 'react-hook-form';
+import { useTranslation } from 'next-i18next';
 import {
   closeAuthModal,
   login,
@@ -9,11 +11,16 @@ import {
   useTypedSelector,
 } from '@store';
 import { useRouter } from 'next/router';
-import { Modal } from '@widgets/modal';
-import { Icon } from '@widgets/icon';
-import { FormInput } from '@widgets/form';
-import { Switch } from '@widgets/switch';
-import { Button } from '@widgets/button';
+
+const Modal = dynamic(() => import('@widgets/modal').then(mod => mod.Modal), { ssr: false });
+const Icon = dynamic(() => import('@widgets/icon').then(mod => mod.Icon), { ssr: false });
+const FormInput = dynamic(() => import('@widgets/form').then(mod => mod.FormInput), { ssr: false });
+const Switch = dynamic(() => import('@widgets/switch').then(mod => mod.Switch), { ssr: false });
+const Button = dynamic(() => import('@widgets/button').then(mod => mod.Button), { ssr: false });
+
+interface ModalProps {
+  open: boolean;
+}
 
 type FormData = {
   username: string;
@@ -21,6 +28,7 @@ type FormData = {
 };
 
 export const LoginPage: React.FC<ModalProps> = (modalProps) => {
+  const { t } = useTranslation('auth');
   const dispatch = useAppDispatch();
 
   const auth = useTypedSelector((state) => state.auth);
@@ -45,7 +53,7 @@ export const LoginPage: React.FC<ModalProps> = (modalProps) => {
     try {
       dispatch(login(data, router));
     } catch (error) {
-      console.log(error);
+      console.error('Login error:', error);
     }
   };
 
@@ -58,45 +66,45 @@ export const LoginPage: React.FC<ModalProps> = (modalProps) => {
     >
       <div className="content">
         <div className="header">
-          <div className="title">Iniciar sesión</div>
+          <div className="title">{t('login.title')}</div>
           <div className="description">
-            ¿Aún no tenés una cuenta?{' '}
-            <span onClick={() => dispatch(openSignupModal())}>Regístrate</span>
+            {t('login.no_account')}{' '}
+            <span onClick={() => dispatch(openSignupModal())}>{t('login.signup_link')}</span>
           </div>
 
-          <div className="form-title">O ingresa con tu email</div>
+          <div className="form-title">{t('login.or_login_email')}</div>
         </div>
         <form onSubmit={handleSubmit(onSubmit)}>
           {auth.error && (
             <div className="error-message">
               <Icon name="alert-triangle" />
-              E-mail o contraseña incorretos.
+              {t('login.error')}
             </div>
           )}
           <FormInput
             control={control}
             name="username"
-            label="E-mail o username"
+            label={t('login.username')}
             width="100%"
             rules={{
-              required: 'Introduce un e-mail o username válido.',
+              required: t('validation.email_or_username_required'),
             }}
           />
           <FormInput
             control={control}
             name="password"
-            label="Contraseña"
+            label={t('login.password')}
             type={state.showPassword ? 'text' : 'password'}
             width="100%"
             endfix={state.showPassword ? 'eye-off' : 'eye'}
             rules={{
-              required: 'Introduce una contraseña.',
+              required: t('validation.password_invalid'),
             }}
             onEndFixClick={() => setState({ ...state, showPassword: !state.showPassword })}
           />
           <div className="remember-password">
             <Switch />
-            Recordar contraseña
+            {t('login.remember_password')}
           </div>
           <Button
             type="submit"
@@ -104,10 +112,10 @@ export const LoginPage: React.FC<ModalProps> = (modalProps) => {
             loading={auth.loading}
             width="100%"
           >
-            Iniciar sesión
+            {t('login.submit')}
           </Button>
           <div className="forgot-password" onClick={() => dispatch(openResetPasswordModal())}>
-            ¿Olvidaste tu contraseña?
+            {t('login.forgot_password')}
           </div>
         </form>
       </div>

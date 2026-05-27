@@ -1,0 +1,20 @@
+{
+  "title": "Catálogo",
+  "sort": {
+    "label": "Ordenar por",
+    "most_relevant": "Mais relevantes",
+    "lowest_price": "Menor preço",
+    "highest_price": "Maior preço"
+  },
+  "filters": {
+    "title": "Filtros",
+    "filter_by_games": "Filtrar por jogos",
+    "automatic_delivery": "Entrega automática",
+    "platform": "Plataforma",
+    "product_type": "Tipo de produto",
+    "category": "Categoria"
+  },
+  "loading": "Carregando...",
+  "load_more": "Carregar mais",
+  "no_results": "Não foi encontrado nenhum produto para os filtros selecionados"
+}

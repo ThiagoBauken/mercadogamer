@@ -1,163 +1,35 @@
 import { NextPage } from 'next';
+import dynamic from 'next/dynamic';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { DefaultLayout } from '@layout/default-layout';
-import { CatalogContent } from '@page-contents/catalogo';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import { getCatalogMeta } from '@web/utils/catalogMetaTags';
 
-const NotFind: NextPage = () => {
+const CatalogContent = dynamic(() => import('@page-contents/catalogo').then(mod => mod.CatalogContent), { ssr: false });
+
+const CatalogPage: NextPage = () => {
   const router = useRouter();
+  const { title, description } = getCatalogMeta(router.query);
+
   return (
     <DefaultLayout>
       <Head>
-        <title>
-          {router.query.plataforma === 'XBOX'
-            ? 'Mercado Gamer - Compra aquí Xbox Game Pass y juegos de Xbox'
-            : router.query.plataforma === 'PLAY STATION'
-            ? 'Mercado Gamer - Compra juegos digitales baratos de PlayStation'
-            : router.query.plataforma === 'STEAM'
-            ? 'Mercado Gamer - Compra juegos de Steam en Argentina'
-            : router.query.plataforma === 'EPIC GAMES'
-            ? 'Mercado Gamer - Compra aquí tus juegos de Epic Games'
-            : router.query.plataforma === 'NINTENDO'
-            ? 'Mercado Gamer - ¡Compra juegos digitales para tu Nintendo!'
-            : router.query.plataforma === 'BATTLE NET'
-            ? 'Mercado Gamer - Conocé las mejores ofertas de Battle Net'
-            : router.query.plataforma === 'Mobile'
-            ? 'Mercado Gamer - Compra códigos y más para juegos de celular'
-            : router.query.plataforma === 'Origin'
-            ? 'Mercado Gamer - Compra barato y rápido tus juegos de Origin'
-            : router.query.plataforma === 'Riot Games'
-            ? 'Mercado Gamer - Compra item de LOL, TFT y más de Riot Games'
-            : router.query.tipo === 'game'
-            ? 'Mercado Gamer - Compra juegos digitales rápido y barato'
-            : router.query.tipo === 'giftCard'
-            ? 'Mercado Gamer - Compra tu Gift Card barato, fácil y rápido'
-            : router.query.tipo === 'item'
-            ? 'Mercado Gamer - Compra seguro y rápido ítems para tus juegos'
-            : router.query.tipo === 'moneda'
-            ? 'Mercado Gamer - Compra aquí las monedas para tus juegos'
-            : router.query.tipo === 'pack'
-            ? 'Mercado Gamer - Compra aquí todos los packs para tus juegos'
-            : router.query.categoria === 'Aventura'
-            ? 'Mercado Gamer - Compra juegos de aventura PS3, PS4, PC y más'
-            : router.query.categoria === 'Pelea'
-            ? 'Mercado Gamer - Compra juegos de pelea y recibilo al instante'
-            : router.query.categoria === 'Carrera'
-            ? 'Mercado Gamer - Compra juegos de carrera baratos y al instante'
-            : router.query.categoria === 'Estrategia'
-            ? 'Mercado Gamer - Compra juegos de estrategia seguro y rápido'
-            : router.query.categoria === 'Deporte'
-            ? 'Mercado Gamer - Compra juegos de deporte seguro y barato'
-            : router.query.categoria === 'Terror'
-            ? 'Mercado Gamer - Compra tus juegos de Terror al mejor costo'
-            : router.query.juego === 'Rocket League'
-            ? 'Mercado Gamer - Compra aquí tus ítems de Rocket League'
-            : router.query.juego === 'Fortnite'
-            ? 'Mercado Gamer - Compra items de Fortnite seguro y al instante'
-            : router.query.juego === 'Warzone'
-            ? 'Mercado Gamer - Compra ítems de Warzone seguro y rapido'
-            : router.query.juego === 'CS GO'
-            ? 'Mercado Gamer - Compra skins CSGO en pesos sin impuesto pais'
-            : router.query.juego === 'Valorant'
-            ? 'Mercado Gamer - Compra todo de Valorant en pesos'
-            : router.query.juego === 'League of Legends'
-            ? 'Mercado Gamer - Compra skins y más de League of Legends'
-            : router.query.juego === 'FIFA 22'
-            ? 'Mercado Gamer - Compra el FIFA 22, monedas y más'
-            : router.query.juego === 'Free Fire'
-            ? 'Mercado Gamer - Compra Diamantes de Free Fire y mucho más'
-            : router.query.juego === 'Player Unknown Battlegrounds'
-            ? 'Mercado Gamer - Explora nuestro catálogo de PUBG'
-            : router.query.juego === 'Roblox'
-            ? 'Mercado Gamer - Compra items de Roblox seguro y barato'
-            : router.query.juego === 'FIFA 23'
-            ? 'Mercado Gamer - Compra el FIFA 23, monedas y más'
-            : router.query.juego === 'Call of Duty Mobile'
-            ? 'Mercado Gamer - Compra todo de Call of Duty Mobile fácil y rápido'
-            : router.query.juego === 'Call of Duty Modern Warfare 2'
-            ? 'Mercado Gamer - Compra el Call of Duty Modern Warfare 2'
-            : router.query.juego === 'Mobile Legends'
-            ? 'Mercado Gamer - Diamantes, Códigos y más de Mobile Legends'
-            : 'Mercado Gamer - Compra gift card, items, packs y más del Gaming'}
-        </title>
-        <meta
-          name="description"
-          content={
-            router.query.plataforma === 'XBOX'
-              ? '¡Paga en pesos y sin impuesto pais! Compra para descargar al instante juegos digitales para Xbox 360, Xbox Series X y Xbox one. Compra seguro con Garantía MG.'
-              : router.query.plataforma === 'PLAY STATION'
-              ? '¡Paga en pesos, seguro y recibí al instante! ¡Sin impuesto país! Compra gift card de PSN Plus y juegos digitales de ps3, ps4 y ps5. Obtené tu Minecraft, FIFA, UFC, GTA 5, Pes.'
-              : router.query.plataforma === 'STEAM'
-              ? '¡Paga en pesos y recibí al instante! ¡Sin impuesto pais! Encuentra aquí gift card, skins, packs, keys y más juegos de steam. Seguro con la Garantía MG.'
-              : router.query.plataforma === 'EPIC GAMES'
-              ? '¡Paga en Pesos, seguro y al instante! ¡Sin impuesto país! Aquí la biblioteca de Epic Game de juegos, pavos, gift card, créditos, packs, picos, skins y más.'
-              : router.query.plataforma === 'NINTENDO'
-              ? '¡Paga en pesos, seguro y al instante! ¡Sin Impuesto país en Argentina! Compra juegos para Nintendo Switch y todo del Mario Kart 8, Zelda y más.'
-              : router.query.plataforma === 'BATTLE NET'
-              ? '¡Paga en pesos! ¡Sin impuestos país para Argentina! Consigue juegos como Overwatch, Diablo 2 y más. Compra seguro y al instante con Garantía MG.'
-              : router.query.plataforma === 'Mobile'
-              ? '¡Paga en pesos, seguro y al instante desde Argentina! Compra codigos de Lords Mobile, Free Fire, PUBG Mobile, Mobile Legends, COD Mobile, FIFA Mobile y más.'
-              : router.query.plataforma === 'Origin'
-              ? '¡Paga en pesos, seguro y al instante desde Argentina! Consigue tus ítems y DLC de Sims 4, Battlefield, FIFA 22 y mas packs, FIFA Points, keys, etc.'
-              : router.query.plataforma === 'Riot Games'
-              ? '¡Compra en pesos, seguro y al instante! ¡Sin Impuesto país en Argentina! Obtené gift cards, items, códigos y más para el League of legends, Valorant, Teamfight Tactics, Runeterra, etc.'
-              : router.query.tipo === 'game'
-              ? '¡Compra en pesos! Sin impuesto país para Argentina. Encontrá juegos de ps3, ps4, ps5, PC y mobile. Como FIFA, Fortnite, Minecraft, Fall Guys, etc. Todos los jueguitos del mercado'
-              : router.query.tipo === 'giftCard'
-              ? '¡Paga en pesos las Gift Cards! ¡Seguro y al instante! Sin impuesto país desde Argentina. Tarjetas de Steam, PSN Card, Google Play, Roblox card y más.'
-              : router.query.tipo === 'item'
-              ? '¡Paga en Pesos, seguro y al instante desde Argentina! Sin impuesto país. Items de Fortnite, Skins de Free fire, camuflajes de CSGO, Roblox, LoL, tft, isaac items, dota 2, Minecraft, tf2.'
-              : router.query.tipo === 'moneda'
-              ? '¡Compra en pesos y recibí al instante desde Argentina! Encontrá las monedas de tus juegos.🎮 Pavos de Fortnite, Diamantes Free Fire, FIFA Points, Riot Points, Diamantes Mobile Legends, Lords Mobile, FIFA Coins, V-Bucks, COD Points, G-Coin, etc.'
-              : router.query.tipo === 'pack'
-              ? '¡Paga en pesos, seguro y al instante! ¡Sin impuesto país en Argentina! Packs de inicio fortnite, Pack de Free Fire, Warzone pack, Codigos Warzone, etc.'
-              : router.query.categoria === 'Aventura'
-              ? '¡Compra seguro y al instante! ¡Paga en Pesos! Sin impuesto país en Argentina. Juegos de Aventura como Half-Life 2, Minecraft para Android y más.'
-              : router.query.categoria === 'Pelea'
-              ? '¡Compra en pesos! ¡Sin impuesto país en Argentina! Juegos de Lucha, MMA, Boxeo como Street Fighter V, Mortal Kombat 11, Tekken 7, UFC 2, UFC 3, etc.'
-              : router.query.categoria === 'Carrera'
-              ? '¡Paga en pesos! ¡Sin impuesto país en Argentina! Juegos de coches como Forza Horizon 4, Colin McRae Rally, Dirt 5, etc. PS3, PS4, PS5, PC y más. Juegos de autos y carros como Dirt Rally 2.0, Proyect Cars 2, Forza Motosport 7.'
-              : router.query.categoria === 'Estrategia'
-              ? '¡Paga en pesos! ¡Sin impuesto país en Argentina! Juegos de estrategia y guerra para PC, Android y más, como Age of Empires IV, Dota 2, LoL, etc.'
-              : router.query.categoria === 'Deporte'
-              ? '¡Paga en pesos y sin impuesto país en Argentina! Juegos de Futbol, Tenis, Basquet, Rugby, Golf, Padel y más como FIFA 22, NBA 2K22, Golf it.'
-              : router.query.categoria === 'Terror'
-              ? '¡Paga en pesos y sin el 75% de impuesto en Argentina! Compra items, packs, códigos, gift cards y más sobre juegos de miedo como Dead by Daylight, Five Nights at Freddy`s, Outlast, Resident Evil, Slender y mas.'
-              : router.query.juego === 'Rocket League'
-              ? '¡Paga en pesos! ¡Sin impuesto país en Argentina! Verás Skins, Packs, Créditos, Gift Card, DLC, Códigos y más. Compra endo, jager, hot wheels, fennec, disolvente, takumi, octane, Nissan Skyline, Dingo, Dominus, Wallpaper, Batmobile. Encontraras items de Rocket League para PS3, PS4, PC, Steam.'
-              : router.query.juego === 'Fortnite'
-              ? '¡Paga en Pesos! ¡Sin impuesto país en Argentina! Compra todo de Fortnite, Pavos, V-Bucks, Packs de inicio, Club de Fortnite, skins tryhard, Picos y más. wildcat, cuervo, duende verde, gamer club, caballero oscuro, bailes, wonder woman, Harley quinn, raven, aura, bonesy, bananin, deriva, midas, renegada, kit, codigos y chica zombie. '
-              : router.query.juego === 'Warzone'
-              ? '¡Paga en pesos! ¡Sin impuesto país desde Argentina! Elige tu item de Warzone y lo pagas por Mercado Pago. Encontrarás COD Points, Packs, XP, codigos y más.'
-              : router.query.juego === 'CS GO'
-              ? '¡Compra en pesos tus ítems de Counter Strike desde Argentina! Encontrarás skins baratas de AWP, AK-47, M4-A1, MP9, P90, glock, USP, Osiris, Bayoneta, cuchillos y demás packs, cajas, prime, pegatinas csgo, stickers de 9z como luken, dgt, bit, rox, max, etc.'
-              : router.query.juego === 'Valorant'
-              ? '¡Paga en pesos y sin impuesto país en Argentina! Compra seguro y al instante con Garantía MG. Encontrarás codigos, gift card, packs y mucho más.'
-              : router.query.juego === 'League of Legends'
-              ? '¡Paga en pesos los items y skins de LOL! ¡Sin impuesto país en Argentina! Riot access, Riot points, gift card y más. Compra seguro y al instante.'
-              : router.query.juego === 'FIFA 22'
-              ? '¡Paga en pesos los FIFA Coins, packs y más! ¡Sin impuesto país en Argentina! Compra Points, codigos, gift card, etc. Conseguí jugadores para fut champions como Messi, Dani Alves, Garnacho, Di Stefano, Haaland. Obtene sus cartas como TOTS, Heroes, TOTY, Promesas, Future Strars, etc.'
-              : router.query.juego === 'Free Fire'
-              ? '¡Paga en pesos y sin impuesto país en Argentina! Compra carga de Diamantes, códigos, packs, skins, Pase Elite, Gift card, tarjeta semanal, mensual y más.'
-              : router.query.juego === 'Player Unknown Battlegrounds'
-              ? "¡Paga en pesos los items de Player Unknown's battlegrounds! Como G-Coins, gift card, packs, skins y más. Todo para PUBG Mobile, PC, PS4 y Xbox."
-              : router.query.juego === 'Roblox'
-              ? '¡Paga en pesos y recibí al instante! Compra Roblox Card, Gift Card, Packs, Skins, DLC, Robux, promocodes, códigos y más para PC, Mobile, etc.'
-              : router.query.juego === 'FIFA 23'
-              ? '¡Paga en pesos y sin impuesto país en Argentina! Obtené FIFA 23, Coins, packs, codigos, Points, gift card, etc. Conseguí jugadores para fut champions como Messi, Haaland, Di Stefano, Garnacho, Dani Alves.'
-              : router.query.juego === 'Call of Duty Mobile'
-              ? '¡Paga en pesos! ¡Recibí seguro y al instante! Sin impuesto país en Argentina. Obtené tus DLC, Gift Card, COD Points, pase de batalla y más.'
-              : router.query.juego === 'Call of Duty Modern Warfare 2'
-              ? '¡Paga en pesos y sin impuesto país en Argentina! ¡Recibí seguro y al instante! Obtené tu MW2, COD Points, DLC, Gift Card, pase de batalla y más.'
-              : router.query.juego === 'Mobile Legends'
-              ? '¡Paga en pesos y sin el 75% de impuesto en Argentina! Compra diamantes, personajes, códigos y más. Hace tus recargas seguras y al instante. Adquirí tu personaje al menor costo.'
-              : 'Mira nuestro catálogo de keys, ítems, gift cards y más para PC, Celular, PS4, PS5, Xbox, etc. Compra seguro, paga por Mercado Pago y recibí al instante.'
-          }
-        />
+        <title>{title}</title>
+        <meta name="description" content={description} />
       </Head>
       <CatalogContent />
     </DefaultLayout>
   );
 };
 
-export default NotFind;
+export async function getStaticProps({ locale }: { locale?: string }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale || 'pt-BR', ["common"])),
+    },
+    revalidate: 60, // ISR: Revalidate every 60 seconds
+  };
+}
+
+export default CatalogPage;

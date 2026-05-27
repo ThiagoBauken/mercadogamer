@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
+import { useTranslation } from 'next-i18next';
 import {
   getFileFullUrl,
   madeBackgroundImageUrl,
@@ -8,9 +9,6 @@ import {
   addMessageToToast,
 } from '@utils';
 import { useTypedSelector } from '@store';
-import { Menu } from '@widgets/menu';
-import { Icon } from '@widgets/icon';
-import { Button } from '@widgets/button';
 import { useRouter } from 'next/router';
 
 const ConfirmModal = dynamic(() => import('@components/confirm-modal/index'));
@@ -21,10 +19,18 @@ type Props = {
   order: OrderModelType;
   onReload: () => void;
 };
+
+const Menu = dynamic(() => import('@widgets/menu').then(mod => mod.Menu), { ssr: false });
+
+const Icon = dynamic(() => import('@widgets/icon').then(mod => mod.Icon), { ssr: false });
+
+const Button = dynamic(() => import('@widgets/button').then(mod => mod.Button), { ssr: false });
+
 export const PurchaseCard: React.FC<Props> = ({ order, onReload }) => {
   const router = useRouter();
+  const { t } = useTranslation('purchase');
 
-  const { user = {} } = useTypedSelector((store) => store.auth);
+  const { user } = useTypedSelector((store) => store.auth);
 
   const [state, setState] = useState<{
     edit: boolean;
@@ -45,7 +51,7 @@ export const PurchaseCard: React.FC<Props> = ({ order, onReload }) => {
   const onCopy = (): void => {
     order?.order?.stockProduct?.code &&
       copyTextToClipboard(order?.order?.stockProduct?.code).then(() => {
-        addMessageToToast('¡Éxito copiado!');
+        addMessageToToast(t('card.copy_success'));
       });
   };
 
@@ -56,15 +62,15 @@ export const PurchaseCard: React.FC<Props> = ({ order, onReload }) => {
           activator={<Icon name="more-vertical" />}
           menuItems={[
             {
-              label: 'Tengo un problema',
+              label: t('card.actions.have_problem'),
               action: () => setState({ ...state, modal: { name: 'report-modal' } }),
             },
             {
-              label: 'Ver detalles',
+              label: t('card.actions.view_details'),
               action: () => router.push(`dashboard/order/${order.order.id}`),
             },
             {
-              label: '¿Cómo usar este código?',
+              label: t('card.actions.how_to_use'),
               action: () => router.push(`/help-center/buy/5`),
               hide: order.stockProduct?.retirementType !== 'automatic',
             },
@@ -97,8 +103,8 @@ export const PurchaseCard: React.FC<Props> = ({ order, onReload }) => {
               </div>
               <div className="label">
                 {order.order?.stockProduct?.retirementType === 'automatic'
-                  ? 'Entrega automática'
-                  : 'Entrega coordinada'}
+                  ? t('card.delivery.automatic')
+                  : t('card.delivery.coordinated')}
               </div>
               <div className="price">{toUSDandCurrency(order.order.product?.price)}</div>
             </div>
@@ -185,7 +191,7 @@ export const PurchaseCard: React.FC<Props> = ({ order, onReload }) => {
         />
       )}
 
-      {state.modal.name === 'rate-user' && (
+      {state.modal.name === 'rate-user' && user && (
         <RateUser
           open={state.modal.name === 'rate-user'}
           order={order}

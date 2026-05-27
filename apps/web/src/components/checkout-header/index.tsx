@@ -1,8 +1,10 @@
 import React from 'react';
 import { useRouter } from 'next/router';
-import { Icon } from '@widgets/icon';
+import dynamic from 'next/dynamic';
 
-export const CheckoutHeader: React.FC = () => {
+const Icon = dynamic(() => import('@widgets/icon').then(mod => mod.Icon), { ssr: false });
+
+const CheckoutHeader: React.FC = () => {
   const router = useRouter();
   return (
     <header className="mercado-checkout-layout-header">
@@ -16,3 +18,5 @@ export const CheckoutHeader: React.FC = () => {
     </header>
   );
 };
+
+export { CheckoutHeader };

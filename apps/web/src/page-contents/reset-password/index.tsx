@@ -1,12 +1,16 @@
 import { useState } from 'react';
-import { Loading } from '@widgets/loading';
+import dynamic from 'next/dynamic';
 import { useForm } from 'react-hook-form';
-import { FormInput } from '@widgets/form';
-import { Button } from '@widgets/button';
 import { useRouter } from 'next/router';
 import { endpoints, put } from '@utils';
 
 type FormData = { password: string; confirmPassword: string };
+
+const Loading = dynamic(() => import('@widgets/loading').then(mod => mod.Loading), { ssr: false });
+
+const FormInput = dynamic(() => import('@widgets/form').then(mod => mod.FormInput), { ssr: false });
+
+const Button = dynamic(() => import('@widgets/button').then(mod => mod.Button), { ssr: false });
 
 export const ResetPasswordPageContent: React.FC = () => {
   const [state, setState] = useState<{

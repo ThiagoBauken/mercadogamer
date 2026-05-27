@@ -1,6 +1,10 @@
 import { NextPage } from 'next';
+import dynamic from 'next/dynamic';
 import { DefaultLayout } from '@layout/default-layout';
-import { ReferredByPage } from '@page-contents/referredby';
+
+
+
+const ReferredByPage = dynamic(() => import('@page-contents/referredby').then(mod => mod.ReferredByPage), { ssr: false });
 
 const ReferredByDetail: NextPage = () => {
   return (

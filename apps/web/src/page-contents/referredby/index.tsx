@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
+import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
-import { Loading } from '@widgets/loading';
+
+const Loading = dynamic(() => import('@widgets/loading').then(mod => mod.Loading), { ssr: false });
 
 export const ReferredByPage: React.FC = () => {
   const router = useRouter();
@@ -12,7 +14,7 @@ export const ReferredByPage: React.FC = () => {
     if (router.query?.id) {
       router.push(`/regalos?rb=${router.query?.id}`);
     }
-  }, [router.query]);
+  }, [router, router.query]);
 
   return (
     <>

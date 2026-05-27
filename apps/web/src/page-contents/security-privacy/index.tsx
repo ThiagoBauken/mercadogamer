@@ -1,10 +1,11 @@
 import React, { useMemo, useState } from 'react';
+import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import { SecurityPrivacyTopics } from '@page-contents/security-privacy/config';
 import { BreakPoints } from '@theme/breakpoints';
-import { useWindowSize } from '@hooks'
-import { Expansion } from '@widgets/expansion';
+import { useWindowSize } from '@hooks';
 
+const Expansion = dynamic(() => import('@widgets/expansion').then(mod => mod.Expansion), { ssr: false });
 
 export const SecurityPrivacyPageContent: React.FC = () => {
   const router = useRouter();
@@ -13,7 +14,7 @@ export const SecurityPrivacyPageContent: React.FC = () => {
 
   const topic = useMemo<typeof SecurityPrivacyTopics[0]>(
     () =>
-    SecurityPrivacyTopics.find((item) => item.id === router.query.id) || {
+      SecurityPrivacyTopics.find((item) => item.id === router.query.id) || {
         id: '101',
         topic: '',
         content: [],

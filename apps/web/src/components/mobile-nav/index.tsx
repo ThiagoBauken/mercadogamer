@@ -1,10 +1,10 @@
 import React, { Fragment, useEffect, useMemo, useRef, useState } from 'react';
+import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
 import { useOutsideClick } from '@hooks';
 import { logout, openLoginModal, useAppDispatch, useTypedSelector } from '@store';
 import { getFileFullUrl, toCurrency, httpGetAll, endpoints } from '@utils';
-import { Icon } from '@widgets/icon';
-import { Button } from '@widgets/button';
+
 import dynamic from 'next/dynamic';
 
 const CreateTicketModal = dynamic(
@@ -12,11 +12,17 @@ const CreateTicketModal = dynamic(
 );
 const CreateFeedbackModal = dynamic(() => import('../create-feedback/index'));
 
+const Icon = dynamic(() => import('@widgets/icon').then(mod => mod.Icon), { ssr: false });
+
+const Button = dynamic(() => import('@widgets/button').then(mod => mod.Button), { ssr: false });
+
 type Props = {
   collapse: boolean;
   onChangeStatus: (collapse: boolean) => void;
 };
+
 export const MobileNavigation: React.FC<Props> = (props) => {
+  const { t } = useTranslation('common');
   const dispatch = useAppDispatch();
   const { user } = useTypedSelector((store) => store.auth);
   const { collapse } = props;
@@ -28,13 +34,13 @@ export const MobileNavigation: React.FC<Props> = (props) => {
     ticketmodal: boolean;
     feedbackmodal: boolean;
     tickets: TicketModelType[];
-    selectedTicket: TicketModelType;
+    selectedTicket: TicketModelType | null;
     showInformation: boolean;
   }>({
-    ticketmodal: null,
-    feedbackmodal: null,
+    ticketmodal: false,
+    feedbackmodal: false,
     tickets: [],
-    selectedTicket: {},
+    selectedTicket: null,
     showInformation: false,
   });
 
@@ -50,7 +56,7 @@ export const MobileNavigation: React.FC<Props> = (props) => {
       });
       setState({ ...state, tickets: response.data?.data, ticketmodal: false });
     } catch (error) {
-      console.log(error);
+      console.error('Error loading tickets:', error);
     }
   };
 
@@ -76,19 +82,19 @@ export const MobileNavigation: React.FC<Props> = (props) => {
 
   const navigations: NavItem[] = [
     {
-      label: 'Catálogo',
+      label: t('nav.catalog'),
       url: '/catalogo',
       icon: 'shopping-bag',
       role: 'default',
     },
     {
-      label: 'Regalos',
+      label: t('nav.gifts'),
       url: '/regalos',
       icon: 'christmas-mobile-gift', // Christmas header icon
       role: 'default',
     },
     {
-      label: 'Vender',
+      label: t('nav.sell'),
       // url: `${
       //   user ? (user?.hasFirstVisitVendor ? '/dashboard/inventory/add' : '/vendor-landing') : ''
       // }`,
@@ -104,65 +110,65 @@ export const MobileNavigation: React.FC<Props> = (props) => {
     // },
 
     {
-      label: 'Balance',
+      label: t('nav.balance'),
       url: '/dashboard/balance',
       icon: 'account-balance-wallet',
       role: 'loggedin',
     },
     {
-      label: 'Compras',
+      label: t('nav.purchases'),
       url: '/dashboard/order',
       icon: 'shopping-basket',
       role: 'loggedin',
     },
     {
-      label: 'Mis preguntas',
+      label: t('nav.my_questions'),
       url: '/dashboard/qas',
       icon: 'help-circle',
       role: 'loggedin',
     },
     {
-      label: 'Ventas',
+      label: t('nav.sales'),
       url: '/dashboard/sale',
       icon: 'nav-tag',
       role: 'loggedin',
     },
     {
-      label: 'Productos',
+      label: t('nav.products'),
       url: '/dashboard/inventory',
       icon: 'archive',
       role: 'loggedin',
     },
     {
-      label: 'Consultas',
+      label: t('nav.questions'),
       url: '/dashboard/question',
       icon: 'help-circle',
       role: 'loggedin',
     },
     {
-      label: 'Tienda',
+      label: t('nav.store'),
       url: '/dashboard/store',
       icon: 'store',
       role: 'loggedin',
     },
     {
-      label: 'Mi perfil',
+      label: t('nav.my_profile'),
       url: '/dashboard/profile',
       icon: 'user',
       role: 'loggedin',
     },
     {
-      label: 'Soporte',
+      label: t('nav.support'),
       url: '/dashboard/support',
       icon: 'message-sequare',
       role: 'loggedin',
     },
   ];
   // VENTAS: [
-  //   { label: 'Ventas'; icon: 'heart'; url: '/ventas' },
-  //   { label: 'Productos'; icon: 'archive'; url: '/inventory' },
+  //   { label: t('nav.sales'); icon: 'heart'; url: '/ventas' },
+  //   { label: t('nav.products'); icon: 'archive'; url: '/inventory' },
   //   { label: 'Preguntas'; icon: 'help-circle'; url: '/question' },
-  //   { label: 'Tienda'; icon: 'store'; url: '/store' }
+  //   { label: t('nav.store'); icon: 'store'; url: '/store' }
   // ];
 
   return (
@@ -242,7 +248,7 @@ export const MobileNavigation: React.FC<Props> = (props) => {
                 <div className="icon">
                   <Icon name="logout" />
                 </div>
-                <div className="label">Cerrar sesión</div>
+                <div className="label">{t('nav.logout')}</div>
               </li>
             </ul>
           )}

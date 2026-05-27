@@ -1,0 +1,24 @@
+{
+  "title": "Compras",
+  "empty_state": {
+    "message": "Se você tiver algum problema com uma compra, por favor abra uma reclamação clicando em \"Tive um problema\"."
+  },
+  "card": {
+    "copy_success": "Copiado com sucesso!",
+    "actions": {
+      "have_problem": "Tive um problema",
+      "view_details": "Ver detalhes",
+      "how_to_use": "Como usar este código?",
+      "finish_transaction": "Finalizar transação"
+    },
+    "delivery": {
+      "automatic": "Entrega automática",
+      "coordinated": "Entrega coordenada"
+    },
+    "status": {
+      "pending": "Pendente",
+      "completed": "Concluído",
+      "cancelled": "Cancelado"
+    }
+  }
+}

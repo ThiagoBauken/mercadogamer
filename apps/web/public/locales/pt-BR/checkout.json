@@ -1,0 +1,161 @@
+{
+  "title": "Checkout",
+  "subtitle": "Complete seu pedido em poucos passos",
+  "reserved_for": "Seus produtos estão reservados por",
+  "time_remaining": "{{minutes}}:{{seconds}}",
+
+  "steps": {
+    "cart": "Carrinho",
+    "shipping": "Entrega",
+    "payment": "Pagamento",
+    "review": "Revisão"
+  },
+
+  "cart": {
+    "title": "Seu Carrinho",
+    "empty": "Seu carrinho está vazio",
+    "continue_shopping": "Continuar comprando",
+    "item": "{{count}} item",
+    "item_plural": "{{count}} itens",
+    "subtotal": "Subtotal",
+    "remove": "Remover",
+    "update_quantity": "Atualizar quantidade",
+    "proceed": "Ir para entrega"
+  },
+
+  "shipping": {
+    "title": "Informações de Entrega",
+    "address": {
+      "title": "Endereço de Entrega",
+      "street": "Rua",
+      "number": "Número",
+      "complement": "Complemento",
+      "neighborhood": "Bairro",
+      "city": "Cidade",
+      "state": "Estado",
+      "zip_code": "CEP",
+      "country": "País",
+      "save_address": "Salvar este endereço",
+      "use_saved": "Usar endereço salvo"
+    },
+    "method": {
+      "title": "Método de Entrega",
+      "express": "Entrega Expressa",
+      "express_desc": "Receba em {{days}} dias úteis - {{price}}",
+      "standard": "Entrega Padrão",
+      "standard_desc": "Receba em {{days}} dias úteis - {{price}}",
+      "free": "Frete Grátis",
+      "free_desc": "Receba em {{days}} dias úteis",
+      "pickup": "Retirar na Loja",
+      "pickup_desc": "Retire gratuitamente em nossa loja"
+    },
+    "continue": "Ir para pagamento"
+  },
+
+  "payment": {
+    "title": "Métodos de Pagamento",
+    "billing_address": "Endereço de Cobrança",
+    "proceed_to_payment": "Proceder ao pagamento",
+    "redirect_message": "Se não for redirecionado automaticamente, clique",
+    "redirect_link": "aqui",
+    "method": {
+      "title": "Método de Pagamento",
+      "credit_card": "Cartão de Crédito",
+      "debit_card": "Cartão de Débito",
+      "pix": "PIX",
+      "boleto": "Boleto Bancário",
+      "wallet": "Carteira Digital"
+    },
+    "credit_card": {
+      "number": "Número do Cartão",
+      "name": "Nome no Cartão",
+      "expiry": "Validade",
+      "cvv": "CVV",
+      "installments": "Parcelas",
+      "installment_option": "{{count}}x de {{value}} sem juros",
+      "save_card": "Salvar cartão para próximas compras"
+    },
+    "pix": {
+      "title": "Pagar com PIX",
+      "description": "Escaneie o QR Code ou copie o código",
+      "copy_code": "Copiar código PIX",
+      "expires_in": "Expira em {{time}}",
+      "waiting": "Aguardando pagamento..."
+    },
+    "boleto": {
+      "title": "Pagar com Boleto",
+      "description": "Vencimento em {{days}} dias",
+      "print": "Imprimir boleto",
+      "copy_code": "Copiar código de barras"
+    },
+    "continue": "Revisar pedido"
+  },
+
+  "delivery": {
+    "how_to_get": "Como obter seu produto?",
+    "automatic": "Entrega automática",
+    "automatic_desc": "Você receberá o produto no momento de finalizar a compra. Você tem um prazo máximo de 3 dias para verificar a validade do produto.",
+    "coordinated": "Entrega coordenada",
+    "coordinated_desc": "Uma vez processado o pagamento, o vendedor entrará em contato com você através do chat da compra para entregar o produto."
+  },
+
+  "review": {
+    "title": "Revisar Pedido",
+    "items": "Itens do Pedido",
+    "shipping_address": "Endereço de Entrega",
+    "shipping_method": "Método de Entrega",
+    "payment_method": "Método de Pagamento",
+    "edit": "Editar",
+    "view_detail": "Ver detalhes",
+    "hide": "Ocultar",
+    "summary": {
+      "title": "Resumo da ordem",
+      "subtotal": "Subtotal",
+      "shipping": "Frete",
+      "discount": "Desconto",
+      "tax": "Impostos",
+      "total": "Total",
+      "processing_fee": "Taxa de processamento",
+      "gift_balance": "Saldo de presente",
+      "discount_code": "Código de desconto",
+      "apply": "Aplicar",
+      "remove": "Remover"
+    },
+    "terms": {
+      "agree": "Eu concordo com os",
+      "terms_link": "Termos e Condições",
+      "and": "e a",
+      "privacy_link": "Política de Privacidade"
+    },
+    "place_order": "Finalizar Pedido",
+    "processing": "Processando pedido..."
+  },
+
+  "success": {
+    "title": "Pedido Realizado com Sucesso!",
+    "order_number": "Número do Pedido",
+    "thank_you": "Obrigado pela sua compra!",
+    "confirmation_email": "Enviamos um e-mail de confirmação para {{email}}",
+    "track_order": "Acompanhar pedido",
+    "continue_shopping": "Continuar comprando",
+    "estimated_delivery": "Previsão de entrega: {{date}}"
+  },
+
+  "errors": {
+    "invalid_address": "Endereço inválido",
+    "invalid_card": "Cartão inválido",
+    "payment_failed": "Pagamento falhou",
+    "out_of_stock": "Produto fora de estoque",
+    "generic": "Erro ao processar pedido",
+    "invalid_postal_code": "Código postal incorreto. Deve ser apenas um número",
+    "invalid_phone": "Número de telefone incorreto. Verifique que digitou sem espaços.",
+    "order_error": "Erro ao criar a ordem. Por favor, verifique os dados inseridos. Se o erro persistir, contate o suporte."
+  },
+
+  "messages": {
+    "discount_applied": "Desconto aplicado com sucesso!",
+    "invalid_discount": "Código de desconto inválido",
+    "item_removed": "Item removido do carrinho",
+    "order_success": "Sucesso: {{count}} produtos"
+  }
+}

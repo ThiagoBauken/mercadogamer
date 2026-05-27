@@ -2,10 +2,14 @@ import { useSocket } from '@web/hooks/use-socket';
 import { useTypedSelector } from '@store';
 import { endpoints, httpGetAll, setting } from '@utils';
 import { useEffect, useState } from 'react';
+import dynamic from 'next/dynamic';
+import { useTranslation } from 'next-i18next';
 import { PurchaseCard } from './widgets';
-import { Icon } from '@widgets/icon';
+
+const Icon = dynamic(() => import('@widgets/icon').then(mod => mod.Icon), { ssr: false });
 
 export const PurchaseContent: React.FC = () => {
+  const { t } = useTranslation('purchase');
   const {
     auth: { user },
   } = useTypedSelector((store) => store);
@@ -41,11 +45,17 @@ export const PurchaseContent: React.FC = () => {
   }, [socket, user?.id]);
 
   useEffect(() => {
-    user?.id && init();
+    if (user?.id) {
+      init();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
   useEffect(() => {
-    initMode && init();
+    if (initMode) {
+      init();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [initMode]);
 
   const init = async (): Promise<void> => {
@@ -58,7 +68,7 @@ export const PurchaseContent: React.FC = () => {
 
       setState({ orders: result.data?.data });
     } catch (error) {
-      console.log(error);
+      console.error('Failed to fetch orders:', error);
     }
   };
   return (
@@ -85,8 +95,7 @@ export const PurchaseContent: React.FC = () => {
               Recordá que tenés un plazo máximo de 3 días para hacer un reclamo
             </div>
             <div className="description">
-              Si no recibís tu producto, el vendedor no contesta o estas teniendo algún problema,
-              por favor abrí un reclamo clickeando en "Tengo un problema".
+              {t('empty_state.message')}
             </div>
           </div>
         </div>

@@ -1,12 +1,23 @@
 import { useTypedSelector, useAppDispatch } from '@store';
-import { Modal } from '@widgets/modal';
+
 import { get, endpoints, copyTextToClipboard, addMessageToToast } from '@utils';
 import Image from 'next/image';
 import { useEffect, useMemo, useState } from 'react';
-import { Icon } from '@widgets/icon';
-import { Input } from '@widgets/input';
-import { Tooltip } from '@widgets/tooltip';
+import dynamic from 'next/dynamic';
+
+
+
 import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
+
+
+const Modal = dynamic(() => import('@widgets/modal').then(mod => mod.Modal), { ssr: false });
+
+const Icon = dynamic(() => import('@widgets/icon').then(mod => mod.Icon), { ssr: false });
+
+const Input = dynamic(() => import('@widgets/input').then(mod => mod.Input), { ssr: false });
+
+const Tooltip = dynamic(() => import('@widgets/tooltip').then(mod => mod.Tooltip), { ssr: false });
 
 type Props = {
   open: boolean;
@@ -14,6 +25,7 @@ type Props = {
 };
 
 const InviteModal: React.FC<Props> = ({ open, onClose }) => {
+  const { t } = useTranslation('common');
   const { user } = useTypedSelector((store) => store.auth);
 
   const [state, setState] = useState<{
@@ -42,17 +54,17 @@ const InviteModal: React.FC<Props> = ({ open, onClose }) => {
 
       setState({ ...state, inviteTransactions: inviteTransaction.data || [] });
     } catch (error) {
-      console.log(error);
+      console.error('Error loading invite transactions:', error);
     }
   };
 
   const onCopy = (): void => {
     copyTextToClipboard(inviteLink).then(() => {
-      addMessageToToast('¡Éxito copiado!');
+      addMessageToToast(t('modals.invite.copy_success'));
     });
   };
 
-  let defaultMessage = `¡JUGÁ A LA RULETA Y GANA PLATA GRATIS EN MERCADO GAMER! Usala para comprar o descontar en tus compras de Juegos, Monedas, Skins, Gift Cards y mucho más.  JUGÁ YA: ${inviteLink}`;
+  let defaultMessage = `${t('modals.invite.share_message')} ${inviteLink}`;
   const communications = useMemo<{ icon: string; path: string }[]>(
     () => [
       {
@@ -66,13 +78,13 @@ const InviteModal: React.FC<Props> = ({ open, onClose }) => {
       {
         icon: 'twitter',
         // path: `http://twitter.com/share?text=${defaultMessage}`,
-        path: `https://twitter.com/intent/tweet?text=¡JUGÁ A LA RULETA Y GANA PLATA GRATIS EN MERCADO GAMER! Usala para comprar o descontar en tus compras de Juegos, Monedas, Skins, Gift Cards y mucho más.  JUGÁ YA:${inviteLink}`,
+        path: `https://twitter.com/intent/tweet?text=${t('modals.invite.share_message')}${inviteLink}`,
       },
     ],
-    []
+    [inviteLink, defaultMessage, t]
   );
 
-  const SendInviteToSoical = async (item): Promise<void> => {
+  const SendInviteToSoical = async (item: { icon: string; path: string }): Promise<void> => {
     window.open(item.path);
   };
 
@@ -82,17 +94,14 @@ const InviteModal: React.FC<Props> = ({ open, onClose }) => {
         <div className="image">
           <Image
             src={'./assets/imgs/ruleta_invite.webp'}
-            layout="fixed"
-            loading="lazy"
-            unoptimized={true}
             width={133.25}
             height={133.25}
-            alt="homepage banner"
+            alt="invite banner"
           />
         </div>
-        <div className="title">Invita un amigo</div>
+        <div className="title">{t('modals.invite.title')}</div>
         <div className="content">
-          Cuando tu amigo se registre y juegue en la ruleta obtendrás un drop extra.
+          {t('modals.invite.description')}
         </div>
         <div className="communication">
           <ul>
@@ -119,7 +128,7 @@ const InviteModal: React.FC<Props> = ({ open, onClose }) => {
           className="sm-title"
           onClick={() => router.push(`${process.env.NEXT_PUBLIC_DOMAIN}/help-center/regalos/118`)}
         >
-          ¿Cómo funcionan las invitaciones?
+          {t('modals.invite.how_it_works')}
         </div>
 
         <div className="invite-link">
@@ -130,7 +139,7 @@ const InviteModal: React.FC<Props> = ({ open, onClose }) => {
         </div>
 
         <div className="users">
-          <div className="title">Tus invitaciones</div>
+          <div className="title">{t('modals.invite.your_invites')}</div>
           <div className="content">
             {state.inviteTransactions.length !== 0
               ? state.inviteTransactions.map(
@@ -140,12 +149,9 @@ const InviteModal: React.FC<Props> = ({ open, onClose }) => {
                         <div className="photo">
                           <Image
                             src={`${process.env.NEXT_PUBLIC_FILE_URL}/${transaction?.picture}`}
-                            layout="fixed"
-                            loading="lazy"
-                            unoptimized={true}
                             width={32}
                             height={32}
-                            alt="homepage banner"
+                            alt="user avatar"
                             style={{ borderRadius: 400 / 2 }}
                           />
                         </div>
@@ -153,19 +159,19 @@ const InviteModal: React.FC<Props> = ({ open, onClose }) => {
                         <div className="status">
                           {transaction.firstRoulettePlay === false &&
                           transaction.referrerUsedTheDrop === false ? (
-                            <Tooltip tooltip="Registrado, aún no jugó la ruleta">
+                            <Tooltip tooltip={t('modals.invite.status.registered')}>
                               <Icon name="invite-circle-clock" />
                             </Tooltip>
                           ) : transaction.firstRoulettePlay === true &&
                             transaction.referrerUsedTheDrop === false ? (
-                            <Tooltip tooltip="Drop disponible">
+                            <Tooltip tooltip={t('modals.invite.status.available')}>
                               <Icon name="invite-gift" />
                             </Tooltip>
                           ) : (transaction.referrerUsedTheDrop === true &&
                               transaction.firstRoulettePlay === true) ||
                             (transaction.referrerUsedTheDrop === true &&
                               transaction.firstRoulettePlay === false) ? (
-                            <Tooltip tooltip="Usaste este drop">
+                            <Tooltip tooltip={t('modals.invite.status.used')}>
                               <Icon name="invite-circle-check" />
                             </Tooltip>
                           ) : (
@@ -175,7 +181,7 @@ const InviteModal: React.FC<Props> = ({ open, onClose }) => {
                       </div>
                     )
                 )
-              : 'Aún no tienes invitados'}
+              : t('modals.invite.no_invites')}
           </div>
         </div>
       </div>

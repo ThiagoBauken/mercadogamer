@@ -1,0 +1,217 @@
+{
+  "inventory": {
+    "title": "Products",
+    "publications_count": "{{count}} publication",
+    "publications_count_plural": "{{count}} publications",
+    "add_product": "Add product",
+    "delete": "Delete",
+    "filters": "Filters",
+    "table": {
+      "product": "PRODUCT",
+      "status": "STATUS",
+      "stock": "STOCK",
+      "price": "PRICE",
+      "type": "Type"
+    },
+    "actions": {
+      "view_publication": "View publication",
+      "edit": "Edit",
+      "delete": "Delete",
+      "pause": "Pause"
+    },
+    "filters_menu": {
+      "status": "Status",
+      "type": "Type",
+      "date": "Date",
+      "order_by": "Sort by"
+    },
+    "order_options": {
+      "best_seller": "Best sellers",
+      "recent": "Most recent",
+      "oldest": "Oldest",
+      "lower_price": "Lowest price",
+      "higher_price": "Highest price"
+    },
+    "all": "All",
+    "no_products": "No products found"
+  },
+  "shopping": {
+    "title": "Purchases",
+    "purchases_count": "{{count}} purchase",
+    "purchases_count_plural": "{{count}} purchases",
+    "cards": {
+      "purchases_made": "Purchases made",
+      "buyer_rating": "Buyer rating",
+      "buyer_rating_short": "Buyer rating",
+      "in_process": "In process"
+    },
+    "table": {
+      "product": "PRODUCT",
+      "status": "STATUS",
+      "date": "DATE",
+      "price": "PRICE"
+    },
+    "actions": {
+      "detail": "Detail",
+      "view_code": "View code",
+      "finish_transaction": "Finish transaction",
+      "had_problem": "I had a problem"
+    },
+    "filters_menu": {
+      "status": "Status",
+      "type": "Type",
+      "date": "Date"
+    },
+    "status_options": {
+      "all": "All",
+      "finished": "Finished",
+      "pending": "Pending",
+      "paid": "Paid",
+      "complaint": "Complaint",
+      "cancelled": "Cancelled"
+    },
+    "type_options": {
+      "all": "All",
+      "game": "Game",
+      "gift_card": "Gift card",
+      "item": "Item",
+      "coins": "Coins",
+      "pack": "Packs"
+    },
+    "date_options": {
+      "all": "All",
+      "this_month": "This month",
+      "last_month": "Last month",
+      "this_year": "This year"
+    },
+    "search_placeholder": "Search",
+    "filters": "Filters"
+  },
+  "sales": {
+    "title": "Sales",
+    "sales_count": "{{count}} sale",
+    "sales_count_plural": "{{count}} sales",
+    "cards": {
+      "earnings": "Earnings",
+      "sales_in_process": "Sales in process",
+      "complaints": "Complaints"
+    },
+    "table": {
+      "order_number": "ORDER #",
+      "product": "PRODUCT",
+      "status": "STATUS",
+      "date": "DATE",
+      "price": "PRICE",
+      "profit": "PROFIT"
+    },
+    "actions": {
+      "view_detail": "View detail",
+      "download": "Download",
+      "cancel_sale": "Cancel sale"
+    },
+    "filters_menu": {
+      "status": "Status",
+      "date": "Date"
+    },
+    "status_options": {
+      "all": "All",
+      "finished": "Finished",
+      "in_process": "In process",
+      "complaint": "Complaint",
+      "cancelled": "Cancelled"
+    },
+    "date_options": {
+      "all": "All",
+      "this_month": "This month",
+      "last_month": "Last month",
+      "this_year": "This year"
+    },
+    "load_more": "Load more",
+    "search_placeholder": "Search",
+    "filters": "Filters",
+    "cancel_message": "The sale was cancelled."
+  },
+  "profile": {
+    "title": "My profile",
+    "upload_photo": {
+      "message": "You haven't uploaded a profile picture yet",
+      "description": "Click to upload an image."
+    },
+    "fields": {
+      "first_name": "First name",
+      "last_name": "Last name",
+      "username": "Username",
+      "address": "Address",
+      "city": "City",
+      "province": "State/Province",
+      "postal_code": "Postal code",
+      "country": "Country",
+      "phone": "Phone",
+      "email": "Email"
+    },
+    "placeholders": {
+      "first_name": "First name",
+      "last_name": "Last name",
+      "username": "Username",
+      "address": "Address",
+      "city": "City",
+      "province": "Select",
+      "postal_code": "Postal code",
+      "country": "Select",
+      "phone": "Phone",
+      "email": "Email"
+    },
+    "validations": {
+      "required": "This field is required",
+      "username_length": "Username must be between 0 and 20 characters.",
+      "invalid_email": "Please enter a valid email."
+    },
+    "save_button": "Save",
+    "save_success": "Changes have been saved."
+  },
+  "support": {
+    "title": "Support",
+    "description": "If you need help, create a ticket and we'll respond shortly.",
+    "generate_ticket": "Generate ticket",
+    "your_tickets": "Your tickets",
+    "ticket": "Ticket",
+    "topic": "Topic: {{topic}}",
+    "company_name": "Mercado Gamer",
+    "no_tickets": "No tickets found"
+  },
+  "balance": {
+    "title": "Balance",
+    "available_balance": "Available balance",
+    "total_earnings": "Total earnings",
+    "pending_withdrawals": "Pending withdrawals",
+    "withdraw": "Withdraw",
+    "transaction_history": "Transaction history",
+    "no_transactions": "No transactions found"
+  },
+  "add_product": {
+    "title": "Add product",
+    "edit_title": "Edit product",
+    "basic_info": "Basic information",
+    "product_details": "Product details",
+    "pricing": "Pricing",
+    "images": "Images",
+    "publish": "Publish",
+    "save_draft": "Save draft",
+    "cancel": "Cancel"
+  },
+  "order_detail": {
+    "title": "Order detail",
+    "order_number": "Order #{{number}}",
+    "status": "Status",
+    "date": "Date",
+    "buyer": "Buyer",
+    "seller": "Seller",
+    "product": "Product",
+    "price": "Price",
+    "delivery_method": "Delivery method",
+    "automatic": "Automatic",
+    "coordinated": "Coordinated",
+    "messages": "Messages",
+    "send_message": "Send message"
+  }
+}

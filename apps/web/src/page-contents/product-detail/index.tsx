@@ -1,15 +1,27 @@
 import { useContext, useEffect, useState } from 'react';
+import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import { ProductDetailContext } from './context';
 import { ProductDetail, ProductInfoItem, ProductQuestions, PurchaseCondition } from './widgets';
 import { endpoints, get, getFileFullUrl, madeBackgroundImageUrl, ProductType } from '@utils';
-import { BreadCrumb } from '@widgets/bread-crumb';
-import { RelatedProduct } from '@components/related-product';
-import { Icon } from '@widgets/icon';
-import { Button } from '@widgets/button';
+
+
+
+
 import { ShortCutMenu } from '@web/components/shortcut-menu';
+import { useTranslation } from 'next-i18next';
+
+
+const BreadCrumb = dynamic(() => import('@widgets/bread-crumb').then(mod => mod.BreadCrumb), { ssr: false });
+
+const RelatedProduct = dynamic(() => import('@components/related-product').then(mod => mod.RelatedProduct), { ssr: false });
+
+const Icon = dynamic(() => import('@widgets/icon').then(mod => mod.Icon), { ssr: false });
+
+const Button = dynamic(() => import('@widgets/button').then(mod => mod.Button), { ssr: false });
 
 export const ProductDetailContent: React.FC = () => {
+  const { t } = useTranslation('products');
   const router = useRouter();
   const { id } = router.query;
   const [activeShortcut, setShowShortcut] = useState(false);
@@ -34,7 +46,8 @@ export const ProductDetailContent: React.FC = () => {
 
       setProduct(productResponse.data?.data);
     } catch (error) {
-      console.log(error);
+      console.error('Error loading product:', error);
+      // Optionally show error message to user
     } finally {
       setLoading(false);
     }
@@ -54,10 +67,10 @@ export const ProductDetailContent: React.FC = () => {
       <div className="bread-crumb">
         <BreadCrumb
           items={[
-            { label: 'Catálogo', action: () => router.push('/catalogo') },
+            { label: t('detail.catalog'), action: () => router.push('/catalogo') },
             { label: product?.type, action: () => router.push(`/catalogo?tipo=${product?.type}`) },
             {
-              label: 'Este producto',
+              label: t('detail.this_product'),
             },
           ]}
         />
@@ -80,7 +93,7 @@ export const ProductDetailContent: React.FC = () => {
         </div>
 
         <div className="description">
-          <div className="label">Descripción</div>
+          <div className="label">{t('detail.description')}</div>
           <div className="content">{product?.description}</div>
         </div>
 
@@ -91,17 +104,17 @@ export const ProductDetailContent: React.FC = () => {
           ></div> */}
           <div className="content">
             <ProductInfoItem
-              label="Juego"
+              label={t('detail.game')}
               value={typeof product.game === 'object' ? product.game?.name : product.game}
             />
             {/* <ProductInfoItem
-              label="Plataforma"
+              label={t('detail.platform')}
               value={
                 typeof product.platform === 'object' ? product.platform?.name : product.platform
               }
             /> */}
             {/* <ProductInfoItem
-              label="Nivel"
+              label={t('detail.level')}
               value={
                 typeof product.platform === 'object'
                   ? product.publicationType
@@ -109,12 +122,12 @@ export const ProductDetailContent: React.FC = () => {
               }
             /> */}
             <ProductInfoItem
-              label="Tipo de producto"
+              label={t('detail.product_type')}
               value={product.type ? ProductType[product.type].label : ''}
             />
-            {/* <ProductInfoItem label="Idioma" value={'English'} /> */}
+            {/* <ProductInfoItem label={t('detail.language')} value={'English'} /> */}
             <ProductInfoItem
-              label="Categoría"
+              label={t('detail.category')}
               value={
                 typeof product.category === 'object' ? product.category?.name : product.category
               }

@@ -1,7 +1,7 @@
+import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
 import { openLoginModal, useAppDispatch, useTypedSelector } from '@store';
-import { Icon } from '@widgets/icon';
-import { Menu } from '@widgets/menu';
+
 import {
   getDefaultCountry,
   getFileFullUrl,
@@ -10,10 +10,17 @@ import {
   toUSDandCurrency,
 } from '@utils';
 import { useMemo, useState } from 'react';
+import dynamic from 'next/dynamic';
 import { getProductPrice } from '@utils/product-functions';
-import { Button } from '@widgets/button';
 
-export const CartMenu: React.FC = () => {
+const Icon = dynamic(() => import('@widgets/icon').then(mod => mod.Icon), { ssr: false });
+
+const Menu = dynamic(() => import('@widgets/menu').then(mod => mod.Menu), { ssr: false });
+
+const Button = dynamic(() => import('@widgets/button').then(mod => mod.Button), { ssr: false });
+
+const CartMenu: React.FC = () => {
+  const { t } = useTranslation('common');
   const router = useRouter();
   const dispatch = useAppDispatch();
   const {
@@ -64,7 +71,7 @@ export const CartMenu: React.FC = () => {
         <div className="header">
           <div onClick={() => setOpenCart(false)}>
             <Icon name="left-direction"></Icon>
-            Carrito
+            {t('cart.title')}
           </div>
         </div>
         <ul className="content">
@@ -92,7 +99,7 @@ export const CartMenu: React.FC = () => {
           ) : (
             <li className="no-cart">
               <div className="image-container"></div>
-              <div className="message">Todavía no agregaste productos a al carrito.</div>
+              <div className="message">{t('cart.no_products_menu')}</div>
             </li>
           )}
         </ul>
@@ -100,12 +107,12 @@ export const CartMenu: React.FC = () => {
         {carts?.data?.length ? (
           <div className="total-action">
             <div className="total">
-              <div className="label">Total</div>
+              <div className="label">{t('cart.total')}</div>
               <div className="value">{total}</div>
             </div>
 
             <Button full onClick={() => router.push('/cart')}>
-              Ir al carrito
+              {t('cart.go_to_cart')}
             </Button>
           </div>
         ) : null}
@@ -113,3 +120,5 @@ export const CartMenu: React.FC = () => {
     </Menu>
   );
 };
+
+export { CartMenu };

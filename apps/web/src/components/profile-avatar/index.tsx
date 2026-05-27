@@ -1,5 +1,7 @@
 import { getFileFullUrl, madeBackgroundImageUrl } from '@utils';
-import { Rating } from '@widgets/rating';
+import dynamic from 'next/dynamic';
+
+const Rating = dynamic(() => import('@widgets/rating').then(mod => mod.Rating), { ssr: false });
 
 type Props = {
   user: UserModelType;

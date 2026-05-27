@@ -1,0 +1,24 @@
+{
+  "view_cart": "VER CARRINHO",
+  "time": {
+    "year": "ano",
+    "years": "anos",
+    "month": "mês",
+    "months": "meses",
+    "week": "semana",
+    "weeks": "semanas"
+  },
+  "sales": "vendas",
+  "featured_products": "Produtos destacados",
+  "view_all": "Ver todos",
+  "ratings": {
+    "title": "Avaliações",
+    "reviews": "opiniões",
+    "sort": {
+      "label": "Ordenar por",
+      "most_recent": "Mais recentes",
+      "good": "Boas",
+      "bad": "Ruins"
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "hero": {
+    "title": "Comece a <span>vender hoje</span>",
+    "subtitle": "Venda seus produtos sem preocupações e receba com segurança pelo MercadoPago."
+  },
+  "features": {
+    "guarantee": {
+      "title": "Garantia MG",
+      "description": "Asseguramos suas vendas e protegemos você de possíveis fraudes."
+    },
+    "support": {
+      "title": "Suporte técnico",
+      "description": "Suporte personalizado para suas vendas."
+    }
+  },
+  "how_it_works": {
+    "publish": {
+      "step": "1 — Publicar",
+      "title": "Publique seus produtos na loja",
+      "description": "Publique seus produtos na loja e obtenha alcance imediato a milhares de compradores"
+    },
+    "sell": {
+      "step": "2 — Vender",
+      "title": "Venda",
+      "description": "Suporte personalizado para suas vendas."
+    }
+  },
+  "steps": {
+    "step_1": {
+      "title": "Complete os detalhes do seu produto."
+    },
+    "step_2": {
+      "title": "2 — Vender"
+    }
+  },
+  "cta": {
+    "sell_now": "Venda agora"
+  }
+}

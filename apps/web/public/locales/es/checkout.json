@@ -1,0 +1,139 @@
+{
+  "title": "Finalizar Compra",
+  "subtitle": "Completa tu pedido en pocos pasos",
+
+  "steps": {
+    "cart": "Carrito",
+    "shipping": "Envío",
+    "payment": "Pago",
+    "review": "Revisión"
+  },
+
+  "cart": {
+    "title": "Tu Carrito",
+    "empty": "Tu carrito está vacío",
+    "continue_shopping": "Seguir comprando",
+    "item": "{{count}} artículo",
+    "item_plural": "{{count}} artículos",
+    "subtotal": "Subtotal",
+    "remove": "Eliminar",
+    "update_quantity": "Actualizar cantidad",
+    "proceed": "Ir a envío"
+  },
+
+  "shipping": {
+    "title": "Información de Envío",
+    "address": {
+      "title": "Dirección de Envío",
+      "street": "Calle",
+      "number": "Número",
+      "complement": "Complemento",
+      "neighborhood": "Barrio",
+      "city": "Ciudad",
+      "state": "Estado",
+      "zip_code": "Código Postal",
+      "country": "País",
+      "save_address": "Guardar esta dirección",
+      "use_saved": "Usar dirección guardada"
+    },
+    "method": {
+      "title": "Método de Envío",
+      "express": "Envío Exprés",
+      "express_desc": "Recibe en {{days}} días hábiles - {{price}}",
+      "standard": "Envío Estándar",
+      "standard_desc": "Recibe en {{days}} días hábiles - {{price}}",
+      "free": "Envío Gratis",
+      "free_desc": "Recibe en {{days}} días hábiles",
+      "pickup": "Recoger en Tienda",
+      "pickup_desc": "Recoge gratis en nuestra tienda"
+    },
+    "continue": "Ir a pago"
+  },
+
+  "payment": {
+    "title": "Pago",
+    "method": {
+      "title": "Método de Pago",
+      "credit_card": "Tarjeta de Crédito",
+      "debit_card": "Tarjeta de Débito",
+      "pix": "PIX",
+      "boleto": "Boleto Bancario",
+      "wallet": "Cartera Digital"
+    },
+    "credit_card": {
+      "number": "Número de Tarjeta",
+      "name": "Nombre en la Tarjeta",
+      "expiry": "Fecha de Vencimiento",
+      "cvv": "CVV",
+      "installments": "Cuotas",
+      "installment_option": "{{count}}x de {{value}} sin intereses",
+      "save_card": "Guardar tarjeta para futuras compras"
+    },
+    "pix": {
+      "title": "Pagar con PIX",
+      "description": "Escanea el código QR o copia el código",
+      "copy_code": "Copiar código PIX",
+      "expires_in": "Expira en {{time}}",
+      "waiting": "Esperando el pago..."
+    },
+    "boleto": {
+      "title": "Pagar con Boleto",
+      "description": "Vencimiento en {{days}} días",
+      "print": "Imprimir boleto",
+      "copy_code": "Copiar código de barras"
+    },
+    "continue": "Revisar pedido"
+  },
+
+  "review": {
+    "title": "Revisar Pedido",
+    "items": "Artículos del Pedido",
+    "shipping_address": "Dirección de Envío",
+    "shipping_method": "Método de Envío",
+    "payment_method": "Método de Pago",
+    "edit": "Editar",
+    "summary": {
+      "title": "Resumen del Pedido",
+      "subtotal": "Subtotal",
+      "shipping": "Envío",
+      "discount": "Descuento",
+      "tax": "Impuestos",
+      "total": "Total",
+      "discount_code": "Código de descuento",
+      "apply": "Aplicar",
+      "remove": "Eliminar"
+    },
+    "terms": {
+      "agree": "Acepto los",
+      "terms_link": "Términos y Condiciones",
+      "and": "y la",
+      "privacy_link": "Política de Privacidad"
+    },
+    "place_order": "Finalizar Pedido",
+    "processing": "Procesando pedido..."
+  },
+
+  "success": {
+    "title": "¡Pedido Realizado con Éxito!",
+    "order_number": "Número de Pedido",
+    "thank_you": "¡Gracias por tu compra!",
+    "confirmation_email": "Enviamos un correo de confirmación a {{email}}",
+    "track_order": "Rastrear pedido",
+    "continue_shopping": "Seguir comprando",
+    "estimated_delivery": "Entrega estimada: {{date}}"
+  },
+
+  "errors": {
+    "invalid_address": "Dirección inválida",
+    "invalid_card": "Tarjeta inválida",
+    "payment_failed": "Pago fallido",
+    "out_of_stock": "Producto agotado",
+    "generic": "Error al procesar pedido"
+  },
+
+  "messages": {
+    "discount_applied": "¡Descuento aplicado con éxito!",
+    "invalid_discount": "Código de descuento inválido",
+    "item_removed": "Artículo eliminado del carrito"
+  }
+}

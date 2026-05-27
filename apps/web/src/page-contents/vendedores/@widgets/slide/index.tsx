@@ -1,60 +1,64 @@
 import React, { useState } from 'react';
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import { Icon } from '@widgets/icon';
+import { useTranslation } from 'next-i18next';
 
-const attribute = [
-  {
-    id: 1,
-    explain: 'Obtener ganancias en Mercado Gamer es muy fácil',
-    title: '1 — Publicá',
-    image: '../../assets/imgs/vendor/Group_1514.webp',
-    content: [
-      {
-        text: 'Completá los detalles de tu producto.',
-      },
-      {
-        text: 'Calculá la comisión en tiempo real.',
-      },
-      {
-        text: 'La primera publicación es gratis.',
-      },
-    ],
-  },
-  {
-    id: 2,
-    explain: 'Obtener ganancias en Mercado Gamer es muy fácil',
-    title: '2 — Vendé',
-    image: '../../assets/imgs/vendor/Group_1515.webp',
-    content: [
-      {
-        text: 'Entregá automáticamente o de forma coordinada por chat.',
-      },
-      {
-        text: 'Soporte personalizado para tus ventas.',
-      },
-      {
-        text: 'Alcanzá miles de compradores en latinoamérica.',
-      },
-    ],
-  },
-  {
-    id: 3,
-    explain: 'Obtener ganancias en Mercado Gamer es muy fácil',
-    title: '3 — Profit',
-    image: '../../assets/imgs/vendor/Group_1516.webp',
-    content: [
-      {
-        text: 'En un máximo de 3 días el dinero se acredita en tu balance.',
-      },
-      {
-        text: 'Retira tu dinero seguro por Mercado Pago o transferencia bancaria.',
-      },
-    ],
-  },
-];
+const Icon = dynamic(() => import('@widgets/icon').then(mod => mod.Icon), { ssr: false });
 
 export const VendorSlide: React.FC = () => {
+  const { t } = useTranslation('vendors');
   const [value, setValue] = useState(0);
+
+  const attribute = [
+    {
+      id: 1,
+      explain: 'Obtener ganancias en Mercado Gamer es muy fácil',
+      title: t('how_it_works.publish.step'),
+      image: '/assets/imgs/vendor/Group_1514.webp',
+      content: [
+        {
+          text: t('steps.step_1.title'),
+        },
+        {
+          text: 'Calculá la comisión en tiempo real.',
+        },
+        {
+          text: 'La primera publicación es gratis.',
+        },
+      ],
+    },
+    {
+      id: 2,
+      explain: 'Obtener ganancias en Mercado Gamer es muy fácil',
+      title: t('steps.step_2.title'),
+      image: '/assets/imgs/vendor/Group_1515.webp',
+      content: [
+        {
+          text: 'Entregá automáticamente o de forma coordinada por chat.',
+        },
+        {
+          text: t('features.support.description'),
+        },
+        {
+          text: 'Alcanzá miles de compradores en latinoamérica.',
+        },
+      ],
+    },
+    {
+      id: 3,
+      explain: 'Obtener ganancias en Mercado Gamer es muy fácil',
+      title: '3 — Profit',
+      image: '/assets/imgs/vendor/Group_1516.webp',
+      content: [
+        {
+          text: 'En un máximo de 3 días el dinero se acredita en tu balance.',
+        },
+        {
+          text: 'Retira tu dinero seguro por Mercado Pago o transferencia bancaria.',
+        },
+      ],
+    },
+  ];
 
   return (
     <div className="container">
@@ -76,8 +80,7 @@ export const VendorSlide: React.FC = () => {
             width={569.42}
             height={341.65}
             loading="lazy"
-            unoptimized={true}
-            alt="device card"
+            alt="vendor slide"
           />
         </div>
       </div>

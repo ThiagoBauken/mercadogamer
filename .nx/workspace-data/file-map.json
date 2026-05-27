@@ -1,0 +1,4688 @@
+{
+  "version": "6.0",
+  "nxVersion": "19.8.14",
+  "deps": {
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mui/icons-material": "^5.11.0",
+    "@mui/material": "^5.11.4",
+    "@reduxjs/toolkit": "^1.9.1",
+    "@types/react-table": "^7.7.20",
+    "axios": "^1.2.2",
+    "capture-video-frame": "^1.0.0",
+    "country-telephone-data": "^0.6.3",
+    "i18next": "^23.16.8",
+    "moment": "^2.30.1",
+    "next": "^14.2.15",
+    "next-i18next": "^15.4.2",
+    "query-string": "^9.3.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-hook-form": "^7.52.2",
+    "react-i18next": "^14.1.3",
+    "react-multi-carousel": "^2.8.6",
+    "react-range": "^1.10.0",
+    "react-redux": "^8.0.5",
+    "react-responsive-carousel": "^3.2.23",
+    "react-table": "^7.8.0",
+    "react-toastify": "^11.0.5",
+    "redux": "^4.2.0",
+    "redux-thunk": "^2.4.2",
+    "sitemap": "^9.0.0",
+    "socket.io-client": "^4.7.5",
+    "styled-components": "^6.1.19",
+    "swiper": "^12.0.3",
+    "tslib": "^2.3.0",
+    "@babel/core": "^7.14.5",
+    "@babel/preset-react": "^7.14.5",
+    "@babel/preset-typescript": "^7.14.5",
+    "@nx/cypress": "^19.8.4",
+    "@nx/eslint": "^19.8.4",
+    "@nx/eslint-plugin": "^19.8.4",
+    "@nx/jest": "^19.8.4",
+    "@nx/js": "^19.8.4",
+    "@nx/next": "^19.8.4",
+    "@nx/react": "^19.8.4",
+    "@nx/workspace": "^19.8.4",
+    "@testing-library/react": "13.4.0",
+    "@types/jest": "28.1.1",
+    "@types/node": "18.11.9",
+    "@types/react": "18.0.25",
+    "@types/react-dom": "18.0.9",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "babel-jest": "28.1.1",
+    "babel-plugin-styled-components": "^2.1.4",
+    "eslint": "~8.57.0",
+    "eslint-config-next": "^14.2.15",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "2.26.0",
+    "eslint-plugin-jsx-a11y": "6.6.1",
+    "eslint-plugin-react": "7.31.11",
+    "eslint-plugin-react-hooks": "4.6.0",
+    "jest": "28.1.1",
+    "jest-environment-jsdom": "28.1.1",
+    "next-sitemap": "^3.1.43",
+    "nx": "^19.8.4",
+    "prettier": "^2.6.2",
+    "react-test-renderer": "18.2.0",
+    "sass": "^1.93.3",
+    "ts-jest": "28.0.5",
+    "ts-node": "10.9.1",
+    "typescript": "^5.0.4"
+  },
+  "pathMappings": {
+    "@mercadogamer/ui-shared": [
+      "libs/ui-shared/src/index.ts"
+    ],
+    "@widgets/*": [
+      "libs/ui-shared/src/widgets/*"
+    ],
+    "@icons": [
+      "libs/ui-shared/src/icons"
+    ],
+    "@icons/*": [
+      "libs/ui-shared/src/icons/*"
+    ],
+    "@utils": [
+      "libs/ui-shared/src/utils"
+    ],
+    "@utils/*": [
+      "libs/ui-shared/src/utils/*"
+    ],
+    "@theme/*": [
+      "libs/ui-shared/src/theme/*"
+    ],
+    "@ui-shared/components/*": [
+      "libs/ui-shared/src/components/*"
+    ],
+    "@hooks": [
+      "libs/ui-shared/src/hooks"
+    ],
+    "@hooks/*": [
+      "libs/ui-shared/src/hooks/*"
+    ]
+  },
+  "nxJsonPlugins": [],
+  "fileMap": {
+    "nonProjectFiles": [
+      {
+        "file": "tsconfig.base.json",
+        "hash": "822255317872043054"
+      },
+      {
+        "file": "Dockerfile.web.production",
+        "hash": "17651980054155249046"
+      },
+      {
+        "file": "fix-all-dynamic-imports.js",
+        "hash": "10720400127399523112"
+      },
+      {
+        "file": ".eslintrc.json",
+        "hash": "3310282357065045704"
+      },
+      {
+        "file": "fix-all-static-component-imports.js",
+        "hash": "2913655554301086109"
+      },
+      {
+        "file": "PROGRESSO-ATUALIZACAO.md",
+        "hash": "6742990124080626783"
+      },
+      {
+        "file": "fix-all-page-contents.js",
+        "hash": "2216104299410206719"
+      },
+      {
+        "file": "add-ts-nocheck.js",
+        "hash": "4959040935641961950"
+      },
+      {
+        "file": "Dockerfile.admin",
+        "hash": "11786433669245171309"
+      },
+      {
+        "file": "jest.preset.js",
+        "hash": "17666962557300311861"
+      },
+      {
+        "file": "package.json",
+        "hash": "4627376612047909294"
+      },
+      {
+        "file": ".prettierignore",
+        "hash": "1324685984948235314"
+      },
+      {
+        "file": "Dockerfile.web",
+        "hash": "1400100546366698231"
+      },
+      {
+        "file": "I18N-MIGRATION-EXAMPLE.md",
+        "hash": "5320978151996104128"
+      },
+      {
+        "file": "fix-remaining-pages.js",
+        "hash": "18284809924357134893"
+      },
+      {
+        "file": "fix-dashboard-widget-imports.js",
+        "hash": "13973584704244021619"
+      },
+      {
+        "file": "update-i18n-namespaces.js",
+        "hash": "4270515813734524508"
+      },
+      {
+        "file": "apply-dynamic-imports.js",
+        "hash": "6707479987564523664"
+      },
+      {
+        "file": "fix-isr-syntax.js",
+        "hash": "11420125146267930679"
+      },
+      {
+        "file": ".dockerignore",
+        "hash": "10951220738547952722"
+      },
+      {
+        "file": "fix-all-pages.js",
+        "hash": "4084438012546329051"
+      },
+      {
+        "file": "UPGRADE-PLAN.md",
+        "hash": "16979457998259359982"
+      },
+      {
+        "file": "convert-to-static.js",
+        "hash": "2411156234712241719"
+      },
+      {
+        "file": "fix-component-exports.js",
+        "hash": "4086539342471054288"
+      },
+      {
+        "file": "GUIA-I18N-IMPLEMENTACAO.md",
+        "hash": "1304064347607137605"
+      },
+      {
+        "file": "jest.config.ts",
+        "hash": "3069074216761126282"
+      },
+      {
+        "file": "Dockerfile.admin.production",
+        "hash": "11497543049432812017"
+      },
+      {
+        "file": "next-i18next.config.js",
+        "hash": "16592453881212434784"
+      },
+      {
+        "file": "babel.config.json",
+        "hash": "6619451454968768629"
+      },
+      {
+        "file": "apply-dynamic-all-dashboard.js",
+        "hash": "14811272844340796482"
+      },
+      {
+        "file": "nul",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "fix-last-3-pages.js",
+        "hash": "5230659844436152516"
+      },
+      {
+        "file": "convert-to-isr.js",
+        "hash": "2351502999193712564"
+      },
+      {
+        "file": "TRANSLATION_PROGRESS.md",
+        "hash": "1826571049637331542"
+      },
+      {
+        "file": ".prettierrc",
+        "hash": "573296533034863672"
+      },
+      {
+        "file": "fix-i18n-pages.js",
+        "hash": "10980999175759369433"
+      },
+      {
+        "file": "nx.json",
+        "hash": "18104316162758155583"
+      },
+      {
+        "file": "clean-imports.js",
+        "hash": "13085090147062076279"
+      },
+      {
+        "file": "check-imports.js",
+        "hash": "1368758805208097562"
+      },
+      {
+        "file": "find-missing-dynamic-imports.js",
+        "hash": "17570888279100562106"
+      },
+      {
+        "file": ".editorconfig",
+        "hash": "11532813898455409296"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "4090988647592896032"
+      },
+      {
+        "file": "fix-all-components-directory.js",
+        "hash": "5650195703368812658"
+      }
+    ],
+    "projectFileMap": {
+      "web-e2e": [
+        {
+          "file": "apps/web-e2e/.eslintrc.json",
+          "hash": "5570788962263802893"
+        },
+        {
+          "file": "apps/web-e2e/cypress.config.ts",
+          "hash": "14925566057180716649"
+        },
+        {
+          "file": "apps/web-e2e/project.json",
+          "hash": "7094972867750453793"
+        },
+        {
+          "file": "apps/web-e2e/src/e2e/app.cy.ts",
+          "hash": "4207475428935347068"
+        },
+        {
+          "file": "apps/web-e2e/src/fixtures/example.json",
+          "hash": "17341819486505642070"
+        },
+        {
+          "file": "apps/web-e2e/src/support/app.po.ts",
+          "hash": "5364106453863571025"
+        },
+        {
+          "file": "apps/web-e2e/src/support/commands.ts",
+          "hash": "7226376756755053997"
+        },
+        {
+          "file": "apps/web-e2e/src/support/e2e.ts",
+          "hash": "15928825062325902088"
+        },
+        {
+          "file": "apps/web-e2e/tsconfig.json",
+          "hash": "6711070650399197251"
+        }
+      ],
+      "web": [
+        {
+          "file": "apps/web/.eslintrc.json",
+          "hash": "11197489822386747751"
+        },
+        {
+          "file": "apps/web/.prettierrc",
+          "hash": "573296533034863672"
+        },
+        {
+          "file": "apps/web/index.d.ts",
+          "hash": "17021007320214501298"
+        },
+        {
+          "file": "apps/web/jest.config.ts",
+          "hash": "15933663955197590570"
+        },
+        {
+          "file": "apps/web/next-env.d.ts",
+          "hash": "17815893675860226735"
+        },
+        {
+          "file": "apps/web/next-i18next.config.js",
+          "hash": "6117138631628879926"
+        },
+        {
+          "file": "apps/web/next-sitemap.config.js",
+          "hash": "11801608114095622462"
+        },
+        {
+          "file": "apps/web/next.config.js",
+          "hash": "1641703080148638844"
+        },
+        {
+          "file": "apps/web/nul",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/web/pages/404/index.tsx",
+          "hash": "5936633227429508646"
+        },
+        {
+          "file": "apps/web/pages/_app.tsx",
+          "hash": "14257960136417290526"
+        },
+        {
+          "file": "apps/web/pages/_document.tsx",
+          "hash": "6277262474584314606"
+        },
+        {
+          "file": "apps/web/pages/api/index.tsx",
+          "hash": "11167363806924958938"
+        },
+        {
+          "file": "apps/web/pages/cart/index.tsx",
+          "hash": "15705658340486023232"
+        },
+        {
+          "file": "apps/web/pages/catalogo/index.tsx",
+          "hash": "7488501314794107692"
+        },
+        {
+          "file": "apps/web/pages/checkout/index.tsx",
+          "hash": "6272101098441404618"
+        },
+        {
+          "file": "apps/web/pages/dashboard/balance/index.tsx",
+          "hash": "8857604930561939581"
+        },
+        {
+          "file": "apps/web/pages/dashboard/inventory/[id]/index.tsx",
+          "hash": "11245095176598745323"
+        },
+        {
+          "file": "apps/web/pages/dashboard/inventory/add/index.tsx",
+          "hash": "10946029573869976343"
+        },
+        {
+          "file": "apps/web/pages/dashboard/inventory/edit/[id]/index.tsx",
+          "hash": "7812488922684408907"
+        },
+        {
+          "file": "apps/web/pages/dashboard/inventory/index.tsx",
+          "hash": "9720436985647125964"
+        },
+        {
+          "file": "apps/web/pages/dashboard/order/[id]/index.tsx",
+          "hash": "13013560406364806984"
+        },
+        {
+          "file": "apps/web/pages/dashboard/order/index.tsx",
+          "hash": "14525557104327594872"
+        },
+        {
+          "file": "apps/web/pages/dashboard/profile/index.tsx",
+          "hash": "545681867913608250"
+        },
+        {
+          "file": "apps/web/pages/dashboard/qas/index.tsx",
+          "hash": "15571382914649234852"
+        },
+        {
+          "file": "apps/web/pages/dashboard/question/index.tsx",
+          "hash": "13284393955638529103"
+        },
+        {
+          "file": "apps/web/pages/dashboard/sale/[id]/index.tsx",
+          "hash": "11245095176598745323"
+        },
+        {
+          "file": "apps/web/pages/dashboard/sale/index.tsx",
+          "hash": "2536173066946295695"
+        },
+        {
+          "file": "apps/web/pages/dashboard/store/index.tsx",
+          "hash": "8004570135044179509"
+        },
+        {
+          "file": "apps/web/pages/dashboard/support/index.tsx",
+          "hash": "6563173100128127624"
+        },
+        {
+          "file": "apps/web/pages/help-center/[category]/[topic]/index.tsx",
+          "hash": "586084387786682724"
+        },
+        {
+          "file": "apps/web/pages/help-center/index.tsx",
+          "hash": "10163588640378857302"
+        },
+        {
+          "file": "apps/web/pages/icon-lists/index.tsx",
+          "hash": "8985615020744209780",
+          "deps": [
+            "ui-shared"
+          ]
+        },
+        {
+          "file": "apps/web/pages/index.tsx",
+          "hash": "10698538604231755278"
+        },
+        {
+          "file": "apps/web/pages/info-venta/index.tsx",
+          "hash": "893970727446262613"
+        },
+        {
+          "file": "apps/web/pages/product-detail/[id]/index.tsx",
+          "hash": "5404928778967060487"
+        },
+        {
+          "file": "apps/web/pages/profile/[id]/index.tsx",
+          "hash": "3671042422123559223"
+        },
+        {
+          "file": "apps/web/pages/purchase/index.tsx",
+          "hash": "10075202505287630384"
+        },
+        {
+          "file": "apps/web/pages/rb/[id]/index.tsx",
+          "hash": "6425297126325492142"
+        },
+        {
+          "file": "apps/web/pages/regalos/index.tsx",
+          "hash": "15086083034766818528"
+        },
+        {
+          "file": "apps/web/pages/reset-password/[token]/index.tsx",
+          "hash": "16653551486504060008"
+        },
+        {
+          "file": "apps/web/pages/security-privacy/[id]/index.tsx",
+          "hash": "2735701423797361960"
+        },
+        {
+          "file": "apps/web/pages/term-condition/[id]/index.tsx",
+          "hash": "1077678310552573326"
+        },
+        {
+          "file": "apps/web/pages/vendedores/index.tsx",
+          "hash": "12061301910234038211"
+        },
+        {
+          "file": "apps/web/project.json",
+          "hash": "15725728758873619429"
+        },
+        {
+          "file": "apps/web/public/assets/fonts/Montserrat-Regular.ttf",
+          "hash": "6970645790606108957"
+        },
+        {
+          "file": "apps/web/public/assets/fonts/OpenSans-Regular.ttf",
+          "hash": "12330825088904327609"
+        },
+        {
+          "file": "apps/web/public/assets/icons/logo-mg.svg",
+          "hash": "2713646984436320466"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/Fortnite-Weapons-PNG-Pic-Background 1.svg",
+          "hash": "15159100045339402025"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/Fortnite-Weapons-PNG-Pic-Background 1.webp",
+          "hash": "4012389507228587184"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/Frost_Blade_Harvesting_Tool_Fortnite1.svg",
+          "hash": "9217536827482422368"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/Pistol_Weapon_Fortnite1.svg",
+          "hash": "12120202444420742761"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/_chest-open.webp",
+          "hash": "18216760279952124747"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/_not-cart.webp",
+          "hash": "16122991673601391168"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/avatar.webp",
+          "hash": "3075439244299978736"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/bank.webp",
+          "hash": "2704042169954718421"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/banners/Garantia_MG_logo_PNG_5.webp",
+          "hash": "9022626281733609174"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/banners/ent_inmediata.webp",
+          "hash": "8162322029931094578"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/banners/headphones_1.webp",
+          "hash": "16793787605209538671"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/banners/mercadopago_1.webp",
+          "hash": "16247658009185384376"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/black_game_logo.svg",
+          "hash": "1425784811394208776"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/cabal.webp",
+          "hash": "10833337933105812566"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/chest-open.webp",
+          "hash": "8828093266151743901"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/christmas-services/christmas_2500.webp",
+          "hash": "10514536503107564298"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/christmas-services/christmas_logo_with_image.webp",
+          "hash": "7060911857822263622"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/christmas-services/christmas_regalos_header.webp",
+          "hash": "6426833902288473164"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/christmas-services/wave.webp",
+          "hash": "8895614098430693354"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/comming-soon.webp",
+          "hash": "9032458689681593535"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/device/PS_logo.webp",
+          "hash": "11515199474473818613"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/device/smartphone_1.webp",
+          "hash": "7911789830560645250"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/empty-box.webp",
+          "hash": "1867988156712014337"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/game-logo.webp",
+          "hash": "16115530286248094839"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/games/default-02.webp",
+          "hash": "14386316388163996118"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/garantia-mg-logo.webp",
+          "hash": "14660583717808052258"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/gift_header.webp",
+          "hash": "9105106429474588484"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/help-center/buy.webp",
+          "hash": "11710090066137757111"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/help-center/help-center-use-code.webp",
+          "hash": "3114654738041415544"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/help-center/my-account.webp",
+          "hash": "1591154861305519615"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/help-center/regalos.webp",
+          "hash": "16547681465354602069"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/help-center/sell.webp",
+          "hash": "10890414722087126665"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/illustration/chest closed.webp",
+          "hash": "8037497838607972833"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/illustration/coins/few.webp",
+          "hash": "9465629643415588992"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/illustration/coins/logs-new.webp",
+          "hash": "5148859856436341876"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/illustration/coins/logs-new_.webp",
+          "hash": "13480279728356183034"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/illustration/coins/lots.webp",
+          "hash": "7104638990657148356"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/illustration/coins/many.webp",
+          "hash": "9635067085443554630"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/illustration/coins/one.webp",
+          "hash": "2726382558557874835"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/illustration/coins/two.webp",
+          "hash": "10120966376019954241"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/illustration/coins/vacio.webp",
+          "hash": "15940551827213857206"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/illustration/coupon.webp",
+          "hash": "7535071958930575916"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/illustration/social_icons_f.webp",
+          "hash": "5627898510720124612"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/illustration/social_icons_i.webp",
+          "hash": "2509741089701244621"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/illustration/social_icons_t.webp",
+          "hash": "12826892625143693934"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/illustration/social_icons_w.webp",
+          "hash": "3455352631415052119"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/image 28.webp",
+          "hash": "5574607717342966923"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/image 52.webp",
+          "hash": "105705779133367549"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/image 53.webp",
+          "hash": "2151676704652613126"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/login-header.webp",
+          "hash": "10555543148987251198"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/logo.webp",
+          "hash": "510761976361254825"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/mercado.webp",
+          "hash": "2464038526584139653"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/mercado_banner_logo_01.svg",
+          "hash": "17509124527356224016"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/mercado_banner_logo_02.svg",
+          "hash": "10815618037511487005"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/mercado_banner_logo_03.svg",
+          "hash": "10827134123172487300"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/mercado_banner_logo_04.svg",
+          "hash": "17873675990942474898"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/mg-isologo.webp",
+          "hash": "13657011922903869853"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/mobile-icon.svg",
+          "hash": "5653407919427919132"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/mobile_background.webp",
+          "hash": "8261474503187094898"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/naranja.webp",
+          "hash": "14821359628297966483"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/new-gift-header.webp",
+          "hash": "6684234189934596466"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/new-login-header.webp",
+          "hash": "5714715860901430218"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/no-notification.webp",
+          "hash": "7718718704556408573"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/not-cart.svg",
+          "hash": "8040542677437651394"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/not-cart.webp",
+          "hash": "3514197147748665536"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/og-meta-tag/MG-Logo.png",
+          "hash": "3734344895670255462"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/og-meta-tag/Regalos.png",
+          "hash": "11920697526697268231"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/pago.webp",
+          "hash": "9102206098171094503"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/payment-logo.webp",
+          "hash": "7482328801457332028"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/pc-card-icon.svg",
+          "hash": "14334019727956104383"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/pc_background.webp",
+          "hash": "5497710734401559425"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/placeholder.png",
+          "hash": "16359512627587412882"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/placeholder.svg",
+          "hash": "16359512627587412882"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/product-add-success.webp",
+          "hash": "16686512948177620424"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/profile_header.webp",
+          "hash": "1878728038986368899"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/rapipago.webp",
+          "hash": "10525826762795559272"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/rate/Bronze.webp",
+          "hash": "9508637892609095314"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/rate/gold.webp",
+          "hash": "14274675293968280896"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/rate/official.webp",
+          "hash": "14259101231991447246"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/rate/platinum.webp",
+          "hash": "8879079142648707608"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/rate/silver.webp",
+          "hash": "8317728079069555624"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/reset-password/download-mail.webp",
+          "hash": "4642358363395803008"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/reset-password/pad-lockcheck.webp",
+          "hash": "10491843432084671727"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/rocket-car.webp",
+          "hash": "10424361579191060306"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/ruleta_invite.webp",
+          "hash": "10778495132582236859"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/skins/541.webp",
+          "hash": "15993280589692858577"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/skins/Fortnite-Weapons-PNG-Pic-Background_1.webp",
+          "hash": "8772870784807945164"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/skins/Frost_Blade_Harvesting_Tool_Fortnite1.webp",
+          "hash": "17381027332763299083"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/skins/Pistol_Weapon_Fortnite1.webp",
+          "hash": "16286036454198627629"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/skins/image_18.webp",
+          "hash": "3614825469618524837"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/support-mg-logo.webp",
+          "hash": "880797878509055480"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/term-condition.webp",
+          "hash": "9660294718250195412"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/vendor/Group_1417.webp",
+          "hash": "16233342038397729921"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/vendor/Group_1514.webp",
+          "hash": "4501033342313298256"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/vendor/Group_1515.webp",
+          "hash": "16102788252636479564"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/vendor/Group_1516.webp",
+          "hash": "17005094813186116427"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/vendor/Group_1547.webp",
+          "hash": "12250446311945937885"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/vendor/Group_1549.webp",
+          "hash": "1256598590350618230"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/vendor/MG_img.webp",
+          "hash": "3386331710426522853"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/vendor/circle.png",
+          "hash": "13383591776962407439"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/vendor/csgo-knife-cs-go-knife-1568324o1.webp",
+          "hash": "18406043366145303404"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/vendor/sm-circle.png",
+          "hash": "13389672860643820487"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/vendor/support_img.webp",
+          "hash": "12885368782070712072"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/vendor/vendor-banner-background.webp",
+          "hash": "11848724189785303334"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/vendor/vendor-banner-image.webp",
+          "hash": "16613525671396390724"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/vendor/vendor_background_01.png",
+          "hash": "13746595151799596565"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/vendor/vendor_background_02.png",
+          "hash": "3334932072566441420"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/visa.webp",
+          "hash": "4457389091613787548"
+        },
+        {
+          "file": "apps/web/public/assets/imgs/withdrawal-success.webp",
+          "hash": "10600485877007921886"
+        },
+        {
+          "file": "apps/web/public/favicon.svg",
+          "hash": "9586146968969066951"
+        },
+        {
+          "file": "apps/web/public/locales/en/auth.json",
+          "hash": "2356017213246255687"
+        },
+        {
+          "file": "apps/web/public/locales/en/checkout.json",
+          "hash": "6141171163212043778"
+        },
+        {
+          "file": "apps/web/public/locales/en/common.json",
+          "hash": "16597249714330573490"
+        },
+        {
+          "file": "apps/web/public/locales/en/dashboard.json",
+          "hash": "15483608867452719330"
+        },
+        {
+          "file": "apps/web/public/locales/en/products.json",
+          "hash": "9335680542592450146"
+        },
+        {
+          "file": "apps/web/public/locales/es/auth.json",
+          "hash": "15258256371743812029"
+        },
+        {
+          "file": "apps/web/public/locales/es/checkout.json",
+          "hash": "17351956429384389031"
+        },
+        {
+          "file": "apps/web/public/locales/es/common.json",
+          "hash": "10698925020218758850"
+        },
+        {
+          "file": "apps/web/public/locales/es/dashboard.json",
+          "hash": "4863517857098482990"
+        },
+        {
+          "file": "apps/web/public/locales/es/products.json",
+          "hash": "3625242188669246827"
+        },
+        {
+          "file": "apps/web/public/locales/pt-BR/auth.json",
+          "hash": "11247161483770012686"
+        },
+        {
+          "file": "apps/web/public/locales/pt-BR/cart.json",
+          "hash": "6407010515611388304"
+        },
+        {
+          "file": "apps/web/public/locales/pt-BR/catalog.json",
+          "hash": "16680235958437658870"
+        },
+        {
+          "file": "apps/web/public/locales/pt-BR/checkout.json",
+          "hash": "1972605682695610970"
+        },
+        {
+          "file": "apps/web/public/locales/pt-BR/common.json",
+          "hash": "5155580066771827616"
+        },
+        {
+          "file": "apps/web/public/locales/pt-BR/dashboard.json",
+          "hash": "5509886102730105916"
+        },
+        {
+          "file": "apps/web/public/locales/pt-BR/gift.json",
+          "hash": "9297800787060738591"
+        },
+        {
+          "file": "apps/web/public/locales/pt-BR/help-center.json",
+          "hash": "13793429409759445271"
+        },
+        {
+          "file": "apps/web/public/locales/pt-BR/home.json",
+          "hash": "427715388907169090"
+        },
+        {
+          "file": "apps/web/public/locales/pt-BR/products.json",
+          "hash": "6095806538208279553"
+        },
+        {
+          "file": "apps/web/public/locales/pt-BR/profile.json",
+          "hash": "10912671690342149483"
+        },
+        {
+          "file": "apps/web/public/locales/pt-BR/purchase.json",
+          "hash": "14618580780935223893"
+        },
+        {
+          "file": "apps/web/public/locales/pt-BR/vendors.json",
+          "hash": "8766903037011762319"
+        },
+        {
+          "file": "apps/web/public/mg-logo.png",
+          "hash": "9837180632144854987"
+        },
+        {
+          "file": "apps/web/public/robots.txt",
+          "hash": "4382877210500902648"
+        },
+        {
+          "file": "apps/web/public/sitemap-0.xml",
+          "hash": "6325066715161419988"
+        },
+        {
+          "file": "apps/web/public/sitemap.xml",
+          "hash": "4771554903137749398"
+        },
+        {
+          "file": "apps/web/src/components/LanguageSwitcher/LanguageSwitcher.tsx",
+          "hash": "3018742074423007351"
+        },
+        {
+          "file": "apps/web/src/components/LanguageSwitcher/index.ts",
+          "hash": "13374344314104295350"
+        },
+        {
+          "file": "apps/web/src/components/banner-button/index.tsx",
+          "hash": "5210605300803344319"
+        },
+        {
+          "file": "apps/web/src/components/cancel-order-modal/index.tsx",
+          "hash": "1978188330457767728",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/components/cart-menu/index.tsx",
+          "hash": "16698419936543118220",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/components/category-card/index.tsx",
+          "hash": "11776617123633113252"
+        },
+        {
+          "file": "apps/web/src/components/checkout-header/index.tsx",
+          "hash": "13085551754816585017",
+          "deps": [
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/components/client-only/index.tsx",
+          "hash": "6329610856742188337"
+        },
+        {
+          "file": "apps/web/src/components/comming-soon-header/index.tsx",
+          "hash": "588281749651162944",
+          "deps": [
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/components/common/AdvancedFilters.tsx",
+          "hash": "5793387090809854531"
+        },
+        {
+          "file": "apps/web/src/components/common/Badges.tsx",
+          "hash": "12148196271752932617"
+        },
+        {
+          "file": "apps/web/src/components/common/Breadcrumbs.tsx",
+          "hash": "17206852543473961171"
+        },
+        {
+          "file": "apps/web/src/components/common/ErrorBoundary.tsx",
+          "hash": "10075070488367646322"
+        },
+        {
+          "file": "apps/web/src/components/common/LoadingSkeleton.tsx",
+          "hash": "5588055519163630398"
+        },
+        {
+          "file": "apps/web/src/components/confirm-modal/index.tsx",
+          "hash": "17431313308062172688",
+          "deps": [
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/components/create-feedback/index.tsx",
+          "hash": "10122168378106424821",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/components/device-card/index.tsx",
+          "hash": "6607807564798368636",
+          "deps": [
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/components/game-card/index.tsx",
+          "hash": "16046941437266422009",
+          "deps": [
+            "ui-shared"
+          ]
+        },
+        {
+          "file": "apps/web/src/components/header/index.tsx",
+          "hash": "13640314134441204557",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/components/invite-modal/index.tsx",
+          "hash": "1804253334421074235",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/components/login/index.tsx",
+          "hash": "9086013246779011696",
+          "deps": [
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/components/mobile-nav/index.tsx",
+          "hash": "5297281705918811331",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/components/navigations/index.ts",
+          "hash": "1839823890591899393"
+        },
+        {
+          "file": "apps/web/src/components/notification-menu/index.tsx",
+          "hash": "8091402054905627233",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/components/open-image/index.tsx",
+          "hash": "10549366495108624112",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/components/order-status/index.tsx",
+          "hash": "5273339660534708085",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/components/product-card/index.tsx",
+          "hash": "14875956725842147124",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/components/profile-avatar/index.tsx",
+          "hash": "7651459958053772707",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/components/profile-preview/index.tsx",
+          "hash": "46975530677104257",
+          "deps": [
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/components/rate-user/index.tsx",
+          "hash": "6430499979309110011",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/components/related-product-cart/index.tsx",
+          "hash": "16885649322933887443",
+          "deps": [
+            "ui-shared"
+          ]
+        },
+        {
+          "file": "apps/web/src/components/related-product/index.tsx",
+          "hash": "17135785244058587552",
+          "deps": [
+            "ui-shared"
+          ]
+        },
+        {
+          "file": "apps/web/src/components/report-modal/index.tsx",
+          "hash": "13411722837678920804",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/components/reset-password/index.tsx",
+          "hash": "3428726315642718894",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/components/shortcut-menu/index.tsx",
+          "hash": "1079449713429060089",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/components/signup/index.tsx",
+          "hash": "2842267058462055079",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/components/skin-sell/index.tsx",
+          "hash": "15744781379786574182",
+          "deps": [
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/components/vendor-item/index.tsx",
+          "hash": "1269961171684200095"
+        },
+        {
+          "file": "apps/web/src/components/vendor-under-banner/index.tsx",
+          "hash": "10906075136706196418",
+          "deps": [
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/hooks/use-socket/index.tsx",
+          "hash": "805609067105460910"
+        },
+        {
+          "file": "apps/web/src/layout/checkout-layout/index.tsx",
+          "hash": "11776008667850712133",
+          "deps": [
+            "ui-shared"
+          ]
+        },
+        {
+          "file": "apps/web/src/layout/comming-soon-layout/index.tsx",
+          "hash": "15767778586911994034"
+        },
+        {
+          "file": "apps/web/src/layout/dashboard/index.tsx",
+          "hash": "16467328829884272900",
+          "deps": [
+            "ui-shared"
+          ]
+        },
+        {
+          "file": "apps/web/src/layout/dashboard/nav-items/index.ts",
+          "hash": "8445171196717398427"
+        },
+        {
+          "file": "apps/web/src/layout/default-layout/index.tsx",
+          "hash": "4996281595612094546",
+          "deps": [
+            "ui-shared"
+          ]
+        },
+        {
+          "file": "apps/web/src/layout/dynamic-layout/index.tsx",
+          "hash": "3962760187998336903",
+          "deps": [
+            "ui-shared"
+          ]
+        },
+        {
+          "file": "apps/web/src/layout/storybook-theme-provider/index.tsx",
+          "hash": "8709245594090334175",
+          "deps": [
+            "ui-shared"
+          ]
+        },
+        {
+          "file": "apps/web/src/layout/theme-provider/index.tsx",
+          "hash": "4487591806515505834",
+          "deps": [
+            "ui-shared"
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/cart/index.tsx",
+          "hash": "14760291660277544604",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/cart/widgets/confirm-remove-all/index.tsx",
+          "hash": "12628783162473902350",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/cart/widgets/index.ts",
+          "hash": "9433448674166000432"
+        },
+        {
+          "file": "apps/web/src/page-contents/cart/widgets/user-discount/index.tsx",
+          "hash": "3276150615431677945",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/catalogo/index.tsx",
+          "hash": "7275823579935600960",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/catalogo/widgets/filer-content/index.tsx",
+          "hash": "16412969456045305041",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/catalogo/widgets/game-card-filter/index.tsx",
+          "hash": "10457353811957559396",
+          "deps": [
+            "ui-shared"
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/catalogo/widgets/index.ts",
+          "hash": "1697046719736001189"
+        },
+        {
+          "file": "apps/web/src/page-contents/checkout/index.tsx",
+          "hash": "8435908296513211705",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/checkout/widgets/cart-card/index.tsx",
+          "hash": "7654364615181158468",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/checkout/widgets/index.ts",
+          "hash": "17846285136900904126"
+        },
+        {
+          "file": "apps/web/src/page-contents/checkout/widgets/list-item/index.tsx",
+          "hash": "14122885272633235336"
+        },
+        {
+          "file": "apps/web/src/page-contents/comming-soon/index.tsx",
+          "hash": "15052250329599786914"
+        },
+        {
+          "file": "apps/web/src/page-contents/dashboard/add-product/index.tsx",
+          "hash": "17420388072016318844",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/dashboard/add-product/widgets/edit-price/index.tsx",
+          "hash": "3041013229400096389",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/dashboard/add-product/widgets/index.ts",
+          "hash": "11914974551638875814"
+        },
+        {
+          "file": "apps/web/src/page-contents/dashboard/add-product/widgets/other-game-modal/index.tsx",
+          "hash": "12019970067167370350",
+          "deps": [
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/dashboard/add-product/widgets/product-detail/index.tsx",
+          "hash": "7086771670177283025",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/dashboard/add-product/widgets/publication-type-card/index.tsx",
+          "hash": "12212798548331928127",
+          "deps": [
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/dashboard/add-product/widgets/select-delivery-type/index.tsx",
+          "hash": "9314185957903413418",
+          "deps": [
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/dashboard/add-product/widgets/select-game/index.tsx",
+          "hash": "3397144386074096680",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/dashboard/add-product/widgets/select-publication/index.tsx",
+          "hash": "16256909604333898393",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/dashboard/add-product/widgets/select-type/index.tsx",
+          "hash": "2091456994403956721",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/dashboard/add-product/widgets/step-add-product/index.tsx",
+          "hash": "17213829401267287807"
+        },
+        {
+          "file": "apps/web/src/page-contents/dashboard/balance/index.tsx",
+          "hash": "2027656873623160024",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/dashboard/balance/widgets/card/index.tsx",
+          "hash": "8163945175517080606",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/dashboard/balance/widgets/cbu-cvu/index.tsx",
+          "hash": "11343101818940312459",
+          "deps": [
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/dashboard/balance/widgets/confirm/index.tsx",
+          "hash": "13445782079919337702",
+          "deps": [
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/dashboard/balance/widgets/index.ts",
+          "hash": "13930466618676648437"
+        },
+        {
+          "file": "apps/web/src/page-contents/dashboard/balance/widgets/select-payment/index.tsx",
+          "hash": "12367192563024632003",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/dashboard/balance/widgets/success/index.tsx",
+          "hash": "12952770422418477948",
+          "deps": [
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/dashboard/balance/widgets/withdrawal-amount/index.tsx",
+          "hash": "2436651900919018523",
+          "deps": [
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/dashboard/edit-product/index.tsx",
+          "hash": "12074748428323844117",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/dashboard/edit-product/widgets/edit-card/index.tsx",
+          "hash": "12165084314244727176",
+          "deps": [
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/dashboard/edit-product/widgets/index.ts",
+          "hash": "3817001568843185128"
+        },
+        {
+          "file": "apps/web/src/page-contents/dashboard/index.ts",
+          "hash": "18190960083697494515"
+        },
+        {
+          "file": "apps/web/src/page-contents/dashboard/inventory/index.tsx",
+          "hash": "14229855711429228796",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/dashboard/inventory/widgets/index.ts",
+          "hash": "3089939680587357990"
+        },
+        {
+          "file": "apps/web/src/page-contents/dashboard/inventory/widgets/product-delete-modal/index.tsx",
+          "hash": "1286044540363773153",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/dashboard/inventory/widgets/product-detail-card/index.tsx",
+          "hash": "9274199524459048788",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/dashboard/order-detail/index.tsx",
+          "hash": "15182652947427821048",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/dashboard/order-detail/widgets/chat/index.tsx",
+          "hash": "3463764843609440814",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/dashboard/order-detail/widgets/index.ts",
+          "hash": "183812853540504657"
+        },
+        {
+          "file": "apps/web/src/page-contents/dashboard/order-detail/widgets/order-detail/index.tsx",
+          "hash": "4446098199418183433",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/dashboard/profile/index.tsx",
+          "hash": "13582409885481558411",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/dashboard/qas/index.tsx",
+          "hash": "7554294027189117344",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/dashboard/qas/widgets/index.ts",
+          "hash": "10859119698344128376"
+        },
+        {
+          "file": "apps/web/src/page-contents/dashboard/qas/widgets/qas-content/index.tsx",
+          "hash": "1609185316759887479",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/dashboard/question/index.tsx",
+          "hash": "14960887797252588530",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/dashboard/question/widgets/index.ts",
+          "hash": "15596016787753455605"
+        },
+        {
+          "file": "apps/web/src/page-contents/dashboard/question/widgets/product-content/index.tsx",
+          "hash": "4899961120066699174",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/dashboard/question/widgets/question-content/index.tsx",
+          "hash": "10946797760008556692",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/dashboard/sale/index.tsx",
+          "hash": "6624080474056982733",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/dashboard/sale/widgets/cancel-modal/index.tsx",
+          "hash": "11256218337825113148",
+          "deps": [
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/dashboard/sale/widgets/card/index.tsx",
+          "hash": "15153177840169393511"
+        },
+        {
+          "file": "apps/web/src/page-contents/dashboard/sale/widgets/index.ts",
+          "hash": "16321846048581208147"
+        },
+        {
+          "file": "apps/web/src/page-contents/dashboard/sale/widgets/sale-detail-card/index.tsx",
+          "hash": "17711123348251799037",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/dashboard/shopping/index.tsx",
+          "hash": "17156373142263796413",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/dashboard/shopping/widgets/index.ts",
+          "hash": "15115806444481432439"
+        },
+        {
+          "file": "apps/web/src/page-contents/dashboard/shopping/widgets/order-detail-card/index.tsx",
+          "hash": "370381825558486616",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/dashboard/shopping/widgets/shopping-card/index.tsx",
+          "hash": "1576364621566016697",
+          "deps": [
+            "ui-shared"
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/dashboard/store/index.tsx",
+          "hash": "2621008871360491453",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/dashboard/store/widgets/index.ts",
+          "hash": "12365831200485728638"
+        },
+        {
+          "file": "apps/web/src/page-contents/dashboard/store/widgets/store-information-card/index.tsx",
+          "hash": "18419946514639568338",
+          "deps": [
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/dashboard/support/index.tsx",
+          "hash": "8737389977374781812",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/dashboard/support/widgets/create-ticket-modal/index.tsx",
+          "hash": "9129433616678485895",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/dashboard/support/widgets/index.ts",
+          "hash": "5203079090328628041"
+        },
+        {
+          "file": "apps/web/src/page-contents/gift/constanst/index.ts",
+          "hash": "18113131389232510277",
+          "deps": [
+            "ui-shared"
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/gift/index.tsx",
+          "hash": "1719876396984043202",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/gift/widgets/index.ts",
+          "hash": "4683769437433437653"
+        },
+        {
+          "file": "apps/web/src/page-contents/gift/widgets/requirement-card/index.tsx",
+          "hash": "9795933448457191577",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/gift/widgets/requirement/index.tsx",
+          "hash": "9531955383006431613",
+          "deps": [
+            "ui-shared"
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/gift/widgets/roulette-history/index.tsx",
+          "hash": "11430211857496132513",
+          "deps": [
+            "ui-shared"
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/gift/widgets/roulette/index.tsx",
+          "hash": "10882356510582387681",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/gift/widgets/two-factor-authentication/index.tsx",
+          "hash": "2163209468188021275",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/gift/widgets/verification-phone/index.tsx",
+          "hash": "9760856041879609029",
+          "deps": [
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/help-center-category/index.tsx",
+          "hash": "2915930261366989554",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/help-center/config/index.tsx",
+          "hash": "13175562913586954915"
+        },
+        {
+          "file": "apps/web/src/page-contents/help-center/index.tsx",
+          "hash": "10623153638272186874",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/help-center/widgets/use-code-content/index.tsx",
+          "hash": "1532434855036053710",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/help-center/widgets/use-code/index.tsx",
+          "hash": "808567352767356329",
+          "deps": [
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/home/index.tsx",
+          "hash": "5003180846400114083",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/not-find-page/index.tsx",
+          "hash": "2715796299750787967"
+        },
+        {
+          "file": "apps/web/src/page-contents/product-detail/context/index.tsx",
+          "hash": "16560965690573061380"
+        },
+        {
+          "file": "apps/web/src/page-contents/product-detail/context/reducer/index.ts",
+          "hash": "15010178730090950260"
+        },
+        {
+          "file": "apps/web/src/page-contents/product-detail/context/type/index.ts",
+          "hash": "12816134786836150339"
+        },
+        {
+          "file": "apps/web/src/page-contents/product-detail/index.tsx",
+          "hash": "6547196996679245711",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/product-detail/widgets/index.ts",
+          "hash": "4829560443114988417"
+        },
+        {
+          "file": "apps/web/src/page-contents/product-detail/widgets/product-detail/index.tsx",
+          "hash": "7855122297634914355",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/product-detail/widgets/product-info/index.tsx",
+          "hash": "9224439307958420720"
+        },
+        {
+          "file": "apps/web/src/page-contents/product-detail/widgets/product-questions/index.tsx",
+          "hash": "8163825707831284658",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/product-detail/widgets/purchase-condision/index.tsx",
+          "hash": "6221542528603147775",
+          "deps": [
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/profile/index.tsx",
+          "hash": "7663626990698811673",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/profile/widgets/index.ts",
+          "hash": "14658937479550531043"
+        },
+        {
+          "file": "apps/web/src/page-contents/profile/widgets/user-review/index.tsx",
+          "hash": "2426018197148663622",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/purchase/index.tsx",
+          "hash": "16208501390771346842",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/purchase/widgets/index.ts",
+          "hash": "6726788347929810905"
+        },
+        {
+          "file": "apps/web/src/page-contents/purchase/widgets/purchase-card/index.tsx",
+          "hash": "7697961897838182281",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/referredby/index.tsx",
+          "hash": "13592959074175253710",
+          "deps": [
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/reset-password/index.tsx",
+          "hash": "10665669783460745268",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/security-privacy/config/index.tsx",
+          "hash": "11569579599437221938"
+        },
+        {
+          "file": "apps/web/src/page-contents/security-privacy/index.tsx",
+          "hash": "11119701085384937257",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/term-condition/config/index.tsx",
+          "hash": "15024784132214175522"
+        },
+        {
+          "file": "apps/web/src/page-contents/term-condition/index.tsx",
+          "hash": "7786074905158810887",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/vendedores/@widgets/slide/index.tsx",
+          "hash": "2895445899540884649",
+          "deps": [
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/page-contents/vendedores/index.tsx",
+          "hash": "13198058416014175896",
+          "deps": [
+            "ui-shared",
+            [
+              "ui-shared",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/web/src/store/actions/auth/index.ts",
+          "hash": "10952803842250602990",
+          "deps": [
+            "ui-shared"
+          ]
+        },
+        {
+          "file": "apps/web/src/store/actions/cart/index.ts",
+          "hash": "9491358557624737685",
+          "deps": [
+            "ui-shared"
+          ]
+        },
+        {
+          "file": "apps/web/src/store/actions/catalog/index.ts",
+          "hash": "13049137819386317427",
+          "deps": [
+            "ui-shared"
+          ]
+        },
+        {
+          "file": "apps/web/src/store/actions/category/index.ts",
+          "hash": "5114347372084553829",
+          "deps": [
+            "ui-shared"
+          ]
+        },
+        {
+          "file": "apps/web/src/store/actions/game/index.ts",
+          "hash": "15165816608179221338",
+          "deps": [
+            "ui-shared"
+          ]
+        },
+        {
+          "file": "apps/web/src/store/actions/home/index.ts",
+          "hash": "17194120347552466482",
+          "deps": [
+            "ui-shared"
+          ]
+        },
+        {
+          "file": "apps/web/src/store/actions/index.ts",
+          "hash": "2604653683394586827"
+        },
+        {
+          "file": "apps/web/src/store/actions/notification/index.ts",
+          "hash": "13203829553507004255",
+          "deps": [
+            "ui-shared"
+          ]
+        },
+        {
+          "file": "apps/web/src/store/actions/payment-method/index.ts",
+          "hash": "11889802769438220096",
+          "deps": [
+            "ui-shared"
+          ]
+        },
+        {
+          "file": "apps/web/src/store/actions/platform/index.ts",
+          "hash": "11515878419070597942",
+          "deps": [
+            "ui-shared"
+          ]
+        },
+        {
+          "file": "apps/web/src/store/actions/profile/index.ts",
+          "hash": "13104076838677307131",
+          "deps": [
+            "ui-shared"
+          ]
+        },
+        {
+          "file": "apps/web/src/store/actions/roulette-transaction/index.ts",
+          "hash": "10177841021194519696",
+          "deps": [
+            "ui-shared"
+          ]
+        },
+        {
+          "file": "apps/web/src/store/index.ts",
+          "hash": "6200908980288127464"
+        },
+        {
+          "file": "apps/web/src/store/reducer/auth/index.ts",
+          "hash": "15880630163975364466",
+          "deps": [
+            "ui-shared"
+          ]
+        },
+        {
+          "file": "apps/web/src/store/reducer/cart/index.ts",
+          "hash": "2351477666455955846",
+          "deps": [
+            "ui-shared"
+          ]
+        },
+        {
+          "file": "apps/web/src/store/reducer/catalog/index.ts",
+          "hash": "17125844734678076563"
+        },
+        {
+          "file": "apps/web/src/store/reducer/category/index.ts",
+          "hash": "2148130766783471160"
+        },
+        {
+          "file": "apps/web/src/store/reducer/country/index.ts",
+          "hash": "2785724112057977881"
+        },
+        {
+          "file": "apps/web/src/store/reducer/game/index.ts",
+          "hash": "8874179248210584409"
+        },
+        {
+          "file": "apps/web/src/store/reducer/header/index.ts",
+          "hash": "7794301880567519257"
+        },
+        {
+          "file": "apps/web/src/store/reducer/home/index.ts",
+          "hash": "10839870021608338152"
+        },
+        {
+          "file": "apps/web/src/store/reducer/index.ts",
+          "hash": "2049438072714950255"
+        },
+        {
+          "file": "apps/web/src/store/reducer/notification/index.ts",
+          "hash": "1230092810774924431"
+        },
+        {
+          "file": "apps/web/src/store/reducer/payment-method/index.ts",
+          "hash": "191772977359231009"
+        },
+        {
+          "file": "apps/web/src/store/reducer/payment/index.ts",
+          "hash": "10921860438948516184"
+        },
+        {
+          "file": "apps/web/src/store/reducer/platform/index.ts",
+          "hash": "2285373879002314038"
+        },
+        {
+          "file": "apps/web/src/store/reducer/referredby/index.ts",
+          "hash": "8231961375418201235"
+        },
+        {
+          "file": "apps/web/src/store/reducer/roulette/index.ts",
+          "hash": "11680427917384733798"
+        },
+        {
+          "file": "apps/web/src/store/types/index.ts",
+          "hash": "61535452379195556"
+        },
+        {
+          "file": "apps/web/src/types/global.d.ts",
+          "hash": "12747531693194214548"
+        },
+        {
+          "file": "apps/web/src/utils/catalogMetaTags.ts",
+          "hash": "7820526712730181620"
+        },
+        {
+          "file": "apps/web/styles/components/banner-button/index.scss",
+          "hash": "868815090962454080"
+        },
+        {
+          "file": "apps/web/styles/components/cancel-order-modal/index.scss",
+          "hash": "3208653111075023331"
+        },
+        {
+          "file": "apps/web/styles/components/category-card/index.scss",
+          "hash": "8794029363271334125"
+        },
+        {
+          "file": "apps/web/styles/components/create-feedback/index.scss",
+          "hash": "7193683508313720640"
+        },
+        {
+          "file": "apps/web/styles/components/device-card/index.scss",
+          "hash": "7920520395919393837"
+        },
+        {
+          "file": "apps/web/styles/components/finalize-transaction/index.scss",
+          "hash": "16001379722054301835"
+        },
+        {
+          "file": "apps/web/styles/components/game-card/index.scss",
+          "hash": "2030275023584056915"
+        },
+        {
+          "file": "apps/web/styles/components/index.scss",
+          "hash": "17245486075479923978"
+        },
+        {
+          "file": "apps/web/styles/components/invite-modal/index.scss",
+          "hash": "992242845584474217"
+        },
+        {
+          "file": "apps/web/styles/components/mobile-nav/index.scss",
+          "hash": "2316306796192547572"
+        },
+        {
+          "file": "apps/web/styles/components/open-image/index.scss",
+          "hash": "2724614675292046392"
+        },
+        {
+          "file": "apps/web/styles/components/order-status-bagde/index.scss",
+          "hash": "12083102323716379155"
+        },
+        {
+          "file": "apps/web/styles/components/product-card/index.scss",
+          "hash": "9506919986555368114"
+        },
+        {
+          "file": "apps/web/styles/components/profile-avatar/index.scss",
+          "hash": "8660326927717372772"
+        },
+        {
+          "file": "apps/web/styles/components/profile-preview/index.scss",
+          "hash": "14868616207529797070"
+        },
+        {
+          "file": "apps/web/styles/components/rate-user/index.scss",
+          "hash": "769490391417728735"
+        },
+        {
+          "file": "apps/web/styles/components/related-product/index.scss",
+          "hash": "15544707926989635955"
+        },
+        {
+          "file": "apps/web/styles/components/report-modal/index.scss",
+          "hash": "7491723538838377651"
+        },
+        {
+          "file": "apps/web/styles/components/reset-password/index.scss",
+          "hash": "2877273949687872079"
+        },
+        {
+          "file": "apps/web/styles/components/skin-sell-card/index.scss",
+          "hash": "3832037676246648424"
+        },
+        {
+          "file": "apps/web/styles/components/vendor-item/index.scss",
+          "hash": "17859367626435947326"
+        },
+        {
+          "file": "apps/web/styles/components/vendor-under-banner/index.scss",
+          "hash": "7650255383040006360"
+        },
+        {
+          "file": "apps/web/styles/index.scss",
+          "hash": "1818137224138933965"
+        },
+        {
+          "file": "apps/web/styles/layout/dashboard/index.scss",
+          "hash": "3950329699389654614"
+        },
+        {
+          "file": "apps/web/styles/layout/default-layout/carts-menu-container/index.scss",
+          "hash": "12477991332846900888"
+        },
+        {
+          "file": "apps/web/styles/layout/default-layout/checkout-header/index.scss",
+          "hash": "10725401107078375665"
+        },
+        {
+          "file": "apps/web/styles/layout/default-layout/comming-soon-header/index.scss",
+          "hash": "9856631042151556916"
+        },
+        {
+          "file": "apps/web/styles/layout/default-layout/header/index.scss",
+          "hash": "833365443157126002"
+        },
+        {
+          "file": "apps/web/styles/layout/default-layout/index.scss",
+          "hash": "13341815631214640804"
+        },
+        {
+          "file": "apps/web/styles/layout/default-layout/notification-container/index.scss",
+          "hash": "313972437112630668"
+        },
+        {
+          "file": "apps/web/styles/layout/index.scss",
+          "hash": "742483891247888849"
+        },
+        {
+          "file": "apps/web/styles/page-contents/cart/index.scss",
+          "hash": "16924330400885072091"
+        },
+        {
+          "file": "apps/web/styles/page-contents/cart/widgets/confirm-remove-all/index.scss",
+          "hash": "9872109930694803207"
+        },
+        {
+          "file": "apps/web/styles/page-contents/cart/widgets/user-discount-modal/index.scss",
+          "hash": "16917473882889285972"
+        },
+        {
+          "file": "apps/web/styles/page-contents/catalog/catalog-filter-content/index.scss",
+          "hash": "9630226000053753902"
+        },
+        {
+          "file": "apps/web/styles/page-contents/catalog/index.scss",
+          "hash": "17688417780714173561"
+        },
+        {
+          "file": "apps/web/styles/page-contents/checkout/index.scss",
+          "hash": "6675614970128482552"
+        },
+        {
+          "file": "apps/web/styles/page-contents/checkout/widgets/cart-card/index.scss",
+          "hash": "8535201485266757389"
+        },
+        {
+          "file": "apps/web/styles/page-contents/checkout/widgets/index.scss",
+          "hash": "15442421183877675328"
+        },
+        {
+          "file": "apps/web/styles/page-contents/comming-soon/index.scss",
+          "hash": "4844086916115836774"
+        },
+        {
+          "file": "apps/web/styles/page-contents/dashboard/add-product/index.scss",
+          "hash": "6741104940957696943"
+        },
+        {
+          "file": "apps/web/styles/page-contents/dashboard/add-product/widgets/edit-price/index.scss",
+          "hash": "14046653164509472619"
+        },
+        {
+          "file": "apps/web/styles/page-contents/dashboard/add-product/widgets/other-select-game-modal/index.scss",
+          "hash": "12567404189910850373"
+        },
+        {
+          "file": "apps/web/styles/page-contents/dashboard/add-product/widgets/product-detail/index.scss",
+          "hash": "12226318978301188933"
+        },
+        {
+          "file": "apps/web/styles/page-contents/dashboard/add-product/widgets/publication-type-card/index.scss",
+          "hash": "2416800667886762033"
+        },
+        {
+          "file": "apps/web/styles/page-contents/dashboard/add-product/widgets/select-delivery-type/index.scss",
+          "hash": "16975545167998713501"
+        },
+        {
+          "file": "apps/web/styles/page-contents/dashboard/add-product/widgets/select-product-game/index.scss",
+          "hash": "1981571688116073797"
+        },
+        {
+          "file": "apps/web/styles/page-contents/dashboard/add-product/widgets/select-product-type/index.scss",
+          "hash": "11050872261507367361"
+        },
+        {
+          "file": "apps/web/styles/page-contents/dashboard/add-product/widgets/step-add-product/index.scss",
+          "hash": "3958638061662861473"
+        },
+        {
+          "file": "apps/web/styles/page-contents/dashboard/balance/index.scss",
+          "hash": "163711696218012281"
+        },
+        {
+          "file": "apps/web/styles/page-contents/dashboard/balance/widgets/card/index.scss",
+          "hash": "4390796544632176801"
+        },
+        {
+          "file": "apps/web/styles/page-contents/dashboard/balance/widgets/withdrawal-modal/index.scss",
+          "hash": "15549382508518501531"
+        },
+        {
+          "file": "apps/web/styles/page-contents/dashboard/edit-product/index.scss",
+          "hash": "5184444713686402338"
+        },
+        {
+          "file": "apps/web/styles/page-contents/dashboard/edit-product/widgets/edit-card/index.scss",
+          "hash": "2843778697280889228"
+        },
+        {
+          "file": "apps/web/styles/page-contents/dashboard/index.scss",
+          "hash": "11865311086282914797"
+        },
+        {
+          "file": "apps/web/styles/page-contents/dashboard/inventory-content/index.scss",
+          "hash": "17662816126315046232"
+        },
+        {
+          "file": "apps/web/styles/page-contents/dashboard/inventory-content/widgets/product-delete-modal/index.scss",
+          "hash": "2114173614029201530"
+        },
+        {
+          "file": "apps/web/styles/page-contents/dashboard/inventory-content/widgets/product-detail-card/index.scss",
+          "hash": "3750245181723877497"
+        },
+        {
+          "file": "apps/web/styles/page-contents/dashboard/order-detail/index.scss",
+          "hash": "14056128185331053456"
+        },
+        {
+          "file": "apps/web/styles/page-contents/dashboard/order-detail/widgets/chat-container/index.scss",
+          "hash": "17096408743807332910"
+        },
+        {
+          "file": "apps/web/styles/page-contents/dashboard/order-detail/widgets/order-detail/index.scss",
+          "hash": "3808606947972635936"
+        },
+        {
+          "file": "apps/web/styles/page-contents/dashboard/profile/index.scss",
+          "hash": "1660353859200443763"
+        },
+        {
+          "file": "apps/web/styles/page-contents/dashboard/qas/index.scss",
+          "hash": "13652090285336612913"
+        },
+        {
+          "file": "apps/web/styles/page-contents/dashboard/qas/widgets/qas-content/index.scss",
+          "hash": "15275649948818609896"
+        },
+        {
+          "file": "apps/web/styles/page-contents/dashboard/question/index.scss",
+          "hash": "3005624148048817029"
+        },
+        {
+          "file": "apps/web/styles/page-contents/dashboard/question/widgets/question-content/index.scss",
+          "hash": "14403640844133178540"
+        },
+        {
+          "file": "apps/web/styles/page-contents/dashboard/sale-page-content/index.scss",
+          "hash": "10001838820974404610"
+        },
+        {
+          "file": "apps/web/styles/page-contents/dashboard/sale-page-content/widgets/cancel-sale-modal/index.scss",
+          "hash": "11614362465336717127"
+        },
+        {
+          "file": "apps/web/styles/page-contents/dashboard/sale-page-content/widgets/sale-content-card/index.scss",
+          "hash": "4887121317212457570"
+        },
+        {
+          "file": "apps/web/styles/page-contents/dashboard/sale-page-content/widgets/status-count-card/index.scss",
+          "hash": "109329748187247844"
+        },
+        {
+          "file": "apps/web/styles/page-contents/dashboard/shopping-content/index.scss",
+          "hash": "5032910532568114652"
+        },
+        {
+          "file": "apps/web/styles/page-contents/dashboard/shopping-content/widgets/order-detail-card/index.scss",
+          "hash": "1845153697845525490"
+        },
+        {
+          "file": "apps/web/styles/page-contents/dashboard/shopping-content/widgets/shopping-card/index.scss",
+          "hash": "1425626807681103815"
+        },
+        {
+          "file": "apps/web/styles/page-contents/dashboard/store/index.scss",
+          "hash": "10713706651576005500"
+        },
+        {
+          "file": "apps/web/styles/page-contents/dashboard/store/widgets/store-information-card/index.scss",
+          "hash": "3115493220664291350"
+        },
+        {
+          "file": "apps/web/styles/page-contents/dashboard/support/index.scss",
+          "hash": "15861757107345987213"
+        },
+        {
+          "file": "apps/web/styles/page-contents/dashboard/support/widgets/create-ticket-modal/index.scss",
+          "hash": "18353494408963428601"
+        },
+        {
+          "file": "apps/web/styles/page-contents/gift/index.scss",
+          "hash": "10094235054279329437"
+        },
+        {
+          "file": "apps/web/styles/page-contents/gift/widgets/roulette-confirm-modal/index.scss",
+          "hash": "15183765937448299386"
+        },
+        {
+          "file": "apps/web/styles/page-contents/gift/widgets/roulette-history/index.scss",
+          "hash": "2053218817631210827"
+        },
+        {
+          "file": "apps/web/styles/page-contents/gift/widgets/roulette-requirement-card/index.scss",
+          "hash": "1339641380450889054"
+        },
+        {
+          "file": "apps/web/styles/page-contents/gift/widgets/roulette-requirements/index.scss",
+          "hash": "346571540926034998"
+        },
+        {
+          "file": "apps/web/styles/page-contents/gift/widgets/roulette/index.scss",
+          "hash": "3572593838140533494"
+        },
+        {
+          "file": "apps/web/styles/page-contents/gift/widgets/verification-phone/index.scss",
+          "hash": "14732082932295987031"
+        },
+        {
+          "file": "apps/web/styles/page-contents/help-center-category/index.scss",
+          "hash": "3255445625980523048"
+        },
+        {
+          "file": "apps/web/styles/page-contents/help-center-page-content/index.scss",
+          "hash": "15934406453632609362"
+        },
+        {
+          "file": "apps/web/styles/page-contents/home/index.scss",
+          "hash": "1337949575312648070"
+        },
+        {
+          "file": "apps/web/styles/page-contents/index.scss",
+          "hash": "6903304183924683962"
+        },
+        {
+          "file": "apps/web/styles/page-contents/login/index.scss",
+          "hash": "11671078629892437615"
+        },
+        {
+          "file": "apps/web/styles/page-contents/not-find-page/index.scss",
+          "hash": "1053171278965867433"
+        },
+        {
+          "file": "apps/web/styles/page-contents/product-detail/index.scss",
+          "hash": "13035897941044703018"
+        },
+        {
+          "file": "apps/web/styles/page-contents/product-detail/widgets/product-detail/index.scss",
+          "hash": "4276392925112663257"
+        },
+        {
+          "file": "apps/web/styles/page-contents/product-detail/widgets/product-questions/index.scss",
+          "hash": "854769185787342178"
+        },
+        {
+          "file": "apps/web/styles/page-contents/product-detail/widgets/purchase-condition/index.scss",
+          "hash": "12251525071805843849"
+        },
+        {
+          "file": "apps/web/styles/page-contents/profile/index.scss",
+          "hash": "11348072052486276384"
+        },
+        {
+          "file": "apps/web/styles/page-contents/profile/user-review/index.scss",
+          "hash": "14465218041288935020"
+        },
+        {
+          "file": "apps/web/styles/page-contents/purchase/index.scss",
+          "hash": "4520684020030645471"
+        },
+        {
+          "file": "apps/web/styles/page-contents/purchase/widgets/purchase-card/index.scss",
+          "hash": "221818519180561651"
+        },
+        {
+          "file": "apps/web/styles/page-contents/referredby/index.scss",
+          "hash": "15763261906522631938"
+        },
+        {
+          "file": "apps/web/styles/page-contents/reset-password/index.scss",
+          "hash": "17498942321729850033"
+        },
+        {
+          "file": "apps/web/styles/page-contents/signup/index.scss",
+          "hash": "8088333139216581729"
+        },
+        {
+          "file": "apps/web/styles/page-contents/term-condition/index.scss",
+          "hash": "16970928572789086667"
+        },
+        {
+          "file": "apps/web/styles/page-contents/use-code-help-center/index.scss",
+          "hash": "16479510092211742388"
+        },
+        {
+          "file": "apps/web/styles/page-contents/vendedores/@widgets/slide/index.scss",
+          "hash": "4000048318634689568"
+        },
+        {
+          "file": "apps/web/styles/page-contents/vendedores/index.scss",
+          "hash": "16530174403990593169"
+        },
+        {
+          "file": "apps/web/tsconfig.json",
+          "hash": "3313486950194412931"
+        },
+        {
+          "file": "apps/web/tsconfig.spec.json",
+          "hash": "7936155694672839485"
+        }
+      ],
+      "admin-e2e": [
+        {
+          "file": "apps/admin-e2e/.eslintrc.json",
+          "hash": "10799368048025705622"
+        },
+        {
+          "file": "apps/admin-e2e/cypress.config.ts",
+          "hash": "14925566057180716649"
+        },
+        {
+          "file": "apps/admin-e2e/project.json",
+          "hash": "10956662319228560235"
+        },
+        {
+          "file": "apps/admin-e2e/src/e2e/app.cy.ts",
+          "hash": "5783667693690132776"
+        },
+        {
+          "file": "apps/admin-e2e/src/fixtures/example.json",
+          "hash": "17341819486505642070"
+        },
+        {
+          "file": "apps/admin-e2e/src/support/app.po.ts",
+          "hash": "5364106453863571025"
+        },
+        {
+          "file": "apps/admin-e2e/src/support/commands.ts",
+          "hash": "7901723535050763201"
+        },
+        {
+          "file": "apps/admin-e2e/src/support/e2e.ts",
+          "hash": "15928825062325902088"
+        },
+        {
+          "file": "apps/admin-e2e/tsconfig.json",
+          "hash": "6711070650399197251"
+        }
+      ],
+      "admin": [
+        {
+          "file": "apps/admin/.eslintrc.json",
+          "hash": "17787995107750662855"
+        },
+        {
+          "file": "apps/admin/index.d.ts",
+          "hash": "17021007320214501298"
+        },
+        {
+          "file": "apps/admin/jest.config.ts",
+          "hash": "10820843187492292872"
+        },
+        {
+          "file": "apps/admin/next-env.d.ts",
+          "hash": "650381615855576712"
+        },
+        {
+          "file": "apps/admin/next.config.js",
+          "hash": "14403045385682200844"
+        },
+        {
+          "file": "apps/admin/pages/_app.tsx",
+          "hash": "13925822426901416379"
+        },
+        {
+          "file": "apps/admin/pages/_document.tsx",
+          "hash": "9343421130732664201"
+        },
+        {
+          "file": "apps/admin/pages/earnings/index.tsx",
+          "hash": "3333993290616523256"
+        },
+        {
+          "file": "apps/admin/pages/index.tsx",
+          "hash": "4998713216941918538"
+        },
+        {
+          "file": "apps/admin/pages/loads/[id]/index.tsx",
+          "hash": "6454044359019609775"
+        },
+        {
+          "file": "apps/admin/pages/loads/index.tsx",
+          "hash": "17241458058119228898"
+        },
+        {
+          "file": "apps/admin/pages/login/index.tsx",
+          "hash": "16733419010903496549"
+        },
+        {
+          "file": "apps/admin/pages/roullet/index.tsx",
+          "hash": "4102998551378186031"
+        },
+        {
+          "file": "apps/admin/pages/users/index.tsx",
+          "hash": "16384403227654035418"
+        },
+        {
+          "file": "apps/admin/pages/ventas/[id]/index.tsx",
+          "hash": "10511451525158028615"
+        },
+        {
+          "file": "apps/admin/pages/ventas/index.tsx",
+          "hash": "8603161273485348857"
+        },
+        {
+          "file": "apps/admin/project.json",
+          "hash": "15011276153919306297"
+        },
+        {
+          "file": "apps/admin/public/.gitkeep",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/admin/public/assets/fonts/Montserrat-Regular.ttf",
+          "hash": "6970645790606108957"
+        },
+        {
+          "file": "apps/admin/public/assets/fonts/OpenSans-Regular.ttf",
+          "hash": "12330825088904327609"
+        },
+        {
+          "file": "apps/admin/public/assets/imgs/avatar.webp",
+          "hash": "2600232637700131279"
+        },
+        {
+          "file": "apps/admin/public/assets/imgs/coins/coupon.webp",
+          "hash": "1087291338833575802"
+        },
+        {
+          "file": "apps/admin/public/assets/imgs/coins/few.webp",
+          "hash": "18286167012405534851"
+        },
+        {
+          "file": "apps/admin/public/assets/imgs/coins/logs-new.webp",
+          "hash": "5950553250500598420"
+        },
+        {
+          "file": "apps/admin/public/assets/imgs/coins/logs-new_.webp",
+          "hash": "5511227948892706860"
+        },
+        {
+          "file": "apps/admin/public/assets/imgs/coins/lots.webp",
+          "hash": "200024621944948162"
+        },
+        {
+          "file": "apps/admin/public/assets/imgs/coins/many.webp",
+          "hash": "6533109081268722134"
+        },
+        {
+          "file": "apps/admin/public/assets/imgs/coins/one.webp",
+          "hash": "11579542568897393364"
+        },
+        {
+          "file": "apps/admin/public/assets/imgs/coins/two.webp",
+          "hash": "9063891552523148964"
+        },
+        {
+          "file": "apps/admin/public/assets/imgs/megaphone.webp",
+          "hash": "3142521745861119799"
+        },
+        {
+          "file": "apps/admin/public/assets/imgs/mercadopago.webp",
+          "hash": "2464038526584139653"
+        },
+        {
+          "file": "apps/admin/public/assets/imgs/new-login-header.webp",
+          "hash": "12730696171243733264"
+        },
+        {
+          "file": "apps/admin/public/assets/imgs/placeholder.svg",
+          "hash": "16359512627587412882"
+        },
+        {
+          "file": "apps/admin/public/favicon.svg",
+          "hash": "2497180031096528121"
+        },
+        {
+          "file": "apps/admin/specs/index.spec.tsx",
+          "hash": "1305108124397813838"
+        },
+        {
+          "file": "apps/admin/src/components/card/index.tsx",
+          "hash": "2378619422162349352",
+          "deps": [
+            "ui-shared"
+          ]
+        },
+        {
+          "file": "apps/admin/src/components/cardContainer/cardContainer.tsx",
+          "hash": "2856909303519769221"
+        },
+        {
+          "file": "apps/admin/src/components/cardKPI/cardKPI.tsx",
+          "hash": "14511624305137935094"
+        },
+        {
+          "file": "apps/admin/src/components/header/index.tsx",
+          "hash": "14699469164358672828",
+          "deps": [
+            "ui-shared"
+          ]
+        },
+        {
+          "file": "apps/admin/src/components/navButton/navButton.tsx",
+          "hash": "16331241635376914543"
+        },
+        {
+          "file": "apps/admin/src/components/withdrawls-approve/index.tsx",
+          "hash": "17848466275848117578",
+          "deps": [
+            "ui-shared"
+          ]
+        },
+        {
+          "file": "apps/admin/src/components/withdrawls-reject/index.tsx",
+          "hash": "5605204518428580283",
+          "deps": [
+            "ui-shared"
+          ]
+        },
+        {
+          "file": "apps/admin/src/hooks/use-socket/index.tsx",
+          "hash": "10797228631900675012"
+        },
+        {
+          "file": "apps/admin/src/layout/default/index.tsx",
+          "hash": "5017319871346582461",
+          "deps": [
+            "ui-shared"
+          ]
+        },
+        {
+          "file": "apps/admin/src/layout/theme-provider/index.tsx",
+          "hash": "5369482979810394446",
+          "deps": [
+            "ui-shared"
+          ]
+        },
+        {
+          "file": "apps/admin/src/page-content/earnings/index.tsx",
+          "hash": "6347165479587061027",
+          "deps": [
+            "ui-shared"
+          ]
+        },
+        {
+          "file": "apps/admin/src/page-content/loads/index.tsx",
+          "hash": "4544374140614741459",
+          "deps": [
+            "ui-shared"
+          ]
+        },
+        {
+          "file": "apps/admin/src/page-content/loads/loads-detail/index.tsx",
+          "hash": "2024152953824683587",
+          "deps": [
+            "ui-shared"
+          ]
+        },
+        {
+          "file": "apps/admin/src/page-content/login/index.tsx",
+          "hash": "3368801390729950243",
+          "deps": [
+            "ui-shared"
+          ]
+        },
+        {
+          "file": "apps/admin/src/page-content/roullet/index.tsx",
+          "hash": "5104023584517044298",
+          "deps": [
+            "ui-shared"
+          ]
+        },
+        {
+          "file": "apps/admin/src/page-content/roullet/widgets/charts/index.tsx",
+          "hash": "15461669038800663923",
+          "deps": [
+            "ui-shared"
+          ]
+        },
+        {
+          "file": "apps/admin/src/page-content/roullet/widgets/index.ts",
+          "hash": "3119194093164754316"
+        },
+        {
+          "file": "apps/admin/src/page-content/users/index.tsx",
+          "hash": "4340840897023172527",
+          "deps": [
+            "ui-shared"
+          ]
+        },
+        {
+          "file": "apps/admin/src/page-content/ventas/index.tsx",
+          "hash": "2923387477783025757",
+          "deps": [
+            "ui-shared"
+          ]
+        },
+        {
+          "file": "apps/admin/src/page-content/ventas/order-detail/chat/index.tsx",
+          "hash": "10221637686445660462",
+          "deps": [
+            "ui-shared"
+          ]
+        },
+        {
+          "file": "apps/admin/src/page-content/ventas/order-detail/index.tsx",
+          "hash": "6736211531423578505",
+          "deps": [
+            "ui-shared"
+          ]
+        },
+        {
+          "file": "apps/admin/src/page-content/ventas/order-detail/order-detail-panel/index.tsx",
+          "hash": "16381250728184644798",
+          "deps": [
+            "ui-shared"
+          ]
+        },
+        {
+          "file": "apps/admin/src/store/actions/auth/index.ts",
+          "hash": "1984271417049938054",
+          "deps": [
+            "ui-shared"
+          ]
+        },
+        {
+          "file": "apps/admin/src/store/actions/index.ts",
+          "hash": "1841773012793653686"
+        },
+        {
+          "file": "apps/admin/src/store/actions/loads/index.tsx",
+          "hash": "6927405760542211190",
+          "deps": [
+            "ui-shared"
+          ]
+        },
+        {
+          "file": "apps/admin/src/store/actions/ventas/index.ts",
+          "hash": "12926834500990076275",
+          "deps": [
+            "ui-shared"
+          ]
+        },
+        {
+          "file": "apps/admin/src/store/index.ts",
+          "hash": "5836547471045559869"
+        },
+        {
+          "file": "apps/admin/src/store/reducer/auth/index.ts",
+          "hash": "3999180949929851435",
+          "deps": [
+            "ui-shared"
+          ]
+        },
+        {
+          "file": "apps/admin/src/store/reducer/country/index.ts",
+          "hash": "1654343461167596512"
+        },
+        {
+          "file": "apps/admin/src/store/reducer/index.ts",
+          "hash": "4609839299216557437"
+        },
+        {
+          "file": "apps/admin/src/store/reducer/loads/index.tsx",
+          "hash": "13622746270503447850",
+          "deps": [
+            "ui-shared"
+          ]
+        },
+        {
+          "file": "apps/admin/src/store/reducer/ventas/index.tsx",
+          "hash": "14514122666344412552"
+        },
+        {
+          "file": "apps/admin/src/store/types/index.ts",
+          "hash": "15832822829834515130"
+        },
+        {
+          "file": "apps/admin/src/styles/components/card.scss",
+          "hash": "10151633880461398026"
+        },
+        {
+          "file": "apps/admin/src/styles/components/cardContainer.scss",
+          "hash": "16965200514714180278"
+        },
+        {
+          "file": "apps/admin/src/styles/components/cardKPI.scss",
+          "hash": "16710346243683647506"
+        },
+        {
+          "file": "apps/admin/src/styles/components/navButton.scss",
+          "hash": "357426860133997782"
+        },
+        {
+          "file": "apps/admin/src/styles/index.scss",
+          "hash": "8626197327636619928"
+        },
+        {
+          "file": "apps/admin/src/styles/layout/admin-header/index.scss",
+          "hash": "11399020373822231621"
+        },
+        {
+          "file": "apps/admin/src/styles/layout/default/index.scss",
+          "hash": "11622416172711608509"
+        },
+        {
+          "file": "apps/admin/src/styles/layout/index.scss",
+          "hash": "14120002425559323278"
+        },
+        {
+          "file": "apps/admin/src/styles/layout/theme-provider/index.scss",
+          "hash": "12450030788105984139"
+        },
+        {
+          "file": "apps/admin/src/styles/page-conent/earnings/index.scss",
+          "hash": "8819298816610441612"
+        },
+        {
+          "file": "apps/admin/src/styles/page-conent/index.scss",
+          "hash": "1582447139023051998"
+        },
+        {
+          "file": "apps/admin/src/styles/page-conent/loads/index.scss",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/admin/src/styles/page-conent/loads/loads-detail/index.scss",
+          "hash": "7549964970669264649"
+        },
+        {
+          "file": "apps/admin/src/styles/page-conent/login/index.scss",
+          "hash": "5812948189608737319"
+        },
+        {
+          "file": "apps/admin/src/styles/page-conent/roullet/index.scss",
+          "hash": "3433485823784731967"
+        },
+        {
+          "file": "apps/admin/src/styles/page-conent/users/index.scss",
+          "hash": "7484734444323867874"
+        },
+        {
+          "file": "apps/admin/src/styles/page-conent/ventas/index.scss",
+          "hash": "11920402916375512958"
+        },
+        {
+          "file": "apps/admin/src/styles/page-conent/ventas/order-detail/chat/index.scss",
+          "hash": "5827445301153953971"
+        },
+        {
+          "file": "apps/admin/src/styles/page-conent/ventas/order-detail/index.scss",
+          "hash": "1222463628282716277"
+        },
+        {
+          "file": "apps/admin/src/styles/page-conent/ventas/order-detail/order-detail-panel/index.scss",
+          "hash": "11504974953684335705"
+        },
+        {
+          "file": "apps/admin/tsconfig.json",
+          "hash": "7600312177988189053"
+        },
+        {
+          "file": "apps/admin/tsconfig.spec.json",
+          "hash": "7936155694672839485"
+        }
+      ],
+      "ui-shared": [
+        {
+          "file": "libs/ui-shared/.babelrc",
+          "hash": "15526585767065692522"
+        },
+        {
+          "file": "libs/ui-shared/.eslintrc.json",
+          "hash": "4003138749658017793"
+        },
+        {
+          "file": "libs/ui-shared/README.md",
+          "hash": "17181668912167396712"
+        },
+        {
+          "file": "libs/ui-shared/jest.config.ts",
+          "hash": "13696271057146317927"
+        },
+        {
+          "file": "libs/ui-shared/project.json",
+          "hash": "5364743136311006882"
+        },
+        {
+          "file": "libs/ui-shared/src/components/action-menu-item/index.tsx",
+          "hash": "6288687309132827389"
+        },
+        {
+          "file": "libs/ui-shared/src/components/chart/index.tsx",
+          "hash": "10926664918554556845"
+        },
+        {
+          "file": "libs/ui-shared/src/components/footer/index.tsx",
+          "hash": "7848121925443420394"
+        },
+        {
+          "file": "libs/ui-shared/src/components/order-status-badge/index.tsx",
+          "hash": "2567217067433135650"
+        },
+        {
+          "file": "libs/ui-shared/src/components/switcher-option/index.tsx",
+          "hash": "6642123653227591571"
+        },
+        {
+          "file": "libs/ui-shared/src/components/switcher/index.tsx",
+          "hash": "4805082084683511256"
+        },
+        {
+          "file": "libs/ui-shared/src/components/toast/index.tsx",
+          "hash": "5370347476639637761"
+        },
+        {
+          "file": "libs/ui-shared/src/hooks/index.ts",
+          "hash": "15071479585571210431"
+        },
+        {
+          "file": "libs/ui-shared/src/hooks/outside-click/index.ts",
+          "hash": "12362052843151465416"
+        },
+        {
+          "file": "libs/ui-shared/src/hooks/use-menu-position/index.ts",
+          "hash": "4315829469506909311"
+        },
+        {
+          "file": "libs/ui-shared/src/hooks/use-window-size/index.tsx",
+          "hash": "7698269323686481558"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/account-balance-wallet/index.tsx",
+          "hash": "16354486147208550443"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/account-shopping/index.tsx",
+          "hash": "10108306512651372767"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/alert-triangle/index.tsx",
+          "hash": "314476628853859395"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/archive/index.tsx",
+          "hash": "1527378851656681647"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/arrow-left/index.tsx",
+          "hash": "8625980581635672613"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/award/index.tsx",
+          "hash": "4005079599126906318"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/banks/index.tsx",
+          "hash": "11928718212653183697"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/bell/index.tsx",
+          "hash": "9734733039064108671"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/calender/index.tsx",
+          "hash": "12701571287135752007"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/camera/index.tsx",
+          "hash": "15113041551940065958"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/check-circle/index.tsx",
+          "hash": "651763847146625575"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/checkbox-indet/index.tsx",
+          "hash": "5730338863705273822"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/checkbox-off/index.tsx",
+          "hash": "11918188745107189315"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/checkbox-on/index.tsx",
+          "hash": "955843014735068032"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/chevron-down/index.tsx",
+          "hash": "3063530038373213133"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/chevron-left/index.tsx",
+          "hash": "14832137514914790678"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/chevron-right/index.tsx",
+          "hash": "3583730392848546181"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/chevron-up/index.tsx",
+          "hash": "7989024588035444643"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/christmas-gift/index.tsx",
+          "hash": "1714972010468764134"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/christmas-mobile-gift/index.tsx",
+          "hash": "3838878800887278947"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/circle-close/index.tsx",
+          "hash": "16433002124054556398"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/clipboard/index.tsx",
+          "hash": "14915808898775294710"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/clock/index.tsx",
+          "hash": "6871773616156532909"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/close/index.tsx",
+          "hash": "85624875632783987"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/controller/index.tsx",
+          "hash": "9452016927485470153"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/credit-card/index.tsx",
+          "hash": "13860095532761767856"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/cupon/index.tsx",
+          "hash": "13195077696625155620"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/database/index.tsx",
+          "hash": "13333257688975734825"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/documents/index.tsx",
+          "hash": "8893559859963609421"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/dollar-circle/index.tsx",
+          "hash": "7015460172627821010"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/dollar/index.tsx",
+          "hash": "1614570000374708243"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/edit/index.tsx",
+          "hash": "8407512786776090500"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/ent-coordinada/index.tsx",
+          "hash": "16700632851273618558"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/ent-inmediata/index.tsx",
+          "hash": "5217720172962488184"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/epic/index.tsx",
+          "hash": "4991662182506590846"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/exclamation-mark-circle/index.tsx",
+          "hash": "2610981298439112269"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/eye-off/index.tsx",
+          "hash": "6053551295594885511"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/eye/index.tsx",
+          "hash": "13676498005393922716"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/facebook-active/index.tsx",
+          "hash": "16027657458096757042"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/facebook/index.tsx",
+          "hash": "7061570720182269332"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/file-text/index.tsx",
+          "hash": "13643997426981524319"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/gift/index.tsx",
+          "hash": "2338070687106857016"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/globe/index.tsx",
+          "hash": "11888351656873671266"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/head-phone/index.tsx",
+          "hash": "3814580875648653795"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/heart/index.tsx",
+          "hash": "2861909860645393190"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/help-circle/index.tsx",
+          "hash": "14210035975932878151"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/index.ts",
+          "hash": "8887438474904179448"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/input-spin-down/index.tsx",
+          "hash": "14218797398904156780"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/input-spin-up/index.tsx",
+          "hash": "16638971329019294717"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/instagram-active/index.tsx",
+          "hash": "2836883499108296184"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/instagram/index.tsx",
+          "hash": "13829952775679152620"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/invite-circle-check/index.tsx",
+          "hash": "12819536656543144902"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/invite-circle-clock/index.tsx",
+          "hash": "15121560341791751370"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/invite-gift/index.tsx",
+          "hash": "1067889807707666492"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/knife/index.tsx",
+          "hash": "3473172464752806753"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/left-direction/index.tsx",
+          "hash": "13419608427293965207"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/light-effect/index.tsx",
+          "hash": "17589543295067177000"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/loads-calender/index.tsx",
+          "hash": "1758432046025532448"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/loads-user/index.tsx",
+          "hash": "6299285303236274089"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/lock/index.tsx",
+          "hash": "933975874652386911"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/logo/index.tsx",
+          "hash": "5013601913415362725"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/logout/index.tsx",
+          "hash": "2191536647627957416"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/mail/index.tsx",
+          "hash": "4653434300658186525"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/map/index.tsx",
+          "hash": "10884526688310883548"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/menu/index.tsx",
+          "hash": "1355822346505244546"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/message-sequare/index.tsx",
+          "hash": "4782882259155912865"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/mg-logo/index.tsx",
+          "hash": "4155774208827757758"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/mobile/index.tsx",
+          "hash": "8428516000780011761"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/more-detail/index.tsx",
+          "hash": "15459796967286475252"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/more-vertical/index.tsx",
+          "hash": "4773685913587855312"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/nav-tag/index.tsx",
+          "hash": "12075710452325443061"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/nintendo/index.tsx",
+          "hash": "834321644630153150"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/origin/index.tsx",
+          "hash": "12655704610902402000"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/paperclip/index.tsx",
+          "hash": "12167351572703751951"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/payment-logo/index.tsx",
+          "hash": "3495233196212223524"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/phone-call/index.tsx",
+          "hash": "13662118474739973360"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/platforms/index.tsx",
+          "hash": "14849585229363381123"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/playstation/index.tsx",
+          "hash": "14164074456558397215"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/plus-circle/index.tsx",
+          "hash": "16791028872124348356"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/plus/index.tsx",
+          "hash": "6567412869047349140"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/profile-calendar/index.tsx",
+          "hash": "10860848540274463636"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/profile-cart/index.tsx",
+          "hash": "7780427831775490614"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/profile-global/index.tsx",
+          "hash": "2690725601825366722"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/profile-star/index.tsx",
+          "hash": "8176527707247545117"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/radio-off/index.tsx",
+          "hash": "1271405047514426655"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/radio-on/index.tsx",
+          "hash": "17278823121035868193"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/refresh-ccw/index.tsx",
+          "hash": "15214936661485642148"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/right-direction/index.tsx",
+          "hash": "3502348096697316896"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/riot/index.tsx",
+          "hash": "14299127716773613095"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/search/index.tsx",
+          "hash": "7663614526072319685"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/send/index.tsx",
+          "hash": "14669883593789870472"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/setting/index.tsx",
+          "hash": "7905017950191514319"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/shield-check/index.tsx",
+          "hash": "8885948118971621477"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/shopping-bag/index.tsx",
+          "hash": "12590763442753461315"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/shopping-basket/index.tsx",
+          "hash": "3302041688606711844"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/shopping-cart/index.tsx",
+          "hash": "2056202211905982743"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/slide-left/index.tsx",
+          "hash": "5212506423249930026"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/slide-right/index.tsx",
+          "hash": "18318577149002564793"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/smartphone/index.tsx",
+          "hash": "15262587636821383356"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/star-outline/index.tsx",
+          "hash": "808673800693755369"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/star/index.tsx",
+          "hash": "15168706965304051993"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/store/index.tsx",
+          "hash": "569515854835847155"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/stream/index.tsx",
+          "hash": "9748753104620566958"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/tag/index.tsx",
+          "hash": "14241736875411797511"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/thumbs-down/index.tsx",
+          "hash": "16215020600320856312"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/thumbs-up/index.tsx",
+          "hash": "9295885510457432082"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/tiktok-active/index.tsx",
+          "hash": "14107098337971778039"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/tiktok/index.tsx",
+          "hash": "1035022048138468482"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/trash/index.tsx",
+          "hash": "13109415335543918031"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/twitter-active/index.tsx",
+          "hash": "17392026022982766926"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/twitter/index.tsx",
+          "hash": "15083784071115368229"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/upload/index.tsx",
+          "hash": "131881953314028242"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/user-plus/index.tsx",
+          "hash": "12025483541572712984"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/user/index.tsx",
+          "hash": "3823735411844030345"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/whatsapp-active/index.tsx",
+          "hash": "2612644054003248159"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/whatsapp/index.tsx",
+          "hash": "9697149419564412709"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/xbox/index.tsx",
+          "hash": "16188271322292709502"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/youtube-active/index.tsx",
+          "hash": "440355503825793493"
+        },
+        {
+          "file": "libs/ui-shared/src/icons/youtube/index.tsx",
+          "hash": "88064586585997595"
+        },
+        {
+          "file": "libs/ui-shared/src/reducer/types/index.ts",
+          "hash": "13998018218551138465"
+        },
+        {
+          "file": "libs/ui-shared/src/styles/breakpoints.scss",
+          "hash": "12497145017046082820"
+        },
+        {
+          "file": "libs/ui-shared/src/styles/components/action-menu-item/index.scss",
+          "hash": "9561513356222080588"
+        },
+        {
+          "file": "libs/ui-shared/src/styles/components/footer/index.scss",
+          "hash": "7204454465449253121"
+        },
+        {
+          "file": "libs/ui-shared/src/styles/components/index.scss",
+          "hash": "510244482861276342"
+        },
+        {
+          "file": "libs/ui-shared/src/styles/components/order-status-badge/index.scss",
+          "hash": "12083102323716379155"
+        },
+        {
+          "file": "libs/ui-shared/src/styles/components/switcher-option/index.scss",
+          "hash": "286777567733493397"
+        },
+        {
+          "file": "libs/ui-shared/src/styles/components/switcher/index.scss",
+          "hash": "201350278977296334"
+        },
+        {
+          "file": "libs/ui-shared/src/styles/components/toast/index.scss",
+          "hash": "13232865498845103721"
+        },
+        {
+          "file": "libs/ui-shared/src/styles/global.scss",
+          "hash": "14350915234657899564"
+        },
+        {
+          "file": "libs/ui-shared/src/styles/index.scss",
+          "hash": "1971307486211023194"
+        },
+        {
+          "file": "libs/ui-shared/src/styles/theme/index.scss",
+          "hash": "9925573764080365094"
+        },
+        {
+          "file": "libs/ui-shared/src/styles/theme/theme-provider/index.scss",
+          "hash": "14572584260485142387"
+        },
+        {
+          "file": "libs/ui-shared/src/styles/toast/index.scss",
+          "hash": "6152166390273521524"
+        },
+        {
+          "file": "libs/ui-shared/src/styles/variables.scss",
+          "hash": "688035451831482761"
+        },
+        {
+          "file": "libs/ui-shared/src/styles/widgets/bread-crumb/index.scss",
+          "hash": "18320508090216948545"
+        },
+        {
+          "file": "libs/ui-shared/src/styles/widgets/button/index.scss",
+          "hash": "17291889732435527928"
+        },
+        {
+          "file": "libs/ui-shared/src/styles/widgets/card/index.scss",
+          "hash": "18399901972091718518"
+        },
+        {
+          "file": "libs/ui-shared/src/styles/widgets/category-card/index.scss",
+          "hash": "604391564464328413"
+        },
+        {
+          "file": "libs/ui-shared/src/styles/widgets/checkbox/index.scss",
+          "hash": "1605885188811674903"
+        },
+        {
+          "file": "libs/ui-shared/src/styles/widgets/christmas-button/index.scss",
+          "hash": "5673623649134336938"
+        },
+        {
+          "file": "libs/ui-shared/src/styles/widgets/data-table/index.scss",
+          "hash": "9910985000864426797"
+        },
+        {
+          "file": "libs/ui-shared/src/styles/widgets/expansion/index.scss",
+          "hash": "9141418291197823689"
+        },
+        {
+          "file": "libs/ui-shared/src/styles/widgets/file-selector/index.scss",
+          "hash": "580451252227596161"
+        },
+        {
+          "file": "libs/ui-shared/src/styles/widgets/icon-button/index.scss",
+          "hash": "2752778969708466861"
+        },
+        {
+          "file": "libs/ui-shared/src/styles/widgets/icon/index.scss",
+          "hash": "11134553047304263949"
+        },
+        {
+          "file": "libs/ui-shared/src/styles/widgets/index.scss",
+          "hash": "5952732290544729354"
+        },
+        {
+          "file": "libs/ui-shared/src/styles/widgets/information-card/index.scss",
+          "hash": "13432879718036815026"
+        },
+        {
+          "file": "libs/ui-shared/src/styles/widgets/input-phone/index.scss",
+          "hash": "1030663245206285281"
+        },
+        {
+          "file": "libs/ui-shared/src/styles/widgets/input/index.scss",
+          "hash": "17406318070148005165"
+        },
+        {
+          "file": "libs/ui-shared/src/styles/widgets/lable/index.scss",
+          "hash": "15557668911152706678"
+        },
+        {
+          "file": "libs/ui-shared/src/styles/widgets/load-card/index.scss",
+          "hash": "1499862013478777586"
+        },
+        {
+          "file": "libs/ui-shared/src/styles/widgets/loading/index.scss",
+          "hash": "12641872068665705189"
+        },
+        {
+          "file": "libs/ui-shared/src/styles/widgets/menu/index.scss",
+          "hash": "1238830092291661965"
+        },
+        {
+          "file": "libs/ui-shared/src/styles/widgets/modal/index.scss",
+          "hash": "9993248316923894356"
+        },
+        {
+          "file": "libs/ui-shared/src/styles/widgets/radio/index.scss",
+          "hash": "13452276010809167026"
+        },
+        {
+          "file": "libs/ui-shared/src/styles/widgets/range-slider/index.scss",
+          "hash": "14351064904295970925"
+        },
+        {
+          "file": "libs/ui-shared/src/styles/widgets/rating/index.scss",
+          "hash": "15301656883566955771"
+        },
+        {
+          "file": "libs/ui-shared/src/styles/widgets/select/index.scss",
+          "hash": "201798395272646144"
+        },
+        {
+          "file": "libs/ui-shared/src/styles/widgets/status-card/index.scss",
+          "hash": "8194767592344566031"
+        },
+        {
+          "file": "libs/ui-shared/src/styles/widgets/switch/index.scss",
+          "hash": "10709558474275081248"
+        },
+        {
+          "file": "libs/ui-shared/src/styles/widgets/textarea/index.scss",
+          "hash": "8253884728242979042"
+        },
+        {
+          "file": "libs/ui-shared/src/styles/widgets/tooltip/index.scss",
+          "hash": "5846048563413256816"
+        },
+        {
+          "file": "libs/ui-shared/src/styles/widgets/two-factor/index.scss",
+          "hash": "8026482261169178731"
+        },
+        {
+          "file": "libs/ui-shared/src/styles/widgets/wrap-label/index.scss",
+          "hash": "15071699422975917070"
+        },
+        {
+          "file": "libs/ui-shared/src/theme/breakpoints/index.ts",
+          "hash": "7203623683063641958"
+        },
+        {
+          "file": "libs/ui-shared/src/theme/color/index.ts",
+          "hash": "7553638244018109158"
+        },
+        {
+          "file": "libs/ui-shared/src/theme/index.ts",
+          "hash": "10595586104885576890"
+        },
+        {
+          "file": "libs/ui-shared/src/types/api/index.d.ts",
+          "hash": "9257268695102929276"
+        },
+        {
+          "file": "libs/ui-shared/src/types/api/profile.d.ts",
+          "hash": "11873195390426310663"
+        },
+        {
+          "file": "libs/ui-shared/src/types/bread-crumb.d.ts",
+          "hash": "3618702354605151052"
+        },
+        {
+          "file": "libs/ui-shared/src/types/button.d.ts",
+          "hash": "11689777421514670951"
+        },
+        {
+          "file": "libs/ui-shared/src/types/card.d.ts",
+          "hash": "1362167810413396900"
+        },
+        {
+          "file": "libs/ui-shared/src/types/category-card.d.ts",
+          "hash": "5630238092617617920"
+        },
+        {
+          "file": "libs/ui-shared/src/types/checkbox.d.ts",
+          "hash": "4778947264297652165"
+        },
+        {
+          "file": "libs/ui-shared/src/types/checkout-expansion.d.ts",
+          "hash": "8315917375857789933"
+        },
+        {
+          "file": "libs/ui-shared/src/types/components/catalog.d.ts",
+          "hash": "10195951718033816315"
+        },
+        {
+          "file": "libs/ui-shared/src/types/components/publication-card.d.ts",
+          "hash": "4343525120216409986"
+        },
+        {
+          "file": "libs/ui-shared/src/types/data-table.d.ts",
+          "hash": "112971323204349930"
+        },
+        {
+          "file": "libs/ui-shared/src/types/default.d.ts",
+          "hash": "17385339033949963234"
+        },
+        {
+          "file": "libs/ui-shared/src/types/device.d.ts",
+          "hash": "8010620117215719979"
+        },
+        {
+          "file": "libs/ui-shared/src/types/expansion.d.ts",
+          "hash": "13821636460510541462"
+        },
+        {
+          "file": "libs/ui-shared/src/types/form.d.ts",
+          "hash": "16636985043916347871"
+        },
+        {
+          "file": "libs/ui-shared/src/types/games.d.ts",
+          "hash": "5122901055201147019"
+        },
+        {
+          "file": "libs/ui-shared/src/types/icon-button.d.ts",
+          "hash": "4822465285592349022"
+        },
+        {
+          "file": "libs/ui-shared/src/types/icon.d.ts",
+          "hash": "14548974611841951896"
+        },
+        {
+          "file": "libs/ui-shared/src/types/information-badge.d.ts",
+          "hash": "7124191842512244061"
+        },
+        {
+          "file": "libs/ui-shared/src/types/input-phone.d.ts",
+          "hash": "7654753296516304805"
+        },
+        {
+          "file": "libs/ui-shared/src/types/input.d.ts",
+          "hash": "8516210668154231073"
+        },
+        {
+          "file": "libs/ui-shared/src/types/label.d.ts",
+          "hash": "16891761807129157206"
+        },
+        {
+          "file": "libs/ui-shared/src/types/menu.d.ts",
+          "hash": "9906841220436878529"
+        },
+        {
+          "file": "libs/ui-shared/src/types/modal.d.ts",
+          "hash": "18257376481341195946"
+        },
+        {
+          "file": "libs/ui-shared/src/types/models/admin_user.d.ts",
+          "hash": "1155686305385247466"
+        },
+        {
+          "file": "libs/ui-shared/src/types/models/admin_withdrawals.d.ts",
+          "hash": "13062499654406624130"
+        },
+        {
+          "file": "libs/ui-shared/src/types/models/banner.d.ts",
+          "hash": "16413995829731686309"
+        },
+        {
+          "file": "libs/ui-shared/src/types/models/cart.d.ts",
+          "hash": "6640625148800648583"
+        },
+        {
+          "file": "libs/ui-shared/src/types/models/category.d.ts",
+          "hash": "362063414077468609"
+        },
+        {
+          "file": "libs/ui-shared/src/types/models/conversation.d.ts",
+          "hash": "13742468582673174216"
+        },
+        {
+          "file": "libs/ui-shared/src/types/models/country.d.ts",
+          "hash": "3844922123794433648"
+        },
+        {
+          "file": "libs/ui-shared/src/types/models/feedback.d.ts",
+          "hash": "3154703202675557206"
+        },
+        {
+          "file": "libs/ui-shared/src/types/models/game.d.ts",
+          "hash": "14655767878190555797"
+        },
+        {
+          "file": "libs/ui-shared/src/types/models/home-product.d.ts",
+          "hash": "2340074695519754567"
+        },
+        {
+          "file": "libs/ui-shared/src/types/models/invite-transaction.d.ts",
+          "hash": "14727229460593738748"
+        },
+        {
+          "file": "libs/ui-shared/src/types/models/message.d.ts",
+          "hash": "15350711961827302731"
+        },
+        {
+          "file": "libs/ui-shared/src/types/models/notification.d.ts",
+          "hash": "6256879970890241053"
+        },
+        {
+          "file": "libs/ui-shared/src/types/models/order.d.ts",
+          "hash": "13453730846797519757"
+        },
+        {
+          "file": "libs/ui-shared/src/types/models/payment-method.d.ts",
+          "hash": "5577050844936033514"
+        },
+        {
+          "file": "libs/ui-shared/src/types/models/payment.d.ts",
+          "hash": "5152678128178377506"
+        },
+        {
+          "file": "libs/ui-shared/src/types/models/platform.d.ts",
+          "hash": "8469111238422582158"
+        },
+        {
+          "file": "libs/ui-shared/src/types/models/product-delete-modal.d.ts",
+          "hash": "4406822151646484260"
+        },
+        {
+          "file": "libs/ui-shared/src/types/models/product-home.d.ts",
+          "hash": "6950291823317267095"
+        },
+        {
+          "file": "libs/ui-shared/src/types/models/product-qa.d.ts",
+          "hash": "12137632409945290653"
+        },
+        {
+          "file": "libs/ui-shared/src/types/models/product.d.ts",
+          "hash": "2893433945105345099"
+        },
+        {
+          "file": "libs/ui-shared/src/types/models/profile.d.ts",
+          "hash": "10392993768717261886"
+        },
+        {
+          "file": "libs/ui-shared/src/types/models/rejectedmessages.d.ts",
+          "hash": "17183663904076885646"
+        },
+        {
+          "file": "libs/ui-shared/src/types/models/review.d.ts",
+          "hash": "6392030449212088628"
+        },
+        {
+          "file": "libs/ui-shared/src/types/models/roulette-transaction.d.ts",
+          "hash": "17237988826074769177"
+        },
+        {
+          "file": "libs/ui-shared/src/types/models/sale.d.ts",
+          "hash": "5626005112197937557"
+        },
+        {
+          "file": "libs/ui-shared/src/types/models/stock-product.d.ts",
+          "hash": "12078770340882819917"
+        },
+        {
+          "file": "libs/ui-shared/src/types/models/ticket.d.ts",
+          "hash": "5073245979548684329"
+        },
+        {
+          "file": "libs/ui-shared/src/types/models/user.d.ts",
+          "hash": "8658552694400555643"
+        },
+        {
+          "file": "libs/ui-shared/src/types/models/withdrawal.d.ts",
+          "hash": "12283407768728466842"
+        },
+        {
+          "file": "libs/ui-shared/src/types/nav-item.d.ts",
+          "hash": "9121945155517028407"
+        },
+        {
+          "file": "libs/ui-shared/src/types/radiobox.d.ts",
+          "hash": "2254666075740935761"
+        },
+        {
+          "file": "libs/ui-shared/src/types/range-slider.d.ts",
+          "hash": "10291812652252700679"
+        },
+        {
+          "file": "libs/ui-shared/src/types/rating.d.ts",
+          "hash": "2428754834638988985"
+        },
+        {
+          "file": "libs/ui-shared/src/types/select.d.ts",
+          "hash": "8665246787476249894"
+        },
+        {
+          "file": "libs/ui-shared/src/types/status-card.d.ts",
+          "hash": "8903739108698655473"
+        },
+        {
+          "file": "libs/ui-shared/src/types/switch.d.ts",
+          "hash": "6058995512972693370"
+        },
+        {
+          "file": "libs/ui-shared/src/types/textarea.d.ts",
+          "hash": "4433452129609625848"
+        },
+        {
+          "file": "libs/ui-shared/src/types/textmessage.d.ts",
+          "hash": "8769525744678730551"
+        },
+        {
+          "file": "libs/ui-shared/src/types/tooltip.d.ts",
+          "hash": "235425520436175081"
+        },
+        {
+          "file": "libs/ui-shared/src/types/wrap-label.d.ts",
+          "hash": "5930533304921898736"
+        },
+        {
+          "file": "libs/ui-shared/src/utils/apis/index.ts",
+          "hash": "9852508486094407288"
+        },
+        {
+          "file": "libs/ui-shared/src/utils/common/date-filter/index.tsx",
+          "hash": "10339641822677115608"
+        },
+        {
+          "file": "libs/ui-shared/src/utils/common/index.ts",
+          "hash": "13713960943721552513"
+        },
+        {
+          "file": "libs/ui-shared/src/utils/countries/index.ts",
+          "hash": "12568901834400811315"
+        },
+        {
+          "file": "libs/ui-shared/src/utils/endpoints/index.ts",
+          "hash": "10060514313139843167"
+        },
+        {
+          "file": "libs/ui-shared/src/utils/file/index.ts",
+          "hash": "1380747774348365305"
+        },
+        {
+          "file": "libs/ui-shared/src/utils/index.ts",
+          "hash": "2447184997144884780"
+        },
+        {
+          "file": "libs/ui-shared/src/utils/notification/index.ts",
+          "hash": "15831301006621214583"
+        },
+        {
+          "file": "libs/ui-shared/src/utils/notification/notification-info/index.ts",
+          "hash": "16483200392003001502"
+        },
+        {
+          "file": "libs/ui-shared/src/utils/product-functions/index.ts",
+          "hash": "14465677138004203696"
+        },
+        {
+          "file": "libs/ui-shared/src/utils/setting/index.ts",
+          "hash": "10814283482576887601"
+        },
+        {
+          "file": "libs/ui-shared/src/utils/toast/index.tsx",
+          "hash": "14626212536075909145"
+        },
+        {
+          "file": "libs/ui-shared/src/widgets/bread-crumb/index.tsx",
+          "hash": "15890115620087384053"
+        },
+        {
+          "file": "libs/ui-shared/src/widgets/button/button.stories.tsx",
+          "hash": "9458294486665835597"
+        },
+        {
+          "file": "libs/ui-shared/src/widgets/button/index.tsx",
+          "hash": "12631745895955533965"
+        },
+        {
+          "file": "libs/ui-shared/src/widgets/card/index.tsx",
+          "hash": "14548716851023213109"
+        },
+        {
+          "file": "libs/ui-shared/src/widgets/category-card/index.tsx",
+          "hash": "8212443207360441910"
+        },
+        {
+          "file": "libs/ui-shared/src/widgets/checkbox/checkbox.stories.tsx",
+          "hash": "17243848115466529757"
+        },
+        {
+          "file": "libs/ui-shared/src/widgets/checkbox/index.tsx",
+          "hash": "399016539969515899"
+        },
+        {
+          "file": "libs/ui-shared/src/widgets/christmas-button/index.tsx",
+          "hash": "6738369438084635217"
+        },
+        {
+          "file": "libs/ui-shared/src/widgets/data-table/index.tsx",
+          "hash": "4026367289580794557"
+        },
+        {
+          "file": "libs/ui-shared/src/widgets/expansion/expansion.stories.tsx",
+          "hash": "7116829349870658196"
+        },
+        {
+          "file": "libs/ui-shared/src/widgets/expansion/index.tsx",
+          "hash": "4223057732046485186"
+        },
+        {
+          "file": "libs/ui-shared/src/widgets/file-selector/file-selector.stories.tsx",
+          "hash": "4584260374929395616"
+        },
+        {
+          "file": "libs/ui-shared/src/widgets/file-selector/index.tsx",
+          "hash": "464782276572652383"
+        },
+        {
+          "file": "libs/ui-shared/src/widgets/form/index.ts",
+          "hash": "12495141896665101321"
+        },
+        {
+          "file": "libs/ui-shared/src/widgets/form/input/index.tsx",
+          "hash": "2933309202436443638"
+        },
+        {
+          "file": "libs/ui-shared/src/widgets/form/multi-select/index.tsx",
+          "hash": "11347859489303884338"
+        },
+        {
+          "file": "libs/ui-shared/src/widgets/form/select/index.tsx",
+          "hash": "7166210405715319582"
+        },
+        {
+          "file": "libs/ui-shared/src/widgets/form/textarea/index.tsx",
+          "hash": "5406601437852230"
+        },
+        {
+          "file": "libs/ui-shared/src/widgets/icon-button/index.tsx",
+          "hash": "3956198715219569884"
+        },
+        {
+          "file": "libs/ui-shared/src/widgets/icon/icons.stories.tsx",
+          "hash": "15526117272210844675"
+        },
+        {
+          "file": "libs/ui-shared/src/widgets/icon/index.tsx",
+          "hash": "16309393987324194689"
+        },
+        {
+          "file": "libs/ui-shared/src/widgets/image-with-fallback/index.tsx",
+          "hash": "17739432838507761836"
+        },
+        {
+          "file": "libs/ui-shared/src/widgets/information-badge/index.tsx",
+          "hash": "18361318145761300429"
+        },
+        {
+          "file": "libs/ui-shared/src/widgets/input-phone/index.tsx",
+          "hash": "15943089404389392505"
+        },
+        {
+          "file": "libs/ui-shared/src/widgets/input/index.tsx",
+          "hash": "6580543598886239244"
+        },
+        {
+          "file": "libs/ui-shared/src/widgets/input/input.stories.tsx",
+          "hash": "2370049552696704644"
+        },
+        {
+          "file": "libs/ui-shared/src/widgets/label/index.tsx",
+          "hash": "16254821131211139106"
+        },
+        {
+          "file": "libs/ui-shared/src/widgets/load-card/index.tsx",
+          "hash": "14571112246397251802"
+        },
+        {
+          "file": "libs/ui-shared/src/widgets/loading/index.tsx",
+          "hash": "2144337214180693358"
+        },
+        {
+          "file": "libs/ui-shared/src/widgets/loading/loading.stories.tsx",
+          "hash": "7513384822770599947"
+        },
+        {
+          "file": "libs/ui-shared/src/widgets/menu/index.tsx",
+          "hash": "1186103552642496035"
+        },
+        {
+          "file": "libs/ui-shared/src/widgets/menu/menu.stories.tsx",
+          "hash": "4409228859039685828"
+        },
+        {
+          "file": "libs/ui-shared/src/widgets/modal/index.tsx",
+          "hash": "9051109736470150198"
+        },
+        {
+          "file": "libs/ui-shared/src/widgets/radiobox/index.tsx",
+          "hash": "14989010167023222739"
+        },
+        {
+          "file": "libs/ui-shared/src/widgets/radiobox/radiobox.stories.tsx",
+          "hash": "8688698508991522212"
+        },
+        {
+          "file": "libs/ui-shared/src/widgets/range-slider/index.tsx",
+          "hash": "7985517858833966464"
+        },
+        {
+          "file": "libs/ui-shared/src/widgets/range-slider/range-slider.stories.tsx",
+          "hash": "14412240572290278936"
+        },
+        {
+          "file": "libs/ui-shared/src/widgets/rating/index.tsx",
+          "hash": "17870001061568975227"
+        },
+        {
+          "file": "libs/ui-shared/src/widgets/rating/rating.stories.tsx",
+          "hash": "459598638028188473"
+        },
+        {
+          "file": "libs/ui-shared/src/widgets/search/index.tsx",
+          "hash": "2124614421736780320"
+        },
+        {
+          "file": "libs/ui-shared/src/widgets/search/search.stories.tsx",
+          "hash": "936379156693819917"
+        },
+        {
+          "file": "libs/ui-shared/src/widgets/select/index.tsx",
+          "hash": "1433467028087249736"
+        },
+        {
+          "file": "libs/ui-shared/src/widgets/select/multiple.tsx",
+          "hash": "1700669159176029994"
+        },
+        {
+          "file": "libs/ui-shared/src/widgets/select/select.stories.tsx",
+          "hash": "6701385590787231461"
+        },
+        {
+          "file": "libs/ui-shared/src/widgets/status-card/index.tsx",
+          "hash": "7169204124477980901"
+        },
+        {
+          "file": "libs/ui-shared/src/widgets/switch/index.tsx",
+          "hash": "15616784045396710841"
+        },
+        {
+          "file": "libs/ui-shared/src/widgets/switch/switch.stories.tsx",
+          "hash": "8593367951243635626"
+        },
+        {
+          "file": "libs/ui-shared/src/widgets/textarea/index.tsx",
+          "hash": "3128040484128303954"
+        },
+        {
+          "file": "libs/ui-shared/src/widgets/textarea/input.stories.tsx",
+          "hash": "8343347989129405298"
+        },
+        {
+          "file": "libs/ui-shared/src/widgets/textmessage/index.tsx",
+          "hash": "715603061656144627"
+        },
+        {
+          "file": "libs/ui-shared/src/widgets/tooltip/index.tsx",
+          "hash": "11343517404147418733"
+        },
+        {
+          "file": "libs/ui-shared/src/widgets/tooltip/tooltip.stories.tsx",
+          "hash": "9225197216062496310"
+        },
+        {
+          "file": "libs/ui-shared/src/widgets/two-factor/index.tsx",
+          "hash": "17594393897405119562"
+        },
+        {
+          "file": "libs/ui-shared/src/widgets/wrap-label/index.tsx",
+          "hash": "15762062036771838303"
+        },
+        {
+          "file": "libs/ui-shared/tsconfig.json",
+          "hash": "11616490658080509430"
+        },
+        {
+          "file": "libs/ui-shared/tsconfig.lib.json",
+          "hash": "3014325948479127667"
+        },
+        {
+          "file": "libs/ui-shared/tsconfig.spec.json",
+          "hash": "16089454158163324996"
+        }
+      ]
+    }
+  }
+}

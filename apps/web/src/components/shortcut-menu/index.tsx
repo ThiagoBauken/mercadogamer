@@ -1,6 +1,6 @@
 import { endpoints, httpGetAll } from '@utils';
 import { login, openLoginModal, useAppDispatch, useTypedSelector } from '@web/store';
-import { Icon } from '@widgets/icon';
+
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
@@ -9,6 +9,9 @@ const CreateTicketModal = dynamic(
   () => import('@web/page-contents/dashboard/support/widgets/create-ticket-modal/index')
 );
 const CreateFeedbackModal = dynamic(() => import('../create-feedback/index'));
+
+
+const Icon = dynamic(() => import('@widgets/icon').then(mod => mod.Icon), { ssr: false });
 
 type Props = {
   onClick?: () => void;
@@ -23,13 +26,13 @@ export const ShortCutMenu: React.FC<Props> = (props) => {
     ticketmodal: boolean;
     feedbackmodal: boolean;
     tickets: TicketModelType[];
-    selectedTicket: TicketModelType;
+    selectedTicket: TicketModelType | null;
     showInformation: boolean;
   }>({
-    ticketmodal: null,
-    feedbackmodal: null,
+    ticketmodal: false,
+    feedbackmodal: false,
     tickets: [],
-    selectedTicket: {},
+    selectedTicket: null,
     showInformation: false,
   });
 
@@ -45,7 +48,7 @@ export const ShortCutMenu: React.FC<Props> = (props) => {
       });
       setState({ ...state, tickets: response.data?.data, ticketmodal: false });
     } catch (error) {
-      console.log(error);
+      console.error('Error loading tickets:', error);
     }
   };
 

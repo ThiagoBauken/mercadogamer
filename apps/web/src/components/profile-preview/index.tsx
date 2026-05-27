@@ -1,4 +1,6 @@
-import { Icon } from '@widgets/icon';
+import dynamic from 'next/dynamic';
+
+const Icon = dynamic(() => import('@widgets/icon').then(mod => mod.Icon), { ssr: false });
 
 type Props = {
   icon?: string;

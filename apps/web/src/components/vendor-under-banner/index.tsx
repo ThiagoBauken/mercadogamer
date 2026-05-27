@@ -1,4 +1,7 @@
-import { Button } from '@widgets/button';
+import dynamic from 'next/dynamic';
+import { useTranslation } from 'next-i18next';
+
+const Button = dynamic(() => import('@widgets/button').then(mod => mod.Button), { ssr: false });
 
 type Props = {
   fileUrl: string;
@@ -8,6 +11,7 @@ type Props = {
 };
 
 const VendorSellCard: React.FC<Props> = (props) => {
+  const { t } = useTranslation('vendors');
   const { fileUrl, image, button } = props;
 
   return (
@@ -20,17 +24,16 @@ const VendorSellCard: React.FC<Props> = (props) => {
       <div className="vendor-sell-card">
         <div className="action">
           <div>
-            <div className="title">
-              Comenzá a <span>vender hoy</span>
+            <div className="title" dangerouslySetInnerHTML={{ __html: t('hero.title') }}>
             </div>
             <div className="content">
-              Realizá tu primera publicación gratis y ganá dinero con tus items digitales.
+              Realizá tu primeira publicación gratis y ganá dinero con tus items digitales.
             </div>
             <Button onClick={props.onAction}>{button}</Button>
           </div>
         </div>
         <div className="image">
-          <img src={image} className="vendor-img" />
+          <img src={image} className="vendor-img" alt="Vendor banner" />
         </div>
       </div>
       <div></div>

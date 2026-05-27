@@ -1,0 +1,18 @@
+  [1m[38;2;173;127;168m▲ Next.js 14.2.35[39m[22m
+  - Local:        http://localhost:4200
+  - Environments: .env.local, .env
+  - Experiments (use with caution):
+    · scrollRestoration
+
+ [32m[1m✓[22m[39m Starting...
+ [37m[1m [22m[39m Disabled SWC as replacement for Babel because of custom Babel configuration ".babelrc" https://nextjs.org/docs/messages/swc-disabled
+ [32m[1m✓[22m[39m Ready in 1935ms
+ [37m[1m [22m[39m Using external babel configuration from C:\Users\Thiago\Desktop\marketplace\MercadoGamer\apps\web\.babelrc
+ [33m[1m⚠[22m[39m It looks like there is a custom Babel configuration that can be removed:
+ [33m[1m⚠[22m[39m Next.js supports the following features natively: 
+ [33m[1m⚠[22m[39m 	- 'styled-components' can be enabled via 'compiler.styledComponents' in 'next.config.js'
+ [33m[1m⚠[22m[39m For more details configuration options, please refer https://nextjs.org/docs/architecture/nextjs-compiler#supported-features
+ [37m[1m○[22m[39m Compiling / ...
+[BABEL] Note: The code generator has deoptimised the styling of C:\Users\Thiago\Desktop\marketplace\MercadoGamer\node_modules\@mui\icons-material\esm\index.js as it exceeds the max of 500KB.
+[BABEL] Note: The code generator has deoptimised the styling of C:\Users\Thiago\Desktop\marketplace\MercadoGamer\node_modules\@mui\icons-material\esm\index.js as it exceeds the max of 500KB.
+[?25h

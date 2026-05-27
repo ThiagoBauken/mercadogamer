@@ -1,0 +1,119 @@
+{
+  "catalog": {
+    "title": "Catalog",
+    "subtitle": "Explore our collection of games and products",
+    "search_placeholder": "Search products, games...",
+    "no_results": "No products found",
+    "showing": "Showing {{count}} products"
+  },
+  "filters": {
+    "title": "Filters",
+    "clear_all": "Clear filters",
+    "apply": "Apply",
+    "category": "Category",
+    "price_range": "Price range",
+    "min_price": "Minimum price",
+    "max_price": "Maximum price",
+    "platform": "Platform",
+    "genre": "Genre",
+    "rating": "Rating",
+    "availability": "Availability",
+    "in_stock": "In stock",
+    "out_of_stock": "Out of stock",
+    "condition": "Condition",
+    "new": "New",
+    "used": "Used"
+  },
+  "sort": {
+    "title": "Sort by",
+    "relevance": "Relevance",
+    "price_asc": "Lowest price",
+    "price_desc": "Highest price",
+    "newest": "Newest",
+    "popular": "Most popular",
+    "best_rated": "Best rated"
+  },
+  "card": {
+    "out_of_stock": "Out of stock",
+    "discount": "{{percent}}% OFF",
+    "free_shipping": "Free shipping",
+    "add_to_cart": "Add to cart",
+    "add_button": "Add",
+    "buy_now": "Buy now",
+    "view_details": "View details",
+    "quick_view": "Quick view",
+    "compare": "Compare",
+    "wishlist": "Wishlist",
+    "share": "Share",
+    "delivery_automatic": "Automatic delivery",
+    "delivery_coordinated": "Coordinated delivery"
+  },
+  "detail": {
+    "description": "Description",
+    "specifications": "Specifications",
+    "reviews": "Reviews",
+    "questions": "Questions",
+    "seller": "Seller",
+    "quantity": "Quantity",
+    "stock": "{{count}} in stock",
+    "limited_stock": "Limited stock",
+    "price": "Price",
+    "original_price": "Original price",
+    "you_save": "You save",
+    "shipping": "Shipping",
+    "shipping_free": "Free shipping",
+    "shipping_calculated": "Calculated at checkout",
+    "delivery_time": "Delivery time",
+    "delivery_days": "{{count}} business days",
+    "add_to_cart": "Add to cart",
+    "buy_now": "Buy now",
+    "report": "Report product",
+    "share": "Share"
+  },
+  "reviews": {
+    "title": "Customer Reviews",
+    "average": "{{rating}} out of 5",
+    "total": "{{count}} review",
+    "total_plural": "{{count}} reviews",
+    "write_review": "Write a review",
+    "helpful": "Helpful",
+    "not_helpful": "Not helpful",
+    "verified_purchase": "Verified purchase",
+    "sort_by": "Sort by",
+    "most_recent": "Most recent",
+    "most_helpful": "Most helpful",
+    "highest_rating": "Highest rating",
+    "lowest_rating": "Lowest rating",
+    "no_reviews": "No reviews yet"
+  },
+  "questions": {
+    "title": "Product Questions",
+    "ask_question": "Ask a question",
+    "answer": "Answer",
+    "answered_by_seller": "Answered by seller",
+    "no_questions": "No questions yet"
+  },
+  "categories": {
+    "all": "All",
+    "games": "Games",
+    "consoles": "Consoles",
+    "accessories": "Accessories",
+    "collectibles": "Collectibles",
+    "gift_cards": "Gift cards",
+    "merchandise": "Merchandise"
+  },
+  "platforms": {
+    "pc": "PC",
+    "playstation": "PlayStation",
+    "xbox": "Xbox",
+    "nintendo": "Nintendo",
+    "mobile": "Mobile"
+  },
+  "messages": {
+    "added_to_cart": "Product added to cart!",
+    "added_to_wishlist": "Product added to wishlist!",
+    "removed_from_wishlist": "Product removed from wishlist!",
+    "error_loading": "Error loading product",
+    "out_of_stock_error": "Product out of stock"
+  }
+}

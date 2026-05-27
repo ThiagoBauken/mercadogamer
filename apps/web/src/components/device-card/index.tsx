@@ -1,5 +1,7 @@
-import { Button } from '@widgets/button';
 import Image from 'next/image';
+import dynamic from 'next/dynamic';
+
+const Button = dynamic(() => import('@widgets/button').then(mod => mod.Button), { ssr: false });
 
 type Props = {
   devices: DeviceCardModelType;
@@ -26,7 +28,6 @@ const DeviceCard: React.FC<Props> = (props) => {
             width={39}
             height={31}
             loading="lazy"
-            unoptimized={true}
             alt="device card"
           />
           <div className="title">{devices.title}</div>

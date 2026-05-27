@@ -1,0 +1,217 @@
+{
+  "inventory": {
+    "title": "Productos",
+    "publications_count": "{{count}} publicación",
+    "publications_count_plural": "{{count}} publicaciones",
+    "add_product": "Agregar producto",
+    "delete": "Eliminar",
+    "filters": "Filtros",
+    "table": {
+      "product": "PRODUCTO",
+      "status": "ESTADO",
+      "stock": "STOCK",
+      "price": "PRECIO",
+      "type": "Tipo"
+    },
+    "actions": {
+      "view_publication": "Ver publicación",
+      "edit": "Editar",
+      "delete": "Eliminar",
+      "pause": "Pausar"
+    },
+    "filters_menu": {
+      "status": "Estado",
+      "type": "Tipo",
+      "date": "Fecha",
+      "order_by": "Ordenar por"
+    },
+    "order_options": {
+      "best_seller": "Más vendidos",
+      "recent": "Más reciente",
+      "oldest": "Más antiguo",
+      "lower_price": "Menor precio",
+      "higher_price": "Mayor precio"
+    },
+    "all": "Todos",
+    "no_products": "No se encontraron productos"
+  },
+  "shopping": {
+    "title": "Compras",
+    "purchases_count": "{{count}} compra",
+    "purchases_count_plural": "{{count}} compras",
+    "cards": {
+      "purchases_made": "Compras realizadas",
+      "buyer_rating": "Calificación de comprador",
+      "buyer_rating_short": "Calif. comprador",
+      "in_process": "En proceso"
+    },
+    "table": {
+      "product": "PRODUCTO",
+      "status": "ESTADO",
+      "date": "FECHA",
+      "price": "PRECIO"
+    },
+    "actions": {
+      "detail": "Detalle",
+      "view_code": "Ver código",
+      "finish_transaction": "Finalizar transacción",
+      "had_problem": "Tuve un problema"
+    },
+    "filters_menu": {
+      "status": "Estado",
+      "type": "Tipo",
+      "date": "Fecha"
+    },
+    "status_options": {
+      "all": "Todos",
+      "finished": "Finalizado",
+      "pending": "Pendientes",
+      "paid": "Pagadas",
+      "complaint": "Reclamo",
+      "cancelled": "Cancelado"
+    },
+    "type_options": {
+      "all": "Todos",
+      "game": "Juego",
+      "gift_card": "Gift card",
+      "item": "Item",
+      "coins": "Monedas",
+      "pack": "Packs"
+    },
+    "date_options": {
+      "all": "Todas",
+      "this_month": "Este mes",
+      "last_month": "Mes pasado",
+      "this_year": "Este año"
+    },
+    "search_placeholder": "Buscar",
+    "filters": "Filtros"
+  },
+  "sales": {
+    "title": "Ventas",
+    "sales_count": "{{count}} venta",
+    "sales_count_plural": "{{count}} ventas",
+    "cards": {
+      "earnings": "Ganancias",
+      "sales_in_process": "Ventas en proceso",
+      "complaints": "Reclamos"
+    },
+    "table": {
+      "order_number": "Nº ORDEN",
+      "product": "PRODUCTO",
+      "status": "ESTADO",
+      "date": "FECHA",
+      "price": "PRECIO",
+      "profit": "GANANCIA"
+    },
+    "actions": {
+      "view_detail": "Ver detalle",
+      "download": "Descargar",
+      "cancel_sale": "Cancelar venta"
+    },
+    "filters_menu": {
+      "status": "Estado",
+      "date": "Fecha"
+    },
+    "status_options": {
+      "all": "Todos",
+      "finished": "Finalizado",
+      "in_process": "En proceso",
+      "complaint": "Reclamo",
+      "cancelled": "Cancelado"
+    },
+    "date_options": {
+      "all": "Todas",
+      "this_month": "Este mes",
+      "last_month": "Mes pasado",
+      "this_year": "Este año"
+    },
+    "load_more": "Cargar mas",
+    "search_placeholder": "Buscar",
+    "filters": "Filtros",
+    "cancel_message": "Se canceló la venta."
+  },
+  "profile": {
+    "title": "Mi perfil",
+    "upload_photo": {
+      "message": "Todavía no cargaste una foto de perfil",
+      "description": "Haz click para subir una imagen."
+    },
+    "fields": {
+      "first_name": "Nombre",
+      "last_name": "Apellido",
+      "username": "Nombre de usuario",
+      "address": "Dirección",
+      "city": "Ciudad",
+      "province": "Provincia",
+      "postal_code": "Código postal",
+      "country": "País",
+      "phone": "Teléfono",
+      "email": "E-mail"
+    },
+    "placeholders": {
+      "first_name": "Nombre",
+      "last_name": "Apellido",
+      "username": "Nombre de usuario",
+      "address": "Dirección",
+      "city": "Ciudad",
+      "province": "Seleccionar",
+      "postal_code": "Código postal",
+      "country": "Seleccionar",
+      "phone": "Teléfono",
+      "email": "E-mail"
+    },
+    "validations": {
+      "required": "Este campo es obligatorio",
+      "username_length": "El nombre de usuario tiene que tener entre 0 y 20 caracteres.",
+      "invalid_email": "Introduce una contraseña."
+    },
+    "save_button": "Guardar",
+    "save_success": "Se han guardado los cambios."
+  },
+  "support": {
+    "title": "Soporte",
+    "description": "Si necesitás ayuda, generá una consulta y te responderemos a la brevedad.",
+    "generate_ticket": "Generar ticket",
+    "your_tickets": "Tus tickets",
+    "ticket": "Ticket",
+    "topic": "Tema: {{topic}}",
+    "company_name": "Mercado Gamer",
+    "no_tickets": "No se encontraron tickets"
+  },
+  "balance": {
+    "title": "Balance",
+    "available_balance": "Balance disponible",
+    "total_earnings": "Ganancias totales",
+    "pending_withdrawals": "Retiros pendientes",
+    "withdraw": "Retirar",
+    "transaction_history": "Historial de transacciones",
+    "no_transactions": "No se encontraron transacciones"
+  },
+  "add_product": {
+    "title": "Agregar producto",
+    "edit_title": "Editar producto",
+    "basic_info": "Información básica",
+    "product_details": "Detalles del producto",
+    "pricing": "Precios",
+    "images": "Imágenes",
+    "publish": "Publicar",
+    "save_draft": "Guardar borrador",
+    "cancel": "Cancelar"
+  },
+  "order_detail": {
+    "title": "Detalle del pedido",
+    "order_number": "Pedido #{{number}}",
+    "status": "Estado",
+    "date": "Fecha",
+    "buyer": "Comprador",
+    "seller": "Vendedor",
+    "product": "Producto",
+    "price": "Precio",
+    "delivery_method": "Método de entrega",
+    "automatic": "Automático",
+    "coordinated": "Coordinado",
+    "messages": "Mensajes",
+    "send_message": "Enviar mensaje"
+  }
+}

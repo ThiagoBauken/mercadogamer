@@ -1,0 +1,81 @@
+# ============================================
+# Frontend Admin Dockerfile - PRODUÇÃO EASYPANEL
+# ============================================
+# Multi-stage build otimizado para Next.js com Nx
+
+# Stage 1: Dependencies
+FROM node:18-alpine AS deps
+
+RUN apk add --no-cache libc6-compat
+
+WORKDIR /app
+
+# Copiar arquivos de configuração do monorepo
+COPY package*.json ./
+COPY nx.json ./
+COPY tsconfig.base.json ./
+COPY babel.config.json* ./
+COPY jest.config.ts* ./
+COPY jest.preset.js* ./
+
+# Instalar dependências
+RUN npm ci --no-audit --no-optional
+
+# Stage 2: Builder
+FROM node:18-alpine AS builder
+
+RUN apk add --no-cache libc6-compat
+
+WORKDIR /app
+
+# Copiar node_modules do stage anterior
+COPY --from=deps /app/node_modules ./node_modules
+COPY --from=deps /app/package*.json ./
+
+# Copiar código fonte completo (Nx precisa do workspace inteiro)
+COPY . .
+
+# Build da aplicação admin
+ENV NODE_ENV=production
+ENV NEXT_TELEMETRY_DISABLED=1
+
+# Build com Nx
+RUN npx nx build admin --configuration=production
+
+# Stage 3: Production Runner
+FROM node:18-alpine AS runner
+
+RUN apk add --no-cache libc6-compat
+
+WORKDIR /app
+
+ENV NODE_ENV=production
+ENV NEXT_TELEMETRY_DISABLED=1
+
+# Criar usuário não-root
+RUN addgroup -g 1001 -S nodejs && \
+    adduser -S nextjs -u 1001
+
+# Copiar apenas o necessário para produção
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/package*.json ./
+COPY --from=builder /app/nx.json ./
+COPY --from=builder /app/apps/admin ./apps/admin
+COPY --from=builder /app/libs ./libs
+
+# Ajustar permissões
+RUN chown -R nextjs:nodejs /app
+
+USER nextjs
+
+EXPOSE 4300
+
+ENV PORT=4300
+ENV HOSTNAME="0.0.0.0"
+
+# Healthcheck
+HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
+  CMD node -e "require('http').get('http://localhost:4300', (r) => {if (r.statusCode !== 200) throw new Error(r.statusCode)})"
+
+# Usar Nx para servir em produção
+CMD ["npx", "nx", "serve", "admin", "--configuration=production", "--host", "0.0.0.0", "--port", "4300"]

@@ -1,6 +1,11 @@
 import { NextPage } from 'next';
+import dynamic from 'next/dynamic';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { DefaultLayout } from '@layout/default-layout';
-import { PurchaseContent } from '@page-contents/purchase';
+
+
+
+const PurchaseContent = dynamic(() => import('@page-contents/purchase').then(mod => mod.PurchaseContent), { ssr: false });
 
 const ProductDetail: NextPage = () => {
   return (
@@ -9,5 +14,14 @@ const ProductDetail: NextPage = () => {
     </DefaultLayout>
   );
 };
+
+export async function getStaticProps({ locale }: { locale?: string }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ["common"])),
+    },
+    revalidate: 60, // ISR: Revalidar a cada 60 segundos
+  };
+}
 
 export default ProductDetail;

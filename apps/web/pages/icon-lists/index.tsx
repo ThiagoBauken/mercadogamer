@@ -1,4 +1,5 @@
 import { NextPage } from 'next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { iconList } from '@utils';
 
 import { DefaultLayout } from '@layout/default-layout';
@@ -20,5 +21,14 @@ const NotFind: NextPage = () => {
     </DefaultLayout>
   );
 };
+
+export async function getStaticProps({ locale }: { locale?: string }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ["common"])),
+    },
+    revalidate: 60, // ISR: Revalidar a cada 60 segundos
+  };
+}
 
 export default NotFind;

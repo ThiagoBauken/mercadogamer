@@ -1,10 +1,12 @@
 import { NextPage } from 'next';
+import dynamic from 'next/dynamic';
 import { DefaultLayout } from '@layout/default-layout';
-import { RuletaContent } from '@page-contents/gift';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 
-const RuletaPage: NextPage = () => {
+const RuletaContent = dynamic(() => import('@page-contents/gift').then(mod => mod.RuletaContent), { ssr: false });
+
+const RegalosPage: NextPage = () => {
   const router = useRouter();
 
   return (
@@ -40,4 +42,4 @@ export async function getServerSideProps(): Promise<{
   };
 }
 
-export default RuletaPage;
+export default RegalosPage;

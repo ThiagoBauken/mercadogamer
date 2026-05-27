@@ -1,12 +1,22 @@
 import { useEffect, useState } from 'react';
+import dynamic from 'next/dynamic';
 import { getFileFullUrl, madeBackgroundImageUrl, setting } from '@utils';
 import { useTypedSelector } from '@store';
 import { useSocket } from '@web/hooks/use-socket';
-import { Modal } from '@widgets/modal';
-import { Rating } from '@widgets/rating';
-import { Textarea } from '@widgets/textarea';
-import { Button } from '@widgets/button';
+
+
+
+
 import router from 'next/router';
+
+
+const Modal = dynamic(() => import('@widgets/modal').then(mod => mod.Modal), { ssr: false });
+
+const Rating = dynamic(() => import('@widgets/rating').then(mod => mod.Rating), { ssr: false });
+
+const Textarea = dynamic(() => import('@widgets/textarea').then(mod => mod.Textarea), { ssr: false });
+
+const Button = dynamic(() => import('@widgets/button').then(mod => mod.Button), { ssr: false });
 
 type Props = {
   open: boolean;

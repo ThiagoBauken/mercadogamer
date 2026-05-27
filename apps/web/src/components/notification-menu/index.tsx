@@ -1,13 +1,20 @@
+import { useTranslation } from 'next-i18next';
 import { getNotifications } from '@actions/notification';
 import { openLoginModal, useAppDispatch, useTypedSelector } from '@store';
 import { endpoints, madeBackgroundImageUrl, put } from '@utils';
 import { NotificationInformation } from '@utils/notification';
-import { Icon } from '@widgets/icon';
-import { Menu } from '@widgets/menu';
+
+
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+import dynamic from 'next/dynamic';
 
-export const NotificationMenu: React.FC = () => {
+const Icon = dynamic(() => import('@widgets/icon').then(mod => mod.Icon), { ssr: false });
+
+const Menu = dynamic(() => import('@widgets/menu').then(mod => mod.Menu), { ssr: false });
+
+const NotificationMenu: React.FC = () => {
+  const { t } = useTranslation('common');
   const dispatch = useAppDispatch();
   const router = useRouter();
   const [openNotification, setNotification] = useState<boolean>(false);
@@ -80,7 +87,7 @@ export const NotificationMenu: React.FC = () => {
         <div className="header">
           <div className="left-direction" onClick={() => setNotification(false)}>
             <Icon name="left-direction"></Icon>
-            <div>Notificaciones</div>
+            <div>{t('nav.notifications')}</div>
           </div>
         </div>
         <ul className="content">
@@ -110,14 +117,14 @@ export const NotificationMenu: React.FC = () => {
                   backgroundImage: madeBackgroundImageUrl('/assets/imgs/no-notification.webp'),
                 }}
               ></div>
-              <div className="message">Por ahora no hay notificaciones.</div>
+              <div className="message">{t('notifications.no_notifications')}</div>
             </li>
           )}
         </ul>
         {!!notifications.filter((notification) => notification.new).length && (
           <div className="view">
             <div className="content" onClick={() => allViewNotification()}>
-              Marcar todas como leídas
+              {t('notifications.mark_all_read')}
             </div>
           </div>
         )}
@@ -125,3 +132,5 @@ export const NotificationMenu: React.FC = () => {
     </Menu>
   );
 };
+
+export { NotificationMenu };

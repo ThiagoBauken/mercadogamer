@@ -5,8 +5,10 @@ import { Provider } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
 // import "antd/dist/antd.css";
 import { store } from '@store';
-import SocketContextProvider from '@web/hooks/use-socket';
 import ThemeProvider from '@layout/storybook-theme-provider';
+import { appWithTranslation } from 'next-i18next';
+import ErrorBoundary from '../src/components/common/ErrorBoundary';
+import SocketContextProvider from '@web/hooks/use-socket';
 
 import 'react-toastify/dist/ReactToastify.css';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
@@ -14,6 +16,7 @@ import 'react-multi-carousel/lib/styles.css';
 import '../styles/index.scss';
 import Script from 'next/script';
 import { useRouter } from 'next/router';
+import dynamic from 'next/dynamic';
 
 export const MercadoGamer: React.FC<AppProps> = ({ Component, pageProps }) => {
   const router = useRouter();
@@ -40,6 +43,12 @@ export const MercadoGamer: React.FC<AppProps> = ({ Component, pageProps }) => {
       />
     )
   }
+
+  // Extract conditional logic for cleaner JSX
+  const pageTitle = router.asPath === '/' || router.route === '/regalos' ? pageProps.title : 'Mercado Gamer';
+  const ogImage = router.route === '/regalos' || router.route === '/rb/[id]'
+    ? "/assets/imgs/og-meta-tag/Regalos.png"
+    : "/assets/imgs/og-meta-tag/MG-Logo.png";
 
   return (
     <React.Fragment>
@@ -125,15 +134,12 @@ export const MercadoGamer: React.FC<AppProps> = ({ Component, pageProps }) => {
         }}
       ></Script>
       <Head>
-        <title>
-          {router.asPath === '/' || router.route === '/regalos' ? pageProps.title : 'Mercado Gamer'}
-        </title>
+        <title>{pageTitle}</title>
         <meta
           name="viewport"
           content="target-densityDpi=device-dpi, width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"
         />
         <meta name="description" content={pageProps.description} />
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta property="og:type" content="website" />
         <meta
@@ -141,27 +147,19 @@ export const MercadoGamer: React.FC<AppProps> = ({ Component, pageProps }) => {
           key="og:url"
           content={`https://www.mercadogamer.com${router.asPath}`}
         />
-
-        {router.route === '/regalos' || router.route === '/rb/[id]' ? (
-          <meta
-            name="og:image"
-            property="og:image"
-            content="/assets/imgs/og-meta-tag/Regalos.png"
-          />
-        ) : (
-          <meta
-            name="og:image"
-            property="og:image"
-            content="/assets/imgs/og-meta-tag/MG-Logo.png"
-          />
-        )}
-
+        <meta
+          name="og:image"
+          property="og:image"
+          content={ogImage}
+        />
       </Head>
       <Provider store={store}>
         <ThemeProvider>
           <SocketContextProvider>
-            <ToastContainer></ToastContainer>
-            <Component {...pageProps} />
+            <ErrorBoundary>
+              <ToastContainer></ToastContainer>
+              <Component {...pageProps} />
+            </ErrorBoundary>
           </SocketContextProvider>
         </ThemeProvider>
       </Provider>
@@ -169,4 +167,4 @@ export const MercadoGamer: React.FC<AppProps> = ({ Component, pageProps }) => {
   );
 };
 
-export default MercadoGamer;
+export default appWithTranslation(MercadoGamer);

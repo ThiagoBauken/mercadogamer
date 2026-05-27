@@ -11,7 +11,7 @@ export const onReceivedNotification =
         payload: notification,
       });
     } catch (error) {
-      console.log(error);
+      console.error('Error receiving notification:', error);
     }
   };
 
@@ -29,6 +29,6 @@ export const getNotifications =
         dispatch({ type: NOTIFICATION.SET_NOTIFICATION_LIST, payload: result.data });
       }
     } catch (error) {
-      console.log(error);
+      console.error('Error loading notifications:', error);
     }
   };

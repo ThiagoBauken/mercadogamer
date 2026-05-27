@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
 import {
   getCarts,
   logout,
@@ -10,19 +12,25 @@ import {
   useTypedSelector,
 } from '@store';
 import { getFileFullUrl, setting, toCurrency } from '@utils';
-import { MobileNavigation } from '../mobile-nav';
-import { Icon } from '@widgets/icon';
-import { Search } from '@widgets/search';
-import { Menu } from '@widgets/menu';
-import { Button } from '@widgets/button';
 import { useSocket } from '@web/hooks/use-socket';
 import { CART } from '@action-types';
 import { onReceivedNotification } from '@actions/notification';
-import { NotificationMenu } from '@components/notification-menu';
-import { CartMenu } from '@components/cart-menu';
 import Image from 'next/image';
 
-export const Header: React.FC = () => {
+const MobileNavigation = dynamic(() => import('../mobile-nav').then(mod => mod.MobileNavigation), { ssr: false });
+const NotificationMenu = dynamic(() => import('@components/notification-menu').then(mod => mod.NotificationMenu), { ssr: false });
+const CartMenu = dynamic(() => import('@components/cart-menu').then(mod => mod.CartMenu), { ssr: false });
+
+const Icon = dynamic(() => import('@widgets/icon').then(mod => mod.Icon), { ssr: false });
+
+const Search = dynamic(() => import('@widgets/search').then(mod => mod.Search), { ssr: false });
+
+const Menu = dynamic(() => import('@widgets/menu').then(mod => mod.Menu), { ssr: false });
+
+const Button = dynamic(() => import('@widgets/button').then(mod => mod.Button), { ssr: false });
+
+const Header: React.FC = () => {
+  const { t } = useTranslation('common');
   const dispatch = useAppDispatch();
   const { socket } = useSocket();
   const {
@@ -35,33 +43,28 @@ export const Header: React.FC = () => {
 
   const [search, setSearch] = useState<boolean>(false);
   const [searchValue, setSearchValue] = useState<string>('');
-  const [localUser, setLocalUser] = useState();
 
   const router = useRouter();
 
   const navItems: NavItem[] = [
     {
-      label: 'Catálogo',
+      label: t('nav.catalog'),
       url: '/catalogo',
       icon: 'shopping-bag',
       role: 'default',
     },
     {
-      label: 'Regalos',
+      label: t('nav.gifts'),
       url: '/regalos',
       icon: 'gift',
       role: 'default',
     },
     {
-      label: 'Vender',
+      label: t('nav.sell'),
       url: user?.hasFirstVisitVendor ? '/dashboard/inventory/add' : '/vendedores',
       icon: 'dollar-circle',
       role: 'default',
     },
-    // {
-    //   label: 'Novedades',
-    //   url: '/news',
-    // },
   ];
 
   const goPage = (item: NavItem) => (): void => {
@@ -103,10 +106,10 @@ export const Header: React.FC = () => {
     return classes.join(' ');
   };
 
-  const onSearch = (event) => {
+  const onSearch = (event: React.KeyboardEvent<HTMLInputElement>): void => {
     const { key } = event;
     if (key === 'Enter') {
-      const { value } = event.target;
+      const { value } = event.currentTarget;
       const params = new URLSearchParams(window.location.search);
 
       if (value) {
@@ -142,7 +145,7 @@ export const Header: React.FC = () => {
       <MobileNavigation collapse={collapse} onChangeStatus={setCollapse} />
 
       <div className={`search-container${search ? ' active' : ''}`}>
-        <Search placeholder="Buscar en Mercado Gamer" value={searchValue} onKeyup={onSearch} />
+        <Search placeholder={t('header.search_placeholder')} value={searchValue} onKeyup={onSearch} />
         <div className="action" onClick={() => setSearch(false)}>
           <Icon name="close" />
         </div>
@@ -213,7 +216,7 @@ export const Header: React.FC = () => {
                 label: (
                   <div className="icon">
                     <Icon name="account-shopping" size={24} />
-                    Compras
+                    {t('header.purchases')}
                   </div>
                 ),
                 action: () => router.push('/dashboard/order'),
@@ -222,7 +225,7 @@ export const Header: React.FC = () => {
                 label: (
                   <div className="icon">
                     <Icon name="nav-tag" size={24} />
-                    Ventas
+                    {t('header.sales')}
                   </div>
                 ),
                 action: () => router.push('/dashboard/sale'),
@@ -231,7 +234,7 @@ export const Header: React.FC = () => {
                 label: (
                   <div className="icon">
                     <Icon name="user" size={24} />
-                    Mi perfil
+                    {t('header.my_profile')}
                   </div>
                 ),
                 action: () => router.push('/dashboard/profile'),
@@ -241,7 +244,7 @@ export const Header: React.FC = () => {
                 label: (
                   <div className="icon">
                     <Icon name="logout" size={24} />
-                    Cerrar sesión
+                    {t('header.logout')}
                   </div>
                 ),
                 action: () => dispatch(logout()),
@@ -250,10 +253,12 @@ export const Header: React.FC = () => {
           ></Menu>
         ) : (
           <div className="login">
-            <Button onClick={() => dispatch(openLoginModal(''))}>Ingresar</Button>
+            <Button onClick={() => dispatch(openLoginModal(''))}>{t('header.login')}</Button>
           </div>
         )}
       </div>
     </header>
   );
 };
+
+export { Header };

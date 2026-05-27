@@ -8,6 +8,10 @@ import { LoginPage } from '@components/login';
 import { SignupPage } from '@components/signup';
 import { ResetPassword } from '@components/reset-password';
 
+interface ChildrenProps {
+  children: React.ReactNode;
+}
+
 type Props = {
   full?: boolean;
   authorise?: boolean;
@@ -19,6 +23,9 @@ export const DefaultLayout: React.FC<Props> = (props) => {
   const { user, modal } = useTypedSelector((state) => state.auth);
 
   useEffect(() => {
+    // Check authorization only on client-side to avoid SSR issues
+    if (typeof window === 'undefined') return;
+
     if (
       props.authorise &&
       !user?.id &&
@@ -28,7 +35,7 @@ export const DefaultLayout: React.FC<Props> = (props) => {
       dispatch(openLoginModal(router.asPath));
       router.push('/');
     }
-  }, [props.authorise, user]);
+  }, [props.authorise, user, router, dispatch]);
   // default content className setting
   const classNames = useMemo(() => {
     const classes = ['content'];
@@ -40,7 +47,7 @@ export const DefaultLayout: React.FC<Props> = (props) => {
     if (!user) {
       dispatch(initUser());
     }
-  }, [user]);
+  }, [user, dispatch]);
 
   return props.authorise && !user?.username ? null : (
     <div className="mercado-default-layout">
