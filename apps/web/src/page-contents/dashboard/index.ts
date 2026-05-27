@@ -3,6 +3,7 @@ export * from './add-product';
 export * from './balance';
 export * from './edit-product';
 export * from './inventory';
+export * from './kyc';
 export * from './order-detail';
 export * from './profile';
 export * from './qas';

@@ -1,0 +1,46 @@
+{
+  "title": "Identity Verification (KYC)",
+  "subtitle": "Verify your registration to sell and withdraw funds",
+  "progress": "{{current}} of {{total}} verified",
+  "level0Banner": "Complete all 3 steps to unlock sales and withdrawals",
+  "level1Banner": "Account verified — you can now sell and withdraw",
+  "step1": {
+    "title": "1. Email",
+    "label": "Let's confirm your registered email",
+    "send": "Send verification email",
+    "tokenLabel": "Paste the token received by email",
+    "confirm": "Confirm email",
+    "verified": "Email verified",
+    "devMode": "DEV MODE — captured token: "
+  },
+  "step2": {
+    "title": "2. Phone",
+    "label": "Confirm your phone number via SMS",
+    "send": "Send SMS code",
+    "codeLabel": "6-digit code",
+    "confirm": "Confirm code",
+    "verified": "Phone verified",
+    "blocked": "Complete the previous step first",
+    "devMode": "DEV MODE — code: "
+  },
+  "step3": {
+    "title": "3. CPF",
+    "label": "We validate your CPF with the Federal Revenue",
+    "cpfLabel": "CPF",
+    "fullNameLabel": "Full name (as on the document)",
+    "birthDateLabel": "Date of birth",
+    "submit": "Verify CPF",
+    "verified": "CPF verified",
+    "blocked": "Complete the previous step first"
+  },
+  "errors": {
+    "generic": "Something went wrong. Please try again.",
+    "loadStatus": "We could not load your KYC status"
+  },
+  "success": {
+    "email": "Email successfully verified",
+    "phone": "Phone verified",
+    "cpf": "CPF verified",
+    "complete": "Verification complete — welcome to MercadoGamer"
+  }
+}

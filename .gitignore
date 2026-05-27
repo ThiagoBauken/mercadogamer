@@ -54,3 +54,8 @@ package.json.bak
 
 # Next.js
 .next
+
+# Nx caches
+.nx/cache
+.nx/workspace-data
+**/tsconfig.tsbuildinfo

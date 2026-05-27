@@ -34,6 +34,7 @@ export const getNavigations = (t: TFunction): { [key: string]: NavItem[] } => {
     ],
     [t('nav.settings_section')]: [
       { label: t('nav.my_profile'), icon: 'user', url: '/dashboard/profile' },
+      { label: t('nav.kyc'), icon: 'shield-check', url: '/dashboard/kyc' },
       { label: t('nav.support'), icon: 'message-sequare', url: '/dashboard/support' },
       // { label: t('nav.security'), icon: 'shield-check', url: '/security' },
       // { label: t('nav.notifications'), icon: 'bell', url: '/notification' },

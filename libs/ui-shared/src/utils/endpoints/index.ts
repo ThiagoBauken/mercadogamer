@@ -52,3 +52,10 @@ export const resetPassword = (username: string) =>
 
 export const changePasswordUrl = `${serverUrl}/users/changePassword`;
 
+// KYC nível 1 (Lei 14.790/2023 + LGPD)
+export const kycStatusUrl = `${serverUrl}/kyc/status`;
+export const kycSendEmailUrl = `${serverUrl}/kyc/send-email-verification`;
+export const kycVerifyEmailUrl = `${serverUrl}/kyc/verify-email`;
+export const kycSendPhoneUrl = `${serverUrl}/kyc/send-phone-verification`;
+export const kycVerifyPhoneUrl = `${serverUrl}/kyc/verify-phone`;
+export const kycSubmitCpfUrl = `${serverUrl}/kyc/submit-cpf`;

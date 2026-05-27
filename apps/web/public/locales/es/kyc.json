@@ -1,0 +1,46 @@
+{
+  "title": "Verificación de identidad (KYC)",
+  "subtitle": "Verifica tu registro para vender y retirar fondos",
+  "progress": "{{current}} de {{total}} verificados",
+  "level0Banner": "Completa los 3 pasos para habilitar ventas y retiros",
+  "level1Banner": "Cuenta verificada — ya puedes vender y retirar",
+  "step1": {
+    "title": "1. Email",
+    "label": "Vamos a confirmar tu email registrado",
+    "send": "Enviar email de verificación",
+    "tokenLabel": "Pega aquí el token recibido por email",
+    "confirm": "Confirmar email",
+    "verified": "Email verificado",
+    "devMode": "MODO DEV — token capturado: "
+  },
+  "step2": {
+    "title": "2. Teléfono",
+    "label": "Confirma tu teléfono vía SMS",
+    "send": "Enviar código SMS",
+    "codeLabel": "Código de 6 dígitos",
+    "confirm": "Confirmar código",
+    "verified": "Teléfono verificado",
+    "blocked": "Completa el paso anterior primero",
+    "devMode": "MODO DEV — código: "
+  },
+  "step3": {
+    "title": "3. CPF",
+    "label": "Validamos tu CPF con la Receita Federal",
+    "cpfLabel": "CPF",
+    "fullNameLabel": "Nombre completo (como en el documento)",
+    "birthDateLabel": "Fecha de nacimiento",
+    "submit": "Verificar CPF",
+    "verified": "CPF verificado",
+    "blocked": "Completa el paso anterior primero"
+  },
+  "errors": {
+    "generic": "Algo salió mal. Inténtalo de nuevo.",
+    "loadStatus": "No pudimos cargar tu estado KYC"
+  },
+  "success": {
+    "email": "Email verificado con éxito",
+    "phone": "Teléfono verificado",
+    "cpf": "CPF verificado",
+    "complete": "Verificación completa — bienvenido a MercadoGamer"
+  }
+}
