@@ -1,4 +1,4 @@
-import path from 'path';
+const path = require('path');
 
 const settings = {
   token: {
@@ -43,6 +43,31 @@ const settings = {
     success_back_url: 'https://www.mercadogamer.com/purchase',
     url: 'https://api.mercadopago.com/v1',
     urlIpn: 'https://www.mercadogamer.com/api/mp/ipnv2',
+  },
+  stripe: {
+    env: 'test', // test or live
+    test: {
+      secretKey: process.env.STRIPE_TEST_SECRET_KEY || 'sk_test_YOUR_TEST_KEY',
+      publishableKey: process.env.STRIPE_TEST_PUBLISHABLE_KEY || 'pk_test_YOUR_TEST_KEY',
+    },
+    live: {
+      secretKey: process.env.STRIPE_LIVE_SECRET_KEY || '',
+      publishableKey: process.env.STRIPE_LIVE_PUBLISHABLE_KEY || '',
+    },
+    webhookSecret: process.env.STRIPE_WEBHOOK_SECRET || '',
+    successUrl: 'https://www.mercadogamer.com/purchase/success',
+    cancelUrl: 'https://www.mercadogamer.com/purchase/cancel',
+  },
+  nowpayments: {
+    env: 'sandbox', // sandbox or production
+    sandbox: {
+      apiKey: process.env.NOWPAYMENTS_SANDBOX_API_KEY || '',
+    },
+    production: {
+      apiKey: process.env.NOWPAYMENTS_API_KEY || '',
+    },
+    ipnSecret: process.env.NOWPAYMENTS_IPN_SECRET || '',
+    ipnCallbackUrl: 'https://www.mercadogamer.com/api/nowpayments/ipn',
   },
   invoiceIsProduction: true,
   businessRules: {},

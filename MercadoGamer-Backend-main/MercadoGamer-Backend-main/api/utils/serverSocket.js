@@ -1,4 +1,4 @@
-const io = require('socket.io-client');
+const { io } = require('socket.io-client');
 
 // Usar variável de ambiente ou fallback para localhost
 const SOCKET_URL = process.env.SOCKET_SERVER_URL || 'http://localhost:3000';

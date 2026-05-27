@@ -136,7 +136,7 @@ async function resizeProducts(object) {
   await resizeObjProperty(object);
 }
 
-export async function imgTransform() {
+async function imgTransform() {
   const arr = [
     ['countries', resizeCountries, global.modules.countries.model],
     ['products', resizeProducts, global.modules.products.model],
@@ -153,3 +153,5 @@ export async function imgTransform() {
 
   console.log('End of image transformation');
 }
+
+module.exports = { imgTransform };

@@ -20,7 +20,7 @@ module.exports = (helper) => {
         model.findById(req.params.id)
           .then(data => {
             if (data) {
-              data.remove()
+              data.deleteOne()
               .then( (d) => {
                 resolve({data});
               })

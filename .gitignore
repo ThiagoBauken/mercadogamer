@@ -8,6 +8,15 @@
 .env.*.local
 .env.production
 .env.development
+.env.test
+.env.staging
+# Permitir os exemplos
+!.env.example
+!.env.*.example
+
+# Windows junk
+nul
+**/nul
 
 # Node modules
 node_modules/

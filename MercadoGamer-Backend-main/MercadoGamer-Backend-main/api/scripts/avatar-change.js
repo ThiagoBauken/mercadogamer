@@ -1,4 +1,4 @@
-export const changeRandomAvatars = async () => {
+const changeRandomAvatars = async () => {
   const userModal = global.modules.users.model;
   const users = await userModal.find({ roles: 'user' });
 
@@ -29,3 +29,5 @@ export const changeRandomAvatars = async () => {
     }
   }
 };
+
+module.exports = { changeRandomAvatars };

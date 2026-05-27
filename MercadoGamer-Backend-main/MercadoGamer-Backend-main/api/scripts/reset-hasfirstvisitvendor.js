@@ -1,4 +1,4 @@
-export const resetUserhasVisitPage = async () => {
+const resetUserhasVisitPage = async () => {
   const userModal = global.modules.users.model;
   const users = await userModal.find({ roles: 'user' });
 
@@ -15,3 +15,5 @@ export const resetUserhasVisitPage = async () => {
     }
   }
 };
+
+module.exports = { resetUserhasVisitPage };

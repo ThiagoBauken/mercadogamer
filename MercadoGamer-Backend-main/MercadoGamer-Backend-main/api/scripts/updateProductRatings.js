@@ -1,6 +1,6 @@
-import { getProductPriority, getSellerPoints } from '../utils/productRating';
+const { getProductPriority, getSellerPoints } = require('../utils/productRating');
 
-export async function updateProductsRatings() {
+async function updateProductsRatings() {
   console.log('Updating products rating');
   const users = await global.modules.users.model.find({});
 
@@ -24,3 +24,5 @@ export async function updateProductsRatings() {
   await Promise.allSettled(promises);
   console.log('Products rating updated');
 }
+
+module.exports = { updateProductsRatings };

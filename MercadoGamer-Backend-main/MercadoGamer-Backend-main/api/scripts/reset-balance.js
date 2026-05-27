@@ -1,4 +1,4 @@
-export const resetUserBalance = async () => {
+const resetUserBalance = async () => {
   const userModal = global.modules.users.model;
   const orderModal = global.modules.orders.model;
   const withdrawalModal = global.modules.withdrawals.model;
@@ -56,3 +56,5 @@ export const resetUserBalance = async () => {
     }
   }
 };
+
+module.exports = { resetUserBalance };

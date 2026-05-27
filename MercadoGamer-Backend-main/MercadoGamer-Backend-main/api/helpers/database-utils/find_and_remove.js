@@ -15,7 +15,7 @@ module.exports = (helper) => {
         model.find(query).then((data) => {
           if (data)
             data.forEach((el) => {
-              el.remove();
+              el.deleteOne();
             });
           resolve(data);
         });

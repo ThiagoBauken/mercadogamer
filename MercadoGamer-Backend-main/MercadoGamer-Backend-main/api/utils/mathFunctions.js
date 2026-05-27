@@ -1,6 +1,6 @@
 'use strict';
 
-export default {
+module.exports = {
   /**
 * getAvg:
 * Average with one decimal, returns 0 if NaN or similar

@@ -5,7 +5,7 @@
  * @param {MongooseSchema} model - modelo a borrar
  * @param {Object} condition - condicion de mongoose find(condition)
  */
-export const findManyAndPreRemove = (model, condition = {}) => {
+const findManyAndPreRemove = (model, condition = {}) => {
   model
     .find(condition)
     .then((data) => {
@@ -19,3 +19,5 @@ export const findManyAndPreRemove = (model, condition = {}) => {
       debug('err on findManyAndPreRemove', err);
     });
 };
+
+module.exports = { findManyAndPreRemove };

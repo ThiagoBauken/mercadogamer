@@ -1,4 +1,4 @@
-export const resetOrderStatus = async () => {
+const resetOrderStatus = async () => {
   const orderModal = global.modules.orders.model;
 
   const orders = await orderModal.find();
@@ -16,3 +16,5 @@ export const resetOrderStatus = async () => {
     }
   }
 };
+
+module.exports = { resetOrderStatus };

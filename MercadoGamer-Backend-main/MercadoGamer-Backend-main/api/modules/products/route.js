@@ -557,7 +557,7 @@ module.exports = async (module) => {
         .catch(next);
       if (currentMessages) {
         await global.modules.rejectmessages.model
-          .remove({ product: req.params.id })
+          .deleteMany({ product: req.params.id })
           .catch(next);
       }
       const receiveMessage = req.body;

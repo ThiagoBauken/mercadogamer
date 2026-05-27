@@ -1,0 +1,70 @@
+# ============================================
+# Backend API Dockerfile - PRODUÇÃO EASYPANEL
+# ============================================
+# Multi-stage build otimizado para produção
+
+# Stage 1: Builder
+FROM node:18-alpine AS builder
+
+# Instalar dependências de compilação
+RUN apk add --no-cache \
+    python3 \
+    make \
+    g++ \
+    vips-dev \
+    fftw-dev \
+    build-base \
+    libc6-compat
+
+WORKDIR /app
+
+# Copiar package files
+COPY package*.json ./
+
+# Instalar TODAS as dependências (incluindo devDependencies para build)
+RUN npm ci --no-audit --no-optional
+
+# Copiar código fonte
+COPY . .
+
+# Stage 2: Production
+FROM node:18-alpine AS production
+
+# Instalar apenas dependências de runtime
+RUN apk add --no-cache \
+    vips-dev \
+    fftw-dev \
+    libc6-compat
+
+WORKDIR /app
+
+# Copiar package files
+COPY package*.json ./
+
+# Instalar apenas dependências de produção
+RUN npm ci --only=production --no-audit --no-optional && \
+    npm cache clean --force
+
+# Copiar código do builder
+COPY --from=builder /app .
+
+# Criar diretórios necessários
+RUN mkdir -p /app/files /app/uploads && \
+    chmod -R 755 /app/files /app/uploads
+
+# Usar usuário não-root para segurança
+RUN addgroup -g 1001 -S nodejs && \
+    adduser -S nodejs -u 1001 && \
+    chown -R nodejs:nodejs /app
+
+USER nodejs
+
+# Expor porta
+EXPOSE 3000
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
+  CMD node -e "require('http').get('http://localhost:3000/api/health', (r) => {if (r.statusCode !== 200) throw new Error(r.statusCode)})"
+
+# Comando de produção
+CMD ["npm", "run", "start"]

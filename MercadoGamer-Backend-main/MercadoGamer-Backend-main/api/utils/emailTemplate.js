@@ -1,4 +1,4 @@
-export const twoFactorHtml = (key) => `
+module.exports.twoFactorHtml = (key) => `
 <!DOCTYPE html>
 <html lang="en">
 
@@ -67,7 +67,7 @@ export const twoFactorHtml = (key) => `
 
 </html>`;
 
-export const notificationEmailTemplate = (title, content, router, action) => {
+module.exports.notificationEmailTemplate = (title, content, router, action) => {
   const frontendUrl = process.env.FRONTEND_URL || process.env.BASE_URL || 'https://www.mercadogamer.com';
   return `
 <!DOCTYPE html>
@@ -154,7 +154,7 @@ export const notificationEmailTemplate = (title, content, router, action) => {
 </html>`;
 };
 
-export const recoveryPasswordEmailTemplate = (text) => `
+module.exports.recoveryPasswordEmailTemplate = (text) => `
 <!DOCTYPE html>
 <html lang="en">
 

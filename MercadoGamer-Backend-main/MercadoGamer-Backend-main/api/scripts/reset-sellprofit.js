@@ -4,7 +4,7 @@ const publicationType = {
   free: { iva: 0, commission: 0 },
 };
 
-export const resetSellerProfitProduct = async () => {
+const resetSellerProfitProduct = async () => {
   try {
     const productsModel = global.modules.products.model;
     const products = await productsModel.find();
@@ -32,7 +32,7 @@ export const resetSellerProfitProduct = async () => {
   }
 };
 
-export const resetSellerProfitOrder = async () => {
+const resetSellerProfitOrder = async () => {
   try {
     const orderModel = global.modules.orders.model;
     const orders = await orderModel.find().populate('product');
@@ -60,7 +60,9 @@ export const resetSellerProfitOrder = async () => {
   }
 };
 
-export const resetSellerProfit = async () => {
+const resetSellerProfit = async () => {
   await resetSellerProfitProduct();
   await resetSellerProfitOrder();
 };
+
+module.exports = { resetSellerProfitProduct, resetSellerProfitOrder, resetSellerProfit };

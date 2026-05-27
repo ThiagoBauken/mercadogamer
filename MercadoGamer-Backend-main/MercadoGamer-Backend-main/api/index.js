@@ -1,16 +1,16 @@
-import mongoose from 'mongoose';
-import Debug from 'debug';
-import settings from './config/settings';
-import { app, server, io } from './app';
-// import { updateProductsRatings } from './scripts/updateProductRatings';
-// import { imgTransform } from './scripts/img-transform';
-// import { resetSellerProfit } from './scripts/reset-sellprofit';
-// import { resetUserBalance } from './scripts/reset-balance';
-// import { resetUserSMS } from './scripts/reset-usersms';
-// import { resetOrderStatus } from './scripts/reset-orderstatus';
-// import { resetProductType } from './scripts/product-type';
-// import { changeRandomAvatars } from './scripts/avatar-change';
-// import { resetUserhasVisitPage } from './scripts/reset-hasfirstvisitvendor';
+const mongoose = require('mongoose');
+const Debug = require('debug');
+const settings = require('./config/settings');
+const { app, server, io } = require('./app');
+// const { updateProductsRatings } = require('./scripts/updateProductRatings');
+// const { imgTransform } = require('./scripts/img-transform');
+// const { resetSellerProfit } = require('./scripts/reset-sellprofit');
+// const { resetUserBalance } = require('./scripts/reset-balance');
+// const { resetUserSMS } = require('./scripts/reset-usersms');
+// const { resetOrderStatus } = require('./scripts/reset-orderstatus');
+// const { resetProductType } = require('./scripts/product-type');
+// const { changeRandomAvatars } = require('./scripts/avatar-change');
+// const { resetUserhasVisitPage } = require('./scripts/reset-hasfirstvisitvendor');
 const http = require('http');
 
 const debug = new Debug('api/index.js');
@@ -33,10 +33,7 @@ async function start() {
       console.log(`📡 Connecting to MongoDB without authentication: ${settings.database.host}`);
     }
 
-    await mongoose.connect(
-      mongoUri,
-      { useCreateIndex: true, useUnifiedTopology: true, useNewUrlParser: true }
-    );
+    await mongoose.connect(mongoUri);
 
     console.log('✅ MongoDB connected successfully!');
   } catch (e) {

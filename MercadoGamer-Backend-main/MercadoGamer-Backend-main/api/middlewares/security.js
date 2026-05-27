@@ -39,13 +39,13 @@ const rateLimiters = {
   // Geral - todas as rotas
   general: createRateLimiter({
     windowMs: 15 * 60 * 1000, // 15 min
-    max: 100, // 100 requests
+    max: 500, // 500 requests (aumentado para SPAs)
   }),
 
   // Auth - login/register (mais restritivo)
   auth: createRateLimiter({
     windowMs: 15 * 60 * 1000, // 15 min
-    max: 5, // 5 tentativas
+    max: 10, // 10 tentativas (aumentado)
     message: {
       success: false,
       message: 'Muitas tentativas de login. Tente novamente em 15 minutos.',
@@ -69,14 +69,8 @@ const rateLimiters = {
  * Helmet - Headers de segurança
  */
 const helmetConfig = helmet({
-  contentSecurityPolicy: {
-    directives: {
-      defaultSrc: ["'self'"],
-      styleSrc: ["'self'", "'unsafe-inline'"],
-      scriptSrc: ["'self'"],
-      imgSrc: ["'self'", 'data:', 'https:'],
-    },
-  },
+  // CSP desabilitado para evitar bloqueio de recursos externos
+  contentSecurityPolicy: false,
   hsts: {
     maxAge: 31536000, // 1 ano
     includeSubDomains: true,
@@ -99,10 +93,13 @@ const corsConfig = () => {
     ? process.env.ALLOWED_ORIGINS.split(',')
     : [
         'http://localhost:3001', // Frontend Web (dev)
+        'http://localhost:4201', // Frontend Web (dev - NX)
         'http://localhost:4300', // Frontend Admin (dev)
         'https://mercadogamer.com', // Produção
         'https://admin.mercadogamer.com', // Admin produção
       ];
+
+  console.log('📋 CORS Whitelist:', whitelist);
 
   return cors({
     origin: (origin, callback) => {

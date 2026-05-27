@@ -1,14 +1,15 @@
-import express from 'express';
-import path from 'path';
-import cookieParser from 'cookie-parser';
-import bodyParser from 'body-parser';
-import routes from './routes';
-import multipart from 'connect-multiparty';
-import moment from 'moment';
-import mongoose from 'mongoose';
+// Dotenv já foi carregado em preload-env.js (chamado no index.js)
+
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const routes = require('./routes');
+const multipart = require('connect-multiparty');
+const moment = require('moment');
+const mongoose = require('mongoose');
 
 // get the reference of EventEmitter class of events module
-require('dotenv').config();
 
 // Log environment info
 console.log('🔧 Starting MercadoGamer Backend...');
@@ -18,12 +19,15 @@ console.log('📂 Working directory:', process.cwd());
 
 var events = require('events');
 
+// Import security middlewares
+const security = require('./middlewares/security');
+
 //create an object of EventEmitter class by using above reference
 const em = new events.EventEmitter();
 const cors = require('cors');
 
-import settings from './config/settings';
-import { getProductPriority, getSellerPoints } from './utils/productRating';
+const settings = require('./config/settings');
+const { getProductPriority, getSellerPoints } = require('./utils/productRating');
 
 const ServerUtil = require('./utils/serverSocket');
 
@@ -109,7 +113,7 @@ lib.dbError = (code, message) => {
 lib.jsonwebtoken = require('jsonwebtoken');
 
 // Define lib crypto
-lib.bcrypt = require('bcrypt');
+lib.bcrypt = require('bcryptjs');
 
 // Define lib crypto
 lib.crypto = require('crypto');
@@ -192,52 +196,35 @@ app.use(function (req, res, next) {
 // cache control error 304
 app.disable('etag');
 
-// CORS - Permitir todas as origens em produção (necessário para Docker/Easypanel)
-if (process.env.NODE_ENV === 'production') {
-  app.use(cors());
-} else {
-  var cors_origin = {
-    origin: [
-      'http://localhost:3001',  // Web Next.js (alternativa)
-      'http://localhost:4200',  // Web Next.js (porta atual)
-      'http://localhost:4300',  // Admin Next.js
-    ],
-  };
-  app.use(cors(cors_origin));
-}
+// ========================================
+// SECURITY MIDDLEWARES
+// ========================================
 
-app.use(function (req, res, next) {
-  if (process.env.NODE_ENV === 'production') {
-    res.header('Access-Control-Allow-Origin', '*');
-  } else {
-    // Permitir origin do request se estiver na whitelist
-    const allowedOrigins = ['http://localhost:3001', 'http://localhost:4200', 'http://localhost:4300'];
-    const origin = req.headers.origin;
-    if (allowedOrigins.includes(origin)) {
-      res.header('Access-Control-Allow-Origin', origin);
-    }
-  }
-  res.header('Access-Control-Allow-Credentials', true);
-  res.header(
-    'Access-Control-Allow-Headers',
-    'Origin, X-Requested-With, Content-Type, Authorization, Accept, x-access-token, x-accepted-format'
-  );
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-  next();
-});
+// Apply Helmet for security headers
+app.use(security.helmet);
 
-// 📊 Logging de requisições HTTP
-app.use((req, res, next) => {
-  const timestamp = new Date().toISOString();
-  console.log(`📥 [${timestamp}] ${req.method} ${req.path} - IP: ${req.ip}`);
+// Apply CORS configuration
+app.use(security.cors());
 
-  // Log quando a resposta for enviada
-  res.on('finish', () => {
-    console.log(`📤 [${timestamp}] ${req.method} ${req.path} - Status: ${res.statusCode}`);
-  });
+// TEMPORARY FIX: Add explicit CORS for port 4201
+app.use(cors({ origin: 'http://localhost:4201', credentials: true }));
 
-  next();
-});
+// Apply general rate limiting
+app.use(security.rateLimiters.general);
+
+// Apply request logger
+app.use(security.requestLogger);
+
+// Apply input sanitization
+app.use(security.sanitizeInput);
+
+// Apply SQL injection detection
+app.use(security.sqlInjectionDetection);
+
+// Apply IP filter (if blacklist is configured)
+app.use(security.ipFilter());
+
+console.log('✅ Security middlewares loaded successfully');
 
 app.use(
   multipart({
@@ -442,10 +429,19 @@ for (let m in global.modules) {
 
 // (+) SOCKET IO
 
-lib.socketio = require('socket.io');
+const { Server: SocketIOServer } = require('socket.io');
+lib.socketio = SocketIOServer;
 
-const io = lib.socketio(server, {
-  origins: '*:*',
+const io = new SocketIOServer(server, {
+  cors: {
+    origin: process.env.ALLOWED_ORIGINS
+      ? process.env.ALLOWED_ORIGINS.split(',').map((s) => s.trim())
+      : '*',
+    methods: ['GET', 'POST'],
+    credentials: true,
+  },
+  // Compat: aceita transports padrão (polling + websocket)
+  transports: ['polling', 'websocket'],
 });
 
 global.checkout = {};
@@ -863,7 +859,7 @@ const handleReview = async (review) => {
     .catch((e) => console.log(e));
 
   const promises = products.map(async (product) => {
-    product.priority = getProductPriority(product, qualifed);
+    product.priority = getProductPriority(product, qualified);
     await product.save();
   });
 
@@ -1047,11 +1043,17 @@ app.get('/*', function (req, res) {
 });
 
 app.use(function (error, req, res, next) {
-  res.status(error.status).send({ message: error.message });
+  // Use error.status if available, default to 500 for internal server errors
+  const statusCode = error.status || 500;
+  res.status(statusCode).send({
+    message: error.message || 'Internal Server Error',
+    ...(process.env.NODE_ENV === 'development' && { stack: error.stack })
+  });
 });
 
 setTimeout(() => {
   ServerUtil.connect();
 }, 4000);
 
-export { app, server, io };
+module.exports = { app, server, io };
+

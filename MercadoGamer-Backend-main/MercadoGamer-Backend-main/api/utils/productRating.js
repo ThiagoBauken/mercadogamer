@@ -1,4 +1,4 @@
-export function getProductPriority(product, sellerUser) {
+function getProductPriority(product, sellerUser) {
   const sellerAverage = getSellerPoints(sellerUser);
   const publicationTypePoints = getPublicationTypePoints(product);
   const ventasPoints = getVentasPoints(product);
@@ -6,9 +6,11 @@ export function getProductPriority(product, sellerUser) {
   return 500 * publicationTypePoints + 250 * ventasPoints + 250 * sellerAverage;
 }
 
-export function getSellerPoints(user) {
+function getSellerPoints(user) {
   return Math.ceil(user.sellerQualification / 5);
 }
+
+module.exports = { getProductPriority, getSellerPoints };
 
 function getPublicationTypePoints(product) {
   switch (product.publicationType) {

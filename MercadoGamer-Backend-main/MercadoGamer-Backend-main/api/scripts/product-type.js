@@ -1,4 +1,4 @@
-export const resetProductType = async () => {
+const resetProductType = async () => {
   const productModal = global.modules.products.model;
   const products = await productModal.find({ type: 'coin' });
   let index = 0;
@@ -14,3 +14,5 @@ export const resetProductType = async () => {
     }
   }
 };
+
+module.exports = { resetProductType };

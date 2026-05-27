@@ -164,7 +164,7 @@ module.exports = (module) => {
     global.helpers.security.auth(['administrator', 'user']),
     async (req, res, next) => {
       try {
-        const result = await module.model.findByIdAndRemove(req.params.id);
+        const result = await module.model.findByIdAndDelete(req.params.id);
         res.send(result);
       } catch (error) {
         res.status(500).send(error);

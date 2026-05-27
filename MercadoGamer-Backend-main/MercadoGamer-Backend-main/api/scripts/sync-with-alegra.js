@@ -1,7 +1,7 @@
-import { InvoiceService } from '../helpers/createInvoice/invoice';
-import { setTimeout } from 'timers/promises';
+const { InvoiceService } = require('../helpers/createInvoice/invoice');
+const { setTimeout } = require('timers/promises');
 
-export const syncWithAlegra = async () => {
+const syncWithAlegra = async () => {
   try {
     console.log('\n\nSTARTED SYNC WITH ALEGRA\n\n');
 
@@ -70,6 +70,8 @@ export const syncWithAlegra = async () => {
     console.error(e);
   }
 };
+
+module.exports = { syncWithAlegra };
 
 async function sync2() {
   const invoiceService = new InvoiceService();
