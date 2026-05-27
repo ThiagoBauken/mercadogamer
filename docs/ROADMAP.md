@@ -14,7 +14,7 @@ Ordenadas por **(criticidade legal) × (custo de oportunidade competitivo)**.
 
 | # | Item | Esforço | Custo recorrente |
 |---|---|---|---|
-| 1 | **KYC nível 1** (email + SMS + CPF Serpro) | 40-60h | R$ 50-200/mês |
+| 1 | ~~**KYC nível 1** (email + SMS + CPF Serpro)~~ ✅ **Backend pronto 27/05/2026** — falta tela no frontend | ~8h restantes (frontend) | R$ 50-200/mês |
 | 2 | **Escrow real** no schema orders (estados `held` / `released`) | 30-40h | — |
 | 3 | **Sistema de disputas** (dispute resolution flow) | 25-35h | — |
 | 4 | **Selos verificados funcionais** (campos no schema users + lógica) | 8-12h | — |

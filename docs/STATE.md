@@ -114,11 +114,59 @@
 
 ---
 
+## 🟢 KYC nível 1 — IMPLEMENTADO (27/05/2026)
+
+Backend completo. Falta tela no frontend.
+
+**Schema `users`** (campos novos):
+- `cpf` (unique, sparse), `birthDate`, `fullName`
+- `kycLevel` (0-3, default 0)
+- `verifiedEmail`, `verifiedPhone`, `verifiedCPF` (booleans)
+- Tokens/códigos com `select:false` (não vazam em JSON)
+
+**Endpoints `/api/kyc/*`**:
+| Endpoint | Comportamento |
+|---|---|
+| `GET /api/kyc/status` | Retorna `{kycLevel, checklist:{email,phone,cpf}, canSell, canWithdraw}` |
+| `POST /api/kyc/send-email-verification` | Gera token 32B, expira 24h. Em dev, devolve `devVerificationLink` |
+| `POST /api/kyc/verify-email` | Body `{verificationToken}` (NÃO `token` — conflita com auth) |
+| `POST /api/kyc/send-phone-verification` | Gera código 6-digit, expira 10min. Em dev, devolve `devCode`. Real via Twilio se configurado |
+| `POST /api/kyc/verify-phone` | Body `{code}`. Máx 5 tentativas |
+| `POST /api/kyc/submit-cpf` | Body `{cpf, fullName, birthDate}`. Mock checa só checksum. Se `SERPRO_API_TOKEN` setado, consulta Receita Federal |
+
+**Promoção automática**: quando email + phone + CPF estão todos verificados → `kycLevel` vira 1.
+
+**Middleware `requireKyc(N)`** em `helpers/security/requireKyc.js`:
+- Aplicado em `POST /api/products/createNewProduct` (admins bypass)
+- Aplicado em `POST /api/withdrawals/create`
+- Bloqueia com HTTP 403 + mensagem clara se kycLevel insuficiente
+
+**Audit log** em collection `kyc`:
+- Cada tentativa (email/phone/cpf) gera registro com user, type, status, IP, user-agent
+- Útil pra LGPD, anti-fraude, debug
+
+**Validação Serpro** em `helpers/kyc/serpro.js`:
+- Modo MOCK (default) — só checksum local
+- Modo REAL — chamada autenticada na API Serpro CPF. Custo ~R$0,05/consulta
+- Switch automático via `SERPRO_API_TOKEN` env
+
+**Smoke test 27/05/2026** (curl):
+- ✅ Cadastro → status retorna `kycLevel:0, checklist:{false,false,false}`
+- ✅ Email: send → verify → `verifiedEmail:true`
+- ✅ SMS: send → verify → `verifiedPhone:true`
+- ✅ CPF checksum inválido → HTTP 400 rejeitado
+- ✅ CPF válido (`111.444.777-35`) → `verifiedCPF:true, kycLevel:1`
+- ✅ `/api/products/createNewProduct` sem KYC → HTTP 403 "Verificação KYC nível 1 requerida"
+- ✅ `/api/withdrawals/create` sem KYC → HTTP 403
+- ✅ Com KYC nível 1 → middleware deixa passar (handler responde por outro motivo)
+
+---
+
 ## 🔴 O que NÃO está implementado (zero código)
 
 | Feature | Documentado em | Status |
 |---|---|---|
-| **KYC** (CPF, SMS, foto, biometria) | `GUIA-IMPLEMENTACAO-KYC.md` (2.363 linhas) | ❌ 0% |
+| **KYC nível 2** (foto + selfie + biometria) | `GUIA-IMPLEMENTACAO-KYC.md` | ❌ 0% (nível 1 ✅) |
 | **Escrow** (estados `held`/`released`) | `MELHORIAS-SUGERIDAS.md` | ❌ 0% |
 | **Sistema de disputas** | — | ❌ módulo `issues` existe mas é genérico |
 | **Selos verificados** (lógica server-side) | `ANALISE-COMPETITIVA-CONCORRENTES.md` | ❌ badges existem só no React |

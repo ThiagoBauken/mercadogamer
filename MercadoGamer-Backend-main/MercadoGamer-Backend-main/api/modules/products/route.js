@@ -375,6 +375,14 @@ module.exports = async (module) => {
   module.router.post(
     '/createNewProduct',
     global.helpers.security.auth(['administrator', 'user']),
+    // KYC nível 1 exigido para vender (Lei 14.790/2023 + anti-fraude)
+    // Admins ignoram o gate via 'administrator' role, mas a verificação cobre 'user'.
+    (req, res, next) => {
+      if (req.user && req.user.roles && req.user.roles.includes('administrator')) {
+        return next();
+      }
+      return global.helpers.security.requireKyc(1)(req, res, next);
+    },
     async (req, res, next) => {
       try {
         if (req.body.stock > 1000) {

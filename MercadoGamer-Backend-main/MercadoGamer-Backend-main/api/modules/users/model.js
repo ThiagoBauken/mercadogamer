@@ -53,7 +53,39 @@ module.exports = (module) => {
         ref: 'countries',
         required: true,
       },
-      verificationSms: { type: Boolean, default: false },
+      verificationSms: { type: Boolean, default: false }, // Mantido legacy — use verifiedPhone
+
+      // ═══════════════════════════════════════════════════════════
+      // KYC — Know Your Customer (Lei 14.790/2023 + LGPD)
+      // Documentação completa em docs/STATE.md → seção KYC
+      // ═══════════════════════════════════════════════════════════
+      cpf: {
+        type: String,
+        index: true,
+        sparse: true, // permite múltiplos null (users antigos sem CPF)
+        unique: true,
+      },
+      birthDate: { type: Date },
+      fullName: { type: String }, // Nome civil (vindo de Serpro), distinto de firstName+lastName
+      kycLevel: {
+        type: Number,
+        default: 0,
+        min: 0,
+        max: 3,
+        index: true,
+      },
+      verifiedEmail: { type: Boolean, default: false },
+      verifiedPhone: { type: Boolean, default: false },
+      verifiedCPF: { type: Boolean, default: false },
+      // Tokens/códigos sensíveis — select: false para não vazar em JSON responses
+      emailVerificationToken: { type: String, select: false },
+      emailVerificationExpiresAt: { type: Date, select: false },
+      phoneVerificationCode: { type: String, select: false },
+      phoneVerificationExpiresAt: { type: Date, select: false },
+      phoneVerificationAttempts: { type: Number, default: 0, select: false },
+      kycSubmittedAt: { type: Date },
+      kycVerifiedAt: { type: Date },
+
       discountCodes: [
         {
           type: global.database.mongodb.mongoose.Schema.Types.ObjectId,

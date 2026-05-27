@@ -102,6 +102,8 @@ module.exports = (module) => {
   module.router.post(
     '/create',
     global.helpers.security.auth(['user']),
+    // KYC nível 1 obrigatório para saque (conformidade LGPD/AML)
+    global.helpers.security.requireKyc(1),
     async (req, res, next) => {
       const { user: userInfo } = req;
       try {

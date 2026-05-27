@@ -76,7 +76,52 @@ Esperado: HTTP 200, retorna `{"data":{"file":"api_<uuid>.webp"}}`.
 
 Arquivo deve aparecer em `api/files/`.
 
-### Passo 7 — Socket.IO real-time
+### Passo 7 — Fluxo KYC nível 1 (CPF + email + SMS)
+
+```bash
+# 1. Status inicial (kycLevel = 0)
+curl http://localhost:3000/api/kyc/status -H "x-access-token: $TOKEN"
+
+# 2. Enviar verificação de email (dev mode devolve o link direto)
+EMAIL_RESP=$(curl -s -X POST http://localhost:3000/api/kyc/send-email-verification \
+  -H "x-access-token: $TOKEN")
+EMAIL_TOKEN=$(echo "$EMAIL_RESP" | grep -oE 'token=[a-f0-9]+' | sed 's/token=//')
+
+# 3. Confirmar email
+curl -X POST http://localhost:3000/api/kyc/verify-email \
+  -H "Content-Type: application/json" \
+  -H "x-access-token: $TOKEN" \
+  -d "{\"verificationToken\":\"$EMAIL_TOKEN\"}"
+
+# 4. Enviar SMS (dev mode devolve o code)
+SMS_RESP=$(curl -s -X POST http://localhost:3000/api/kyc/send-phone-verification \
+  -H "x-access-token: $TOKEN")
+SMS_CODE=$(echo "$SMS_RESP" | grep -oE '"devCode":"[0-9]+"' | sed 's/"devCode":"//;s/"$//')
+
+# 5. Confirmar SMS
+curl -X POST http://localhost:3000/api/kyc/verify-phone \
+  -H "Content-Type: application/json" \
+  -H "x-access-token: $TOKEN" \
+  -d "{\"code\":\"$SMS_CODE\"}"
+
+# 6. Submeter CPF (use um CPF de teste com checksum válido)
+curl -X POST http://localhost:3000/api/kyc/submit-cpf \
+  -H "Content-Type: application/json" \
+  -H "x-access-token: $TOKEN" \
+  -d '{"cpf":"111.444.777-35","fullName":"João Silva","birthDate":"1990-01-15"}'
+# Esperado: kycLevel:1 (promoção automática)
+
+# 7. Status final
+curl http://localhost:3000/api/kyc/status -H "x-access-token: $TOKEN"
+# Esperado: {"kycLevel":1,"canSell":true,"canWithdraw":true,...}
+```
+
+**CPFs com checksum válido pra teste** (não usar em produção):
+- `111.444.777-35`
+- `123.456.789-09` (inválido — sequência)
+- `000.000.000-00` (inválido — todos zeros)
+
+### Passo 8 — Socket.IO real-time
 Crie `sio-test.js` dentro de `api/`:
 ```js
 const { io } = require('socket.io-client');
