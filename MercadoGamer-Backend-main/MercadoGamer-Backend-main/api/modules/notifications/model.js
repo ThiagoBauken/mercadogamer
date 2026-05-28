@@ -23,6 +23,13 @@ module.exports = (module) => {
           'saleSuccess',
           'ClaimReceive',
           'receiveSuccess',
+          // Escrow (P0.2) — release automático após holdDays
+          'purchaseReleased',
+          'sellerPaymentReleased',
+          // Disputas (P0.3) — pendentes
+          'disputeOpened',
+          'disputeResponded',
+          'disputeResolved',
         ],
       },
       user: {

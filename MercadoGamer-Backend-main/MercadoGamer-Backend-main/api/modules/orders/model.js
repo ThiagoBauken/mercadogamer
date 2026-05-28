@@ -14,18 +14,32 @@ module.exports = (module) => {
         type: String,
         enum: [
           'pending',
-          'paid',
+          'paid',      // legado — equivale a 'held' no novo fluxo (mantido por compat)
+          'held',      // novo: pagamento confirmado, dinheiro em escrow aguardando releaseScheduledAt
+          'released',  // novo: escrow liberado pro vendedor (balance incrementado)
           'cancelled',
-          'finished',
+          'finished',  // alias antigo de 'released' — mantido por compat com queries existentes
           'returned',
-          'complaint',
+          'complaint', // disputa aberta — pausa release até resolução
         ],
         default: 'pending',
+        index: true,
       },
       claimDate: { type: Date },
       paidDate: { type: Date },
       cancelDate: { type: Date },
       returnedDate: { type: Date },
+
+      // ── ESCROW (P0.2) ────────────────────────────────────────────────
+      // Fluxo: pagamento confirmado → status=held + heldAt + releaseScheduledAt
+      // Cron release-escrow roda 1x/hora e libera quando releaseScheduledAt <= now
+      // e não há complaint/disputa aberta.
+      heldAt: { type: Date },
+      releaseScheduledAt: { type: Date, index: true },
+      releasedAt: { type: Date },
+      holdDays: { type: Number, default: 3 }, // dias entre held → released
+      escrowAmount: { type: Number }, // = sellerProfit no momento do hold (R$)
+      releaseBlocked: { type: Boolean, default: false }, // true = disputa aberta, não liberar
       paymentMethod: {
         type: String,
         enum: ['mercadoPago', 'giftbalance'],
@@ -143,6 +157,11 @@ module.exports = (module) => {
     }
   });
 
+  // ⚠️ REMOVIDO: hook post('find') que fazia release lazy em cada query.
+  // Era anti-pattern: efeito colateral em leitura, sem garantia de execução, sem rate-limit.
+  // Substituído por crons/escrow/release-escrow.js que roda a cada hora.
+  // Mantido o trecho original comentado abaixo por referência histórica.
+  /*
   module.schema.post('find', async (orders) => {
     const now = moment();
     for (let order of orders) {
@@ -200,4 +219,5 @@ module.exports = (module) => {
       }
     }
   });
+  */ // ← fim do bloco comentado (substituído por crons/escrow/release-escrow.js)
 };

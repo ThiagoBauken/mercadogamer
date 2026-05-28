@@ -75,8 +75,21 @@ module.exports = (helper) => {
           const { cartId, orderBuilder } = pOrder;
 
           const order = new global.modules.orders.model(orderBuilder);
-          order.status = 'paid';
-          order.paidDate = new Date();
+
+          // ── ESCROW (P0.2) ──────────────────────────────────────────
+          // Pagamento confirmado → coloca em escrow (status=held).
+          // Mantém também paidDate e status='paid' como sinônimo legado pra
+          // queries antigas. Cron de release move pra 'released' após holdDays.
+          const now = new Date();
+          const holdDays = parseInt(process.env.ESCROW_HOLD_DAYS || '3', 10);
+          order.status = 'held';
+          order.paidDate = now;
+          order.heldAt = now;
+          order.holdDays = holdDays;
+          order.releaseScheduledAt = new Date(now.getTime() + holdDays * 24 * 60 * 60 * 1000);
+          order.escrowAmount = orderBuilder.sellerProfit;
+          order.releaseBlocked = false;
+
           order.isNew = true; // THIS INDICATES THAT THE DOCUMENT IS NEW AND HAS TO BE INSERTED
 
           if (paymentId) {

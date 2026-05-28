@@ -114,6 +114,66 @@
 
 ---
 
+## 🟢 Escrow + Disputas — IMPLEMENTADO (28/05/2026)
+
+### Escrow real (P0.2)
+
+**Schema `orders`** (campos novos):
+- `heldAt`, `releaseScheduledAt`, `releasedAt`, `holdDays`, `escrowAmount`, `releaseBlocked`
+- Enum `status` expandido: `held` (em escrow), `released` (liberado), além dos legados
+
+**Fluxo**:
+1. Pagamento confirma → order.status = `held`, releaseScheduledAt = now + holdDays (default 3 dias)
+2. Cron `escrow.releaseEscrow` roda a cada hora (configurável via `ESCROW_CRON_PERIOD`)
+3. Cron busca orders com `releaseScheduledAt <= now` e `releaseBlocked != true`
+4. Para cada: status → `released`, releasedAt = now, seller.balance += escrowAmount
+5. Notifications criadas (`purchaseReleased`, `sellerPaymentReleased`)
+
+**Configurável** via env:
+- `ESCROW_HOLD_DAYS` (default 3)
+- `ESCROW_CRON_PERIOD` (default 1x/hora)
+- `ESCROW_DRY_RUN=true` (modo simulação)
+- `ESCROW_CRON_DISABLED=true` (desligar)
+
+**Removido**: hook `post('find')` antigo que fazia release lazy/inseguro — substituído por cron determinístico.
+
+**Smoke test 28/05/2026** (script standalone Node):
+- ✅ Order com `releaseScheduledAt` no passado: cron libera
+- ✅ Seller balance 0 → 42.50 após release
+- ✅ Order com `releaseBlocked: true`: cron ignora
+
+### Disputas (P0.3)
+
+**Novo módulo `modules/disputes/`** com schema completo:
+- order, buyer, seller, reason (enum: not_received, not_working, fake, chargeback, other)
+- status (open → awaiting_seller → awaiting_buyer → admin_review → resolved_*)
+- messages array (histórico buyer/seller/admin)
+- evidence array (paths de arquivos uploaded)
+- resolution {decision, decidedBy, reason, refundAmount, decidedAt}
+- sellerResponseDeadline (48h SLA)
+
+**Endpoints `/api/disputes`** (8 totais):
+| Endpoint | Quem | Comportamento |
+|---|---|---|
+| `POST /api/disputes` | buyer | Abre disputa → order.releaseBlocked=true, status=complaint |
+| `GET /api/disputes/mine` | user | Lista disputas onde é buyer OU seller |
+| `GET /api/disputes/:id` | participantes/admin | Detalhe |
+| `POST /api/disputes/:id/respond` | seller | Responde, status→awaiting_buyer |
+| `POST /api/disputes/:id/escalate` | buyer | Status→admin_review |
+| `POST /api/disputes/:id/message` | qualquer participante/admin | Adiciona mensagem |
+| `POST /api/disputes/:id/cancel` | buyer | Cancela própria disputa, desbloqueia order |
+| `POST /api/disputes/:id/resolve` | admin only | Decide refund_buyer (cancel order + refund) ou release_seller (libera escrow) |
+| `GET /api/disputes/admin/pending` | admin only | Lista disputas em admin_review |
+
+**Smoke test 28/05/2026** (E2E fluxo completo):
+- ✅ Buyer abre disputa → order.status=complaint, releaseBlocked=true
+- ✅ Duplicata rejeitada (1 disputa aberta por order)
+- ✅ Seller responde → status=awaiting_buyer, messages.length=2
+- ✅ Buyer escala → status=admin_review
+- ✅ Buyer cancela mesmo após escalate → status=cancelled, order desbloqueada (volta pra held)
+
+---
+
 ## 🟢 KYC nível 1 — IMPLEMENTADO (27/05/2026)
 
 Backend completo. Falta tela no frontend.
