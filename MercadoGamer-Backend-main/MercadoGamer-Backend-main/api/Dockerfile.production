@@ -2,9 +2,10 @@
 # Backend API Dockerfile - PRODUÇÃO EASYPANEL
 # ============================================
 # Multi-stage build otimizado para produção
+# Atualizado 28/05/2026: Node 18 -> 22, sem Babel, Mongoose 8, Socket.IO 4
 
 # Stage 1: Builder
-FROM node:18-alpine AS builder
+FROM node:22-alpine AS builder
 
 # Instalar dependências de compilação
 RUN apk add --no-cache \
@@ -28,7 +29,7 @@ RUN npm ci --no-audit --no-optional
 COPY . .
 
 # Stage 2: Production
-FROM node:18-alpine AS production
+FROM node:22-alpine AS production
 
 # Instalar apenas dependências de runtime
 RUN apk add --no-cache \
