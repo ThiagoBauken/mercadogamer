@@ -47,6 +47,21 @@ services:
       MP_ACCESS_TOKEN: ${MP_ACCESS_TOKEN:-}
       # Stripe
       STRIPE_KEY: ${STRIPE_KEY:-}
+      STRIPE_TEST_SECRET_KEY: ${STRIPE_TEST_SECRET_KEY:-}
+      STRIPE_LIVE_SECRET_KEY: ${STRIPE_LIVE_SECRET_KEY:-}
+      STRIPE_WEBHOOK_SECRET: ${STRIPE_WEBHOOK_SECRET:-}
+      # KYC nivel 1 (Lei 14.790/2023 + LGPD)
+      SERPRO_API_TOKEN: ${SERPRO_API_TOKEN:-}
+      # SMS (Twilio)
+      TWILIO_ACCOUNT_SID: ${TWILIO_ACCOUNT_SID:-}
+      TWILIO_AUTH_TOKEN: ${TWILIO_AUTH_TOKEN:-}
+      TWILIO_PHONE_NUMBER: ${TWILIO_PHONE_NUMBER:-}
+      # Escrow (release automatico apos N dias)
+      ESCROW_HOLD_DAYS: ${ESCROW_HOLD_DAYS:-3}
+      ESCROW_DRY_RUN: ${ESCROW_DRY_RUN:-false}
+      # Auth
+      JWT_SECRET: ${JWT_SECRET:-CHANGE_ME_IN_PRODUCTION}
+      ALLOWED_ORIGINS: ${ALLOWED_ORIGINS:-http://localhost:3001,http://localhost:4300}
     volumes:
       # ⚠️ ATENÇÃO: Volume mount DESABILITADO para evitar loop do nodemon
       # Descomente apenas se precisar de hot-reload durante desenvolvimento

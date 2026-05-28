@@ -33,9 +33,55 @@
 | Nx | 19.8 | ✅ |
 | socket.io-client | 4.8 | ✅ |
 | MUI | 5.11 | ✅ |
-| next-i18next | 15.4 | ⚠️ infra pronta, não plugada em `_app.tsx` |
+| next-i18next | 15.4 | ✅ plugada — 5 namespaces fix (28/05/2026) |
 | styled-components | 6.1 | ✅ (via SWC do Next 14) |
-| Apps | `apps/web` (port 4200), `apps/admin` (port 4300) | ✅ web testado, admin não testado |
+| Apps | `apps/web` (port 4200), `apps/admin` (port 4300) | ✅ **ambos testados no browser** |
+
+### Admin panel (`apps/admin`) — funcional 28/05/2026
+
+| Item | Status |
+|---|---|
+| Login backend `POST /api/administrators/login` | ✅ retorna JWT |
+| `/login` renderiza form (E-mail + Contraseña) | ✅ |
+| `/ventas` (tabela de vendas, 15 colunas) | ✅ |
+| `/users` (tabela de usuários: USUARIO/E-MAIL/COMPRAS/VENTAS) | ✅ |
+| Nav links: Ruleta / Ganancias / Ventas / Usuarios / Cargas | ✅ |
+| Botões: Cerrar sesión / Descargar tabla / Cargar mas | ✅ |
+
+**Credencial padrão**: `admin` / `MercadoGamer2024!` (criada via `npm run init-db`).
+
+**Fixes aplicados pra admin funcionar (28/05/2026)**:
+- `apps/admin/tsconfig.json` — TypeScript paths estavam vazios. Adicionados `@admin/*, @store, @utils, @widgets/*, @theme/*, @icons, @ui-shared/*, @action-types, @hooks` (16 paths).
+- `apps/admin/src/components/navButton/navButton.tsx` — `<Link><a>texto</a></Link>` (sintaxe Next 12) trocado por `<Link className=...>texto</Link>` (sintaxe Next 14). Causava `Error: Invalid <Link> with <a> child`.
+
+### Docker (deploy unificado local)
+
+| Item | Status |
+|---|---|
+| `docker-compose.yml` raiz | ✅ válido, 5 serviços (mongo, backend, web, admin, mailhog) |
+| Dockerfile dev (backend) | ✅ Node 22 |
+| Dockerfile.production (backend) | ✅ Node 22 multi-stage |
+| Dockerfile.web (frontend) | ✅ Node 22 |
+| Dockerfile.web.production (frontend) | ✅ Node 22 multi-stage |
+| Dockerfile.admin (frontend) | ✅ Node 22 |
+| Dockerfile.admin.production (frontend) | ✅ Node 22 multi-stage |
+| `.env` template no `docker-compose.yml` | ✅ KYC, escrow, Stripe, MP, Twilio, JWT, CORS |
+
+**Como rodar localmente com Docker** (após instalar Docker Desktop):
+
+```bash
+cd C:\Users\Thiago\Desktop\marketplace
+docker compose up -d --build         # build + sobe TUDO em uma máquina
+docker compose exec backend npm run init-db   # popular Brasil + admin
+```
+
+URLs:
+- Site: http://localhost:3001
+- Admin: http://localhost:4300
+- API: http://localhost:3000
+- Mailhog (capturar emails): http://localhost:8025
+
+**Validei na sessão**: YAML válido (`python -c "import yaml; yaml.safe_load(...)"`), todos os Dockerfiles estão no Node 22, env vars completas. Não rodei `docker compose up` localmente porque Docker Desktop não está instalado nessa máquina — quando você instalar, deve subir direto.
 
 ---
 

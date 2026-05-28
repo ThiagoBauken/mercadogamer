@@ -4,6 +4,96 @@ Guia atualizado de deploy em produção. Reflete o estado pós-migração (Node 
 
 ---
 
+## 🐳 Deploy local com Docker (mais simples — uma máquina)
+
+Pra rodar **TUDO** numa máquina só (Backend + Mongo + Web + Admin + Mailhog) usando Docker:
+
+### Pré-requisitos
+- **Docker Desktop** instalado (Windows/Mac) ou Docker Engine + Compose plugin (Linux)
+  - Windows: https://www.docker.com/products/docker-desktop/ (precisa WSL2 ativado)
+  - Linux: `curl -fsSL https://get.docker.com | sh`
+- ~4 GB RAM livres pra rodar os 5 containers
+
+### Como rodar
+
+```bash
+cd C:\Users\Thiago\Desktop\marketplace
+
+# 1. Criar .env na raiz com as variáveis necessárias
+# (use docker-compose.yml como referência — todas as ${VAR:-} são opcionais)
+echo 'JWT_SECRET=algo-super-secreto' > .env
+echo 'ALLOWED_ORIGINS=http://localhost:3001,http://localhost:4300' >> .env
+
+# 2. Build + sobe tudo (primeira vez demora ~5min)
+docker compose up -d --build
+
+# 3. Aguardar containers ficarem healthy (~30s)
+docker compose ps
+
+# 4. Inicializar o banco (cria país Brasil + admin + user de teste)
+docker compose exec backend npm run init-db
+
+# 5. Testar
+curl http://localhost:3000/api/health         # backend
+curl -I http://localhost:3001/                # frontend web
+curl -I http://localhost:4300/login           # frontend admin
+```
+
+**URLs acessíveis** após `docker compose up`:
+- Site público: http://localhost:3001
+- Admin panel: http://localhost:4300
+- API: http://localhost:3000/api
+- Mailhog (capturar emails enviados pelo backend): http://localhost:8025
+- MongoDB: localhost:27017 (acessível via Mongo Compass / mongosh)
+
+### Comandos úteis
+
+```bash
+docker compose logs -f backend         # ver logs do backend ao vivo
+docker compose logs -f frontend-web    # logs do site
+docker compose down                    # parar tudo (sem apagar dados)
+docker compose down -v                 # parar + apagar volumes (MongoDB zera)
+docker compose restart backend         # reiniciar só o backend
+docker compose exec backend sh         # entrar no container backend
+docker compose build --no-cache backend  # rebuild forçado se Dockerfile mudou
+```
+
+### Variáveis pra `.env` (opcionais — vazias = modo MOCK)
+
+```bash
+# Pagamento
+MP_ACCESS_TOKEN=APP_USR-xxxxx              # produção MercadoPago
+STRIPE_LIVE_SECRET_KEY=sk_live_xxxxx       # produção Stripe
+STRIPE_WEBHOOK_SECRET=whsec_xxxxx
+
+# KYC real (sem isso, valida só checksum local)
+SERPRO_API_TOKEN=xxxxx
+
+# SMS real (sem isso, code do KYC é logado no console)
+TWILIO_ACCOUNT_SID=ACxxxxx
+TWILIO_AUTH_TOKEN=xxxxx
+TWILIO_PHONE_NUMBER=+5511xxxxx
+
+# Auth
+JWT_SECRET=$(openssl rand -base64 64)
+ALLOWED_ORIGINS=http://localhost:3001,http://localhost:4300
+
+# Escrow
+ESCROW_HOLD_DAYS=3
+```
+
+### Troubleshooting Docker
+
+| Sintoma | Fix |
+|---|---|
+| `Cannot connect to the Docker daemon` | Docker Desktop não está rodando → abrir Docker Desktop |
+| `port is already allocated` | Outro processo na porta → `netstat -ano | findstr :3000` e mata |
+| Container `backend` em `restarting` infinito | `docker compose logs backend` — geralmente MongoDB ainda inicializando, espere |
+| `EACCES` em `/app/files` | Volume permissão — `docker compose down -v && up -d` |
+| Build muito lento | Primeira vez baixa imagens (~500MB) — depois usa cache |
+
+---
+
 ## 🏛️ Arquitetura de produção recomendada
 
 ```

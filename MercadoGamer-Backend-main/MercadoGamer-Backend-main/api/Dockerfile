@@ -1,5 +1,5 @@
 # Backend Dockerfile - MercadoGamer API
-FROM node:18-alpine
+FROM node:22-alpine
 
 # Instalar dependências do sistema para sharp e outras libs
 RUN apk add --no-cache \
