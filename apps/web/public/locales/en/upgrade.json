@@ -1,0 +1,22 @@
+{
+  "title": "Choose your seller plan",
+  "subtitle": "Pay less commission, list more products, and earn badges visible to buyers.",
+  "loading": "Loading…",
+  "free_label": "Free",
+  "free_plan": "Free plan",
+  "month": "month",
+  "subscribe": "Subscribe",
+  "change_plan": "Switch to this plan",
+  "your_plan": "Your current plan",
+  "redirecting": "Redirecting…",
+  "current_banner_active": "Your plan",
+  "current_banner_active_until": "is active until",
+  "cancel_link": "Cancel subscription",
+  "cancel_confirm": "Cancel subscription at end of current period? You keep benefits until the end date.",
+  "cancel_success": "Subscription will be canceled at end of period. No more charges.",
+  "past_due_banner": "⚠️ Last charge failed. Update your card to keep your plan active.",
+  "checkout_success": "🎉 Subscription activated! May take up to 1min to reflect here.",
+  "checkout_cancel": "Checkout canceled.",
+  "checkout_error": "Failed to create checkout. Try again.",
+  "payment_info": "💳 Payment processed by Stripe. Monthly recurring charge on credit card. Cancel anytime — no lock-in."
+}

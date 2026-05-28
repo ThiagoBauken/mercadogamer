@@ -66,6 +66,12 @@ export const kycSubmitDocumentPhotosUrl = `${serverUrl}/kyc/submit-document-phot
 export const kycAdminLevel2PendingUrl = `${serverUrl}/kyc/admin/level2-pending`;
 export const kycAdminLevel2DecideUrl = `${serverUrl}/kyc/admin/level2-decide`;
 
+// Planos pagos (P1.6) — Stripe Subscriptions
+export const subscriptionsPlansUrl = `${serverUrl}/subscriptions/plans`;
+export const subscriptionsCurrentUrl = `${serverUrl}/subscriptions/current`;
+export const subscriptionsCreateCheckoutUrl = `${serverUrl}/subscriptions/create-checkout`;
+export const subscriptionsCancelUrl = `${serverUrl}/subscriptions/cancel`;
+
 // Disputas (P0.3) — escrow + dispute resolution
 export const disputesUrl = `${serverUrl}/disputes`;
 export const disputeMineUrl = `${serverUrl}/disputes/mine`;

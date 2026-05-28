@@ -36,6 +36,7 @@ export const getNavigations = (t: TFunction): { [key: string]: NavItem[] } => {
       { label: t('nav.my_profile'), icon: 'user', url: '/dashboard/profile' },
       { label: t('nav.kyc'), icon: 'shield-check', url: '/dashboard/kyc' },
       { label: t('nav.kyc_level_2'), icon: 'shield-check', url: '/dashboard/kyc-nivel-2' },
+      { label: t('nav.upgrade'), icon: 'star', url: '/dashboard/upgrade' },
       { label: t('nav.disputes'), icon: 'flag', url: '/dashboard/disputas' },
       { label: t('nav.support'), icon: 'message-sequare', url: '/dashboard/support' },
       // { label: t('nav.security'), icon: 'shield-check', url: '/security' },

@@ -1,0 +1,22 @@
+{
+  "title": "Escolha seu plano de vendedor",
+  "subtitle": "Pague menos comissão, anuncie mais produtos e ganhe selos visíveis para os compradores.",
+  "loading": "Carregando…",
+  "free_label": "Grátis",
+  "free_plan": "Plano gratuito",
+  "month": "mês",
+  "subscribe": "Assinar",
+  "change_plan": "Mudar pra este plano",
+  "your_plan": "Seu plano atual",
+  "redirecting": "Redirecionando…",
+  "current_banner_active": "Seu plano",
+  "current_banner_active_until": "está ativo até",
+  "cancel_link": "Cancelar assinatura",
+  "cancel_confirm": "Cancelar a assinatura no fim do período atual? Você mantém os benefícios até a data final.",
+  "cancel_success": "Assinatura será cancelada no fim do período. Sem mais cobranças.",
+  "past_due_banner": "⚠️ A última cobrança falhou. Atualize seu cartão pra manter o plano ativo.",
+  "checkout_success": "🎉 Assinatura ativada! Pode levar até 1min pra refletir aqui.",
+  "checkout_cancel": "Checkout cancelado.",
+  "checkout_error": "Erro ao criar checkout. Tente novamente.",
+  "payment_info": "💳 Pagamento processado pelo Stripe. Cobrança mensal recorrente em cartão de crédito. Cancele quando quiser — sem fidelidade."
+}
