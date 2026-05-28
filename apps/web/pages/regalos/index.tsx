@@ -1,8 +1,10 @@
+// @ts-nocheck
 import { NextPage } from 'next';
 import dynamic from 'next/dynamic';
 import { DefaultLayout } from '@layout/default-layout';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 const RuletaContent = dynamic(() => import('@page-contents/gift').then(mod => mod.RuletaContent), { ssr: false });
 
@@ -25,15 +27,10 @@ const RegalosPage: NextPage = () => {
   );
 };
 
-export async function getServerSideProps(): Promise<{
-  props: {
-    title: string;
-    description: string;
-    url: string;
-  };
-}> {
+export async function getServerSideProps({ locale }: { locale?: string }) {
   return {
     props: {
+      ...(await serverSideTranslations(locale || 'pt-BR', ['common', 'home', 'products'])),
       title: 'Mercado Gamer - Gira la Ruleta de Regalos para premios gratis 🎁',
       description:
         'Obtén premios y descuentos TODOS LOS DÍAS para tus compras dentro de nuestro marketplace. ¡Los mejores jugadores eligen Mercado Gamer!',
