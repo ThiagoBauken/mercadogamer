@@ -1,0 +1,19 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "backend",
+      "cwd": "MercadoGamer-Backend-main/MercadoGamer-Backend-main/api",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["--require", "dotenv/config", "index.js"],
+      "port": 3000
+    },
+    {
+      "name": "web",
+      "cwd": "MercadoGamer",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["nx", "serve", "web"],
+      "port": 4200
+    }
+  ]
+}
