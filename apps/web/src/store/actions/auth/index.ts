@@ -104,11 +104,19 @@ export const reloadUser =
       const {
         auth: { user },
       } = getStore();
-      const response = await get(`${endpoints.userUrl}/${user?.id}`);
-      dispatch({ type: AUTH.SET_USER, payload: { ...user, ...response.data?.data } });
+      if (!user?.id) return; // sem id ainda — não faz nada (evita 404)
+      // Backend expõe /profile/:id (que devolve user + produtos); endpoint
+      // simples /:id NÃO existe. Antes usava userUrl/:id e dava 500/404,
+      // o catch dropava o user (logout fantasma em /dashboard/balance e /profile).
+      const response = await get(`${endpoints.userUrl}/profile/${user.id}`);
+      const fresh = response.data?.data?.user || response.data?.data || response.data;
+      if (fresh && (fresh.id || fresh._id || fresh.username)) {
+        dispatch({ type: AUTH.SET_USER, payload: { ...user, ...fresh } });
+      }
     } catch (error) {
-      console.log(error);
-      dispatch({ type: AUTH.SET_USER, payload: null });
+      // NÃO esvazia user em erro — manteria deslogamento fantasma.
+      // Apenas loga. Se for unauth de verdade, o axios interceptor já remove token.
+      console.warn('[reloadUser] falha (não-bloqueante):', (error as any)?.message);
     }
   };
 
@@ -121,7 +129,7 @@ export const updateUser =
       } = getStore();
       dispatch({ type: AUTH.SET_USER, payload: { ...user, ...userInfo } });
     } catch (error) {
-      console.log(error);
-      dispatch({ type: AUTH.SET_USER, payload: null });
+      // NÃO esvazia em erro (era o que causava deslogamento fantasma em /balance e /profile)
+      console.warn('[updateUser] falha (não-bloqueante):', (error as any)?.message);
     }
   };
