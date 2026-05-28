@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
+import { LanguageSwitcher } from '@components/LanguageSwitcher/LanguageSwitcher';
 import {
   getCarts,
   logout,
@@ -172,6 +173,8 @@ const Header: React.FC = () => {
         </div> */}
 
         <CartMenu />
+
+        <LanguageSwitcher variant="text" size="small" />
 
         {user?.id ? (
           <Menu

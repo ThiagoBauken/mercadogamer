@@ -18,7 +18,7 @@ const HomePage: NextPage = () => {
 export async function getStaticProps({ locale }: { locale?: string }) {
   return {
     props: {
-      ...(await serverSideTranslations(locale || 'pt-BR', ['common', 'products', 'auth'])),
+      ...(await serverSideTranslations(locale || 'pt-BR', ['common', 'products', 'auth', 'home'])),
       title: 'Mercado Gamer - Juegos, Skins, Códigos y más al mejor precio',
       description:
         '¡Compra juegos más baratos y sin impuesto país! Para PC, celular, PS4, PS5, Xbox, etc. Entrega al instante. ¿Qué esperas? Compra con Garantía MG',

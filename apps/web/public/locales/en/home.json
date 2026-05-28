@@ -1,0 +1,40 @@
+{
+  "hero": {
+    "title": "Welcome to MercadoGamer",
+    "subtitle": "Buy and sell gaming products safely"
+  },
+  "features": {
+    "guarantee": {
+      "title": "MG Guarantee on all purchases",
+      "description": "We protect your purchases"
+    },
+    "payment": {
+      "title": "We accept all payment methods",
+      "description": "Pay however you prefer"
+    },
+    "delivery": {
+      "title": "Receive your purchase without waiting",
+      "description": "Fast and secure delivery"
+    },
+    "support": {
+      "title": "Online support to assist you",
+      "description": "We are here to help"
+    }
+  },
+  "sections": {
+    "recommended": "Recommended for you",
+    "featured": "Featured",
+    "playstation": {
+      "title": "Here you will find the best PS deals",
+      "button": "Discover"
+    },
+    "mobile": {
+      "title": "Here you will find the best Mobile deals",
+      "button": "Discover"
+    },
+    "weekly_deals": "Weekly deals",
+    "explore_games": "Explore games",
+    "sell_now": "Sell now",
+    "main_categories": "Main categories"
+  }
+}

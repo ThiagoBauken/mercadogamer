@@ -18,7 +18,7 @@ const CartPage: NextPage = () => {
 export async function getStaticProps({ locale }: { locale?: string }) {
   return {
     props: {
-      ...(await serverSideTranslations(locale || 'pt-BR', ['common', 'dashboard'])),
+      ...(await serverSideTranslations(locale || 'pt-BR', ['common', 'cart'])),
     },
     revalidate: 60, // ISR: Revalidate every 60 seconds
   };

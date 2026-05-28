@@ -1,0 +1,40 @@
+{
+  "hero": {
+    "title": "Bienvenido a MercadoGamer",
+    "subtitle": "Compra y vende productos de juegos de forma segura"
+  },
+  "features": {
+    "guarantee": {
+      "title": "Garantía MG en todas las compras",
+      "description": "Protegemos tus compras"
+    },
+    "payment": {
+      "title": "Aceptamos todos los medios de pago",
+      "description": "Pagá como prefieras"
+    },
+    "delivery": {
+      "title": "Recibí tu compra sin esperas",
+      "description": "Entrega rápida y segura"
+    },
+    "support": {
+      "title": "Soporte online para asesorarte",
+      "description": "Estamos aquí para ayudarte"
+    }
+  },
+  "sections": {
+    "recommended": "Recomendados para vos",
+    "featured": "Destacados",
+    "playstation": {
+      "title": "Acá encontrarás las mejores ofertas de PS",
+      "button": "Descubrir"
+    },
+    "mobile": {
+      "title": "Acá encontrarás las mejores ofertas para Mobile",
+      "button": "Descubrir"
+    },
+    "weekly_deals": "Descuentos de la semana",
+    "explore_games": "Explorar juegos",
+    "sell_now": "Vender ahora",
+    "main_categories": "Principales categorías"
+  }
+}

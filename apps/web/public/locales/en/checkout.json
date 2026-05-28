@@ -1,6 +1,7 @@
 {
   "title": "Checkout",
   "subtitle": "Complete your order in a few steps",
+  "reserved_for": "Your products are reserved for",
 
   "steps": {
     "cart": "Cart",
@@ -50,8 +51,20 @@
     "continue": "Proceed to payment"
   },
 
+  "delivery": {
+    "how_to_get": "How to receive your product?",
+    "automatic": "Automatic delivery",
+    "automatic_desc": "You will receive the product as soon as the purchase is completed. You have a maximum of 3 days to verify the validity of the product.",
+    "coordinated": "Coordinated delivery",
+    "coordinated_desc": "Once the payment is processed, the seller will contact you through the purchase chat to deliver the product."
+  },
+
   "payment": {
     "title": "Payment",
+    "billing_address": "Billing Address",
+    "proceed_to_payment": "Proceed to payment",
+    "redirect_message": "If you are not redirected automatically, click",
+    "redirect_link": "here",
     "method": {
       "title": "Payment Method",
       "credit_card": "Credit Card",
@@ -92,6 +105,8 @@
     "shipping_method": "Shipping Method",
     "payment_method": "Payment Method",
     "edit": "Edit",
+    "view_detail": "View details",
+    "hide": "Hide",
     "summary": {
       "title": "Order Summary",
       "subtotal": "Subtotal",
@@ -99,6 +114,8 @@
       "discount": "Discount",
       "tax": "Tax",
       "total": "Total",
+      "processing_fee": "Processing fee",
+      "gift_balance": "Gift balance",
       "discount_code": "Discount code",
       "apply": "Apply",
       "remove": "Remove"
@@ -128,12 +145,16 @@
     "invalid_card": "Invalid card",
     "payment_failed": "Payment failed",
     "out_of_stock": "Product out of stock",
-    "generic": "Error processing order"
+    "generic": "Error processing order",
+    "invalid_postal_code": "Incorrect postal code. It must be a number only.",
+    "invalid_phone": "Incorrect phone number. Please make sure there are no spaces.",
+    "order_error": "Error creating the order. Please check the information entered. If the error persists, contact support."
   },
 
   "messages": {
     "discount_applied": "Discount applied successfully!",
     "invalid_discount": "Invalid discount code",
-    "item_removed": "Item removed from cart"
+    "item_removed": "Item removed from cart",
+    "order_success": "Success: {{count}} products"
   }
 }

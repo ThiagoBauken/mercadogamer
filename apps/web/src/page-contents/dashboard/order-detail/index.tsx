@@ -16,6 +16,7 @@ const ConfirmModal = dynamic(() => import('@components/confirm-modal/index'), { 
 const ReportModal = dynamic(() => import('@components/report-modal/index'), { ssr: false });
 const RateUser = dynamic(() => import('@components/rate-user/index'), { ssr: false });
 const CancelModal = dynamic(() => import('../sale/widgets/cancel-modal/index'), { ssr: false });
+const OpenDisputeModal = dynamic(() => import('../disputas/OpenDisputeModal').then(mod => mod.OpenDisputeModal), { ssr: false });
 
 
 const OrderStatusBadge = dynamic(() => import('@components/order-status').then(mod => mod.OrderStatusBadge), { ssr: false });
@@ -228,6 +229,15 @@ export const OrderDetailPageContent: React.FC = () => {
                           Tuve un problema
                         </Button>
                       )}
+
+                      {['held', 'paid', 'complaint'].includes(state.order.status) && (
+                        <Button
+                          kind="secondary"
+                          onClick={() => setState({ ...state, modal: { name: 'open-dispute' } })}
+                        >
+                          Abrir disputa
+                        </Button>
+                      )}
                     </div>
                   </>
                 )}
@@ -290,6 +300,22 @@ export const OrderDetailPageContent: React.FC = () => {
             roleReviewed: state.order.seller.id === user.id ? 'user' : 'seller',
           }}
           onClose={() => loadOrder({ name: '' })}
+        />
+      )}
+
+      {state.modal.name === 'open-dispute' && (
+        <OpenDisputeModal
+          open={state.modal.name === 'open-dispute'}
+          orderId={state.order?.id}
+          onClose={onClose}
+          onSuccess={(disputeId) => {
+            onClose();
+            if (disputeId) {
+              router.push(`/dashboard/disputas/${disputeId}`);
+            } else {
+              router.push('/dashboard/disputas');
+            }
+          }}
         />
       )}
     </section>

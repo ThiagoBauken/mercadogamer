@@ -18,7 +18,7 @@ const CheckoutPage: NextPage = () => {
 export async function getStaticProps({ locale }: { locale?: string }) {
   return {
     props: {
-      ...(await serverSideTranslations(locale || 'pt-BR', ["common"])),
+      ...(await serverSideTranslations(locale || 'pt-BR', ['common', 'checkout'])),
     },
     revalidate: 60, // ISR: Revalidate every 60 seconds
   };

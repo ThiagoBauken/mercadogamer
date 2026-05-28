@@ -12,3 +12,4 @@ export * from './shopping';
 export * from './question';
 export * from './store';
 export * from './support';
+export * from './disputas';

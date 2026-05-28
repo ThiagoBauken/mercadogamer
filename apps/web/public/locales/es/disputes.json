@@ -1,0 +1,71 @@
+{
+  "title": "Mis disputas",
+  "empty": "Todavía no tienes disputas",
+  "filter": {
+    "all": "Todas",
+    "open": "En curso",
+    "closed": "Cerradas"
+  },
+  "status": {
+    "open": "Abierta",
+    "awaiting_seller": "Esperando vendedor",
+    "awaiting_buyer": "Esperando ti",
+    "admin_review": "En revisión por MercadoGamer",
+    "resolved_buyer": "Resuelta — reembolso",
+    "resolved_seller": "Resuelta — sin reembolso",
+    "cancelled": "Cancelada"
+  },
+  "reason": {
+    "not_received": "No recibí el producto",
+    "not_working": "Producto no funciona / baneado / inválido",
+    "fake": "Diferente a lo anunciado",
+    "chargeback": "Contracargo bancario",
+    "other": "Otro"
+  },
+  "actions": {
+    "open": "Abrir disputa",
+    "respond": "Responder",
+    "escalate": "Escalar a admin",
+    "cancel": "Cancelar disputa",
+    "send": "Enviar mensaje",
+    "refundBuyer": "Reembolsar comprador",
+    "releaseSeller": "Liberar al vendedor"
+  },
+  "openModal": {
+    "title": "Abrir disputa",
+    "reasonLabel": "Motivo",
+    "descriptionLabel": "Describe el problema (mínimo 10 caracteres)",
+    "submit": "Abrir disputa"
+  },
+  "detail": {
+    "messages": "Mensajes",
+    "newMessage": "Nuevo mensaje",
+    "resolution": "Resolución",
+    "deadline": "El vendedor debe responder antes de",
+    "amount": "Monto disputado",
+    "order": "Pedido",
+    "buyer": "Comprador",
+    "seller": "Vendedor",
+    "openedAt": "Abierta el",
+    "adminReason": "Motivo de la decisión",
+    "sellerResponse": "Tu respuesta",
+    "adminDecision": "Decisión del admin",
+    "refundAmount": "Monto del reembolso"
+  },
+  "success": {
+    "opened": "Disputa abierta",
+    "responded": "Respuesta enviada",
+    "escalated": "Disputa escalada",
+    "cancelled": "Disputa cancelada",
+    "message": "Mensaje enviado",
+    "resolved": "Disputa resuelta"
+  },
+  "errors": {
+    "load": "Error al cargar disputas",
+    "generic": "Error inesperado. Inténtalo de nuevo.",
+    "descriptionMin": "La descripción debe tener al menos 10 caracteres"
+  },
+  "loading": "Cargando disputas...",
+  "counterpart": "Contraparte",
+  "value": "Valor"
+}

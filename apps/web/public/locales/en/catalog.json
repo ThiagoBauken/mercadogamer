@@ -1,0 +1,20 @@
+{
+  "title": "Catalog",
+  "sort": {
+    "label": "Sort by",
+    "most_relevant": "Most relevant",
+    "lowest_price": "Lowest price",
+    "highest_price": "Highest price"
+  },
+  "filters": {
+    "title": "Filters",
+    "filter_by_games": "Filter by games",
+    "automatic_delivery": "Automatic delivery",
+    "platform": "Platform",
+    "product_type": "Product type",
+    "category": "Category"
+  },
+  "loading": "Loading...",
+  "load_more": "Load more",
+  "no_results": "No products found for the selected filters"
+}

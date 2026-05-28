@@ -68,7 +68,15 @@
     "add_to_cart": "Añadir al carrito",
     "buy_now": "Comprar ahora",
     "report": "Denunciar producto",
-    "share": "Compartir"
+    "share": "Compartir",
+    "catalog": "Catálogo",
+    "this_product": "Este producto",
+    "game": "Juego",
+    "product_type": "Tipo de producto",
+    "category": "Categoría",
+    "platform": "Plataforma",
+    "level": "Nivel",
+    "language": "Idioma"
   },
   "reviews": {
     "title": "Reseñas de Clientes",
@@ -91,7 +99,16 @@
     "ask_question": "Hacer una pregunta",
     "answer": "Responder",
     "answered_by_seller": "Respondido por el vendedor",
-    "no_questions": "Aún no hay preguntas"
+    "no_questions": "Aún no hay preguntas",
+    "write_question_placeholder": "Escribí tu pregunta",
+    "ask_button": "Preguntar",
+    "login_to_ask": "para hacer una pregunta",
+    "sign_in": "Iniciá sesión",
+    "your_question": "Tu pregunta",
+    "load_more": "Cargar más preguntas",
+    "no_answer": "Sin respuesta",
+    "empty_question_error": "No podés enviar una pregunta vacía.",
+    "question_sent_success": "Tu pregunta fue enviada exitosamente."
   },
   "categories": {
     "all": "Todos",

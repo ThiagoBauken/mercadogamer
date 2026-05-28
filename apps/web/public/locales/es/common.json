@@ -43,10 +43,17 @@
     "store": "Tienda",
     "my_profile": "Mi perfil",
     "kyc": "Verificacion KYC",
+    "disputes": "Disputas",
     "support": "Soporte",
     "logout": "Cerrar sesión",
     "favorites": "Favoritos",
-    "notifications": "Notificaciones"
+    "notifications": "Notificaciones",
+    "balance_section": "SALDO",
+    "purchases_section": "COMPRAS",
+    "sales_section": "VENTAS",
+    "settings_section": "CONFIGURACIÓN",
+    "coupons": "Cupones",
+    "security": "Seguridad"
   },
   "header": {
     "search_placeholder": "Buscar en Mercado Gamer",
@@ -81,7 +88,8 @@
     "total": "Total",
     "go_to_cart": "Ir al carrito",
     "empty_message": "Todavía no agregaste productos al carrito",
-    "no_products": "Todavía no agregaste productos al carrito"
+    "no_products": "Todavía no agregaste productos al carrito",
+    "no_products_menu": "Por el momento no hay productos."
   },
   "mobile_nav": {
     "help_center": "Centro de ayuda",
@@ -134,6 +142,10 @@
     "share": "Compartir",
     "copy": "Copiar",
     "print": "Imprimir"
+  },
+  "notifications": {
+    "no_notifications": "Por el momento no hay notificaciones.",
+    "mark_all_read": "Marcar todas como leídas"
   },
   "messages": {
     "no_results": "No se encontraron resultados",

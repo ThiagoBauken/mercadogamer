@@ -30,7 +30,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ locale }: { locale?: string }) {
   return {
     props: {
-      ...(await serverSideTranslations(locale, ["common"])),
+      ...(await serverSideTranslations(locale || 'pt-BR', ['common', 'products'])),
     },
     revalidate: 60, // ISR: Revalidar a cada 60 segundos
   };

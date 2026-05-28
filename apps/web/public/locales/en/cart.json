@@ -1,0 +1,37 @@
+{
+  "title": "Cart",
+  "table": {
+    "item": "Item",
+    "price": "Price",
+    "quantity": "Qty",
+    "total": "Total"
+  },
+  "messages": {
+    "product_removed": "Product removed from cart.",
+    "undo": "UNDO",
+    "out_of_stock": "Product currently out of stock.",
+    "empty_cart": "You don't have any products in your cart yet, start searching for products"
+  },
+  "summary": {
+    "subtotal": "Subtotal",
+    "processing_fee": "Processing fee",
+    "processing_fee_tooltip": "Processing fee is 10% on user-to-user sales, and 5% + USD 0.50 on store sales. Gift cards are commission-free.",
+    "discount": "Discount",
+    "total": "Total"
+  },
+  "actions": {
+    "empty_cart": "Empty cart",
+    "use_discount": "Use discount",
+    "start_purchase": "Start purchase",
+    "search_products": "Search products"
+  },
+  "discount": {
+    "title": "Use discount",
+    "how_much": "How much do you want to use?",
+    "error_exceeds_value": "The applied discount cannot exceed the product value, as it is not possible to refund the difference."
+  },
+  "confirm_empty": {
+    "title": "Do you want to empty the cart?"
+  },
+  "no_products": "No products available at this time."
+}

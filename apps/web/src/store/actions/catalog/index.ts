@@ -98,7 +98,7 @@ export const getProductsInCategory = () => async (dispatch) => {
     const queryParams = {
       filter: _filter,
       sort: order,
-      populate: ['game'],
+      populate: ['game', 'user'],
       delivery: undefined,
       page,
       perPage,

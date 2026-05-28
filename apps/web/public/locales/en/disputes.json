@@ -1,0 +1,71 @@
+{
+  "title": "My Disputes",
+  "empty": "You have no disputes yet",
+  "filter": {
+    "all": "All",
+    "open": "In progress",
+    "closed": "Closed"
+  },
+  "status": {
+    "open": "Open",
+    "awaiting_seller": "Awaiting seller",
+    "awaiting_buyer": "Awaiting you",
+    "admin_review": "Under MercadoGamer review",
+    "resolved_buyer": "Resolved — refund",
+    "resolved_seller": "Resolved — no refund",
+    "cancelled": "Cancelled"
+  },
+  "reason": {
+    "not_received": "Did not receive the product",
+    "not_working": "Product not working / banned / invalid",
+    "fake": "Different from the listing",
+    "chargeback": "Bank chargeback",
+    "other": "Other"
+  },
+  "actions": {
+    "open": "Open dispute",
+    "respond": "Respond",
+    "escalate": "Escalate to admin",
+    "cancel": "Cancel dispute",
+    "send": "Send message",
+    "refundBuyer": "Refund buyer",
+    "releaseSeller": "Release to seller"
+  },
+  "openModal": {
+    "title": "Open dispute",
+    "reasonLabel": "Reason",
+    "descriptionLabel": "Describe the problem (minimum 10 characters)",
+    "submit": "Open dispute"
+  },
+  "detail": {
+    "messages": "Messages",
+    "newMessage": "New message",
+    "resolution": "Resolution",
+    "deadline": "Seller must respond by",
+    "amount": "Disputed amount",
+    "order": "Order",
+    "buyer": "Buyer",
+    "seller": "Seller",
+    "openedAt": "Opened at",
+    "adminReason": "Decision reason",
+    "sellerResponse": "Your response",
+    "adminDecision": "Admin decision",
+    "refundAmount": "Refund amount"
+  },
+  "success": {
+    "opened": "Dispute opened",
+    "responded": "Response sent",
+    "escalated": "Dispute escalated",
+    "cancelled": "Dispute cancelled",
+    "message": "Message sent",
+    "resolved": "Dispute resolved"
+  },
+  "errors": {
+    "load": "Error loading disputes",
+    "generic": "Unexpected error. Please try again.",
+    "descriptionMin": "Description must be at least 10 characters"
+  },
+  "loading": "Loading disputes...",
+  "counterpart": "Counterpart",
+  "value": "Value"
+}

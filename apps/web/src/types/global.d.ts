@@ -30,6 +30,10 @@ interface UserModelType {
   hasFirstVisitVendor?: boolean;
   firstRoulettePlay?: boolean;
   referrerUsedTheDrop?: boolean;
+  kycLevel?: number;
+  verifiedEmail?: boolean;
+  verifiedPhone?: boolean;
+  verifiedCPF?: boolean;
   [key: string]: any;
 }
 

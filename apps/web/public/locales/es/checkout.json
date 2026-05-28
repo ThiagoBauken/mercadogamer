@@ -1,6 +1,7 @@
 {
   "title": "Finalizar Compra",
   "subtitle": "Completa tu pedido en pocos pasos",
+  "reserved_for": "Tus productos están reservados por",
 
   "steps": {
     "cart": "Carrito",
@@ -50,8 +51,20 @@
     "continue": "Ir a pago"
   },
 
+  "delivery": {
+    "how_to_get": "¿Cómo recibir tu producto?",
+    "automatic": "Entrega automática",
+    "automatic_desc": "Recibirás el producto en el momento de finalizar la compra. Tenés un plazo máximo de 3 días para verificar la validez del producto.",
+    "coordinated": "Entrega coordinada",
+    "coordinated_desc": "Una vez procesado el pago, el vendedor se pondrá en contacto con vos a través del chat de la compra para entregarte el producto."
+  },
+
   "payment": {
     "title": "Pago",
+    "billing_address": "Dirección de Facturación",
+    "proceed_to_payment": "Proceder al pago",
+    "redirect_message": "Si no sos redirigido automáticamente, hacé click",
+    "redirect_link": "acá",
     "method": {
       "title": "Método de Pago",
       "credit_card": "Tarjeta de Crédito",
@@ -92,6 +105,8 @@
     "shipping_method": "Método de Envío",
     "payment_method": "Método de Pago",
     "edit": "Editar",
+    "view_detail": "Ver detalle",
+    "hide": "Ocultar",
     "summary": {
       "title": "Resumen del Pedido",
       "subtotal": "Subtotal",
@@ -99,6 +114,8 @@
       "discount": "Descuento",
       "tax": "Impuestos",
       "total": "Total",
+      "processing_fee": "Comisión de procesamiento",
+      "gift_balance": "Saldo de regalo",
       "discount_code": "Código de descuento",
       "apply": "Aplicar",
       "remove": "Eliminar"
@@ -128,12 +145,16 @@
     "invalid_card": "Tarjeta inválida",
     "payment_failed": "Pago fallido",
     "out_of_stock": "Producto agotado",
-    "generic": "Error al procesar pedido"
+    "generic": "Error al procesar pedido",
+    "invalid_postal_code": "Código postal incorrecto. Debe ser solo un número.",
+    "invalid_phone": "Número de teléfono incorrecto. Verificá que lo hayas ingresado sin espacios.",
+    "order_error": "Error al crear la orden. Por favor verificá los datos ingresados. Si el error persiste, contactá al soporte."
   },
 
   "messages": {
     "discount_applied": "¡Descuento aplicado con éxito!",
     "invalid_discount": "Código de descuento inválido",
-    "item_removed": "Artículo eliminado del carrito"
+    "item_removed": "Artículo eliminado del carrito",
+    "order_success": "Éxito: {{count}} productos"
   }
 }

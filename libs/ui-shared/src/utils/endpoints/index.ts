@@ -59,3 +59,14 @@ export const kycVerifyEmailUrl = `${serverUrl}/kyc/verify-email`;
 export const kycSendPhoneUrl = `${serverUrl}/kyc/send-phone-verification`;
 export const kycVerifyPhoneUrl = `${serverUrl}/kyc/verify-phone`;
 export const kycSubmitCpfUrl = `${serverUrl}/kyc/submit-cpf`;
+
+// Disputas (P0.3) — escrow + dispute resolution
+export const disputesUrl = `${serverUrl}/disputes`;
+export const disputeMineUrl = `${serverUrl}/disputes/mine`;
+export const disputeAdminPendingUrl = `${serverUrl}/disputes/admin/pending`;
+export const disputeByIdUrl = (id: string) => `${serverUrl}/disputes/${id}`;
+export const disputeRespondUrl = (id: string) => `${serverUrl}/disputes/${id}/respond`;
+export const disputeEscalateUrl = (id: string) => `${serverUrl}/disputes/${id}/escalate`;
+export const disputeMessageUrl = (id: string) => `${serverUrl}/disputes/${id}/message`;
+export const disputeCancelUrl = (id: string) => `${serverUrl}/disputes/${id}/cancel`;
+export const disputeResolveUrl = (id: string) => `${serverUrl}/disputes/${id}/resolve`;

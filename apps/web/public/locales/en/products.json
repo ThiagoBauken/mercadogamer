@@ -68,7 +68,15 @@
     "add_to_cart": "Add to cart",
     "buy_now": "Buy now",
     "report": "Report product",
-    "share": "Share"
+    "share": "Share",
+    "catalog": "Catalog",
+    "this_product": "This product",
+    "game": "Game",
+    "product_type": "Product type",
+    "category": "Category",
+    "platform": "Platform",
+    "level": "Level",
+    "language": "Language"
   },
   "reviews": {
     "title": "Customer Reviews",
@@ -91,7 +99,16 @@
     "ask_question": "Ask a question",
     "answer": "Answer",
     "answered_by_seller": "Answered by seller",
-    "no_questions": "No questions yet"
+    "no_questions": "No questions yet",
+    "write_question_placeholder": "Write your question",
+    "ask_button": "Ask",
+    "login_to_ask": "to ask a question",
+    "sign_in": "Sign in",
+    "your_question": "Your question",
+    "load_more": "Load more questions",
+    "no_answer": "No answer yet",
+    "empty_question_error": "You cannot send an empty question.",
+    "question_sent_success": "Your question was sent successfully."
   },
   "categories": {
     "all": "All",
