@@ -220,6 +220,87 @@ URLs:
 
 ---
 
+## 🟢 Planos pagos (P1.6) — IMPLEMENTADO backend (28/05/2026)
+
+Sistema Stripe Subscriptions completo. **Free / Pro R$29.90/mês / Premium R$99.90/mês.**
+
+**Catálogo em `helpers/billing/plans.js`** (3 planos):
+| Plano | Comissão | Anúncios | Destaques | Selo | Analytics | Suporte |
+|---|---|---|---|---|---|---|
+| Free | 10% | 10 | 0 | — | ❌ | email |
+| Pro (R$ 29.90) | 7% | 100 | 3 | 🔵 Pro | ✅ | email |
+| Premium (R$ 99.90) | 5% | ∞ | 10 | 🏆 Premium | ✅ | prioritário 4h |
+
+**Schema `users` novos campos**:
+- `sellerPlan`: 'free' / 'pro' / 'premium'
+- `sellerPlanActiveUntil`: Date — null = sem assinatura
+- `stripeCustomerId`, `stripeSubscriptionId` (select: false)
+- `stripeSubscriptionStatus`
+
+**Schema novo `subscriptions`** (audit log):
+- Events: checkout_created, subscription_activated, payment_succeeded/failed, subscription_canceled
+- Snapshot raw do webhook (select: false)
+
+**Endpoints `/api/subscriptions/*`**:
+| Endpoint | Quem | Comportamento |
+|---|---|---|
+| `GET /plans` | público | Lista 3 planos com features |
+| `GET /current` | user | Plano atual + isActive + activeUntil |
+| `POST /create-checkout` | user | Body `{planId: 'pro'\|'premium'}` → cria Stripe Checkout Session, retorna `url` |
+| `POST /cancel` | user | Marca subscription pra cancelar no fim do período |
+| `POST /webhook` | Stripe | Processa checkout_completed, payment_succeeded/failed, subscription_updated/deleted |
+
+**Helper functions exposed**:
+- `plans.calculateCommission(seller, saleAmount)` — usar nos pagamentos de orders
+- `plans.canAddListing(seller, currentCount)` — usar antes de criar produto
+
+**Pré-requisitos pra ativar em produção**:
+1. Dashboard Stripe → Products → criar "MercadoGamer Pro" + "MercadoGamer Premium" (recurring monthly BRL)
+2. Copiar `price_xxx` pros env `STRIPE_PRICE_PRO` e `STRIPE_PRICE_PREMIUM`
+3. Webhooks → adicionar endpoint `https://api.mg.com.br/api/subscriptions/webhook`
+4. Selecionar eventos: `checkout.session.completed`, `invoice.payment_*`, `customer.subscription.*`
+5. Copiar signing secret → `STRIPE_WEBHOOK_SECRET`
+
+**Smoke test 28/05/2026** (curl):
+- ✅ `GET /plans` retorna 3 planos com preços e features
+- ✅ `GET /current` retorna `{planId:"free", isActive:true}` pra novo user
+- ✅ `POST /create-checkout` sem STRIPE_PRICE_PRO retorna erro descritivo
+
+**Frontend tela `/dashboard/upgrade`**: pendente. Tela com 3 cards comparativos + botão "Assinar" que chama create-checkout e redireciona pra Stripe.
+
+---
+
+## 🟢 KYC nível 2 — IMPLEMENTADO backend + frontend (28/05/2026)
+
+Backend já documentado abaixo. **Frontend** agora também:
+- Página `/dashboard/kyc-nivel-2` com 3 uploads (doc frente, verso, selfie)
+- Preview instantâneo via `URL.createObjectURL`
+- Capture mobile (`capture="environment"` doc, `"user"` selfie)
+- Gate: requer kycLevel >= 1, mostra link pra /dashboard/kyc caso contrário
+- Status display: pending/manual_review/approved/rejected com banner colorido
+- Item no menu lateral "Verificação avançada"
+- 3 idiomas traduzidos
+
+---
+
+## 🟢 SEO básico — IMPLEMENTADO (28/05/2026)
+
+**`next-sitemap.config.js` dinâmico**:
+- Lê `process.env.NEXT_PUBLIC_DOMAIN` (não mais hardcoded)
+- `additionalPaths` busca via API: produtos (`/product-detail/:id`), vendedores únicos (`/vendedores/:username`), games (`/catalogo?game=:id`)
+- Cada fetch com `.catch(()=>null)` — build nunca falha por API instável
+- Transform com changefreq/priority diferenciados (home 1.0, catalogo 0.9, produto 0.8, vendedor 0.6)
+
+**JSON-LD Product Schema.org** em product-detail:
+- `@type: Product` com name, description, image, offers (price/currency/availability), seller, aggregateRating (se reviews > 0)
+
+**Open Graph + Twitter tags** em `_app.tsx`:
+- og:title, og:description, og:image, og:type, og:url
+- twitter:card summary_large_image
+- Hardcoded `https://www.mercadogamer.com` → `process.env.NEXT_PUBLIC_DOMAIN || 'https://mercadogamer.com.br'`
+
+---
+
 ## 🟢 KYC nível 2 — IMPLEMENTADO backend (28/05/2026)
 
 Foto documento + selfie + biometria facial. Promove `kycLevel` de 1 → 2 quando aprovado.

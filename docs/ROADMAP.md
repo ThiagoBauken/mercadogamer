@@ -24,7 +24,7 @@ Ordenadas por **(criticidade legal) × (custo de oportunidade competitivo)**.
 
 | # | Item | Esforço | Custo recorrente |
 |---|---|---|---|
-| 6 | **Planos de vendedor** (Silver/Gold/Diamond) via Stripe Subscriptions | 30-40h | 4,99% Stripe |
+| 6 | ~~**Planos de vendedor**~~ ✅ **Backend 28/05/2026** — Free/Pro R$29.90/Premium R$99.90 via Stripe Subscriptions. Falta tela /dashboard/upgrade | ~6h (frontend) | 4,99% Stripe |
 | 7 | **Seguro do vendedor** (fundo de reembolso 2% por venda) | 20-30h | — |
 | 8 | ~~**Sistema de reviews** com peso~~ ✅ **Backend 28/05/2026** — média ponderada por kycLevel + experiência | — | — |
 | 9 | **Deploy de produção sério** (MongoDB Atlas + Vercel + monitoring) | 12-16h | R$ 50-150/mês |
@@ -34,7 +34,7 @@ Ordenadas por **(criticidade legal) × (custo de oportunidade competitivo)**.
 
 | # | Item | Esforço | Custo recorrente |
 |---|---|---|---|
-| 11 | **Discord** (server manual + bot de notificação) | 8-12h | — |
+| 11 | ~~**Discord**~~ ⚠️ **Docs prontos (docs/DISCORD.md)** — estrutura server + bot esqueleto. Falta criar server real | ~3h (rodar) | — |
 | 12 | **Login social** (Google, Discord) | 8-12h | — |
 | 13 | **Newsletter** transacional (Resend/Mailgun) | 6-10h | R$ 0-100/mês |
 | 14 | **SEO básico** (sitemap, schema.org, Open Graph) | 8-12h | — |

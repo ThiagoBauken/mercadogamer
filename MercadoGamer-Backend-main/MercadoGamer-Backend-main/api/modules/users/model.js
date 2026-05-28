@@ -103,6 +103,20 @@ module.exports = (module) => {
       },
       kycLevel2RejectionReason: { type: String },
 
+      // ═══════════════════════════════════════════════════════════
+      // Plano de vendedor (P1.6) — Stripe Subscriptions
+      // ═══════════════════════════════════════════════════════════
+      sellerPlan: {
+        type: String,
+        enum: ['free', 'pro', 'premium'],
+        default: 'free',
+        index: true,
+      },
+      sellerPlanActiveUntil: { type: Date }, // null = sem assinatura ativa
+      stripeCustomerId: { type: String, select: false },
+      stripeSubscriptionId: { type: String, select: false },
+      stripeSubscriptionStatus: { type: String }, // active, trialing, past_due, canceled, etc
+
       discountCodes: [
         {
           type: global.database.mongodb.mongoose.Schema.Types.ObjectId,
