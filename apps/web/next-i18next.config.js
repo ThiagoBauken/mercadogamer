@@ -31,6 +31,8 @@ module.exports = {
   defaultNS: 'common',
 
   // Carregar múltiplos namespaces
+  // IMPORTANTE: cada namespace usado em useTranslation('X') precisa estar aqui
+  // E também precisa ser passado via serverSideTranslations na page wrapper
   ns: [
     'common',
     'auth',
@@ -40,6 +42,11 @@ module.exports = {
     'profile',
     'errors',
     'validation',
+    'home',
+    'cart',
+    'catalog',
+    'kyc',
+    'disputes',
   ],
 
   // Desenvolvimento
