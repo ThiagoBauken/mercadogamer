@@ -86,6 +86,23 @@ module.exports = (module) => {
       kycSubmittedAt: { type: Date },
       kycVerifiedAt: { type: Date },
 
+      // KYC nível 2 — foto documento + selfie + biometria (P1.10)
+      documentPhotoUrl: { type: String, select: false }, // foto do RG/CNH frente
+      documentPhotoBackUrl: { type: String, select: false }, // foto do verso
+      selfiePhotoUrl: { type: String, select: false },
+      // Score de similaridade facial 0-100 (AWS Rekognition compareFaces)
+      // ≥85 = match; <85 = falha (manual review)
+      faceMatchScore: { type: Number, select: false },
+      kycLevel2SubmittedAt: { type: Date },
+      kycLevel2ReviewedAt: { type: Date },
+      kycLevel2Status: {
+        type: String,
+        enum: ['none', 'pending', 'approved', 'rejected', 'manual_review'],
+        default: 'none',
+        index: true,
+      },
+      kycLevel2RejectionReason: { type: String },
+
       discountCodes: [
         {
           type: global.database.mongodb.mongoose.Schema.Types.ObjectId,

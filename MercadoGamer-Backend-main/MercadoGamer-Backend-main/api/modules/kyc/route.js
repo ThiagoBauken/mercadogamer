@@ -43,11 +43,18 @@ module.exports = (module) => {
     if (userDoc.verifiedEmail && userDoc.verifiedPhone && userDoc.verifiedCPF) {
       level = 1;
     }
-    // futuramente: nível 2 = + documento, nível 3 = + endereço
+    // Nível 2 = + biometria facial aprovada (kycLevel2Status === 'approved')
+    if (level >= 1 && userDoc.kycLevel2Status === 'approved') {
+      level = 2;
+    }
+    // futuramente: nível 3 = + comprovante de endereço + análise manual
     if (level !== userDoc.kycLevel) {
       userDoc.kycLevel = level;
-      if (level === 1 && !userDoc.kycVerifiedAt) {
+      if (level >= 1 && !userDoc.kycVerifiedAt) {
         userDoc.kycVerifiedAt = new Date();
+      }
+      if (level >= 2 && !userDoc.kycLevel2ReviewedAt) {
+        userDoc.kycLevel2ReviewedAt = new Date();
       }
     }
     await userDoc.save();
@@ -336,6 +343,173 @@ module.exports = (module) => {
         kycLevel: user.kycLevel,
         provider: result.provider,
       });
+    } catch (e) {
+      next(e);
+    }
+  });
+
+  // ──────────────────────────────────────────────────────────
+  // KYC NÍVEL 2 — foto documento + selfie + biometria facial (P1.10)
+  // ──────────────────────────────────────────────────────────
+
+  /**
+   * POST /api/kyc/submit-document-photos
+   * Body JSON: { documentPhotoUrl, documentPhotoBackUrl?, selfiePhotoUrl }
+   *
+   * As 3 URLs vêm de uploads prévios via POST /api/files/upload
+   * (multer salva em ./files/ e retorna o filename — frontend passa aqui).
+   *
+   * Fluxo:
+   *   1. Valida que user já completou nível 1 (verifiedCPF)
+   *   2. Salva paths no schema users
+   *   3. Chama Rekognition (ou mock) pra comparar rosto do documento vs selfie
+   *   4. Se similarity ≥ 85: status='approved' → recompute promove pra kycLevel 2
+   *      Se similarity < 85: status='manual_review' (admin decide)
+   *   5. Log de auditoria
+   */
+  module.router.post('/submit-document-photos', global.helpers.security.auth(['user']), async (req, res, next) => {
+    try {
+      const { documentPhotoUrl, documentPhotoBackUrl, selfiePhotoUrl } = req.body || {};
+      if (!documentPhotoUrl || !selfiePhotoUrl) {
+        return next(lib().httpError(400, 'documentPhotoUrl e selfiePhotoUrl são obrigatórios'));
+      }
+
+      const user = await Users().findById(req.user._id);
+      if (!user) return next(lib().httpError(404, 'Usuário não encontrado'));
+
+      // Pré-requisito: KYC nível 1 completo
+      if ((user.kycLevel || 0) < 1) {
+        return next(lib().httpError(400, 'Complete o KYC nível 1 antes de enviar documentos'));
+      }
+
+      // Já aprovado?
+      if (user.kycLevel2Status === 'approved') {
+        return res.json({ message: 'KYC nível 2 já aprovado', kycLevel: user.kycLevel });
+      }
+
+      user.documentPhotoUrl = documentPhotoUrl;
+      user.documentPhotoBackUrl = documentPhotoBackUrl || undefined;
+      user.selfiePhotoUrl = selfiePhotoUrl;
+      user.kycLevel2Status = 'pending';
+      user.kycLevel2SubmittedAt = new Date();
+      await user.save();
+
+      await logAttempt(user._id, 'cpf', 'pending', { kycLevel2: true, documentPhotoUrl, selfiePhotoUrl }, null, null, req);
+
+      // Comparar faces (real AWS ou mock)
+      const path = require('path');
+      const filesPath = module.settings.files.path;
+      const docPath = path.resolve(filesPath, documentPhotoUrl);
+      const selfiePath = path.resolve(filesPath, selfiePhotoUrl);
+
+      const rek = global.helpers.kyc.rekognition;
+      const result = await rek.compareFaces(docPath, selfiePath);
+
+      // Erro técnico (arquivo não existe, AWS down) → manual review
+      if (result.error) {
+        user.kycLevel2Status = 'manual_review';
+        user.kycLevel2RejectionReason = `Erro técnico: ${result.error}`;
+        await user.save();
+        await logAttempt(user._id, 'cpf', 'failed', { kycLevel2: true }, result, result.error, req);
+        return res.json({
+          message: 'Documentos recebidos — pendente análise manual',
+          status: 'manual_review',
+          kycLevel: user.kycLevel,
+        });
+      }
+
+      user.faceMatchScore = result.similarity;
+
+      if (result.match && result.similarity >= 85) {
+        user.kycLevel2Status = 'approved';
+        user.kycLevel2ReviewedAt = new Date();
+        await user.save();
+        await logAttempt(user._id, 'cpf', 'verified', { kycLevel2: true, similarity: result.similarity }, result, null, req);
+        await recomputeKycLevel(user);
+        return res.json({
+          message: 'KYC nível 2 aprovado automaticamente',
+          status: 'approved',
+          similarity: result.similarity,
+          kycLevel: user.kycLevel,
+          provider: result.provider,
+        });
+      } else {
+        // Match falhou → manual review (não rejeita automático, dá benefício da dúvida)
+        user.kycLevel2Status = 'manual_review';
+        user.kycLevel2RejectionReason = `Similaridade ${result.similarity?.toFixed(1)}% abaixo do threshold (85%)`;
+        await user.save();
+        await logAttempt(user._id, 'cpf', 'failed', { kycLevel2: true, similarity: result.similarity }, result, 'low similarity', req);
+        return res.json({
+          message: 'Documentos recebidos — análise manual em até 48h',
+          status: 'manual_review',
+          similarity: result.similarity,
+          kycLevel: user.kycLevel,
+        });
+      }
+    } catch (e) {
+      next(e);
+    }
+  });
+
+  /**
+   * GET /api/kyc/level2-status — status detalhado do KYC nível 2 do user logado
+   */
+  module.router.get('/level2-status', global.helpers.security.auth(['user']), async (req, res, next) => {
+    try {
+      const user = await Users()
+        .findById(req.user._id)
+        .select('+faceMatchScore');
+      if (!user) return next(lib().httpError(404, 'Usuário não encontrado'));
+      res.json({
+        status: user.kycLevel2Status || 'none',
+        submittedAt: user.kycLevel2SubmittedAt,
+        reviewedAt: user.kycLevel2ReviewedAt,
+        rejectionReason: user.kycLevel2RejectionReason,
+        faceMatchScore: user.faceMatchScore,
+      });
+    } catch (e) {
+      next(e);
+    }
+  });
+
+  /**
+   * GET /api/kyc/admin/level2-pending — admin lista users em manual_review
+   */
+  module.router.get('/admin/level2-pending', global.helpers.security.auth(['administrator']), async (req, res, next) => {
+    try {
+      const list = await Users()
+        .find({ kycLevel2Status: 'manual_review' })
+        .select('+documentPhotoUrl +documentPhotoBackUrl +selfiePhotoUrl +faceMatchScore')
+        .limit(100)
+        .sort({ kycLevel2SubmittedAt: 1 })
+        .lean();
+      res.json({ data: list, count: list.length });
+    } catch (e) {
+      next(e);
+    }
+  });
+
+  /**
+   * POST /api/kyc/admin/level2-decide
+   * Body: { userId, decision: 'approve' | 'reject', reason? }
+   */
+  module.router.post('/admin/level2-decide', global.helpers.security.auth(['administrator']), async (req, res, next) => {
+    try {
+      const { userId, decision, reason } = req.body || {};
+      if (!['approve', 'reject'].includes(decision)) {
+        return next(lib().httpError(400, 'decision deve ser approve ou reject'));
+      }
+      const user = await Users().findById(userId);
+      if (!user) return next(lib().httpError(404, 'Usuário não encontrado'));
+
+      user.kycLevel2Status = decision === 'approve' ? 'approved' : 'rejected';
+      user.kycLevel2ReviewedAt = new Date();
+      if (decision === 'reject') user.kycLevel2RejectionReason = reason || 'Rejeitado pelo administrador';
+      await user.save();
+      await logAttempt(user._id, 'cpf', decision === 'approve' ? 'verified' : 'failed', { kycLevel2: true, admin: req.user._id }, null, reason, req);
+      await recomputeKycLevel(user);
+
+      res.json({ message: `KYC nível 2 ${decision === 'approve' ? 'aprovado' : 'rejeitado'}`, kycLevel: user.kycLevel });
     } catch (e) {
       next(e);
     }

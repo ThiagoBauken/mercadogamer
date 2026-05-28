@@ -220,6 +220,61 @@ URLs:
 
 ---
 
+## 🟢 KYC nível 2 — IMPLEMENTADO backend (28/05/2026)
+
+Foto documento + selfie + biometria facial. Promove `kycLevel` de 1 → 2 quando aprovado.
+
+**Schema users novos campos** (todos com `select: false`):
+- `documentPhotoUrl`, `documentPhotoBackUrl`, `selfiePhotoUrl`
+- `faceMatchScore` (0-100, AWS Rekognition)
+- `kycLevel2SubmittedAt`, `kycLevel2ReviewedAt`
+- `kycLevel2Status`: `none | pending | approved | rejected | manual_review`
+- `kycLevel2RejectionReason`
+
+**Helper `helpers/kyc/rekognition.js`**:
+- Modo MOCK (default) — sempre aprova com score 90
+- Modo AWS Rekognition real — via env `AWS_ACCESS_KEY_ID/SECRET/REGION`
+- Lazy require do `@aws-sdk/client-rekognition` (não falha se não instalado)
+
+**Endpoints `/api/kyc/*` (nível 2)**:
+| Endpoint | Quem | Comportamento |
+|---|---|---|
+| `POST /submit-document-photos` | user com KYC nível 1 | Body `{documentPhotoUrl, documentPhotoBackUrl?, selfiePhotoUrl}`. Roda Rekognition. ≥85% similarity → approved. <85% → manual_review |
+| `GET /level2-status` | user | Estado atual + score + rejection reason |
+| `GET /admin/level2-pending` | admin | Lista users em manual_review |
+| `POST /admin/level2-decide` | admin | Body `{userId, decision: approve\|reject, reason?}` |
+
+**Smoke test 28/05/2026** (curl):
+- ✅ `GET /level2-status` → `{status: "none"}`
+- ✅ `POST /submit-document-photos` sem KYC nível 1 → HTTP 400 bloqueado
+- ✅ `GET /admin/level2-pending` sem admin → HTTP 401 "Acceso inválido"
+
+**Frontend nível 2**: NÃO implementado ainda. Falta tela `pages/dashboard/kyc-nivel-2.tsx` com upload de 3 fotos (documento frente, verso, selfie) → POST submit.
+
+---
+
+## 🟢 Reviews ponderados — IMPLEMENTADO (28/05/2026, P1.8)
+
+Schema `reviews` agora calcula peso automaticamente baseado no qualifier:
+
+```
+weight = 0.3                    se kycLevel = 0 (anti-fraude)
+       = 1.0                    se kycLevel >= 1
+       = 1.5                    se kycLevel >= 2
+       + 0.5                    se purchaseCount >= 5 (bonus experiência)
+       max 2.0 (cap)
+```
+
+**Snapshots** salvos no review: `weight`, `kycLevelAtTime`, `purchaseCountAtTime`.
+
+**Hooks Mongoose**:
+- `pre-save`: calcula weight ao criar review
+- `post-save`: recalcula `sellerQualification` / `userQualification` no user qualified, usando **média ponderada** `sum(rating * weight) / sum(weight)`
+
+Resultado: GGMax dá 4.8 média porque vendedores fazem self-reviews fake. Aqui, reviews de contas não-verificadas pesam 70% menos.
+
+---
+
 ## 🟢 KYC nível 1 — IMPLEMENTADO (27/05/2026)
 
 Backend completo. Falta tela no frontend.
