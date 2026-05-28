@@ -25,7 +25,7 @@ Ordenadas por **(criticidade legal) × (custo de oportunidade competitivo)**.
 | # | Item | Esforço | Custo recorrente |
 |---|---|---|---|
 | 6 | ~~**Planos de vendedor**~~ ✅ **Backend 28/05/2026** — Free/Pro R$29.90/Premium R$99.90 via Stripe Subscriptions. Falta tela /dashboard/upgrade | ~6h (frontend) | 4,99% Stripe |
-| 7 | **Seguro do vendedor** (fundo de reembolso 2% por venda) | 20-30h | — |
+| 7 | ~~**Seguro do vendedor**~~ ✅ **Backend 28/05/2026** — fundo automático: 2% de cada release vai pra coleção platformFunds. Admin usa pra reembolsar buyer em disputa quando seller já sacou | — | — |
 | 8 | ~~**Sistema de reviews** com peso~~ ✅ **Backend 28/05/2026** — média ponderada por kycLevel + experiência | — | — |
 | 9 | **Deploy de produção sério** (MongoDB Atlas + Vercel + monitoring) | 12-16h | R$ 50-150/mês |
 | 10 | ~~**KYC nível 2** (foto + selfie + biometria AWS Rekognition)~~ ✅ **Backend 28/05/2026** — frontend pendente | ~10h restantes (frontend) | R$ 0,005/img |

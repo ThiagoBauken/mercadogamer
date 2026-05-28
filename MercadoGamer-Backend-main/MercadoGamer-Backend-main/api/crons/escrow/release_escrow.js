@@ -107,11 +107,33 @@ module.exports = (cron, cronName) => {
             continue;
           }
 
+          // P1.7 — taxa de 2% vai pro fundo de reembolso da plataforma
+          const PLATFORM_FUND_FEE_RATE = parseFloat(process.env.PLATFORM_FUND_FEE_RATE || '0.02');
+          const fundFee = Math.round(amount * PLATFORM_FUND_FEE_RATE * 100) / 100;
+          const sellerCredit = Math.round((amount - fundFee) * 100) / 100;
+
           // Creditar balance do seller (separado pra não usar transação cross-doc por ora)
           await Users.updateOne(
             { _id: order.seller },
-            { $inc: { balance: amount } }
+            { $inc: { balance: sellerCredit } }
           );
+
+          // Creditar o fundo da plataforma (idempotente via order._id no log)
+          const Funds = cron.modules.platformFunds && cron.modules.platformFunds.model;
+          if (Funds && fundFee > 0) {
+            try {
+              await Funds.create({
+                type: 'credit',
+                amount: fundFee,
+                reason: 'escrow_release_fee',
+                order: order._id,
+                user: order.seller,
+                notes: `2% de R$ ${amount.toFixed(2)} (release order #${order.number || order._id})`,
+              });
+            } catch (fundErr) {
+              console.warn(`[${cronName}] falha ao creditar fundo (não-bloqueante):`, fundErr.message);
+            }
+          }
 
           // Notificar (best-effort, não bloqueia o cron)
           if (Notifications) {

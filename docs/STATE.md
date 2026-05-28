@@ -220,6 +220,49 @@ URLs:
 
 ---
 
+## 🟢 Seguro do vendedor (P1.7) — IMPLEMENTADO (28/05/2026)
+
+Fundo de reembolso automático. 2% de cada venda liberada vai pro fundo. Admin pode usar pra reembolsar buyer em disputas quando o vendedor já sacou.
+
+**Novo módulo `modules/platformFunds/`**:
+- `model.js`: collection insert-only (livro-razão), eventos `credit` / `debit` com referência a `order`/`dispute`/`user`/`authorAdmin`. Saldo = `SUM(credits) - SUM(debits)`.
+- `route.js`: 4 endpoints:
+  - `GET /balance` (**público** — transparência) — retorna saldo atual + explicação
+  - `GET /transactions` (admin) — paginado com filtro por type
+  - `POST /refund` (admin) — usa fundo pra reembolsar buyer numa disputa
+  - `POST /manual-adjustment` (admin) — ajustes raros com notes obrigatório
+
+**Cron escrow atualizado** (`crons/escrow/release_escrow.js`):
+- Antes do release: calcula `fundFee = amount * 0.02` (configurável via `PLATFORM_FUND_FEE_RATE`)
+- Seller recebe `amount - fundFee` (98%)
+- Fundo recebe `fundFee` (2%) — registro automático com `reason: 'escrow_release_fee'`
+- Não-bloqueante: se falhar gravação do fundo, release ainda completa
+
+**Diferencial competitivo**: 
+- GGMax e Desapego não mostram fundo de garantia publicamente.
+- Aqui `GET /api/platformFunds/balance` é público — comprador vê quanto a plataforma tem em reserva.
+- Mensagem de marketing: "R$ XXX em fundo de garantia para reembolsos".
+
+**Smoke test 28/05/2026**: `GET /balance` retorna `{balance: 0, totalCredits: 0, totalDebits: 0}` (fundo vazio, esperado).
+
+---
+
+## 🟢 Frontend `/dashboard/upgrade` — IMPLEMENTADO (28/05/2026)
+
+Tela com 3 cards comparativos (Free / Pro / Premium):
+- Cards com nome, preço, descrição, features list, botão Assinar
+- Card "Pro" destacado como ⭐ Mais escolhido
+- Card do plano atual mostra ✅ Plano atual
+- Botão Cancelar assinatura (se ativa)
+- Banner se `stripeSubscriptionStatus === 'past_due'`
+- Toast em sucesso/cancel do Stripe Checkout redirect
+- Item no menu lateral "Planos pagos" / "Plans" / "Planes"
+- 3 idiomas (upgrade.json)
+
+Quando clica "Assinar": chama `POST /api/subscriptions/create-checkout` → recebe URL Stripe → redireciona.
+
+---
+
 ## 🟢 Planos pagos (P1.6) — IMPLEMENTADO backend (28/05/2026)
 
 Sistema Stripe Subscriptions completo. **Free / Pro R$29.90/mês / Premium R$99.90/mês.**
