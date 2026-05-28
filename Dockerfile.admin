@@ -1,5 +1,5 @@
 # Frontend Admin Dockerfile - MercadoGamer Admin Panel
-FROM node:18-alpine
+FROM node:22-alpine
 
 # Instalar dependências do sistema
 RUN apk add --no-cache libc6-compat

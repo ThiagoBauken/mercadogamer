@@ -12,8 +12,9 @@ export const NavButton: React.FC<IProps> = ({ href, text, active }) => {
   };
 
   return (
-    <Link href={href}>
-      <a className={getClassName()}>{text}</a>
+    // Next 14+: <Link> renderiza <a> automaticamente — não envolver outro <a>
+    <Link href={href} className={getClassName()}>
+      {text}
     </Link>
   );
 };
