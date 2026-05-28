@@ -186,6 +186,7 @@ module.exports = (module) => {
    */
   module.router.get(
     '/:id',
+    global.helpers.security.validateObjectId('id'),
     global.helpers.security.auth(['administrator', 'user']),
     (req, res, next) => {
       global.helpers.database
