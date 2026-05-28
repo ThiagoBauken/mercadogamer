@@ -139,19 +139,29 @@ export const MercadoGamer: React.FC<AppProps> = ({ Component, pageProps }) => {
           name="viewport"
           content="target-densityDpi=device-dpi, width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"
         />
-        <meta name="description" content={pageProps.description} />
+        <meta name="description" content={pageProps.description || 'Compre e venda itens digitais, gift cards, skins e muito mais no MercadoGamer.'} />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        {/* Open Graph defaults — individual pages may override these */}
         <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="MercadoGamer" />
+        <meta property="og:title" content={pageTitle || 'MercadoGamer'} />
+        <meta property="og:description" content={pageProps.description || 'Compre e venda itens digitais, gift cards, skins e muito mais no MercadoGamer.'} />
         <meta
           property="og:url"
           key="og:url"
-          content={`https://www.mercadogamer.com${router.asPath}`}
+          content={`${process.env.NEXT_PUBLIC_DOMAIN || 'https://mercadogamer.com.br'}${router.asPath}`}
         />
         <meta
           name="og:image"
           property="og:image"
           content={ogImage}
         />
+        {/* Twitter Card defaults */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@MercadoGamer" />
+        <meta name="twitter:title" content={pageTitle || 'MercadoGamer'} />
+        <meta name="twitter:description" content={pageProps.description || 'Compre e venda itens digitais, gift cards, skins e muito mais no MercadoGamer.'} />
+        <meta name="twitter:image" content={ogImage} />
       </Head>
       <Provider store={store}>
         <ThemeProvider>

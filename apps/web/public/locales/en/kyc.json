@@ -33,6 +33,19 @@
     "verified": "CPF verified",
     "blocked": "Complete the previous step first"
   },
+  "level2": {
+    "title": "Advanced verification (level 2)",
+    "description": "Upload a photo of your document and a selfie to unlock more features",
+    "step1": "1. Document front (ID or driver's license)",
+    "step2": "2. Document back",
+    "step3": "3. Selfie holding the document",
+    "uploading": "Uploading...",
+    "submit": "Submit for verification",
+    "success_approved": "🎉 Verification approved — you are level 2",
+    "review_pending": "⏳ Manual review — up to 48h",
+    "rejected": "❌ Verification rejected",
+    "requires_level1": "Complete level 1 verification first"
+  },
   "errors": {
     "generic": "Something went wrong. Please try again.",
     "loadStatus": "We could not load your KYC status"

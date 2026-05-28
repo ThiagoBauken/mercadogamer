@@ -43,6 +43,7 @@
     "store": "Store",
     "my_profile": "My Profile",
     "kyc": "KYC Verification",
+    "kyc_level_2": "Advanced verification",
     "disputes": "Disputes",
     "support": "Support",
     "logout": "Logout",

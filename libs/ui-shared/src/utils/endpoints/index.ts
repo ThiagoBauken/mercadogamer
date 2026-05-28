@@ -60,6 +60,12 @@ export const kycSendPhoneUrl = `${serverUrl}/kyc/send-phone-verification`;
 export const kycVerifyPhoneUrl = `${serverUrl}/kyc/verify-phone`;
 export const kycSubmitCpfUrl = `${serverUrl}/kyc/submit-cpf`;
 
+// KYC nível 2 (P1.10) — foto documento + selfie + biometria facial
+export const kycLevel2StatusUrl = `${serverUrl}/kyc/level2-status`;
+export const kycSubmitDocumentPhotosUrl = `${serverUrl}/kyc/submit-document-photos`;
+export const kycAdminLevel2PendingUrl = `${serverUrl}/kyc/admin/level2-pending`;
+export const kycAdminLevel2DecideUrl = `${serverUrl}/kyc/admin/level2-decide`;
+
 // Disputas (P0.3) — escrow + dispute resolution
 export const disputesUrl = `${serverUrl}/disputes`;
 export const disputeMineUrl = `${serverUrl}/disputes/mine`;

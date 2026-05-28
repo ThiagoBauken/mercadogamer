@@ -33,6 +33,19 @@
     "verified": "CPF verificado",
     "blocked": "Completa el paso anterior primero"
   },
+  "level2": {
+    "title": "Verificación avanzada (nivel 2)",
+    "description": "Sube una foto de tu documento y una selfie para desbloquear más funciones",
+    "step1": "1. Documento frente (DNI o licencia)",
+    "step2": "2. Documento reverso",
+    "step3": "3. Selfie sosteniendo el documento",
+    "uploading": "Enviando...",
+    "submit": "Enviar para verificación",
+    "success_approved": "🎉 Verificación aprobada — eres nivel 2",
+    "review_pending": "⏳ Revisión manual — hasta 48h",
+    "rejected": "❌ Verificación rechazada",
+    "requires_level1": "Completa la verificación de nivel 1 primero"
+  },
   "errors": {
     "generic": "Algo salió mal. Inténtalo de nuevo.",
     "loadStatus": "No pudimos cargar tu estado KYC"
